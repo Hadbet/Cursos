@@ -286,7 +286,7 @@
                 <div class="card shadow">
                     <div class="card-body">
                         <h5 class="card-title">Horarios</h5>
-                        <table class="table table-bordered table-hover mb-0">
+                        <table id="tablaHorarios" class="table table-bordered table-hover mb-0">
                             <thead>
                             <tr>
                                 <th>ID</th>
@@ -413,11 +413,22 @@
     function cargarHorarios() {
         $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaHorario.php', function (data) {
             var select = document.getElementById("cbHorario");
+            var table = $("#tablaHorarios"); // selecciona la tabla
             for (var i = 0; i < data.data.length; i++) {
                 var createOption = document.createElement("option");
                 createOption.text = data.data[i].HorarioCurso;
                 createOption.value = data.data[i].HorarioCurso;
                 select.appendChild(createOption);
+
+                // crea una nueva fila y celdas para la tabla
+                var newRow = $("<tr></tr>");
+                var idCell = $("<td></td>").text(data.data[i].IdHorarioCurso); // asume que tienes un campo id en tus datos
+                var nameCell = $("<td></td>").text(data.data[i].HorarioCurso);
+
+                // agrega las celdas a la fila y la fila a la tabla
+                newRow.append(idCell);
+                newRow.append(nameCell);
+                table.append(newRow);
             }
         });
     }
