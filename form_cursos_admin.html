@@ -168,6 +168,15 @@
                                     </div>
 
                                 </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <label for="txtCapacidad">Capacidad</label>
+                                        <input type="number" class="form-control drgpicker" id="txtCapacidad"
+                                               value="" aria-describedby="button-addon2">
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                         <div class="card-footer">
@@ -192,18 +201,11 @@
                                     <th>Nombre Curso</th>
                                     <th>Fecha</th>
                                     <th>Horario</th>
+                                    <th>Capacidad</th>
                                     <th>Estatus</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>3224</td>
-                                    <td>Keith Baird</td>
-                                    <td>Enim Limited</td>
-                                    <td>Enim Limited</td>
-                                    <td><span class="badge badge-pill badge-warning">Hold</span></td>
-                                </tr>
-
                                 </tbody>
                             </table>
                         </div>
@@ -440,12 +442,14 @@
         var nombre = document.getElementById("cbCurso").value;
         var horario = document.getElementById("cbHorario").value;
         var fecha = document.getElementById("txtFecha").value;
+        var capacidad = document.getElementById("txtCapacidad").value;
 
         const data = new FormData();
 
         data.append('nombre', nombre.trim());
         data.append('horario', horario.trim());
         data.append('fecha', fecha.trim());
+        data.append('capacidad', capacidad.trim());
 
         fetch('dao/guardarCurso.php', {
             method: 'POST',
@@ -482,6 +486,7 @@
                 var nameCell = $("<td></td>").text(data.data[i].NombreCurso);
                 var horarioCell = $("<td></td>").text(data.data[i].Horario);
                 var fechaCell = $("<td></td>").text(data.data[i].Fecha);
+                var capacidadCell = $("<td></td>").text(data.data[i].Capacidad);
                 if (data.data[i].Estatus === '0'){
                     var estatusCell = $("<td></td>").html("<span class=\"badge badge-pill badge-warning\">"+"Caducado"+"</span>");
                 }else{
@@ -492,6 +497,7 @@
                 newRow.append(nameCell);
                 newRow.append(horarioCell);
                 newRow.append(fechaCell);
+                newRow.append(capacidadCell);
                 newRow.append(estatusCell);
                 table.append(newRow);
             }
