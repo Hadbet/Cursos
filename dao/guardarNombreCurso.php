@@ -9,11 +9,7 @@ function registroUsu($Nombre){
     $con = new LocalConector();
     $conex=$con->conectar();
 
-    $Object = new DateTime();
-    $Object->setTimezone(new DateTimeZone('America/Denver'));
-    $DateAndTime = $Object->format("Y/m/d h:i:s");
-
-    $insertRegistro= "INSERT INTO `Nombres_Cursos`(`NombreCurso`) VALUES ('$Nombre'')";
+    $insertRegistro= "INSERT INTO `Nombres_Cursos`(`NombreCurso`) VALUES ('$Nombre')";
 
     $rsinsertUsu=mysqli_query($conex,$insertRegistro);
     mysqli_close($conex);
