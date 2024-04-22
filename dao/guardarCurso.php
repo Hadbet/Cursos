@@ -11,7 +11,7 @@ function registroUsu($Nombre,$Horario,$Fecha){
     $con = new LocalConector();
     $conex=$con->conectar();
 
-    $insertRegistro= "INSERT INTO `Cursos`(`NombreCurso`, `Horario`, `Fecha`) VALUES ('$Nombre','$Horario','$Fecha]')";
+    $insertRegistro= "INSERT INTO `Cursos`(`NombreCurso`, `Horario`, `Fecha`, `Estatus`) VALUES ('$Nombre','$Horario','$Fecha',1)";
 
     $rsinsertUsu=mysqli_query($conex,$insertRegistro);
     mysqli_close($conex);
