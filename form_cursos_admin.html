@@ -185,7 +185,7 @@
                     <div class="card shadow mb-4">
                         <div class="card-body">
                             <h5 class="card-title">Cursos actuales</h5>
-                            <table class="table table-hover">
+                            <table id="tablaCursosD" class="table table-hover">
                                 <thead>
                                 <tr>
                                     <th>ID</th>
@@ -470,6 +470,32 @@
             .catch(function (err) {
                 console.log(err);
             });
+    }
+    cargarCursos();
+    function cargarCursos() {
+        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaCurso.php', function (data) {
+            var select = document.getElementById("cbHorario");
+            var table = $("#tablaCursosD"); // selecciona la tabla
+            for (var i = 0; i < data.data.length; i++) {
+                var newRow = $("<tr></tr>");
+                var idCell = $("<td></td>").text(data.data[i].IdCurso); // asume que tienes un campo id en tus datos
+                var nameCell = $("<td></td>").text(data.data[i].NombreCurso);
+                var horarioCell = $("<td></td>").text(data.data[i].Horario);
+                var fechaCell = $("<td></td>").text(data.data[i].Fecha);
+                if (data.data[i].Estatus === '0'){
+                    var estatusCell = $("<td></td>").text("<span className=\"badge badge-pill badge-warning\">"+Caducado+"</span>");
+                }else{
+                    var estatusCell = $("<td></td>").text("<span className=\"badge badge-pill badge-success\">"+Disponible+"</span>");
+                }
+                // agrega las celdas a la fila y la fila a la tabla
+                newRow.append(idCell);
+                newRow.append(nameCell);
+                newRow.append(horarioCell);
+                newRow.append(fechaCell);
+                newRow.append(estatusCell);
+                table.append(newRow);
+            }
+        });
     }
 
 </script>
