@@ -329,6 +329,7 @@
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
 <script>
+    cargarCursos();
     window.dataLayer = window.dataLayer || [];
 
     function gtag() {
@@ -367,6 +368,18 @@
             .catch(function (err) {
                 console.log(err);
             });
+    }
+
+    function cargarCursos() {
+        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaNombre.php', function (data) {
+            var select = document.getElementById("cbCurso");
+            for (var i = 0; i < data.data.length; i++) {
+                var createOption = document.createElement("option");
+                createOption.text = data.data[i].NombreCurso;
+                createOption.value = data.data[i].NombreCurso;
+                select.appendChild(createOption);
+            }
+        });
     }
 </script>
 </body>
