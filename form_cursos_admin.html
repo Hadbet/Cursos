@@ -151,9 +151,6 @@
                                         <label for="cbCurso">Curso</label>
                                         <select class="custom-select" id="cbCurso">
                                             <option selected>Abrir menu</option>
-                                            <option value="1">SAP</option>
-                                            <option value="2">Documentación</option>
-                                            <option value="3">Otro</option>
                                         </select>
                                     </div>
                                 </div>
@@ -165,11 +162,9 @@
                                 <!-- /.col -->
                                 <div class="col-md-6">
                                     <div class="form-group mb-3">
-                                        <label for="example-multiselect">Horario</label>
-                                        <select id="example-multiselect" multiple="" class="form-control">
-                                            <option>14:30 - 15:30</option>
-                                            <option>15:00</option>
-                                            <option>16:00</option>
+                                        <label for="cbHorario">Horario</label>
+                                        <select id="cbHorario" multiple="" class="form-control">
+                                            <option>Abrir menu</option>
                                         </select>
                                     </div>
 
@@ -246,8 +241,8 @@
                                 <!-- /.col -->
                                 <div class="col-md-6">
                                     <div class="form-group mb-6">
-                                        <label for="example-multiselect">Nombre Cursos</label>
-                                        <input type="text" class="form-control drgpicker" id="txtNombreCurso"
+                                        <label for="txNtombreCurso">Nombre Cursos</label>
+                                        <input type="text" class="form-control drgpicker" id="txNtombreCurso"
                                                value="" aria-describedby="button-addon2">
                                         <br>
                                         <button type="button" onclick="registrarNombre()" class="btn mb-2 btn-success float-right text-white">Registrar<span
@@ -381,6 +376,54 @@
             }
         });
     }
+
+    function registrarhorario() {
+        var inicio = document.getElementById("horarioInicioCursos").value;
+        var fin = document.getElementById("horarioTerminoCursos").value;
+
+        var completo = inicio + " - " + fin;
+        const data = new FormData();
+
+        data.append('horario', completo.trim());
+
+        fetch('dao/guardarHorarioCurso.php', {
+            method: 'POST',
+            body: data
+        })
+            .then(function (response) {
+                if (response.ok) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Enviado.', showConfirmButton: false, input: 'none',
+                        text: 'Registro enviardo.'
+                    })
+                    location.reload();
+                } else {
+                    throw "Error en la llamada Ajax";
+                }
+
+            })
+            .then(function (texto) {
+                console.log(texto);
+            })
+            .catch(function (err) {
+                console.log(err);
+            });
+    }
+    cargarHorarios();
+    function cargarHorarios() {
+        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaHorario.php', function (data) {
+            var select = document.getElementById("cbHorario");
+            for (var i = 0; i < data.data.length; i++) {
+                var createOption = document.createElement("option");
+                createOption.text = data.data[i].HorarioCurso;
+                createOption.value = data.data[i].HorarioCurso;
+                select.appendChild(createOption);
+            }
+        });
+    }
+
+
 </script>
 </body>
 </html>
