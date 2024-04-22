@@ -139,57 +139,42 @@
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group mb-3">
-                        <label for="example-static">Nomina</label>
+                        <label for="txtNominaCurso">Nomina</label>
                         <input type="text" readonly="" class="form-control-plaintext" id="txtNominaCurso" value="00001606">
                       </div>
                       <div class="form-group mb-3">
-                        <label for="example-static">Nombre</label>
+                        <label for="txtNombrePersonaCurso">Nombre</label>
                         <input type="text" readonly="" class="form-control-plaintext" id="txtNombrePersonaCurso" value="HADBET AYARI ALTAMIRANO MARTINEZ">
                       </div>
                       <div class="form-group mb-3">
-                        <label for="custom-select">Apu</label>
-                        <select class="custom-select" id="cbCurso">
+                        <label for="cbApu">Apu</label>
+                        <select class="custom-select" id="cbApu" onchange="llenarSuper()">
                           <option selected>Abrir menu</option>
-                          <option value="1">Extintores</option>
-                          <option value="2">Documentación</option>
-                          <option value="3">5S</option>
                         </select>
                       </div>
                       <div class="form-group mb-3">
-                        <label for="custom-select">Supervisor</label>
-                        <select class="custom-select" id="cbCurso">
+                        <label for="cbSupervisor" onchange="llenarShift()">Supervisor</label>
+                        <select class="custom-select"  id="cbSupervisor">
                           <option selected>Abrir menu</option>
-                          <option value="1">Extintores</option>
-                          <option value="2">Documentación</option>
-                          <option value="3">5S</option>
                         </select>
                       </div>
                       <div class="form-group mb-3">
-                        <label for="custom-select">Shifleader</label>
-                        <select class="custom-select" id="cbCurso">
+                        <label for="cbShiftleader">Shifleader</label>
+                        <select class="custom-select" id="cbShiftleader">
                           <option selected>Abrir menu</option>
-                          <option value="1">Extintores</option>
-                          <option value="2">Documentación</option>
-                          <option value="3">5S</option>
                         </select>
                       </div>
                     </div> <!-- /.col -->
                     <div class="col-md-6">
                       <div class="form-group mb-3">
-                        <label for="custom-select">Seleccione el curso</label>
+                        <label for="cbCurso">Seleccione el curso</label>
                         <select class="custom-select" id="cbCurso">
                           <option selected>Abrir menu</option>
-                          <option value="1">Extintores</option>
-                          <option value="2">Documentación</option>
-                          <option value="3">5S</option>
                         </select>
                       </div>
                       <div class="form-group mb-3">
-                        <label for="example-multiselect">Multiple Select</label>
+                        <label for="example-multiselect">Horarios disponibles</label>
                         <select id="example-multiselect" multiple="" class="form-control">
-                          <option>14:00</option>
-                          <option>15:00</option>
-                          <option>16:00</option>
                         </select>
                       </div>
                     </div>
@@ -202,129 +187,8 @@
             </div> <!-- .col-12 -->
           </div> <!-- .row -->
         </div> <!-- .container-fluid -->
-        <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="defaultModalLabel">Notifications</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div class="list-group list-group-flush my-n3">
-                  <div class="list-group-item bg-transparent">
-                    <div class="row align-items-center">
-                      <div class="col-auto">
-                        <span class="fe fe-box fe-24"></span>
-                      </div>
-                      <div class="col">
-                        <small><strong>Package has uploaded successfull</strong></small>
-                        <div class="my-0 text-muted small">Package is zipped and uploaded</div>
-                        <small class="badge badge-pill badge-light text-muted">1m ago</small>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="list-group-item bg-transparent">
-                    <div class="row align-items-center">
-                      <div class="col-auto">
-                        <span class="fe fe-download fe-24"></span>
-                      </div>
-                      <div class="col">
-                        <small><strong>Widgets are updated successfull</strong></small>
-                        <div class="my-0 text-muted small">Just create new layout Index, form, table</div>
-                        <small class="badge badge-pill badge-light text-muted">2m ago</small>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="list-group-item bg-transparent">
-                    <div class="row align-items-center">
-                      <div class="col-auto">
-                        <span class="fe fe-inbox fe-24"></span>
-                      </div>
-                      <div class="col">
-                        <small><strong>Notifications have been sent</strong></small>
-                        <div class="my-0 text-muted small">Fusce dapibus, tellus ac cursus commodo</div>
-                        <small class="badge badge-pill badge-light text-muted">30m ago</small>
-                      </div>
-                    </div> <!-- / .row -->
-                  </div>
-                  <div class="list-group-item bg-transparent">
-                    <div class="row align-items-center">
-                      <div class="col-auto">
-                        <span class="fe fe-link fe-24"></span>
-                      </div>
-                      <div class="col">
-                        <small><strong>Link was attached to menu</strong></small>
-                        <div class="my-0 text-muted small">New layout has been attached to the menu</div>
-                        <small class="badge badge-pill badge-light text-muted">1h ago</small>
-                      </div>
-                    </div>
-                  </div> <!-- / .row -->
-                </div> <!-- / .list-group -->
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Clear All</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal fade modal-shortcut modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="defaultModalLabel">Shortcuts</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body px-5">
-                <div class="row align-items-center">
-                  <div class="col-6 text-center">
-                    <div class="squircle bg-success justify-content-center">
-                      <i class="fe fe-cpu fe-32 align-self-center text-white"></i>
-                    </div>
-                    <p>Control area</p>
-                  </div>
-                  <div class="col-6 text-center">
-                    <div class="squircle bg-primary justify-content-center">
-                      <i class="fe fe-activity fe-32 align-self-center text-white"></i>
-                    </div>
-                    <p>Activity</p>
-                  </div>
-                </div>
-                <div class="row align-items-center">
-                  <div class="col-6 text-center">
-                    <div class="squircle bg-primary justify-content-center">
-                      <i class="fe fe-droplet fe-32 align-self-center text-white"></i>
-                    </div>
-                    <p>Droplet</p>
-                  </div>
-                  <div class="col-6 text-center">
-                    <div class="squircle bg-primary justify-content-center">
-                      <i class="fe fe-upload-cloud fe-32 align-self-center text-white"></i>
-                    </div>
-                    <p>Upload</p>
-                  </div>
-                </div>
-                <div class="row align-items-center">
-                  <div class="col-6 text-center">
-                    <div class="squircle bg-primary justify-content-center">
-                      <i class="fe fe-users fe-32 align-self-center text-white"></i>
-                    </div>
-                    <p>Users</p>
-                  </div>
-                  <div class="col-6 text-center">
-                    <div class="squircle bg-primary justify-content-center">
-                      <i class="fe fe-settings fe-32 align-self-center text-white"></i>
-                    </div>
-                    <p>Settings</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+
+
       </main> <!-- main -->
     </div> <!-- .wrapper -->
     <script src="js/jquery.min.js"></script>
@@ -348,6 +212,74 @@
       }
       gtag('js', new Date());
       gtag('config', 'UA-56159088-1');
+      llenarAPU();
+      function llenarAPU() {
+        $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/daoApu.php', function (data) {
+          var select = document.getElementById("cbCurso");
+          for (var i = 0; i < data.data.length; i++) {
+            var createOption = document.createElement("option");
+            createOption.text = data.data[i].Nombre;
+            createOption.value = data.data[i].Puesto;
+            select.appendChild(createOption);
+          }
+        });
+      }
+
+      function llenarSuper() {
+        $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/daoSupervisor.php?APU=' + document.getElementById("cbEncargado").value, function (data) {
+          var selectS = document.getElementById("cbSupervisor");
+          selectS.innerHTML = "";
+
+          var selectA = document.getElementById("cbShiftLeader");
+          selectA.innerHTML = "";
+
+
+          var createOptionDef = document.createElement("option");
+          createOptionDef.text = "Seleccione";
+          createOptionDef.value = "";
+          selectS.appendChild(createOptionDef);
+
+          for (var i = 0; i < data.data.length; i++) {
+            var createOptionS = document.createElement("option");
+            createOptionS.text = data.data[i].Supervisor;
+            createOptionS.value = data.data[i].Supervisor;
+            selectS.appendChild(createOptionS);
+          }
+        });
+      }
+
+      function llenarShift() {
+        $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/daoShiftLeader.php?APU=' + document.getElementById("cbSupervisor").value, function (data) {
+          var selectS = document.getElementById("cbShiftLeader");
+          selectS.innerHTML = "";
+
+          var createOptionDefS = document.createElement("option");
+          createOptionDefS.text = "Seleccione";
+          createOptionDefS.value = "";
+          selectS.appendChild(createOptionDefS);
+
+          for (var i = 0; i < data.data.length; i++) {
+            var createOptionS = document.createElement("option");
+            createOptionS.text = data.data[i].ShiftLeader;
+            createOptionS.value = data.data[i].ShiftLeader;
+            selectS.appendChild(createOptionS);
+          }
+        });
+      }
+
+      cargarCursos();
+      function cargarCursos() {
+        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaNombre.php', function (data) {
+          var select = document.getElementById("cbCurso");
+          var table = $("#tablaCursos"); // selecciona la tabla
+          for (var i = 0; i < data.data.length; i++) {
+            var createOption = document.createElement("option");
+            createOption.text = data.data[i].NombreCurso;
+            createOption.value = data.data[i].NombreCurso;
+            select.appendChild(createOption);
+          }
+        });
+      }
     </script>
   </body>
 </html>
