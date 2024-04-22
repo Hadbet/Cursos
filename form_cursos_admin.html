@@ -264,7 +264,7 @@
                 <div class="card shadow">
                     <div class="card-body">
                         <h5 class="card-title">Cursos</h5>
-                        <table class="table table-hover">
+                        <table id="tablaCursos" class="table table-hover">
                             <thead>
                             <tr>
                                 <th>ID</th>
@@ -272,10 +272,6 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>3224</td>
-                                <td>Keith Baird</td>
-                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -294,10 +290,6 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>3224</td>
-                                <td>Keith Baird</td>
-                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -367,11 +359,22 @@
     function cargarCursos() {
         $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaNombre.php', function (data) {
             var select = document.getElementById("cbCurso");
+            var table = $("#tablaCursos"); // selecciona la tabla
             for (var i = 0; i < data.data.length; i++) {
                 var createOption = document.createElement("option");
                 createOption.text = data.data[i].NombreCurso;
                 createOption.value = data.data[i].NombreCurso;
                 select.appendChild(createOption);
+
+                var newRow = $("<tr></tr>");
+                var idCell = $("<td></td>").text(data.data[i].IdNombreCurso);
+                var nameCell = $("<td></td>").text(data.data[i].NombreCurso);
+                //var eliminarCell = $("<td></td>").text("<button onclick = 'eliminar'>"+data.data[i].NombreCurso+"</button>");
+
+                // agrega las celdas a la fila y la fila a la tabla
+                newRow.append(idCell);
+                newRow.append(nameCell);
+                table.append(newRow);
             }
         });
     }
