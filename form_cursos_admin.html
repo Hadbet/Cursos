@@ -471,8 +471,8 @@
                 console.log(err);
             });
     }
-    cargarCursos();
-    function cargarCursos() {
+    cargarCursosD();
+    function cargarCursosD() {
         $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaCurso.php', function (data) {
             var select = document.getElementById("cbHorario");
             var table = $("#tablaCursosD"); // selecciona la tabla
@@ -483,9 +483,9 @@
                 var horarioCell = $("<td></td>").text(data.data[i].Horario);
                 var fechaCell = $("<td></td>").text(data.data[i].Fecha);
                 if (data.data[i].Estatus === '0'){
-                    var estatusCell = $("<td></td>").text("<span className=\"badge badge-pill badge-warning\">"+"Caducado"+"</span>");
+                    var estatusCell = $("<td></td>").html("<span class=\"badge badge-pill badge-warning\">"+"Caducado"+"</span>");
                 }else{
-                    var estatusCell = $("<td></td>").text("<span className=\"badge badge-pill badge-success\">"+"Disponible"+"</span>");
+                    var estatusCell = $("<td></td>").html("<span class=\"badge badge-pill badge-success\">"+"Disponible"+"</span>");
                 }
                 // agrega las celdas a la fila y la fila a la tabla
                 newRow.append(idCell);
