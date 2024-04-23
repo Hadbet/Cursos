@@ -25,7 +25,7 @@ function registroUsu($Nomina,$Nombre,$Apu,$Supervisor,$ShiftLeader,$Horario){
     $HorarioCurso = trim($horarioParts[2]);
 
     // Consulta SELECT para verificar si ya existen los datos
-    $selectQuery = "SELECT * FROM `BitacoraCursos` WHERE `Nomina` = '$Nomina' and `Curso` = '$Curso' and `Horario` = '$HorarioCurso' and `Fecha` = '$Fecha'";
+    $selectQuery = "SELECT * FROM `BitacoraCursos` WHERE `Nomina` = '$Nomina' and `Curso` = '$Curso' and `Horario` = '$HorarioCurso' and `Fecha` = '$Fecha' and EstatusAsistencia = 0";
     $rsSelect = mysqli_query($conex, $selectQuery);
 
     // Si la consulta SELECT devuelve algún resultado, no hacemos el INSERT
