@@ -510,7 +510,7 @@
         });
       }
 
-      var cursoGlobal,horarioGlobal,calificacionGlobal,idGlobal;
+      var cursoGlobal,horarioGlobal,fechaGlobal,calificacionGlobal,idGlobal;
       function handleClick(clickedImage) {
         var images = document.querySelectorAll('.image-container img');
         images.forEach(function(image) {
@@ -559,9 +559,9 @@
 
         const data = new FormData();
 
-        data.append('curso', cursoGlobal.trim());
-        data.append('horario', horarioGlobal.trim());
-        data.append('fecha', fechaGlobal.trim());
+        data.append('curso', cursoGlobal);
+        data.append('horario', horarioGlobal);
+        data.append('fecha', fechaGlobal);
         data.append('comentarios', comentarios.value);
         data.append('calificacion', calificacionGlobal);
         data.append('nomina', nomina.value);
