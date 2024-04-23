@@ -146,6 +146,7 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
+
                                 <div class="col-md-6">
                                     <div class="form-group mb-3">
                                         <label for="cbCurso">Curso</label>
@@ -166,8 +167,48 @@
                                         <select id="cbHorario" multiple="" class="form-control">
                                         </select>
                                     </div>
-
                                 </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <label for="txtObjetivo">Objetivo</label>
+                                        <textarea class="form-control" id="txtObjetivo" placeholder="Required example textarea" required></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <label for="cbInstructor">Tipo de intructor :</label>
+                                        <br>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="INTERNO">
+                                            <label class="form-check-label" for="inlineRadio1">INTERNO</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="INTERNO">
+                                            <label class="form-check-label" for="inlineRadio2">EXTERNO</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <label for="cbInstructor">Area/Empresa</label>
+                                        <input type="text" class="form-control drgpicker" id="txtArea"
+                                               value="" aria-describedby="button-addon2">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6" >
+                                    <div class="form-group mb-3">
+                                        <label for="cbInstructor">Instructor</label>
+                                        <select class="custom-select" id="cbInstructor">
+                                            <option selected>Abrir menu</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
 
                                 <div class="col-md-6">
                                     <div class="form-group mb-3">
@@ -175,8 +216,25 @@
                                         <input type="number" class="form-control drgpicker" id="txtCapacidad"
                                                value="" aria-describedby="button-addon2">
                                     </div>
-
                                 </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group mb-3">
+                                        <label for="cbHorario">Temario</label>
+                                        <br>
+                                        <div class="col-md-11 float-left" style="padding-left: 0px !important;padding-right: 0px !important;">
+                                        <input type="text" class="form-control float-left" id="txtTemario">
+                                        </div>
+                                        <div class="col-md-1 float-left">
+                                            <button type="button" onclick="cargarSeleccionCursos();" class="btn mb-2 btn-info  ext-white">Agregar<span
+                                                    class="fe fe-chevron-right fe-16 ml-2"></span></button>
+                                        </div>
+                                        <br>
+                                        <select id="cbTemario" multiple="" class="form-control">
+                                        </select>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                         <div class="card-footer">
@@ -380,6 +438,18 @@
             }
         });
     }
+    cargarInstructor();
+    function cargarInstructor() {
+        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaInstructor.php', function (data) {
+            var select = document.getElementById("cbInstructor");
+            for (var i = 0; i < data.data.length; i++) {
+                var createOption = document.createElement("option");
+                createOption.text = data.data[i].Nombre;
+                createOption.value = data.data[i].Nombre;
+                select.appendChild(createOption);
+            }
+        });
+    }
 
     function registrarhorario() {
         var inicio = document.getElementById("horarioInicioCursos").value;
@@ -443,6 +513,24 @@
         var horario = document.getElementById("cbHorario").value;
         var fecha = document.getElementById("txtFecha").value;
         var capacidad = document.getElementById("txtCapacidad").value;
+        var objetivo = document.getElementById("txtObjetivo").value;
+        var instructor = document.getElementById("cbInstructor").value;
+
+        var select = document.getElementById("cbTemario");
+        var options = Array.from(select.options); // Convierte HTMLCollection a Array
+        var values = options.map(function(option) {
+            return option.value;
+        });
+        var temario = values.join(" - ");
+
+        var radios = document.getElementsByName('inlineRadioOptions');
+        var tipo;
+        for(var i = 0; i < radios.length; i++){
+            if(radios[i].checked){
+                tipo = radios[i].value;
+                break;
+            }
+        }
 
         const data = new FormData();
 
@@ -450,6 +538,10 @@
         data.append('horario', horario.trim());
         data.append('fecha', fecha.trim());
         data.append('capacidad', capacidad.trim());
+        data.append('objetivo', objetivo.trim());
+        data.append('instructor', instructor.trim());
+        data.append('temario', temario);
+        data.append('tipo', tipo);
 
         fetch('dao/guardarCurso.php', {
             method: 'POST',
@@ -504,7 +596,24 @@
         });
     }
 
+    function cargarSeleccionCursos (){
+        var select = document.getElementById("cbTemario");
+        var nuevoValor = document.getElementById("txtTemario").value;
 
+        // Verificar si el valor ya existe en las opciones
+        for (var i = 0; i < select.options.length; i++) {
+            if (select.options[i].value === nuevoValor) {
+                // El valor ya existe, así que salimos de la función
+                return;
+            }
+        }
+
+        // Si llegamos aquí, el valor no existe en las opciones, así que lo agregamos
+        var createOption = document.createElement("option");
+        createOption.text = nuevoValor;
+        createOption.value = nuevoValor;
+        select.appendChild(createOption);
+    }
 
 </script>
 </body>

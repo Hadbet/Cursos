@@ -6,13 +6,18 @@ $Horario=$_POST['horario'];
 $Fecha=$_POST['fecha'];
 $Capacidad=$_POST['capacidad'];
 
-registroUsu($Nombre,$Horario,$Fecha,$Capacidad);
-function registroUsu($Nombre,$Horario,$Fecha,$Capacidad){
+$Objetivo=$_POST['objetivo'];
+$Instructor=$_POST['instructor'];
+$Temario=$_POST['temario'];
+$Tipo=$_POST['tipo'];
+
+registroUsu($Nombre,$Horario,$Fecha,$Capacidad,$Objetivo,$Instructor,$Temario,$Tipo);
+function registroUsu($Nombre,$Horario,$Fecha,$Capacidad,$Objetivo,$Instructor,$Temario,$Tipo){
 
     $con = new LocalConector();
     $conex=$con->conectar();
 
-    $insertRegistro= "INSERT INTO `Cursos`(`NombreCurso`, `Horario`, `Fecha`, `Estatus`, `Capacidad`) VALUES ('$Nombre','$Horario','$Fecha',1,$Capacidad)";
+    $insertRegistro= "INSERT INTO `Cursos`(`NombreCurso`, `Horario`, `Fecha`, `Estatus`, `Capacidad`, `Objetivo`, `Instructor`, `Tipo`, `Temario`) VALUES ('$Nombre','$Horario','$Fecha',1,$Capacidad,'$Objetivo','$Instructor','$Tipo','$Temario')";
 
     $rsinsertUsu=mysqli_query($conex,$insertRegistro);
     mysqli_close($conex);
