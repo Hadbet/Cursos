@@ -422,7 +422,7 @@
           var tableConcluidos = $("#tablaConcluidos"); // selecciona la tabla
           for (var i = 0; i < data.data.length; i++) {
 
-            if (data.data[i].Estatus == '0'){
+            if (data.data[i].EstatusAsistencia == '0'){
               var newRow = $("<tr></tr>");
               var nameCell = $("<td></td>").text(data.data[i].Curso); // asume que tienes un campo id en tus datos
               var horarioCell = $("<td></td>").text(data.data[i].Horario); // asume que tienes un campo id en tus datos
@@ -433,15 +433,19 @@
               newRow.append(fechaCell);
               newRow.append(horarioCell);
               table.append(newRow);
-            }else if(data.data[i].Estatus == '1'){
+            }else if(data.data[i].EstatusAsistencia == '1'){
 
               var newRowConcluido = $("<tr></tr>");
               var idCell = $("<td></td>").text(data.data[i].IdBitacoraCurso);
               var nameCursoCell = $("<td></td>").text(data.data[i].Curso); // asume que tienes un campo id en tus datos
               var horarioCursoCell = $("<td></td>").text(data.data[i].Horario); // asume que tienes un campo id en tus datos
               var fechaCursoCell = $("<td></td>").text(data.data[i].Fecha); // asume que tienes un campo id en tus datos
-              var evaluacionCell = $("<td></td>").text(data.data[i].Evaluacion);
-              var valorarCell = $("<td></td>").html('<button type="button" onclick="agregarAsistenciaCurso()" class="btn mb-2 btn-success float-right text-white">Registrar<span class="fe fe-chevron-right fe-16 ml-2"></span></button>');
+              if(data.data[i].Evaluacion === '0'){
+                var evaluacionCell = $("<td></td>").html("<span class=\"badge badge-pill badge-warning text-white\">"+"Pendiente"+"</span>");
+              }else{
+                var evaluacionCell = $("<td></td>").text(data.data[i].Evaluacion);
+              }
+              var valorarCell = $("<td></td>").html('<button type="button" onclick="" class="btn mb-2 btn-success text-white">Valorar<span class="fe fe-chevron-right fe-16 ml-2"></span></button>');
 
               // agrega las celdas a la fila y la fila a la tabla
               newRowConcluido.append(idCell);
