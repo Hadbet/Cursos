@@ -242,8 +242,8 @@
                                 <!-- /.col -->
                                 <div class="col-md-6">
                                     <div class="form-group mb-6">
-                                        <label for="txNtombreCurso">Nombre Cursos</label>
-                                        <input type="text" class="form-control drgpicker" id="txNtombreCurso"
+                                        <label for="txNombreCurso">Nombre Cursos</label>
+                                        <input type="text" class="form-control drgpicker" id="txNombreCurso"
                                                value="" aria-describedby="button-addon2">
                                         <br>
                                         <button type="button" onclick="registrarNombre()" class="btn mb-2 btn-success float-right text-white">Registrar<span
@@ -328,7 +328,7 @@
     gtag('config', 'UA-56159088-1');
 
     function registrarNombre() {
-        var nombre = document.getElementById("txtNombreCurso").value;
+        var nombre = document.getElementById("txNombreCurso").value;
         const data = new FormData();
 
         data.append('nombre', nombre.trim());
