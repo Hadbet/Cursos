@@ -320,7 +320,7 @@
         </div>
       </div>
     </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/moment.min.js"></script>
@@ -545,7 +545,7 @@
                 var evaluacionCertificadoCell = $("<td></td>").text(data.data[i].Evaluacion);
 
               }
-              var certificadoCell = $("<td></td>").html(`<button type="button" class="btn mb-2 btn-secondary" onclick="llenarEvaluacion('${data.data[i].Curso}','${data.data[i].Horario}','${data.data[i].Fecha}','${data.data[i].IdBitacoraCurso}')" data-toggle="modal" data-target=".modal-full">Descargar Certificado</button>`);
+              var certificadoCell = $("<td></td>").html(`<button type="button" class="btn mb-2 btn-secondary" onclick="generarCertificado('${data.data[i].Curso}','${data.data[i].Horario}','${data.data[i].Fecha}','${data.data[i].IdBitacoraCurso}')" data-toggle="modal" data-target=".modal-full">Descargar Certificado</button>`);
 
               newRowCertificado.append(idCertificadoCell);
               newRowCertificado.append(nameCertificadoCell);
@@ -557,6 +557,22 @@
             }
           }
         });
+      }
+
+      function generarCertificado(curso, horario, fecha, id) {
+        var doc = new jsPDF();
+
+        // Aquí puedes agregar la imagen de tu plantilla de certificado
+        // doc.addImage(urlDeTuImagen, 'JPEG', x, y, ancho, alto);
+
+        // Agrega los datos de la persona
+        doc.text('Curso: ' + curso, 10, 10);
+        doc.text('Horario: ' + horario, 10, 20);
+        doc.text('Fecha: ' + fecha, 10, 30);
+        doc.text('ID: ' + id, 10, 40);
+
+        // Guarda el PDF
+        doc.save('certificado.pdf');
       }
 
       var cursoGlobal,horarioGlobal,fechaGlobal,calificacionGlobal,idGlobal;
