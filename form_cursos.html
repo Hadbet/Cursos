@@ -330,35 +330,39 @@
         data.append('supervisor', supervisor.value.trim());
         data.append('shiftLeader', shiftLeader.value.trim());
 
-        for (var i = 0; i < cursos.options.length; i++) {
+        var fetchPromises = [];
 
+        for (var i = 0; i < cursos.options.length; i++) {
           data.append('horario', cursos.options[i].value.trim());
 
-          fetch('dao/guardarBitacoraCurso.php', {
+          var fetchPromise = fetch('dao/guardarBitacoraCurso.php', {
             method: 'POST',
             body: data
           })
                   .then(function (response) {
-                    if (response.ok) {
-                      Swal.fire({
-                        icon: 'success',
-                        title: 'Enviado.', showConfirmButton: false, input: 'none',
-                        text: 'Registro enviardo.'
-                      })
-                      location.reload();
-                    } else {
+                    if (!response.ok) {
                       throw "Error en la llamada Ajax";
                     }
-
-                  })
-                  .then(function (texto) {
-                    console.log(texto);
                   })
                   .catch(function (err) {
                     console.log(err);
                   });
 
+          fetchPromises.push(fetchPromise);
         }
+
+        Promise.all(fetchPromises)
+                .then(function() {
+                  Swal.fire({
+                    icon: 'success',
+                    title: 'Enviado.', showConfirmButton: false, input: 'none',
+                    text: 'Registro enviardo.'
+                  })
+                  location.reload();
+                })
+                .catch(function(err) {
+                  console.log(err);
+                });
 
 
       }
