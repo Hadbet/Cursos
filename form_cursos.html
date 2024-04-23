@@ -194,6 +194,55 @@
           </div> <!-- .row -->
         </div> <!-- .container-fluid -->
 
+        <div class="container-fluid">
+          <div class="row justify-content-center">
+            <div class="col-12">
+              <div class="card shadow mb-4">
+                <div class="card-body">
+                  <h5 class="card-title">Cursos por asistir</h5>
+                  <table id="tablaCursosPendientes" class="table table-hover">
+                    <thead>
+                    <tr>
+                      <th>Nombre Curso</th>
+                      <th>Fecha</th>
+                      <th>Horario</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
+                </div>
+              </div> <!-- / .card -->
+            </div> <!-- .col-12 -->
+          </div> <!-- .row -->
+        </div> <!-- .container-fluid -->
+
+        <div class="container-fluid">
+          <div class="row justify-content-center">
+            <div class="col-12">
+              <div class="card shadow mb-4">
+                <div class="card-body">
+                  <h5 class="card-title">Cursos concluidos</h5>
+                  <table id="tablaConcluidos" class="table table-hover">
+                    <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Nombre Curso</th>
+                      <th>Fecha</th>
+                      <th>Horario</th>
+                      <th>Calificacion</th>
+                      <th>Valorar</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
+                </div>
+              </div> <!-- / .card -->
+            </div> <!-- .col-12 -->
+          </div> <!-- .row -->
+        </div> <!-- .container-fluid -->
+
 
       </main> <!-- main -->
     </div> <!-- .wrapper -->
@@ -365,6 +414,51 @@
                 });
 
 
+      }
+      cargarHorarios();
+      function cargarHorarios() {
+        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaCursoUsuario.php?nomina='+document.getElementById("txtNominaCurso").value, function (data) {
+          var table = $("#tablaCursosPendientes"); // selecciona la tabla
+          var tableConcluidos = $("#tablaConcluidos"); // selecciona la tabla
+          for (var i = 0; i < data.data.length; i++) {
+
+            if (data.data[i].Estatus == '0'){
+              var newRow = $("<tr></tr>");
+              var nameCell = $("<td></td>").text(data.data[i].Curso); // asume que tienes un campo id en tus datos
+              var horarioCell = $("<td></td>").text(data.data[i].Horario); // asume que tienes un campo id en tus datos
+              var fechaCell = $("<td></td>").text(data.data[i].Fecha);
+
+              // agrega las celdas a la fila y la fila a la tabla
+              newRow.append(nameCell);
+              newRow.append(fechaCell);
+              newRow.append(horarioCell);
+              table.append(newRow);
+            }else if(data.data[i].Estatus == '1'){
+
+              var newRowConcluido = $("<tr></tr>");
+              var idCell = $("<td></td>").text(data.data[i].IdBitacoraCurso);
+              var nameCursoCell = $("<td></td>").text(data.data[i].Curso); // asume que tienes un campo id en tus datos
+              var horarioCursoCell = $("<td></td>").text(data.data[i].Horario); // asume que tienes un campo id en tus datos
+              var fechaCursoCell = $("<td></td>").text(data.data[i].Fecha); // asume que tienes un campo id en tus datos
+              var evaluacionCell = $("<td></td>").text(data.data[i].Evaluacion);
+              var valorarCell = $("<td></td>").html('<button type="button" onclick="agregarAsistenciaCurso()" class="btn mb-2 btn-success float-right text-white">Registrar<span class="fe fe-chevron-right fe-16 ml-2"></span></button>');
+
+              // agrega las celdas a la fila y la fila a la tabla
+              newRowConcluido.append(idCell);
+              newRowConcluido.append(nameCursoCell);
+              newRowConcluido.append(horarioCursoCell);
+              newRowConcluido.append(fechaCursoCell);
+              newRowConcluido.append(evaluacionCell);
+              newRowConcluido.append(valorarCell);-
+              tableConcluidos.append(newRowConcluido);
+
+            }
+
+
+
+
+          }
+        });
       }
 
 
