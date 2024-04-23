@@ -153,14 +153,14 @@
                         </select>
                       </div>
                       <div class="form-group mb-3">
-                        <label for="cbSupervisor" onchange="llenarShift()">Supervisor</label>
-                        <select class="custom-select"  id="cbSupervisor">
+                        <label for="cbSupervisor" >Supervisor</label>
+                        <select class="custom-select"  id="cbSupervisor" onchange="llenarShift()">
                           <option selected>Abrir menu</option>
                         </select>
                       </div>
                       <div class="form-group mb-3">
                         <label for="cbShiftleader">Shifleader</label>
-                        <select class="custom-select" id="cbShiftleader">
+                        <select class="custom-select" id="cbShiftleader" onchange="cargarCursosSelect()">
                           <option selected>Abrir menu</option>
                         </select>
                       </div>
@@ -168,20 +168,22 @@
                     <div class="col-md-6">
                       <div class="form-group mb-3">
                         <label for="cbCurso">Seleccione el curso</label>
-                        <select class="custom-select" id="cbCurso">
+                        <select class="custom-select" id="cbCurso" onchange="cargarSeleccionCursos()">
                           <option selected>Abrir menu</option>
                         </select>
                       </div>
                       <div class="form-group mb-3">
-                        <label for="example-multiselect">Horarios disponibles</label>
-                        <select id="example-multiselect" multiple="" class="form-control">
+                        <label for="cbHorario">Cursos seleccionados</label>
+                        <select id="cbHorario" multiple="" class="form-control">
                         </select>
+                        <br>
+                        <button type="button" onclick="eliminarCurso()" id="btnEliminarCurso" class="btn mb-2 btn-danger float-right text-white">Borrar<span class="fe fe-chevron-right fe-16 ml-2"></span></button>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="card-footer">
-                  <button type="button" class="btn mb-2 btn-success float-right text-white">Registrar<span class="fe fe-chevron-right fe-16 ml-2"></span></button>
+                  <button type="button" onclick="agregarAsistenciaCurso()" class="btn mb-2 btn-success float-right text-white">Registrar<span class="fe fe-chevron-right fe-16 ml-2"></span></button>
                 </div>
               </div> <!-- / .card -->
             </div> <!-- .col-12 -->
@@ -227,11 +229,11 @@
       }
 
       function llenarSuper() {
-        $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/daoSupervisor.php?APU=' + document.getElementById("cbEncargado").value, function (data) {
+        $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/daoSupervisor.php?APU=' + document.getElementById("cbApu").value, function (data) {
           var selectS = document.getElementById("cbSupervisor");
           selectS.innerHTML = "";
 
-          var selectA = document.getElementById("cbShiftLeader");
+          var selectA = document.getElementById("cbShiftleader");
           selectA.innerHTML = "";
 
 
@@ -251,7 +253,7 @@
 
       function llenarShift() {
         $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/daoShiftLeader.php?APU=' + document.getElementById("cbSupervisor").value, function (data) {
-          var selectS = document.getElementById("cbShiftLeader");
+          var selectS = document.getElementById("cbShiftleader");
           selectS.innerHTML = "";
 
           var createOptionDefS = document.createElement("option");
@@ -268,19 +270,96 @@
         });
       }
 
-      cargarCursos();
-      function cargarCursos() {
-        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaNombre.php', function (data) {
+      function cargarCursosSelect() {
+        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaCurso.php', function (data) {
           var select = document.getElementById("cbCurso");
-          var table = $("#tablaCursos"); // selecciona la tabla
           for (var i = 0; i < data.data.length; i++) {
             var createOption = document.createElement("option");
-            createOption.text = data.data[i].NombreCurso;
-            createOption.value = data.data[i].NombreCurso;
+            createOption.text = data.data[i].NombreCurso +", "+ data.data[i].Fecha +", "+ data.data[i].Horario;
+            createOption.value = data.data[i].NombreCurso +", "+ data.data[i].Fecha +", "+ data.data[i].Horario;
             select.appendChild(createOption);
           }
         });
       }
+
+      function cargarSeleccionCursos (){
+        var select = document.getElementById("cbHorario");
+        var nuevoValor = document.getElementById("cbCurso").value;
+
+        // Verificar si el valor ya existe en las opciones
+        for (var i = 0; i < select.options.length; i++) {
+          if (select.options[i].value == nuevoValor) {
+            // El valor ya existe, así que salimos de la función
+            return;
+          }
+        }
+
+        // Si llegamos aquí, el valor no existe en las opciones, así que lo agregamos
+        var createOption = document.createElement("option");
+        createOption.text = nuevoValor;
+        createOption.value = nuevoValor;
+        select.appendChild(createOption);
+      }
+
+      function eliminarCurso() {
+        var select = document.getElementById("cbHorario");
+        var selectedIndex = select.selectedIndex;
+
+        if (selectedIndex != -1) {
+          select.remove(selectedIndex);
+        }
+      }
+
+      function agregarAsistenciaCurso() {
+        var nomina = document.getElementById("txtNominaCurso");
+        var nombre = document.getElementById("txtNombrePersonaCurso");
+        var apu = document.getElementById("cbApu");
+        var supervisor = document.getElementById("cbSupervisor");
+        var shiftLeader = document.getElementById("cbSupervisor");
+        var cursos = document.getElementById("cbHorario");
+
+        const data = new FormData();
+
+        data.append('nomina', nomina.value.trim());
+        data.append('nombre', nombre.value.trim());
+        data.append('apu', apu.value.trim());
+        data.append('supervisor', supervisor.value.trim());
+        data.append('shiftLeader', shiftLeader.value.trim());
+
+        for (var i = 0; i < cursos.options.length; i++) {
+
+          data.append('horario', cursos.options[i].value.trim());
+
+          fetch('dao/guardarBitacoraCurso.php', {
+            method: 'POST',
+            body: data
+          })
+                  .then(function (response) {
+                    if (response.ok) {
+                      Swal.fire({
+                        icon: 'success',
+                        title: 'Enviado.', showConfirmButton: false, input: 'none',
+                        text: 'Registro enviardo.'
+                      })
+                      location.reload();
+                    } else {
+                      throw "Error en la llamada Ajax";
+                    }
+
+                  })
+                  .then(function (texto) {
+                    console.log(texto);
+                  })
+                  .catch(function (err) {
+                    console.log(err);
+                  });
+
+        }
+
+
+      }
+
+
     </script>
   </body>
 </html>
