@@ -22,6 +22,28 @@
     <link rel="stylesheet" href="lib/sweetalert2.css">
     <!-- JavaScript -->
     <script src="lib/sweetalert2.all.min.js"></script>
+
+    <style>
+      .image-container {
+        display: flex;
+        justify-content: space-around;
+      }
+      .image-container img {
+        transition: all 0.3s ease;
+        width: 100px;
+        height: 100px;
+      }
+      .image-container img:hover {
+        transform: translateY(-10px);
+      }
+      .image-container img.active {
+        transform: scale(1.2);
+      }
+      .image-container img.inactive {
+        transform: scale(0.8);
+      }
+    </style>
+
   </head>
   <body class="vertical  light  ">
     <div class="wrapper">
@@ -246,6 +268,33 @@
 
       </main> <!-- main -->
     </div> <!-- .wrapper -->
+
+    <div class="modal fade modal-full" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+      <button aria-label="" type="button" class="close px-2" data-dismiss="modal" aria-hidden="true">
+        <span aria-hidden="true">×</span>
+      </button>
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body text-center">
+            <h1>¿Cómo calificas el contenido del curso?</h1>
+            <p>Responde y evalua</p>
+              <div class="image-container">
+                  <img src="assets/images/verde.png" onclick="handleClick(this)">
+                  <img src="assets/images/amarillo.png" onclick="handleClick(this)" style="margin-left: 5px;margin-right: 5px">
+                  <img src="assets/images/rojo.png" onclick="handleClick(this)">
+              </div>
+            <br>
+            <form class="form-inline justify-content-center">
+              <input id="txtComentariosCurso" class="form-control form-control-lg mr-sm-2 bg-transparent" type="text" placeholder="Comentarios adicionales" aria-label="Search">
+
+            </form>
+            <br>
+            <button class="btn btn-primary btn-lg mb-2 my-2 my-sm-0" type="submit">Enviar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/moment.min.js"></script>
@@ -444,8 +493,9 @@
                 var evaluacionCell = $("<td></td>").html("<span class=\"badge badge-pill badge-warning text-white\">"+"Pendiente"+"</span>");
               }else{
                 var evaluacionCell = $("<td></td>").text(data.data[i].Evaluacion);
+
               }
-              var valorarCell = $("<td></td>").html('<button type="button" onclick="" class="btn mb-2 btn-success text-white">Valorar<span class="fe fe-chevron-right fe-16 ml-2"></span></button>');
+              var valorarCell = $("<td></td>").html(`<button type="button" class="btn mb-2 btn-secondary" onclick="llenarEvaluacion('${data.data[i].Curso}','${data.data[i].Horario}','${data.data[i].Fecha}',,'${data.data[i].IdBitacoraCurso}')" data-toggle="modal" data-target=".modal-full">Valorar</button>`);
 
               // agrega las celdas a la fila y la fila a la tabla
               newRowConcluido.append(idCell);
@@ -455,16 +505,93 @@
               newRowConcluido.append(evaluacionCell);
               newRowConcluido.append(valorarCell);-
               tableConcluidos.append(newRowConcluido);
-
             }
-
-
-
-
           }
         });
       }
 
+      var cursoGlobal,horarioGlobal,calificacionGlobal,idGlobal;
+      function handleClick(clickedImage) {
+        var images = document.querySelectorAll('.image-container img');
+        images.forEach(function(image) {
+          if (image === clickedImage) {
+            image.classList.add('active');
+            image.classList.remove('inactive');
+          } else {
+            image.classList.add('inactive');
+            image.classList.remove('active');
+          }
+        });
+
+        if (clickedImage.src.includes('verde.png')) {
+          calificacionGlobal="Bueno";
+        } else if (clickedImage.src.includes('amarillo.png')) {
+          calificacionGlobal="Regular";
+        } else if (clickedImage.src.includes('rojo.png')) {
+          calificacionGlobal="Malo";
+        }
+
+      }
+
+      $(document).ready(function() {
+        $('.modal').on('hidden.bs.modal', function () {
+          var images = document.querySelectorAll('.image-container img');
+          images.forEach(function(image) {
+            image.classList.remove('active');
+            image.classList.remove('inactive');
+          });
+        });
+      });
+
+
+      function llenarEvaluacion(curso,horario,fecha,id) {
+        cursoGlobal = curso;
+        horarioGlobal = horario;
+        fechaGlobal = fecha;
+        idGlobal = id;
+      }
+
+      function guardarEvaluacion() {
+
+        var nomina = document.getElementById("txtNominaCurso");
+        var nombre = document.getElementById("txtNombrePersonaCurso");
+        var comentarios = document.getElementById("txtComentariosCurso");
+
+        const data = new FormData();
+
+        data.append('curso', cursoGlobal.trim());
+        data.append('horario', horarioGlobal.trim());
+        data.append('fecha', fechaGlobal.trim());
+        data.append('comentarios', comentarios.value);
+        data.append('calificacion', calificacionGlobal);
+        data.append('nomina', nomina.value);
+        data.append('nombre', nombre.value);
+        data.append('id', idGlobal);
+
+        fetch('dao/guardarEvaluacionCurso.php', {
+          method: 'POST',
+          body: data
+        })
+                .then(function (response) {
+                  if (response.ok) {
+                    Swal.fire({
+                      icon: 'success',
+                      title: 'Enviado.', showConfirmButton: false, input: 'none',
+                      text: 'Registro enviardo.'
+                    })
+                    location.reload();
+                  } else {
+                    throw "Error en la llamada Ajax";
+                  }
+
+                })
+                .then(function (texto) {
+                  console.log(texto);
+                })
+                .catch(function (err) {
+                  console.log(err);
+                });
+      }
 
     </script>
   </body>
