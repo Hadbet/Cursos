@@ -244,7 +244,7 @@
             <div class="col-12">
               <div class="card shadow mb-4">
                 <div class="card-body">
-                  <h5 class="card-title">Cursos concluidos</h5>
+                  <h5 class="card-title">Cursos por calificar</h5>
                   <table id="tablaConcluidos" class="table table-hover">
                     <thead>
                     <tr>
@@ -254,6 +254,32 @@
                       <th>Horario</th>
                       <th>Calificacion</th>
                       <th>Valorar</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
+                </div>
+              </div> <!-- / .card -->
+            </div> <!-- .col-12 -->
+          </div> <!-- .row -->
+        </div> <!-- .container-fluid -->
+
+        <div class="container-fluid">
+          <div class="row justify-content-center">
+            <div class="col-12">
+              <div class="card shadow mb-4">
+                <div class="card-body">
+                  <h5 class="card-title">Certificados</h5>
+                  <table id="tablaCertificados" class="table table-hover">
+                    <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Nombre Curso</th>
+                      <th>Fecha</th>
+                      <th>Horario</th>
+                      <th>Calificacion</th>
+                      <th>Certificado</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -469,6 +495,8 @@
         $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaCursoUsuario.php?nomina='+document.getElementById("txtNominaCurso").value, function (data) {
           var table = $("#tablaCursosPendientes"); // selecciona la tabla
           var tableConcluidos = $("#tablaConcluidos"); // selecciona la tabla
+          var tableCertificados = $("#tablaCertificados"); // selecciona la tabla
+
           for (var i = 0; i < data.data.length; i++) {
 
             if (data.data[i].EstatusAsistencia == '0'){
@@ -505,6 +533,27 @@
               newRowConcluido.append(evaluacionCell);
               newRowConcluido.append(valorarCell);-
               tableConcluidos.append(newRowConcluido);
+            }else if(data.data[i].EstatusAsistencia == '2'){
+              var newRowCertificado = $("<tr></tr>");
+              var idCertificadoCell = $("<td></td>").text(data.data[i].IdBitacoraCurso);
+              var nameCertificadoCell = $("<td></td>").text(data.data[i].Curso); // asume que tienes un campo id en tus datos
+              var horarioCertificadoCell = $("<td></td>").text(data.data[i].Horario); // asume que tienes un campo id en tus datos
+              var fechaCertificadoCell = $("<td></td>").text(data.data[i].Fecha); // asume que tienes un campo id en tus datos
+              if(data.data[i].Evaluacion === '0'){
+                var evaluacionCertificadoCell = $("<td></td>").html("<span class=\"badge badge-pill badge-warning text-white\">"+"Pendiente"+"</span>");
+              }else{
+                var evaluacionCertificadoCell = $("<td></td>").text(data.data[i].Evaluacion);
+
+              }
+              var certificadoCell = $("<td></td>").html(`<button type="button" class="btn mb-2 btn-secondary" onclick="llenarEvaluacion('${data.data[i].Curso}','${data.data[i].Horario}','${data.data[i].Fecha}','${data.data[i].IdBitacoraCurso}')" data-toggle="modal" data-target=".modal-full">Descargar Certificado</button>`);
+
+              newRowCertificado.append(idCertificadoCell);
+              newRowCertificado.append(nameCertificadoCell);
+              newRowCertificado.append(horarioCertificadoCell);
+              newRowCertificado.append(fechaCertificadoCell);
+              newRowCertificado.append(evaluacionCertificadoCell);
+              newRowCertificado.append(certificadoCell);
+              tableCertificados.append(newRowCertificado);
             }
           }
         });
