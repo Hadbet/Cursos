@@ -563,7 +563,7 @@
         var doc = new jsPDF('landscape');
 
         // Aquí puedes agregar la imagen de tu plantilla de certificado
-        doc.addImage('assets/images/plantilla.jpg', 'JPEG', 0, 0, 0, 0);
+        doc.addImage('https://arketipo.mx/RH/CursosRH/assets/images/plantilla.png', 'PNG', 10, 10, 200, 150);
         doc.text('Curso: ' + curso, 10, 10);
         doc.text('Horario: ' + horario, 10, 20);
         doc.text('Fecha: ' + fecha, 10, 30);
