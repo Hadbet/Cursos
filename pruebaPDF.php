@@ -43,7 +43,7 @@ ob_start();
     <div class="container-fluid" id="containerPruebaPDF" >
         <div class="row">
             <div class="table-responsive">
-                <h5 id="titleTablaPDFg">DATOS GENERALES</h5>
+                <h5 id="titleTablaPDFg" style="color:whitesmoke;">DATOS GENERALES</h5>
                 <table class="table table-bordered table-hover table-sm  table-responsive" id="datosGeneralesTablePDF">
                     <tbody>
                     <tr class="bg-primary">
@@ -86,7 +86,7 @@ ob_start();
                 </table>
             </div>
             <div id="" class="table-responsive">
-                <h5 id="materialPDF">Asistencia</h5>
+                <h5 id="materialPDF" style="color:whitesmoke;">Asistencia</h5>
                 <table class="table table-striped" id="materialesResumenPDF">
                     <thead>
                     <tr>
