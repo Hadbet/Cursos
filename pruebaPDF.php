@@ -16,7 +16,6 @@ $con = new LocalConector();
 $conex = $con->conectar();
 
 $datos = mysqli_query($conex, "SELECT * FROM `BitacoraCursos` WHERE `Curso`= '$Curso' and `Horario` = '$Horario' and `Fecha` = '$Fecha' and EstatusAsistencia=1;");
-echo "SELECT * FROM `BitacoraCursos` WHERE `Curso`= '$Curso' and `Horario` = '$Horario' and `Fecha` = '$Fecha' and EstatusAsistencia=1;";
 $resultados = mysqli_fetch_all($datos, MYSQLI_ASSOC);
 ob_start();
 ?>
