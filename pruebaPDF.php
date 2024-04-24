@@ -2,7 +2,7 @@
 
 include_once('dao/db/db_RH.php');
 
-// Contenido HTML del documento
+// Contenido HTML del doc umento
 
 
 $css=file_get_contents("css/pdf.css");
