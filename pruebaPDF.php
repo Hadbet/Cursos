@@ -27,8 +27,8 @@ $html = '
             <tr class="">
                 <th class="">
                     <div class="col divTitle" id="divRespdf">
-                        <h1>Resumen de Solicitud</h1>
-                        <h6>LABORATORIO DE METROLOGÍA</h6>
+                        <h1>Lista de asistencia</h1>
+                        <h6>Grammer Querétaro</h6>
                     </div>
                 </th>
                 <td>
@@ -48,25 +48,25 @@ $html = '
                     <tbody>
                     <tr class="bg-primary">
                         <th class="">No. de solicitud: </th>
-                        <td> </td>
+                        <td> tsetse</td>
                         <th class="" > Fecha de Solicitud: </th>
-                        <td></td>
+                        <td>testset</td>
                     </tr>
                     <tr>
                         <th class="">Tipo de Prueba: </th>
-                        <td></td>
+                        <td>testse</td>
                         <th class=""> Solicitante:</th>
-                        <td></td>
+                        <td>testse</td>
                     </tr>
                     <tr>
                         <th class="">Norma: </th>
-                        <td></td>
+                        <td>testest</td>
                         <th class="">Documento de la norma: </th>
                         <td><a href="">Archivo pdf</a></td>
                     </tr>
                     <tr>
                         <th class="">Especifícaciones: </th>
-                        <td colspan="3"></td>
+                        <td colspan="3">setsetse</td>
                     </tr>
                     </tbody>
                 </table>
@@ -83,12 +83,11 @@ $html = '
                     </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($resultados as $resultado){?>
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>test</td>
+                            <td>set</td>
+                            <td>serse</td>
+                            <td>rserse</td>
                         </tr>
                     </tbody>
                 </table>
@@ -99,23 +98,23 @@ $html = '
                     <tbody>
                     <tr>
                         <th class="">Fecha de Respuesta:</th>
-                        <td id=""></td>
+                        <td id="">ser</td>
                         <th class="">Metrólogo:</th>
-                        <td id=""></td>
+                        <td id="">res</td>
                     </tr>
                     <tr>
                         <th class="">Estatus: </th>
-                        <td id="" ></td>
+                        <td id="" >ser</td>
                         <th class="">Prioridad:</th>
-                        <td id=""></td>
+                        <td id="">rse</td>
                     </tr>
                     <tr>
                         <th class="">Observaciones:</th>
-                        <td id="" colspan="3"></td>
+                        <td id="" colspan="3">rse</td>
                     </tr>
                     <tr>
                         <th class="">Resultados:</th>
-                        <td id=""  colspan="3"></td>
+                        <td id=""  colspan="3">sre</td>
                     </tr>
                     </tbody>
                 </table>
