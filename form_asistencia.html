@@ -662,7 +662,7 @@
                 dataAux.append('nomina', data.data[0].IdUser);
                 dataAux.append('horario', curso);
                 dataAux.append('nombre', data.data[0].NomUser);
-                dataAux.append('tag', data.data[0].Tag);
+                dataAux.append('tag', data.data[0].IdTag);
 
                 fetch('dao/guardarAsistencia.php', {
                   method: 'POST',
