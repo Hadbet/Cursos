@@ -657,16 +657,16 @@
               if (data && data.data && data.data.length > 0) {
                 var curso = document.getElementById("cbCurso").value;
 
-                const data = new FormData();
+                const dataAux = new FormData();
 
-                data.append('nomina', data.data[0].IdUser);
-                data.append('horario', curso);
-                data.append('nombre', data.data[0].NomUser);
-                data.append('tag', data.data[0].Tag);
+                dataAux.append('nomina', data.data[0].IdUser);
+                dataAux.append('horario', curso);
+                dataAux.append('nombre', data.data[0].NomUser);
+                dataAux.append('tag', data.data[0].Tag);
 
                 fetch('dao/guardarAsistencia.php', {
                   method: 'POST',
-                  body: data
+                  body: dataAux
                 })
                         .then(function (response) {
                           if (response.ok) {
