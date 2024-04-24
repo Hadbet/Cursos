@@ -347,8 +347,8 @@
       }
 
       function cargarHorarios() {
-        var horarioParts = document.getElementById("cbCurso").value;
-        horarioParts = Horario.split(", ");
+        var horarioNormal = document.getElementById("cbCurso").value;
+        var horarioParts = horarioNormal.split(", ");
 
         var Curso = horarioParts[0].trim();
         var Fecha = horarioParts[1].trim();
@@ -357,6 +357,9 @@
         $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaCursoAsistencia.php?curso='+Curso+'&fecha='+Fecha+'&horario='+HorarioCurso, function (data) {
           var table = $("#tablaAsistencia"); // selecciona la tabla
           var tableConcluidos = $("#tablaFaltas"); // selecciona la tabla
+
+          table.empty();
+          tableConcluidos.empty();
 
           for (var i = 0; i < data.data.length; i++) {
 
