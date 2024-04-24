@@ -7,12 +7,10 @@ include_once('db/db_RH.php');
 
 $css=file_get_contents("css/pdf.css");
 
-$actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-$url_parts = parse_url($actual_link);// Obtener las partes de la URL
-parse_str($url_parts['query'], $query_params);// Obtener los parámetros de consulta
-$Horario = $query_params['horario'];// Extraer el ID de la prueba
-$Curso = $query_params['curso'];// Extraer el ID de la prueba
-$Fecha = $query_params['fecha'];// Extraer el ID de la prueba
+
+$Horario = '17:32 - 19:32';
+$Curso = 'SAPITO';
+$Fecha = '2024-04-01';
 
 $con = new LocalConector();
 $conex = $con->conectar();
