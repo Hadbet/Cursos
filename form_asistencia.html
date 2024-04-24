@@ -167,7 +167,7 @@
                     <div class="col-md-12">
                       <div class="form-group mb-3">
                           <label for="cbCurso">Seleccione el curso</label>
-                          <select class="custom-select" id="cbCurso">
+                          <select class="custom-select" id="cbCurso" onchange="cargarHorarios()">
                             <option selected>Abrir menu</option>
                           </select>
                       </div>
@@ -212,7 +212,7 @@
               <div class="card shadow mb-4">
                 <div class="card-body">
                   <h5 class="card-title">Asistencia</h5>
-                  <table id="tablaCursosPendientes" class="table table-hover">
+                  <table id="tablaAsistencia" class="table table-hover">
                     <thead>
                     <tr>
                       <th>Nombre Curso</th>
@@ -235,7 +235,7 @@
               <div class="card shadow mb-4">
                 <div class="card-body">
                   <h5 class="card-title">Faltas</h5>
-                  <table id="tablaConcluidos" class="table table-hover">
+                  <table id="tablaFaltas" class="table table-hover">
                     <thead>
                     <tr>
                       <th>ID</th>
@@ -480,12 +480,11 @@
 
 
       }
-      cargarHorarios();
+
       function cargarHorarios() {
-        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaCursoUsuario.php?nomina='+document.getElementById("txtNominaCurso").value, function (data) {
-          var table = $("#tablaCursosPendientes"); // selecciona la tabla
-          var tableConcluidos = $("#tablaConcluidos"); // selecciona la tabla
-          var tableCertificados = $("#tablaCertificados"); // selecciona la tabla
+        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaCursoUsuario.php?horarios='+document.getElementById("cbCurso").value, function (data) {
+          var table = $("#tablaAsistencia"); // selecciona la tabla
+          var tableConcluidos = $("#tablaFaltas"); // selecciona la tabla
 
           for (var i = 0; i < data.data.length; i++) {
 
@@ -523,27 +522,6 @@
               newRowConcluido.append(evaluacionCell);
               newRowConcluido.append(valorarCell);-
               tableConcluidos.append(newRowConcluido);
-            }else if(data.data[i].EstatusAsistencia == '2'){
-              var newRowCertificado = $("<tr></tr>");
-              var idCertificadoCell = $("<td></td>").text(data.data[i].IdBitacoraCurso);
-              var nameCertificadoCell = $("<td></td>").text(data.data[i].Curso); // asume que tienes un campo id en tus datos
-              var horarioCertificadoCell = $("<td></td>").text(data.data[i].Horario); // asume que tienes un campo id en tus datos
-              var fechaCertificadoCell = $("<td></td>").text(data.data[i].Fecha); // asume que tienes un campo id en tus datos
-              if(data.data[i].Evaluacion === '0'){
-                var evaluacionCertificadoCell = $("<td></td>").html("<span class=\"badge badge-pill badge-warning text-white\">"+"Pendiente"+"</span>");
-              }else{
-                var evaluacionCertificadoCell = $("<td></td>").text(data.data[i].Evaluacion);
-
-              }
-              var certificadoCell = $("<td></td>").html(`<button type="button" class="btn mb-2 btn-secondary" onclick="generarCertificado('${data.data[i].Curso}','${data.data[i].Horario}','${data.data[i].Fecha}','${data.data[i].IdBitacoraCurso}')" >Descargar Certificado</button>`);
-
-              newRowCertificado.append(idCertificadoCell);
-              newRowCertificado.append(nameCertificadoCell);
-              newRowCertificado.append(horarioCertificadoCell);
-              newRowCertificado.append(fechaCertificadoCell);
-              newRowCertificado.append(evaluacionCertificadoCell);
-              newRowCertificado.append(certificadoCell);
-              tableCertificados.append(newRowCertificado);
             }
           }
         });
