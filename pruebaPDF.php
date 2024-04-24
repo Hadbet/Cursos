@@ -1,6 +1,11 @@
 <?php
 require_once 'lib/dompdf/autoload.inc.php';
 use Dompdf\Dompdf;
+use Dompdf\Options;
+
+$options = new Options();
+$options->set('isRemoteEnabled', TRUE);
+$dompdf = new Dompdf($options);
 
 // Contenido HTML del documento
 
