@@ -152,58 +152,24 @@
         </nav>
       </aside>
       <main role="main" class="main-content">
+
         <div class="container-fluid">
           <div class="row justify-content-center">
             <div class="col-12">
-              <h2 class="page-title">Registrarse a un curso</h2>
+              <h2 class="page-title">Selecciona Curso</h2>
               <p class="text-muted">Bienvenido aqui podras programar y registrarte para tus cursos.</p>
               <div class="card shadow mb-4">
                 <div class="card-header">
-                  <strong class="card-title">Registro</strong>
+                  <strong class="card-title">Curso</strong>
                 </div>
                 <div class="card-body">
                   <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                       <div class="form-group mb-3">
-                        <label for="txtNominaCurso">Nomina</label>
-                        <input type="text" readonly="" class="form-control-plaintext" id="txtNominaCurso" value="00001606">
-                      </div>
-                      <div class="form-group mb-3">
-                        <label for="txtNombrePersonaCurso">Nombre</label>
-                        <input type="text" readonly="" class="form-control-plaintext" id="txtNombrePersonaCurso" value="HADBET AYARI ALTAMIRANO MARTINEZ">
-                      </div>
-                      <div class="form-group mb-3">
-                        <label for="cbApu">Apu</label>
-                        <select class="custom-select" id="cbApu" onchange="llenarSuper()">
-                          <option selected>Abrir menu</option>
-                        </select>
-                      </div>
-                      <div class="form-group mb-3">
-                        <label for="cbSupervisor" >Supervisor</label>
-                        <select class="custom-select"  id="cbSupervisor" onchange="llenarShift()">
-                          <option selected>Abrir menu</option>
-                        </select>
-                      </div>
-                      <div class="form-group mb-3">
-                        <label for="cbShiftleader">Shifleader</label>
-                        <select class="custom-select" id="cbShiftleader" onchange="cargarCursosSelect()">
-                          <option selected>Abrir menu</option>
-                        </select>
-                      </div>
-                    </div> <!-- /.col -->
-                    <div class="col-md-6">
-                      <div class="form-group mb-3">
-                        <label for="cbCurso">Seleccione el curso</label>
-                        <select class="custom-select" id="cbCurso" onchange="cargarSeleccionCursos()">
-                          <option selected>Abrir menu</option>
-                        </select>
-                      </div>
-                      <div class="form-group mb-3">
-                        <label for="cbHorario">Cursos seleccionados</label>
-                        <select id="cbHorario" multiple="" class="form-control">
-                        </select>
-                        <br>
-                        <button type="button" onclick="eliminarCurso()" id="btnEliminarCurso" class="btn mb-2 btn-danger float-right text-white">Borrar<span class="fe fe-chevron-right fe-16 ml-2"></span></button>
+                          <label for="cbCurso">Seleccione el curso</label>
+                          <select class="custom-select" id="cbCurso">
+                            <option selected>Abrir menu</option>
+                          </select>
                       </div>
                     </div>
                   </div>
@@ -219,9 +185,33 @@
         <div class="container-fluid">
           <div class="row justify-content-center">
             <div class="col-12">
+              <h2 class="page-title">Toma de asistencias</h2>
+              <p class="text-muted">Bienvenido aqui podras programar y registrarte para tus cursos.</p>
+              <div class="card shadow mb-4">
+                <div class="card-header">
+                  <strong class="card-title">Ponga su numero de nomina o ponga su tarjeta sobre el escaner</strong>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group mb-3">
+                        <label for="txtNominaCurso">Nomina</label>
+                        <input type="text" class="form-control" id="txtNominaCurso" value="00001606">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> <!-- / .card -->
+            </div> <!-- .col-12 -->
+          </div> <!-- .row -->
+        </div> <!-- .container-fluid -->
+
+        <div class="container-fluid">
+          <div class="row justify-content-center">
+            <div class="col-12">
               <div class="card shadow mb-4">
                 <div class="card-body">
-                  <h5 class="card-title">Mis Cursos por asistir</h5>
+                  <h5 class="card-title">Asistencia</h5>
                   <table id="tablaCursosPendientes" class="table table-hover">
                     <thead>
                     <tr>
@@ -244,7 +234,7 @@
             <div class="col-12">
               <div class="card shadow mb-4">
                 <div class="card-body">
-                  <h5 class="card-title">Mis Cursos por calificar</h5>
+                  <h5 class="card-title">Faltas</h5>
                   <table id="tablaConcluidos" class="table table-hover">
                     <thead>
                     <tr>
@@ -397,7 +387,7 @@
           }
         });
       }
-
+      cargarCursosSelect();
       function cargarCursosSelect() {
         $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaCurso.php', function (data) {
           var select = document.getElementById("cbCurso");
@@ -658,6 +648,57 @@
                   console.log(err);
                 });
       }
+
+      $(document).ready(function() {
+        $('#txtNominaCurso').keypress(function(event){
+          var keycode = (event.keyCode ? event.keyCode : event.which);
+          if(keycode == '13'){
+            $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaUsuario.php?nomina=' + document.getElementById("txtNominaCurso").value, function (data) {
+              if (data && data.data && data.data.length > 0) {
+                var curso = document.getElementById("cbCurso").value;
+
+                const data = new FormData();
+
+                data.append('nomina', data.data[0].IdUser);
+                data.append('horario', curso);
+                data.append('nombre', data.data[0].NomUser);
+                data.append('tag', data.data[0].Tag);
+
+                fetch('dao/guardarAsistencia.php', {
+                  method: 'POST',
+                  body: data
+                })
+                        .then(function (response) {
+                          if (response.ok) {
+                            Swal.fire({
+                              icon: 'success',
+                              title: 'Enviado.', showConfirmButton: false, input: 'none',
+                              text: 'Registro enviardo.'
+                            })
+                            location.reload();
+                          } else {
+                            throw "Error en la llamada Ajax";
+                          }
+
+                        })
+                        .then(function (texto) {
+                          console.log(texto);
+                        })
+                        .catch(function (err) {
+                          console.log(err);
+                        });
+
+              } else {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...', showConfirmButton: false, input: 'none',
+                  text: 'El correo ingresado del encargado es incorrecto no pertenece al dominio de grammer "@grammer.com"'
+                })
+              }
+            });
+          }
+        });
+      });
 
     </script>
   </body>
