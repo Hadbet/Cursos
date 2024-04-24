@@ -363,9 +363,9 @@
 
           for (var i = 0; i < data.data.length; i++) {
 
-            if (data.data[i].EstatusAsistencia == '0'){
+            if (data.data[i].EstatusAsistencia == '1'){
               var newRow = $("<tr></tr>");
-              var nameCell = $("<td></td>").text(data.data[i].Curso); // asume que tienes un campo id en tus datos
+              var nameCell = $("<td></td>").text(data.data[i].Nombre); // asume que tienes un campo id en tus datos
               var horarioCell = $("<td></td>").text(data.data[i].Horario); // asume que tienes un campo id en tus datos
               var fechaCell = $("<td></td>").text(data.data[i].Fecha);
 
@@ -374,11 +374,11 @@
               newRow.append(fechaCell);
               newRow.append(horarioCell);
               table.append(newRow);
-            }else if(data.data[i].EstatusAsistencia == '1'){
+            }else if(data.data[i].EstatusAsistencia == '0'){
 
               var newRowConcluido = $("<tr></tr>");
               var idCell = $("<td></td>").text(data.data[i].IdBitacoraCurso);
-              var nameCursoCell = $("<td></td>").text(data.data[i].Curso); // asume que tienes un campo id en tus datos
+              var nameCursoCell = $("<td></td>").text(data.data[i].Nombre); // asume que tienes un campo id en tus datos
               var horarioCursoCell = $("<td></td>").text(data.data[i].Horario); // asume que tienes un campo id en tus datos
               var fechaCursoCell = $("<td></td>").text(data.data[i].Fecha); // asume que tienes un campo id en tus datos
               if(data.data[i].Evaluacion === '0'){
@@ -400,106 +400,6 @@
             }
           }
         });
-      }
-
-      function generarCertificado(curso, horario, fecha, id) {
-        var doc = new jsPDF('landscape');
-
-        var nombre = document.getElementById("txtNombrePersonaCurso");
-        var logo = new Image();
-        logo.src = 'assets/images/plantilla.png';
-        doc.addImage(logo, 'PNG', 0, 0, 298, 210);
-        doc.setFillColor(173, 216, 230); // Azul claro
-        doc.text(curso, 185, 123);
-        doc.text(nombre.value, 141, 107);
-        doc.text(fecha, 189, 130);
-        doc.text('ID: ' + id, 13, 11);
-
-        // Guarda el PDF
-        doc.save('certificado.pdf');
-      }
-
-      var cursoGlobal,horarioGlobal,fechaGlobal,calificacionGlobal,idGlobal;
-      function handleClick(clickedImage) {
-        var images = document.querySelectorAll('.image-container img');
-        images.forEach(function(image) {
-          if (image === clickedImage) {
-            image.classList.add('active');
-            image.classList.remove('inactive');
-          } else {
-            image.classList.add('inactive');
-            image.classList.remove('active');
-          }
-        });
-
-        if (clickedImage.src.includes('verde.png')) {
-          calificacionGlobal="Bueno";
-        } else if (clickedImage.src.includes('amarillo.png')) {
-          calificacionGlobal="Regular";
-        } else if (clickedImage.src.includes('rojo.png')) {
-          calificacionGlobal="Malo";
-        }
-
-      }
-
-      $(document).ready(function() {
-        $('.modal').on('hidden.bs.modal', function () {
-          var images = document.querySelectorAll('.image-container img');
-          images.forEach(function(image) {
-            image.classList.remove('active');
-            image.classList.remove('inactive');
-          });
-        });
-      });
-
-
-      function llenarEvaluacion(curso,horario,fecha,id) {
-        cursoGlobal = curso;
-        horarioGlobal = horario;
-        fechaGlobal = fecha;
-        idGlobal = id;
-      }
-
-      function guardarEvaluacion() {
-
-        var nomina = document.getElementById("txtNominaCurso");
-        var nombre = document.getElementById("txtNombrePersonaCurso");
-        var comentarios = document.getElementById("txtComentariosCurso");
-
-        const data = new FormData();
-
-        data.append('curso', cursoGlobal);
-        data.append('horario', horarioGlobal);
-        data.append('fecha', fechaGlobal);
-        data.append('comentarios', comentarios.value);
-        data.append('calificacion', calificacionGlobal);
-        data.append('nomina', nomina.value);
-        data.append('nombre', nombre.value);
-        data.append('id', idGlobal);
-
-        fetch('dao/guardarEvaluacionCurso.php', {
-          method: 'POST',
-          body: data
-        })
-                .then(function (response) {
-                  if (response.ok) {
-                    Swal.fire({
-                      icon: 'success',
-                      title: 'Enviado.', showConfirmButton: false, input: 'none',
-                      text: 'Registro enviardo.'
-                    })
-                    location.reload();
-                  } else {
-                    throw "Error en la llamada Ajax";
-                  }
-
-                })
-                .then(function (texto) {
-                  console.log(texto);
-                })
-                .catch(function (err) {
-                  console.log(err);
-                });
       }
 
       $(document).ready(function() {
@@ -528,7 +428,7 @@
                               title: 'Enviado.', showConfirmButton: false, input: 'none',
                               text: 'Registro enviardo.'
                             })
-                            location.reload();
+                            cargarHorarios();
                           } else {
                             throw "Error en la llamada Ajax";
                           }
@@ -542,6 +442,7 @@
                         });
 
               } else {
+                cargarHorarios();
                 Swal.fire({
                   icon: 'error',
                   title: 'Oops...', showConfirmButton: false, input: 'none',
