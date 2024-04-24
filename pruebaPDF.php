@@ -49,6 +49,8 @@ ob_start();
                     <tr class="bg-primary">
                         <th class="">Nombre del curso: </th>
                         <td  colspan="3"> tsetse</td>
+                    </tr>
+                    <tr class="bg-primary">
                         <th class="" >Objetivo del curso:</th>
                         <td  colspan="3">testset</td>
                     </tr>
