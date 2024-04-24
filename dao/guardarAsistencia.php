@@ -33,8 +33,8 @@ function registroUsu($Nomina,$Nombre,$Horario,$Tag){
         return 0;
     }
 
-    /*
-    $insertRegistro= "INSERT INTO `Bitacora_Asistencia`(`IdCurso`, `Nomina`, `Nombre`, `Tag`, `Fecha`, `IdBitacoraCurso`) VALUES (,'$Horario','$Nomina','$Nombre','$Tag',$DateAndTime,'$IdBitacoraCurso')";
+
+    $insertRegistro= "INSERT INTO `Bitacora_Asistencia`(`IdCurso`, `Nomina`, `Nombre`, `Tag`, `Fecha`, `IdBitacoraCurso`) VALUES ('$Horario','$Nomina','$Nombre','$Tag',$DateAndTime,'$IdBitacoraCurso')";
 
     $rsinsertUsu=mysqli_query($conex,$insertRegistro);
     mysqli_close($conex);
@@ -43,7 +43,7 @@ function registroUsu($Nomina,$Nombre,$Horario,$Tag){
         echo "0";
     }else{
         return 1;
-    }*/
+    }
 }
 
 ?>
