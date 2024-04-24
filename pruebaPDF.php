@@ -141,7 +141,7 @@ $html = "<style>" . $css . "</style>" . $html;
 // Instancia de Dompdf
 $dompdf = new Dompdf();
 
-// Carga el HTML en Dompdf
+// Carga el HTML en Dompdfu
 $dompdf->loadHtml($html);
 
 // Renderiza el documento
