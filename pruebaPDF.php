@@ -47,39 +47,51 @@ ob_start();
                 <table class="table table-bordered table-hover table-sm  table-responsive" id="datosGeneralesTablePDF">
                     <tbody>
                     <tr class="bg-primary">
-                        <th class="">No. de solicitud: </th>
-                        <td> tsetse</td>
-                        <th class="" > Fecha de Solicitud: </th>
-                        <td>testset</td>
+                        <th class="">Nombre del curso: </th>
+                        <td  colspan="3"> tsetse</td>
+                        <th class="" >Objetivo del curso:</th>
+                        <td  colspan="3">testset</td>
                     </tr>
                     <tr>
-                        <th class="">Tipo de Prueba: </th>
+                        <th class="">Fecha del curso: </th>
                         <td>testse</td>
                         <th class=""> Solicitante:</th>
                         <td>testse</td>
                     </tr>
                     <tr>
-                        <th class="">Norma: </th>
+                        <th class="">Horario: </th>
                         <td>testest</td>
-                        <th class="">Documento de la norma: </th>
+                        <th class="">Duracion: </th>
                         <td><a href="">Archivo pdf</a></td>
                     </tr>
                     <tr>
-                        <th class="">Especifícaciones: </th>
-                        <td colspan="3">setsetse</td>
+                        <th class="">Tipo: </th>
+                        <td>testest</td>
+                        <th class="">Instructor: </th>
+                        <td><a href="">Archivo pdf</a></td>
+                    </tr>
+                    <tr>
+                        <th class="">Area: </th>
+                        <td>testest</td>
+                        <th class="">Firma del instructor: </th>
+                        <td></td>
+                    </tr>
+                    <tr class="bg-primary">
+                        <th class="">Temario :</th>
+                        <td  colspan="3"> tsetse</td>
                     </tr>
                     </tbody>
                 </table>
             </div>
             <div id="" class="table-responsive">
-                <h5 id="materialPDF">MATERIAL PARA MEDICIÓN</h5>
+                <h5 id="materialPDF">Asistencia</h5>
                 <table class="table table-striped" id="materialesResumenPDF">
                     <thead>
                     <tr>
-                        <th>No. de Parte</th>
-                        <th>Material</th>
-                        <th>Cantidad</th>
-                        <th>Estatus</th>
+                        <th>Nomina</th>
+                        <th>Nombre</th>
+                        <th>Firma</th>
+                        <th>Turno</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -93,27 +105,10 @@ ob_start();
                 </table>
             </div>
             <div id="" class="table-responsive">
-                <h5 id="titleTablaPDF">RESULTADOS</h5>
                 <table class="table table-bordered table-hover table-sm table-responsive" id="resultadosTablePDF">
                     <tbody>
                     <tr>
-                        <th class="">Fecha de Respuesta:</th>
-                        <td id="">ser</td>
-                        <th class="">Metrólogo:</th>
-                        <td id="">res</td>
-                    </tr>
-                    <tr>
-                        <th class="">Estatus: </th>
-                        <td id="" >ser</td>
-                        <th class="">Prioridad:</th>
-                        <td id="">rse</td>
-                    </tr>
-                    <tr>
                         <th class="">Observaciones:</th>
-                        <td id="" colspan="3">rse</td>
-                    </tr>
-                    <tr>
-                        <th class="">Resultados:</th>
                         <td id=""  colspan="3">sre</td>
                     </tr>
                     </tbody>
@@ -126,8 +121,8 @@ ob_start();
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-4 text-center">
-                    <small> <a href="https://arketipo.mx/Produccion/ML/PW_MetrologyLaboratory/modules/sesion/indexSesion.php">Laboratorio de Metrología </a></small><br>
-                    <small> laboratoriometrologia@arketipo.com.mx </small><br>
+                    <small> <a href="https://arketipo.mx/Produccion/ML/PW_MetrologyLaboratory/modules/sesion/indexSesion.php">Entrenamientos de Grammer Querétaro </a></small><br>
+                    <small>Entrenamientos@arketipo.com</small><br>
                     <strong><small>GRAMMER AUTOMOTIVE PUEBLA S. A. DE C. V.</small></strong>
                 </div>
             </div>
