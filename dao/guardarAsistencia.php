@@ -1,10 +1,10 @@
 <?php
 include_once('db/db_RH.php');
 
-$Nomina=$_GET['nomina'];
-$Nombre=$_GET['nombre'];
-$Tag=$_GET['tag'];
-$Horario=$_GET['horario'];
+$Nomina=$_POST['nomina'];
+$Nombre=$_POST['nombre'];
+$Tag=$_POST['tag'];
+$Horario=$_POST['horario'];
 
 registroUsu($Nomina,$Nombre,$Horario,$Tag);
 function registroUsu($Nomina,$Nombre,$Horario,$Tag){
@@ -34,9 +34,9 @@ function registroUsu($Nomina,$Nombre,$Horario,$Tag){
     }
 
 
-    $insertRegistro= "INSERT INTO `Bitacora_Asistencia`(`IdCurso`, `Nomina`, `Nombre`, `Tag`, `Fecha`, `IdBitacoraCurso`) VALUES ('$Horario','$Nomina','$Nombre','$Tag',$DateAndTime,'$IdBitacoraCurso')";
+    $insertRegistro= "INSERT INTO `Bitacora_Asistencia`(`IdCurso`, `Nomina`, `Nombre`, `Tag`, `Fecha`, `IdBitacoraCurso`) VALUES ('$Horario','$Nomina','$Nombre','$Tag','$DateAndTime','$IdBitacoraCurso')";
     echo $insertRegistro;
-/*
+
     $rsinsertUsu=mysqli_query($conex,$insertRegistro);
     mysqli_close($conex);
 
@@ -44,7 +44,7 @@ function registroUsu($Nomina,$Nombre,$Horario,$Tag){
         echo "0";
     }else{
         return 1;
-    }*/
+    }
 
 }
 
