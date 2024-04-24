@@ -351,7 +351,7 @@
         var Fecha = horarioParts[1].trim();
         var HorarioCurso = horarioParts[2].trim();
 
-        document.getElementById("seccionTomaAsistencia").scrollIntoView();
+        document.getElementById("seccionTomaAsistencia").scrollIntoView({ behavior: 'smooth' });
 
         $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaCursoAsistencia.php?curso='+Curso+'&fecha='+Fecha+'&horario='+HorarioCurso, function (data) {
           var table = $("#tablaAsistencia"); // selecciona la tabla
