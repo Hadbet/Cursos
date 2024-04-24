@@ -1,18 +1,13 @@
 <?php
-require_once 'lib/dompdf/autoload.inc.php';
-use Dompdf\Dompdf;
-use Dompdf\Options;
 
-$options = new Options();
-$options->set('isRemoteEnabled', TRUE);
-$dompdf = new Dompdf($options);
 
 // Contenido HTML del documento
 
 
 $css=file_get_contents("css/pdf.css");
 
-$html = '
+ob_start();
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -141,10 +136,18 @@ $html = '
 </body>
 </html>
 ';
+<?php
 
+$html=ob_get_clean();
 $html = "<style>" . $css . "</style>" . $html;
-// Instancia de Dompdf
-$dompdf = new Dompdf();
+
+require_once 'lib/dompdf/autoload.inc.php';
+use Dompdf\Dompdf;
+use Dompdf\Options;
+
+$options = new Options();
+$options->set('isRemoteEnabled', TRUE);
+$dompdf = new Dompdf($options);
 
 // Carga el HTML en Dompdfu8
 $dompdf->loadHtml($html);
