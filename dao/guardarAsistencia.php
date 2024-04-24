@@ -29,21 +29,25 @@ function registroUsu($Nomina,$Nombre,$Horario,$Tag){
     if (mysqli_num_rows($rsSelect) > 0) {
         $row = mysqli_fetch_assoc($rsSelect);
         $IdBitacoraCurso = $row['IdBitacoraCurso'];
+
+        $insertRegistro= "INSERT INTO `Bitacora_Asistencia`(`IdCurso`, `Nomina`, `Nombre`, `Tag`, `Fecha`, `IdBitacoraCurso`) VALUES ('$Horario','$Nomina','$Nombre','$Tag','$DateAndTime','$IdBitacoraCurso')";
+        echo $insertRegistro;
+
+        $rsinsertUsu=mysqli_query($conex,$insertRegistro);
+
+        $updateQuery = "UPDATE `BitacoraCursos` SET `EstatusAsistencia`=1 WHERE `IdBitacoraCurso` = $IdBitacoraCurso";
+        $upSelect = mysqli_query($conex, $updateQuery);
+
+        mysqli_close($conex);
+
+        if(!$rsinsertUsu){
+            echo "0";
+        }else{
+            return 1;
+        }
+
     }else{
         return 0;
-    }
-
-
-    $insertRegistro= "INSERT INTO `Bitacora_Asistencia`(`IdCurso`, `Nomina`, `Nombre`, `Tag`, `Fecha`, `IdBitacoraCurso`) VALUES ('$Horario','$Nomina','$Nombre','$Tag','$DateAndTime','$IdBitacoraCurso')";
-    echo $insertRegistro;
-
-    $rsinsertUsu=mysqli_query($conex,$insertRegistro);
-    mysqli_close($conex);
-
-    if(!$rsinsertUsu){
-        echo "0";
-    }else{
-        return 1;
     }
 
 }
