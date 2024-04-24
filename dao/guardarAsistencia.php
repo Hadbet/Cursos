@@ -1,10 +1,10 @@
 <?php
 include_once('db/db_RH.php');
 
-$Nomina=$_POST['nomina'];
-$Nombre=$_POST['nombre'];
-$Tag=$_POST['tag'];
-$Horario=$_POST['horario'];
+$Nomina=$_GET['nomina'];
+$Nombre=$_GET['nombre'];
+$Tag=$_GET['tag'];
+$Horario=$_GET['horario'];
 
 registroUsu($Nomina,$Nombre,$Horario,$Tag);
 function registroUsu($Nomina,$Nombre,$Horario,$Tag){
