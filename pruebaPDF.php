@@ -3,6 +3,10 @@ require_once 'lib/dompdf/autoload.inc.php';
 use Dompdf\Dompdf;
 
 // Contenido HTML del documento
+
+
+$css=file_get_contents("css/pdf.css");
+
 $html = '
 <!doctype html>
 <html lang="en">
@@ -25,7 +29,6 @@ $html = '
                     <div class="col divTitle" id="divRespdf">
                         <h1>Resumen de Solicitud</h1>
                         <h6>LABORATORIO DE METROLOGÍA</h6>
-                        <?php echo "<small>Fecha: $date</small>";?>
                     </div>
                 </th>
                 <td>
@@ -135,6 +138,7 @@ $html = '
 </html>
 ';
 
+$html = "<style>" . $css . "</style>" . $html;
 // Instancia de Dompdf
 $dompdf = new Dompdf();
 
