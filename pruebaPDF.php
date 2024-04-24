@@ -1,11 +1,25 @@
 <?php
 
+include_once('db/db_RH.php');
 
 // Contenido HTML del documento
 
 
 $css=file_get_contents("css/pdf.css");
 
+$actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+$url_parts = parse_url($actual_link);// Obtener las partes de la URL
+parse_str($url_parts['query'], $query_params);// Obtener los parámetros de consulta
+$Horario = $query_params['horario'];// Extraer el ID de la prueba
+$Curso = $query_params['curso'];// Extraer el ID de la prueba
+$Fecha = $query_params['fecha'];// Extraer el ID de la prueba
+
+$con = new LocalConector();
+$conex = $con->conectar();
+
+$datos = mysqli_query($conex, "SELECT * FROM `BitacoraCursos` WHERE `Curso`= '$Curso' and `Horario` = '$Horario' and `Fecha` = '$Fecha' and EstatusAsistencia=1;");
+
+$resultados = mysqli_fetch_all($datos, MYSQLI_ASSOC);
 ob_start();
 ?>
 <!doctype html>
@@ -48,7 +62,7 @@ ob_start();
                     <tbody>
                     <tr class="bg-primary">
                         <th class="">Nombre del curso: </th>
-                        <td  colspan="3"></td>
+                        <td  colspan="3"><?php echo $Curso;?></td>
                     </tr>
                     <tr class="bg-primary">
                         <th class="" >Objetivo del curso:</th>
@@ -56,13 +70,13 @@ ob_start();
                     </tr>
                     <tr>
                         <th class="">Fecha del curso: </th>
-                        <td></td>
+                        <td><?php echo $Fecha;?></td>
                         <th class=""> Solicitante:</th>
                         <td></td>
                     </tr>
                     <tr>
                         <th class="">Horario: </th>
-                        <td></td>
+                        <td><?php echo $Horario;?></td>
                         <th class="">Duracion: </th>
                         <td><a href=""></a></td>
                     </tr>
@@ -97,12 +111,14 @@ ob_start();
                     </tr>
                     </thead>
                     <tbody>
+                            <?php foreach ($resultados as $resultado){?>
                         <tr>
-                            <td></td>
-                            <td></td>
+                            <td><?php echo $resultado['Nomina'];?> </td>
+                            <td><?php echo $resultado['Nombre'];?></td>
                             <td></td>
                             <td></td>
                         </tr>
+                        <?php }?>
                     </tbody>
                 </table>
             </div>
@@ -124,7 +140,6 @@ ob_start();
             <div class="row">
                 <div class="col-sm-4 text-center">
                     <small> <a href="https://arketipo.mx/Produccion/ML/PW_MetrologyLaboratory/modules/sesion/indexSesion.php">Entrenamientos de Grammer Querétaro </a></small><br>
-                    <small>Entrenamientos@arketipo.com</small><br>
                     <strong><small>GRAMMER AUTOMOTIVE PUEBLA S. A. DE C. V.</small></strong>
                 </div>
             </div>
