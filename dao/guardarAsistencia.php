@@ -34,7 +34,7 @@ function registroUsu($Nomina,$Nombre,$Horario,$Tag){
     }
 
     // Si la consulta SELECT no devuelve ningún resultado, hacemos el INSERT
-    $insertRegistro= "INSERT INTO `Bitacora_Asistencia`(`$Horario`, `Nomina`, `Nombre`, `Tag`, `Fecha`, `IdBitacoraCurso`) VALUES (,'[value-2]','$Nomina','$Nombre','$Tag',$DateAndTime,'$IdBitacoraCurso')";
+    $insertRegistro= "INSERT INTO `Bitacora_Asistencia`(`IdCurso`, `Nomina`, `Nombre`, `Tag`, `Fecha`, `IdBitacoraCurso`) VALUES (,'$Horario','$Nomina','$Nombre','$Tag',$DateAndTime,'$IdBitacoraCurso')";
 
     $rsinsertUsu=mysqli_query($conex,$insertRegistro);
     mysqli_close($conex);
