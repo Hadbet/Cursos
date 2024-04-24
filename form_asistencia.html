@@ -174,15 +174,12 @@
                     </div>
                   </div>
                 </div>
-                <div class="card-footer">
-                  <button type="button" onclick="agregarAsistenciaCurso()" class="btn mb-2 btn-success float-right text-white">Registrar<span class="fe fe-chevron-right fe-16 ml-2"></span></button>
-                </div>
               </div> <!-- / .card -->
             </div> <!-- .col-12 -->
           </div> <!-- .row -->
         </div> <!-- .container-fluid -->
 
-        <div class="container-fluid">
+        <div class="container-fluid" id="seccionTomaAsistencia">
           <div class="row justify-content-center">
             <div class="col-12">
               <h2 class="page-title">Toma de asistencias</h2>
@@ -354,6 +351,8 @@
         var Fecha = horarioParts[1].trim();
         var HorarioCurso = horarioParts[2].trim();
 
+        document.getElementById("seccionTomaAsistencia").scrollIntoView();
+
         $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaCursoAsistencia.php?curso='+Curso+'&fecha='+Fecha+'&horario='+HorarioCurso, function (data) {
           var table = $("#tablaAsistencia"); // selecciona la tabla
           var tableConcluidos = $("#tablaFaltas"); // selecciona la tabla
@@ -425,8 +424,8 @@
                           if (response.ok) {
                             Swal.fire({
                               icon: 'success',
-                              title: 'Enviado.', showConfirmButton: false, input: 'none',
-                              text: 'Registro enviardo.'
+                              title: 'Asistencia Registrada.', showConfirmButton: false, input: 'none',
+                              text: 'Gracias y mucha suerte.'
                             })
                             cargarHorarios();
                           } else {
