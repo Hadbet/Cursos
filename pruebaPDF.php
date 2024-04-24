@@ -48,39 +48,39 @@ ob_start();
                     <tbody>
                     <tr class="bg-primary">
                         <th class="">Nombre del curso: </th>
-                        <td  colspan="3"> tsetse</td>
+                        <td  colspan="3"></td>
                     </tr>
                     <tr class="bg-primary">
                         <th class="" >Objetivo del curso:</th>
-                        <td  colspan="3">testset</td>
+                        <td  colspan="3"></td>
                     </tr>
                     <tr>
                         <th class="">Fecha del curso: </th>
-                        <td>testse</td>
+                        <td></td>
                         <th class=""> Solicitante:</th>
-                        <td>testse</td>
+                        <td></td>
                     </tr>
                     <tr>
                         <th class="">Horario: </th>
-                        <td>testest</td>
+                        <td></td>
                         <th class="">Duracion: </th>
-                        <td><a href="">Archivo pdf</a></td>
+                        <td><a href=""></a></td>
                     </tr>
                     <tr>
                         <th class="">Tipo: </th>
-                        <td>testest</td>
+                        <td></td>
                         <th class="">Instructor: </th>
-                        <td><a href="">Archivo pdf</a></td>
+                        <td><a href=""></a></td>
                     </tr>
                     <tr>
                         <th class="">Area: </th>
-                        <td>testest</td>
+                        <td></td>
                         <th class="">Firma del instructor: </th>
                         <td></td>
                     </tr>
                     <tr class="bg-primary">
                         <th class="">Temario :</th>
-                        <td  colspan="3"> tsetse</td>
+                        <td  colspan="3"></td>
                     </tr>
                     </tbody>
                 </table>
@@ -98,10 +98,10 @@ ob_start();
                     </thead>
                     <tbody>
                         <tr>
-                            <td>test</td>
-                            <td>set</td>
-                            <td>serse</td>
-                            <td>rserse</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                     </tbody>
                 </table>
@@ -111,7 +111,7 @@ ob_start();
                     <tbody>
                     <tr>
                         <th class="">Observaciones:</th>
-                        <td id=""  colspan="3">sre</td>
+                        <td id=""  colspan="3"></td>
                     </tr>
                     </tbody>
                 </table>
