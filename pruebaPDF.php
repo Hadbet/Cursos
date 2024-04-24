@@ -26,8 +26,8 @@ ob_start();
 <body >
 <?php
 $date = date('d-m-Y');
-$css=file_get_contents("../../css/pdf.css");
-include_once('../../dao/connection.php');
+$css=file_get_contents("https://arketipo.mx/Produccion/ML/PW_MetrologyLaboratory/css/pdf.css");
+include_once('dao/db/db_RH.php');
 $con = new LocalConector();
 $conex = $con->conectar();
 
