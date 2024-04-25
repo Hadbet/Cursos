@@ -411,7 +411,7 @@
                                             <input type="file" class="form-control-file" id="archivos" name="archivos[]" multiple>
                                         </div>
                                         <!-- Botón para enviar el formulario -->
-                                        <button type="submit" class="btn btn-primary">Enviar</button>
+                                        <button type="submit" id="btnEnviarInt" class="btn btn-primary">Enviar</button>
                                     </form>
                                 </div> <!-- .card-body -->
                             </div> <!-- .card -->
@@ -551,7 +551,7 @@
 
     function verificarValor() {
         var nombreInstructor = document.getElementById('txtNombreInstrictor').value;
-        var boton = document.querySelector('.btn.btn-primary');
+        var boton = document.getElementById(btnEnviarInt);
 
         var existe = listaCursos.includes(nombreInstructor);
 
