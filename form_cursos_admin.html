@@ -455,7 +455,17 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dui urna, cursus mollis cursus vitae, fringilla vel augue. In vitae dui ut ex fringilla consectetur. Sed vulputate ante arcu, non vehicula mauris porttitor quis. Praesent tempor varius orci sit amet sodales. Nullam feugiat condimentum posuere. Vivamus bibendum mattis mi, vitae placerat lorem sagittis nec. Proin ac magna iaculis, faucibus odio sit amet, volutpat felis. Proin eleifend suscipit eros, quis vulputate tellus condimentum eget. Maecenas eget dui velit. Aenean in maximus est, sit amet convallis tortor. In vel bibendum mauris, id rhoncus lectus. Suspendisse ullamcorper bibendum tellus a tincidunt. Donec feugiat dolor lectus, sed ullamcorper ante rutrum non. Mauris vestibulum, metus sit amet lobortis fringilla, dui est venenatis ligula, a euismod sem augue vel lorem. Nunc feugiat eget tortor vel tristique. Mauris lobortis efficitur ligula, et consectetur lectus maximus sed. </div>
+            <div class="modal-body">
+                <table id="tablaArchivos" class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Nombre</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
             <div class="modal-footer">
                 <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Close</button>
                 <button type="button" class="btn mb-2 btn-primary">Save changes</button>
@@ -556,7 +566,7 @@
                 var newRow = $("<tr></tr>");
                 var idCell = $("<td></td>").text(data.data[i].IdInstructor);
                 var nameCell = $("<td></td>").text(data.data[i].Nombre);
-                var detallesCell = $("<td></td>").html(`<button type="button" class="btn mb-2 btn-secondary" onclick="detalles('${data.data[i].IdInstructor}')" data-toggle="modal" data-target=".modal-right">Ver detalles</button>`);
+                var detallesCell = $("<td></td>").html(`<button type="button" class="btn mb-2 btn-secondary" onclick="cargarInstructor('${data.data[i].Nombre}','${data.data[i].Tipo}','${data.data[i].Area}')" data-toggle="modal" data-target=".modal-right">Ver detalles</button>`);
 
                 newRow.append(idCell);
                 newRow.append(nameCell);
@@ -564,6 +574,21 @@
                 newRow.append(detallesCell);
                 table.append(newRow);
                 listaCursos.push(data.data[i].Nombre);
+            }
+        });
+    }
+
+    function cargarInstructor(nombre,tipo,area) {
+
+        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaDocumentos.php?nombre='+nombre, function (data) {
+
+            var table = $("#tablaArchivos"); // selecciona la tabla
+            for (var i = 0; i < data.data.length; i++) {
+
+                var newRow = $("<tr></tr>");
+                var idCell = $("<td></td>").html(data.data[i].Ruta);
+                newRow.append(idCell);
+                table.append(newRow);
             }
         });
     }
