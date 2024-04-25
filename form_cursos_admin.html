@@ -378,7 +378,7 @@
                                                 <div class="form-group mb-6">
                                                     <label for="txtNombreInstrictor">Nombre</label>
                                                     <input type="text" name="nombreInstructor" class="form-control drgpicker" id="txtNombreInstrictor"
-                                                           value="" aria-describedby="button-addon2">
+                                                           value="" aria-describedby="button-addon2" oninput="verificarValor()">
                                                     <br>
                                                     <label for="txtAreaInstructor">Area</label>
                                                     <input type="text" name="areaInstructor" class="form-control drgpicker" id="txtAreaInstructor"
@@ -522,6 +522,7 @@
             }
         });
     }
+    var listaCursos = [];
     cargarInstructor();
     function cargarInstructor() {
         $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaInstructor.php', function (data) {
@@ -543,8 +544,18 @@
                 newRow.append(nameCell);
                 newRow.append(detallesCell);
                 table.append(newRow);
+                listaCursos.push(data.data[i].NombreCurso);
             }
         });
+    }
+
+    function verificarValor() {
+        var nombreInstructor = document.getElementById('txtNombreInstrictor').value;
+        var boton = document.querySelector('.btn.btn-primary');
+
+        var existe = listaCursos.includes(nombreInstructor);
+
+        boton.disabled = existe;
     }
 
     function registrarhorario() {
