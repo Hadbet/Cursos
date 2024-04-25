@@ -368,7 +368,7 @@
                         <div class="col-md-6">
                             <div class="card shadow mb-4">
                                 <div class="card-header">
-                                    <strong>Uppy</strong>
+                                    <strong>Ingresa los datos de manera correcta</strong>
                                 </div>
                                 <div class="card-body">
 
@@ -456,6 +456,10 @@
                 </button>
             </div>
             <div class="modal-body">
+                <p>Tipo :<span id="txtTipoL"></span></p>
+                <p>Area :<span id="txtAreaL"></span></p>
+                <br>
+                <p>DOCUMENTACION</p>
                 <table id="tablaArchivos" class="table table-hover">
                     <thead>
                     <tr>
@@ -465,10 +469,19 @@
                     <tbody>
                     </tbody>
                 </table>
+                <form action="dao/subirMasArchivos.php" method="post" enctype="multipart/form-data">
+                    <input style="display: none" type="text" name="nombreInstructor" class="form-control drgpicker" id="txtNombreInstrictorAux"
+                           value="" aria-describedby="button-addon2">
+                    <div class="form-group">
+                        <label for="archivos">Subir archivos:</label>
+                        <input type="file" class="form-control-file" id="archivosNuevos" name="archivos[]" multiple>
+                    </div>
+                    <!-- Botón para enviar el formulario -->
+                    <button type="submit" id="btnEnviarNuevos" class="btn btn-primary">Enviar</button>
+                </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn mb-2 btn-primary">Save changes</button>
+                <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
@@ -579,15 +592,16 @@
     }
 
     function cargarDetalles(nombre,tipo,area) {
-
-        console.log('https://arketipo.mx/RH/CursosRH/dao/consultaDocumentos.php?nombre='+nombre);
         $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaDocumentos.php?nombre='+nombre, function (data) {
-
+            document.getElementById("defaultModalLabel").innerHTML = nombre;
+            document.getElementById("txtTipoL").innerHTML = " "+tipo;
+            document.getElementById("txtAreaL").innerHTML = " "+area;
+            document.getElementById("txtNombreInstrictorAux").value = nombre;
             var table = $("#tablaArchivos"); // selecciona la tabla
             for (var i = 0; i < data.data.length; i++) {
 
                 var newRow = $("<tr></tr>");
-                var idCell = $("<td></td>").html("<a href='"+data.data[i].Ruta.replace('../', '')+"'>"+data.data[i].NombreArchivo+"</a>");
+                var idCell = $("<td></td>").html("<a target='_blank' href='"+data.data[i].Ruta.replace('../', '')+"'>"+data.data[i].NombreArchivo+"</a>");
                 newRow.append(idCell);
                 table.append(newRow);
             }
