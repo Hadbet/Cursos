@@ -221,6 +221,9 @@
                     </tbody>
                   </table>
                 </div>
+                <div class="card-footer">
+                  <button type="button" onclick="descargarLista()" class="btn mb-2 btn-success float-right text-white">Descargar lista<span class="fe fe-chevron-right fe-16 ml-2"></span></button>
+                </div>
               </div> <!-- / .card -->
             </div> <!-- .col-12 -->
           </div> <!-- .row -->
@@ -452,6 +455,19 @@
           }
         });
       });
+
+      function descargarLista() {
+        var horarioNormal = document.getElementById("cbCurso").value;
+        var horarioParts = horarioNormal.split(", ");
+
+        var Curso = horarioParts[0].trim();
+        var Fecha = horarioParts[1].trim();
+        var HorarioCurso = horarioParts[2].trim();
+
+        var link = "https://arketipo.mx/RH/CursosRH/pruebaPDF.php?curso="+Curso+"&horario="+HorarioCurso+"&fecha="+Fecha;
+
+        window.open(link, '_blank');
+      }
 
     </script>
   </body>

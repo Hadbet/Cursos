@@ -20,6 +20,28 @@ $conex = $con->conectar();
 
 $datos = mysqli_query($conex, "SELECT * FROM `BitacoraCursos` WHERE `Curso`= '$Curso' and `Horario` = '$Horario' and `Fecha` = '$Fecha' and EstatusAsistencia=1;");
 $resultados = mysqli_fetch_all($datos, MYSQLI_ASSOC);
+
+$selectQuery = "SELECT * FROM `Cursos` WHERE `NombreCurso` = '$Curso' and `Horario` = '$Horario' and `Fecha` = '$Fecha'";
+$rsSelect = mysqli_query($conex, $selectQuery);
+
+$row = mysqli_fetch_assoc($rsSelect);
+$Objetivo = $row['Objetivo'];
+$Instructor = $row['Instructor'];
+$Tipo = $row['Tipo'];
+$Temario = $row['Temario'];
+$Temario = str_replace(' - ', "\n", $Temario);
+$Temario = nl2br($Temario);
+
+$horario = '17:32 - 19:32';
+
+// Dividimos la cadena en dos partes
+$horas = explode(' - ', $horario);
+
+$horaInicio = new DateTime($horas[0]);
+$horaFin = new DateTime($horas[1]);
+
+$diferencia = $horaInicio->diff($horaFin);
+
 ob_start();
 ?>
 <!doctype html>
@@ -66,7 +88,7 @@ ob_start();
                     </tr>
                     <tr class="bg-primary">
                         <th class="" >Objetivo del curso:</th>
-                        <td  colspan="3"></td>
+                        <td  colspan="3"><?php echo $Objetivo;?></td>
                     </tr>
                     <tr>
                         <th class="">Fecha del curso: </th>
@@ -78,13 +100,13 @@ ob_start();
                         <th class="">Horario: </th>
                         <td><?php echo $Horario;?></td>
                         <th class="">Duracion: </th>
-                        <td><a href=""></a></td>
+                        <td><a href=""><?php echo $diferencia;?></a></td>
                     </tr>
                     <tr>
                         <th class="">Tipo: </th>
-                        <td></td>
+                        <td><?php echo $Tipo;?></td>
                         <th class="">Instructor: </th>
-                        <td><a href=""></a></td>
+                        <td><a href=""><?php echo $Instructor;?></a></td>
                     </tr>
                     <tr>
                         <th class="">Area: </th>
@@ -94,7 +116,7 @@ ob_start();
                     </tr>
                     <tr class="bg-primary">
                         <th class="">Temario :</th>
-                        <td  colspan="3"></td>
+                        <td  colspan="3"><?php echo $Temario;?></td>
                     </tr>
                     </tbody>
                 </table>
