@@ -372,43 +372,47 @@
                                 </div>
                                 <div class="card-body">
 
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group mb-6">
-                                                <label for="txNombreCurso">Nombre</label>
-                                                <input type="text" class="form-control drgpicker" id="txNombreCurso"
-                                                       value="" aria-describedby="button-addon2">
-                                                <br>
-                                                <label for="txNombreCurso">Area</label>
-                                                <input type="text" class="form-control drgpicker" id="txNombreCurso"
-                                                       value="" aria-describedby="button-addon2">
-                                                <br>
-                                            </div>
-                                        </div>
-
-                                        <!-- /.col -->
-                                        <div class="col-md-6">
+                                    <form action="dao/subirArchivos.php" method="post" enctype="multipart/form-data">
+                                        <div class="row">
                                             <div class="col-md-6">
-                                                <div class="form-group mb-3">
-                                                    <label for="cbInstructor">Tipo de intructor :</label>
+                                                <div class="form-group mb-6">
+                                                    <label for="txNombreCurso">Nombre</label>
+                                                    <input type="text" class="form-control drgpicker" id="txNombreCurso"
+                                                           value="" aria-describedby="button-addon2">
                                                     <br>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="INTERNO">
-                                                        <label class="form-check-label" for="inlineRadio1">INTERNO</label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="INTERNO">
-                                                        <label class="form-check-label" for="inlineRadio2">EXTERNO</label>
+                                                    <label for="txNombreCurso">Area</label>
+                                                    <input type="text" class="form-control drgpicker" id="txNombreCurso"
+                                                           value="" aria-describedby="button-addon2">
+                                                    <br>
+                                                </div>
+                                            </div>
+
+                                            <!-- /.col -->
+                                            <div class="col-md-6">
+                                                <div class="col-md-6">
+                                                    <div class="form-group mb-3">
+                                                        <label for="cbInstructor">Tipo de intructor :</label>
+                                                        <br>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="INTERNO">
+                                                            <label class="form-check-label" for="inlineRadio1">INTERNO</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="INTERNO">
+                                                            <label class="form-check-label" for="inlineRadio2">EXTERNO</label>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <!-- Input para subir archivos -->
-                                    <div class="form-group">
-                                        <label for="archivos">Subir archivos:</label>
-                                        <input type="file" class="form-control-file" id="archivos" name="archivos[]" multiple>
-                                    </div>
+                                        <!-- Input para subir archivos -->
+                                        <div class="form-group">
+                                            <label for="archivos">Subir archivos:</label>
+                                            <input type="file" class="form-control-file" id="archivos" name="archivos[]" multiple>
+                                        </div>
+                                        <!-- Botón para enviar el formulario -->
+                                        <button type="submit" class="btn btn-primary">Enviar</button>
+                                    </form>
                                 </div> <!-- .card-body -->
                             </div> <!-- .card -->
                         </div> <!-- .col -->
