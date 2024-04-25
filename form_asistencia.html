@@ -193,7 +193,7 @@
                     <div class="col-md-12">
                       <div class="form-group mb-3">
                         <label for="txtNominaCurso">Nomina</label>
-                        <input type="text" class="form-control" id="txtNominaCurso" value="00001606">
+                        <input type="text" class="form-control" id="txtNominaCurso" value="">
                       </div>
                     </div>
                   </div>
@@ -448,6 +448,7 @@
                                 console.log("I was closed by the timer");
                               }
                             });
+                            document.getElementById("txtNominaCurso").value="";
                             cargarHorarios();
                           } else {
                             throw "Error en la llamada Ajax";
