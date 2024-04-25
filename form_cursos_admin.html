@@ -566,7 +566,7 @@
                 var newRow = $("<tr></tr>");
                 var idCell = $("<td></td>").text(data.data[i].IdInstructor);
                 var nameCell = $("<td></td>").text(data.data[i].Nombre);
-                var detallesCell = $("<td></td>").html(`<button type="button" class="btn mb-2 btn-secondary" onclick="cargarInstructor('${data.data[i].Nombre}','${data.data[i].Tipo}','${data.data[i].Area}')" data-toggle="modal" data-target=".modal-right">Ver detalles</button>`);
+                var detallesCell = $("<td></td>").html(`<button type="button" class="btn mb-2 btn-secondary" onclick="cargarDetalles('${data.data[i].Nombre}','${data.data[i].Tipo}','${data.data[i].Area}')" data-toggle="modal" data-target=".modal-right">Ver detalles</button>`);
 
                 newRow.append(idCell);
                 newRow.append(nameCell);
@@ -578,7 +578,7 @@
         });
     }
 
-    function cargarInstructor(nombre,tipo,area) {
+    function cargarDetalles(nombre,tipo,area) {
 
         $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaDocumentos.php?nombre='+nombre, function (data) {
 
