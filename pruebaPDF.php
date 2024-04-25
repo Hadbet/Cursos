@@ -2,9 +2,6 @@
 
 include_once('dao/db/db_RH.php');
 
-// Contenido HTML del documento
-
-
 $css=file_get_contents("css/pdf.css");
 
 $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
@@ -33,8 +30,6 @@ $Temario = str_replace(' - ', "\n", $Temario);
 $Temario = nl2br($Temario);
 
 $horario = '17:32 - 19:32';
-
-// Dividimos la cadena en dos partes
 $horas = explode(' - ', $horario);
 
 $horaInicio = new DateTime($horas[0]);
@@ -100,7 +95,7 @@ ob_start();
                         <th class="">Horario: </th>
                         <td><?php echo $Horario;?></td>
                         <th class="">Duracion: </th>
-                        <td><a href=""><?php echo $diferencia;?></a></td>
+                        <td><a href=""><?php echo $diferencia->format('%h horas');?></a></td>
                     </tr>
                     <tr>
                         <th class="">Tipo: </th>
