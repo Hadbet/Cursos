@@ -113,7 +113,7 @@ ob_start();
                     </tr>
                     <tr class="bg-primary">
                         <th class="">Temario :</th>
-                        <td  colspan="3" style=text-align: left"><?php echo $Temario;?></td>
+                        <td  colspan="3" style="margin-left:10px; text-align: left;"><?php echo $Temario;?></td>
                     </tr>
                     </tbody>
                 </table>
