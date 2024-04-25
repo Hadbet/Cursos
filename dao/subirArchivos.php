@@ -6,6 +6,11 @@ $tipoInstructor = $_POST['inlineRadioOptions'];
 
 $target_dir = "../documentacion/$nombreInstructor/"; // especifica el directorio donde se subirá el archivo
 
+// verifica si el directorio existe, si no, lo crea
+if (!file_exists($target_dir)) {
+    mkdir($target_dir, 0777, true);
+}
+
 // verifica si se subieron archivos
 if (!empty($_FILES['archivos']['name'][0])) {
     // recorre cada archivo
