@@ -177,6 +177,15 @@
                                     </div>
                                 </div>
 
+                                <div class="col-md-6" >
+                                    <div class="form-group mb-3">
+                                        <label for="cbInstructor">Instructor</label>
+                                        <select class="custom-select" id="cbInstructor">
+                                            <option selected>Abrir menu</option>
+                                        </select>
+                                    </div>
+                                </div>
+
                                 <div class="col-md-6">
                                     <div class="form-group mb-3">
                                         <label for="cbInstructor">Tipo de intructor :</label>
@@ -186,7 +195,7 @@
                                             <label class="form-check-label" for="inlineRadio1">INTERNO</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="INTERNO">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="EXTERNO">
                                             <label class="form-check-label" for="inlineRadio2">EXTERNO</label>
                                         </div>
                                     </div>
@@ -200,14 +209,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-6" >
-                                    <div class="form-group mb-3">
-                                        <label for="cbInstructor">Instructor</label>
-                                        <select class="custom-select" id="cbInstructor">
-                                            <option selected>Abrir menu</option>
-                                        </select>
-                                    </div>
-                                </div>
+
 
 
 
@@ -320,6 +322,25 @@
 
 
         <div class="row">
+
+            <div class="col-md-6 my-4">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h5 class="card-title">Horarios</h5>
+                        <table id="tablaHorarios" class="table table-bordered table-hover mb-0">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div> <!-- Bordered table -->
+
             <!-- simple table -->
             <div class="col-md-6 my-4">
                 <div class="card shadow">
@@ -339,23 +360,7 @@
                 </div>
             </div> <!-- simple table -->
             <!-- Bordered table -->
-            <div class="col-md-6 my-4">
-                <div class="card shadow">
-                    <div class="card-body">
-                        <h5 class="card-title">Horarios</h5>
-                        <table id="tablaHorarios" class="table table-bordered table-hover mb-0">
-                            <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div> <!-- Bordered table -->
+
         </div> <!-- end section -->
 
 
@@ -565,6 +570,7 @@
         });
     }
     var listaCursos = [];
+    var instructores = {};
     cargarInstructor();
     function cargarInstructor() {
         $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaInstructor.php', function (data) {
@@ -587,9 +593,33 @@
                 newRow.append(detallesCell);
                 table.append(newRow);
                 listaCursos.push(data.data[i].Nombre);
+
+                instructores[data.data[i].Nombre] = {
+                    id: data.data[i].IdInstructor,
+                    tipo: data.data[i].Tipo,
+                    area: data.data[i].Area
+                };
             }
         });
     }
+
+    $('#cbInstructor').change(function() {
+        var nombreInstructor = $(this).val();
+        var datosInstructor = instructores[nombreInstructor];
+
+        // Aquí tienes los datos del instructor seleccionado
+        var idInstructor = datosInstructor.id;
+        var tipoInstructor = datosInstructor.tipo;
+        var areaInstructor = datosInstructor.area;
+
+        document.getElementById("txtArea").value = areaInstructor;
+        var radios = document.getElementsByName('inlineRadioOptions');
+        for (var i = 0; i < radios.length; i++) {
+            if (radios[i].value === tipoInstructor) {
+                radios[i].checked = true;
+            }
+        }
+    });
 
     function cargarDetalles(nombre,tipo,area) {
         $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaDocumentos.php?nombre='+nombre, function (data) {
@@ -674,6 +704,13 @@
             }
         });
     }
+
+    var select = document.getElementById("cbHorario");
+
+    select.addEventListener('dblclick', function() {
+        // Aquí va el código que quieres que se ejecute cuando se haga doble click
+        console.log('Doble click en el elemento select');
+    });
 
     function registrarCursoNuevo() {
         var nombre = document.getElementById("cbCurso").value;
@@ -773,6 +810,7 @@
         for (var i = 0; i < select.options.length; i++) {
             if (select.options[i].value === nuevoValor) {
                 // El valor ya existe, así que salimos de la función
+                document.getElementById("txtTemario").value = "";
                 return;
             }
         }
@@ -782,6 +820,9 @@
         createOption.text = nuevoValor;
         createOption.value = nuevoValor;
         select.appendChild(createOption);
+
+        document.getElementById("txtTemario").value = "";
+
     }
 
 </script>
