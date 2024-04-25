@@ -515,6 +515,7 @@
         var capacidad = document.getElementById("txtCapacidad").value;
         var objetivo = document.getElementById("txtObjetivo").value;
         var instructor = document.getElementById("cbInstructor").value;
+        var area = document.getElementById("txtArea").value;
 
         var select = document.getElementById("cbTemario");
         var options = Array.from(select.options); // Convierte HTMLCollection a Array
@@ -542,6 +543,7 @@
         data.append('instructor', instructor.trim());
         data.append('temario', temario);
         data.append('tipo', tipo);
+        data.append('area', area);
 
         fetch('dao/guardarCurso.php', {
             method: 'POST',
