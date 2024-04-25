@@ -33,16 +33,25 @@ if (!empty($_FILES['archivos']['name'][0])) {
 $con = new LocalConector();
 $conex=$con->conectar();
 
-$insertRegistro= "INSERT INTO `Instructores_Cursos`(`Nombre`, `Tipo`, `Area`, `Certificados`) VALUES ('$nombreInstructor','$tipoInstructor','$areaInstructor','')";
+// Realiza la consulta para verificar si ya existe un registro con el mismo nombre de instructor
+$checkRegistro = "SELECT * FROM `Instructores_Cursos` WHERE `Nombre` = '$nombreInstructor'";
+$rsCheck = mysqli_query($conex, $checkRegistro);
 
-$rsinsertUsu=mysqli_query($conex,$insertRegistro);
-mysqli_close($conex);
+// Si la consulta devuelve algún resultado, no realiza la inserción
+if (mysqli_num_rows($rsCheck) > 0) {
+    echo "El instructor ya existe en la base de datos.";
+} else {
+    $insertRegistro= "INSERT INTO `Instructores_Cursos`(`Nombre`, `Tipo`, `Area`, `Certificados`) VALUES ('$nombreInstructor','$tipoInstructor','$areaInstructor','')";
+    $rsinsertUsu=mysqli_query($conex,$insertRegistro);
 
-if(!$rsinsertUsu){
-    echo "0";
-}else{
-    return 1;
+    if(!$rsinsertUsu){
+        echo "0";
+    }else{
+        return 1;
+    }
 }
+
+mysqli_close($conex);
 
 
 ?>

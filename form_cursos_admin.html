@@ -526,11 +526,23 @@
     function cargarInstructor() {
         $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaInstructor.php', function (data) {
             var select = document.getElementById("cbInstructor");
+            var table = $("#tablaInstructores"); // selecciona la tabla
             for (var i = 0; i < data.data.length; i++) {
                 var createOption = document.createElement("option");
                 createOption.text = data.data[i].Nombre;
                 createOption.value = data.data[i].Nombre;
                 select.appendChild(createOption);
+
+                var newRow = $("<tr></tr>");
+                var idCell = $("<td></td>").text(data.data[i].IdInstructor);
+                var nameCell = $("<td></td>").text(data.data[i].Nombre);
+                var detallesCell = $("<td></td>").html(`<button type="button" class="btn mb-2 btn-secondary" onclick="detalles('${data.data[i].IdInstructor}')" >Ver detalles</button>`);
+
+                newRow.append(idCell);
+                newRow.append(nameCell);
+                newRow.append(nameCell);
+                newRow.append(detallesCell);
+                table.append(newRow);
             }
         });
     }
