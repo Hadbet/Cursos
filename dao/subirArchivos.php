@@ -1,5 +1,5 @@
 <?php
-$target_dir = "documentacion/"; // especifica el directorio donde se subirá el archivo
+$target_dir = "../documentacion/"; // especifica el directorio donde se subirá el archivo
 
 // verifica si se subieron archivos
 if (!empty($_FILES['archivos']['name'][0])) {
