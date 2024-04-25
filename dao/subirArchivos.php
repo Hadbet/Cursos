@@ -1,5 +1,10 @@
 <?php
-$target_dir = "../documentacion/"; // especifica el directorio donde se subirá el archivo
+
+$nombreInstructor = $_POST['nombreInstructor'];
+$areaInstructor = $_POST['areaInstructor'];
+$tipoInstructor = $_POST['inlineRadioOptions'];
+
+$target_dir = "../documentacion/$nombreInstructor/"; // especifica el directorio donde se subirá el archivo
 
 // verifica si se subieron archivos
 if (!empty($_FILES['archivos']['name'][0])) {
