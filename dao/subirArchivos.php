@@ -1,5 +1,7 @@
 <?php
 
+include_once('db/db_RH.php');
+
 $nombreInstructor = $_POST['nombreInstructor'];
 $areaInstructor = $_POST['areaInstructor'];
 $tipoInstructor = $_POST['inlineRadioOptions'];
@@ -27,4 +29,20 @@ if (!empty($_FILES['archivos']['name'][0])) {
 } else {
     echo "No se subieron archivos.";
 }
+
+$con = new LocalConector();
+$conex=$con->conectar();
+
+$insertRegistro= "INSERT INTO `Instructores_Cursos`(`Nombre`, `Tipo`, `Area`, `Certificados`) VALUES ('$nombreInstructor','$tipoInstructor','$areaInstructor','')";
+
+$rsinsertUsu=mysqli_query($conex,$insertRegistro);
+mysqli_close($conex);
+
+if(!$rsinsertUsu){
+    echo "0";
+}else{
+    return 1;
+}
+
+
 ?>
