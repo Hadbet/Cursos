@@ -2,6 +2,9 @@
 
 include_once('db/db_RH.php');
 
+$con = new LocalConector();
+$conex=$con->conectar();
+
 $nombreInstructor = $_POST['nombreInstructor'];
 $areaInstructor = $_POST['areaInstructor'];
 $tipoInstructor = $_POST['inlineRadioOptions'];
@@ -21,6 +24,8 @@ if (!empty($_FILES['archivos']['name'][0])) {
 
         // intenta subir el archivo
         if (move_uploaded_file($_FILES["archivos"]["tmp_name"][$i], $target_file)) {
+            $insertDocumento= "INSERT INTO `Documentacion_Instructores`(`NombreInstructor`, `NombreArchivo`, `Ruta`) VALUES ('$nombreInstructor','" . basename($_FILES["archivos"]["name"][$i]) . "','" . $target_dir . basename($_FILES["archivos"]["name"][$i]) . "')";
+            $rsinsertDocu=mysqli_query($conex,$insertDocumento);
             echo "El archivo ". basename( $_FILES["archivos"]["name"][$i]). " ha sido subido.";
         } else {
             echo "Lo siento, hubo un error subiendo el archivo ". basename( $_FILES["archivos"]["name"][$i]). ".";
@@ -30,8 +35,7 @@ if (!empty($_FILES['archivos']['name'][0])) {
     echo "No se subieron archivos.";
 }
 
-$con = new LocalConector();
-$conex=$con->conectar();
+
 
 // Realiza la consulta para verificar si ya existe un registro con el mismo nombre de instructor
 $checkRegistro = "SELECT * FROM `Instructores_Cursos` WHERE `Nombre` = '$nombreInstructor'";
