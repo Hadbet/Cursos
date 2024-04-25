@@ -580,13 +580,14 @@
 
     function cargarDetalles(nombre,tipo,area) {
 
+        console.log('https://arketipo.mx/RH/CursosRH/dao/consultaDocumentos.php?nombre='+nombre);
         $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaDocumentos.php?nombre='+nombre, function (data) {
 
             var table = $("#tablaArchivos"); // selecciona la tabla
             for (var i = 0; i < data.data.length; i++) {
 
                 var newRow = $("<tr></tr>");
-                var idCell = $("<td></td>").html(data.data[i].Ruta);
+                var idCell = $("<td></td>").html("<a href='"+data.data[i].Ruta.replace('../', '')+"'>"+data.data[i].NombreArchivo+"</a>");
                 newRow.append(idCell);
                 table.append(newRow);
             }
