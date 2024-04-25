@@ -25,6 +25,8 @@ $row = mysqli_fetch_assoc($rsSelect);
 $Objetivo = $row['Objetivo'];
 $Instructor = $row['Instructor'];
 $Tipo = $row['Tipo'];
+$Area = $row['Area'];
+$Capacidad = $row['Capacidad'];
 $Temario = $row['Temario'];
 $Temario = str_replace(' - ', "\n", $Temario);
 $Temario = nl2br($Temario);
@@ -88,8 +90,8 @@ ob_start();
                     <tr>
                         <th class="">Fecha del curso: </th>
                         <td><?php echo $Fecha;?></td>
-                        <th class=""> Solicitante:</th>
-                        <td></td>
+                        <th class=""> Capacidad:</th>
+                        <td><?php echo $Capacidad;?> personas</td>
                     </tr>
                     <tr>
                         <th class="">Horario: </th>
@@ -105,7 +107,7 @@ ob_start();
                     </tr>
                     <tr>
                         <th class="">Area: </th>
-                        <td></td>
+                        <td><?php echo $Area;?></td>
                         <th class="">Firma del instructor: </th>
                         <td></td>
                     </tr>
