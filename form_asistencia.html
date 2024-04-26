@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
-    <title>Tiny Dashboard - A Bootstrap Dashboard Template</title>
+    <title>Grammer RH</title>
     <!-- Simple bar CSS -->
     <link rel="stylesheet" href="css/simplebar.css">
     <!-- Fonts CSS -->
@@ -145,8 +145,9 @@
             </li>
           </ul>
           <div class="btn-box w-100 mt-4 mb-1">
-            <a href="https://themeforest.net/item/tinydash-bootstrap-html-admin-dashboard-template/27511269" target="_blank" class="btn mb-2 btn-warning btn-lg btn-block">
-              <i class="fe fe-shopping-cart fe-12 mx-2 text-white"></i><span class="small text-white">Salir</span>
+            <a href="https://themeforest.net/item/tinydash-bootstrap-html-admin-dashboard-template/27511269"
+               target="_blank" class="btn mb-2 btn-danger btn-lg btn-block">
+              <i class="fe fe-log-out fe-12 mx-2 text-white"></i><span class="small text-white">Salir</span>
             </a>
           </div>
         </nav>
@@ -242,7 +243,6 @@
                       <th>Nombre Curso</th>
                       <th>Fecha</th>
                       <th>Horario</th>
-                      <th>Calificacion</th>
                       <th>Valorar</th>
                     </tr>
                     </thead>
@@ -383,21 +383,15 @@
               var nameCursoCell = $("<td></td>").text(data.data[i].Nombre); // asume que tienes un campo id en tus datos
               var horarioCursoCell = $("<td></td>").text(data.data[i].Horario); // asume que tienes un campo id en tus datos
               var fechaCursoCell = $("<td></td>").text(data.data[i].Fecha); // asume que tienes un campo id en tus datos
-              if(data.data[i].Evaluacion === '0'){
-                var evaluacionCell = $("<td></td>").html("<span class=\"badge badge-pill badge-warning text-white\">"+"Pendiente"+"</span>");
-              }else{
-                var evaluacionCell = $("<td></td>").text(data.data[i].Evaluacion);
 
-              }
-              var valorarCell = $("<td></td>").html(`<button type="button" class="btn mb-2 btn-secondary" onclick="llenarEvaluacion('${data.data[i].Curso}','${data.data[i].Horario}','${data.data[i].Fecha}','${data.data[i].IdBitacoraCurso}')" data-toggle="modal" data-target=".modal-full">Valorar</button>`);
+              var valorarCell = $("<td></td>").html(`<button type="button" class="btn mb-2 btn-danger" onclick="llenarEvaluacion('${data.data[i].Curso}','${data.data[i].Horario}','${data.data[i].Fecha}','${data.data[i].IdBitacoraCurso}')" data-toggle="modal" data-target=".modal-full">Eliminar</button>`);
 
               // agrega las celdas a la fila y la fila a la tabla
               newRowConcluido.append(idCell);
               newRowConcluido.append(nameCursoCell);
               newRowConcluido.append(horarioCursoCell);
               newRowConcluido.append(fechaCursoCell);
-              newRowConcluido.append(evaluacionCell);
-              newRowConcluido.append(valorarCell);-
+              newRowConcluido.append(valorarCell);
               tableConcluidos.append(newRowConcluido);
             }
           }
