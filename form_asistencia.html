@@ -213,9 +213,11 @@
                   <table id="tablaAsistencia" class="table table-hover">
                     <thead>
                     <tr>
+                      <th>Id</th>
                       <th>Nombre Curso</th>
                       <th>Fecha</th>
                       <th>Horario</th>
+                      <th>Estatus</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -269,7 +271,6 @@
                       <th>Fecha</th>
                       <th>Horario</th>
                       <th>Calificacion</th>
-                      <th>Certificado</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -367,14 +368,19 @@
 
             if (data.data[i].EstatusAsistencia == '1'){
               var newRow = $("<tr></tr>");
+              var idACell = $("<td></td>").text(data.data[i].IdBitacoraCurso);
               var nameCell = $("<td></td>").text(data.data[i].Nombre); // asume que tienes un campo id en tus datos
               var horarioCell = $("<td></td>").text(data.data[i].Horario); // asume que tienes un campo id en tus datos
               var fechaCell = $("<td></td>").text(data.data[i].Fecha);
+              var valorarCell = $("<td></td>").html(`<button type="button" class="btn mb-2 btn-danger" onclick="eliminarAsistenciaCurso('${data.data[i].IdBitacoraCurso}')" data-toggle="modal" data-target=".modal-full">Eliminar</button>`);
+
 
               // agrega las celdas a la fila y la fila a la tabla
+              newRow.append(idACell);
               newRow.append(nameCell);
               newRow.append(fechaCell);
               newRow.append(horarioCell);
+              newRow.append(valorarCell);
               table.append(newRow);
             }else if(data.data[i].EstatusAsistencia == '0'){
 
@@ -384,14 +390,12 @@
               var horarioCursoCell = $("<td></td>").text(data.data[i].Horario); // asume que tienes un campo id en tus datos
               var fechaCursoCell = $("<td></td>").text(data.data[i].Fecha); // asume que tienes un campo id en tus datos
 
-              var valorarCell = $("<td></td>").html(`<button type="button" class="btn mb-2 btn-danger" onclick="llenarEvaluacion('${data.data[i].Curso}','${data.data[i].Horario}','${data.data[i].Fecha}','${data.data[i].IdBitacoraCurso}')" data-toggle="modal" data-target=".modal-full">Eliminar</button>`);
 
               // agrega las celdas a la fila y la fila a la tabla
               newRowConcluido.append(idCell);
               newRowConcluido.append(nameCursoCell);
               newRowConcluido.append(horarioCursoCell);
               newRowConcluido.append(fechaCursoCell);
-              newRowConcluido.append(valorarCell);
               tableConcluidos.append(newRowConcluido);
             }
           }
@@ -480,6 +484,38 @@
         var link = "https://arketipo.mx/RH/CursosRH/pruebaPDF.php?curso="+Curso+"&horario="+HorarioCurso+"&fecha="+Fecha;
 
         window.open(link, '_blank');
+      }
+
+
+      function eliminarAsistenciaCurso(id) {
+
+        const data = new FormData();
+
+        data.append('id', id);
+
+        fetch('dao/eliminarAsistenciaCurso.php', {
+          method: 'POST',
+          body: data
+        })
+                .then(function (response) {
+                  if (response.ok) {
+                    Swal.fire({
+                      icon: 'success',
+                      title: 'Removido.', showConfirmButton: false, input: 'none',
+                      text: 'Se removio de manera correcta.'
+                    })
+                    location.reload();
+                  } else {
+                    throw "Error en la llamada Ajax";
+                  }
+
+                })
+                .then(function (texto) {
+                  console.log(texto);
+                })
+                .catch(function (err) {
+                  console.log(err);
+                });
       }
 
     </script>
