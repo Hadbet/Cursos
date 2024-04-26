@@ -372,7 +372,7 @@
               var nameCell = $("<td></td>").text(data.data[i].Nombre); // asume que tienes un campo id en tus datos
               var horarioCell = $("<td></td>").text(data.data[i].Horario); // asume que tienes un campo id en tus datos
               var fechaCell = $("<td></td>").text(data.data[i].Fecha);
-              var valorarCell = $("<td></td>").html(`<button type="button" class="btn mb-2 btn-danger" onclick="eliminarAsistenciaCurso('${data.data[i].IdBitacoraCurso}')" data-toggle="modal" data-target=".modal-full">Eliminar</button>`);
+              var valorarCell = $("<td></td>").html(`<button type="button" class="btn mb-2 btn-danger" onclick="eliminarAsistenciaCurso('${data.data[i].IdBitacoraCurso}')" >Eliminar</button>`);
 
 
               // agrega las celdas a la fila y la fila a la tabla
