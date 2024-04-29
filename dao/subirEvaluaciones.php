@@ -44,12 +44,10 @@ if (!empty($_FILES['archivos']['name'][0])) {
 $checkRegistro = "UPDATE `BitacoraCursos` SET `EstatusAsistencia`='2',`Evaluacion`='$calificicacionUsuario' WHERE `IdBitacoraCurso` = '$idUsuario'";
 $rsCheck = mysqli_query($conex, $checkRegistro);
 
-// Si la consulta devuelve algún resultado, no realiza la inserción
-if (mysqli_num_rows($rsCheck) > 0) {
-    //echo "El instructor ya existe en la base de datos.";
-} else {
-
-}
-
 mysqli_close($conex);
+
+echo '<script type="text/javascript">
+           window.location = "form_cursos_admin_calificacion.html"
+      </script>';
+
 ?>
