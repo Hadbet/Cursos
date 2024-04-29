@@ -337,11 +337,7 @@
 
     cargarCursosSelect();
 
-    var identificador = getParameterByName("curso");
-    var identificadorDos = getParameterByName("fecha");
-    var identificadorTres = getParameterByName("horario");
 
-    document.getElementById("cbCurso").value = identificador+", "+identificadorDos+", "+identificadorTres;
 
     function cargarCursosSelect() {
         $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaCursoActuales.php', function (data) {
@@ -471,6 +467,12 @@
         return arrTerminos[0];
     }
 
+
+    var identificador = getParameterByName("curso");
+    var identificadorDos = getParameterByName("fecha");
+    var identificadorTres = getParameterByName("horario");
+
+    document.getElementById("cbCurso").value = identificador+", "+identificadorDos+", "+identificadorTres;
 
 </script>
 </body>
