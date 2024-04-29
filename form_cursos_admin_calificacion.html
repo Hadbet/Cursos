@@ -353,7 +353,10 @@
             var identificadorDos = getParameterByName("fecha");
             var identificadorTres = getParameterByName("horario");
 
-            document.getElementById("cbCurso").value = identificador+", "+identificadorDos+", "+identificadorTres;
+            if (identificador!=null && identificadorDos !=null && identificadorTres != null){
+                document.getElementById("cbCurso").value = identificador+", "+identificadorDos+", "+identificadorTres;
+                cargarHorarios();
+            }
 
 
         });
