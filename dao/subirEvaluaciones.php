@@ -53,8 +53,9 @@ if (mysqli_num_rows($rsCheck) > 0) {
 
 mysqli_close($conex);
 
-header('Location: form_cursos_admin_calificacion.html');
-exit;
+echo '<script type="text/javascript">
+           window.location = "form_cursos_admin_calificacion.html"
+      </script>';
 
 
 ?>
