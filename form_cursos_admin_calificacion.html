@@ -440,10 +440,11 @@
             document.getElementById("varyModalLabel").innerHTML = nombre;
 
             var table = $("#tablaDocumentos"); // selecciona la tabla
+            table.empty();
             for (var i = 0; i < data.data.length; i++) {
 
                 var newRow = $("<tr></tr>");
-                var idCell = $("<td></td>").html("<a target='_blank' href='"+data.data[i].Ruta.replace('../', '')+"'>"+data.data[i].NombreArchivo+"</a>");
+                var idCell = $("<td></td>").html("<a target='_blank' href='evaluaciones/"+data.data[i].NombreArchivo+"'>"+data.data[i].NombreArchivo+"</a>");
                 newRow.append(idCell);
                 table.append(newRow);
             }
