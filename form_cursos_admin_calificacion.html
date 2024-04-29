@@ -348,6 +348,14 @@
                 createOption.value = data.data[i].NombreCurso + ", " + data.data[i].Fecha + ", " + data.data[i].Horario;
                 select.appendChild(createOption);
             }
+
+            var identificador = getParameterByName("curso");
+            var identificadorDos = getParameterByName("fecha");
+            var identificadorTres = getParameterByName("horario");
+
+            document.getElementById("cbCurso").value = identificador+", "+identificadorDos+", "+identificadorTres;
+
+
         });
     }
 
@@ -468,11 +476,6 @@
     }
 
 
-    var identificador = getParameterByName("curso");
-    var identificadorDos = getParameterByName("fecha");
-    var identificadorTres = getParameterByName("horario");
-
-    document.getElementById("cbCurso").value = identificador+", "+identificadorDos+", "+identificadorTres;
 
 </script>
 </body>
