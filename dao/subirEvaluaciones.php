@@ -29,13 +29,13 @@ if (!empty($_FILES['archivos']['name'][0])) {
         if (move_uploaded_file($_FILES["archivos"]["tmp_name"][$i], $target_file)) {
             $insertDocumento= "INSERT INTO `Documentos_Operativos`(`Nomina`, `Nombre`, `IdCurso`,`NombreArchivo`) VALUES ('$nominaUsuario','$nombreUsuario','$horarioUsuario','" . basename($_FILES["archivos"]["name"][$i]) . "')";
             $rsinsertDocu=mysqli_query($conex,$insertDocumento);
-            //echo "El archivo ". basename( $_FILES["archivos"]["name"][$i]). " ha sido subido.";
+            echo "El archivo ". basename( $_FILES["archivos"]["name"][$i]). " ha sido subido.";
         } else {
-            //echo "Lo siento, hubo un error subiendo el archivo ". basename( $_FILES["archivos"]["name"][$i]). ".";
+            echo "Lo siento, hubo un error subiendo el archivo ". basename( $_FILES["archivos"]["name"][$i]). ".";
         }
     }
 } else {
-    //echo "No se subieron archivos.";
+    echo "No se subieron archivos.";
 }
 
 
@@ -46,16 +46,11 @@ $rsCheck = mysqli_query($conex, $checkRegistro);
 
 // Si la consulta devuelve algún resultado, no realiza la inserción
 if (mysqli_num_rows($rsCheck) > 0) {
-    //echo "El instructor ya existe en la base de datos.";
+    echo "El instructor ya existe en la base de datos.";
 } else {
 
 }
 
 mysqli_close($conex);
-
-echo '<script type="text/javascript">
-           window.location = "form_cursos_admin_calificacion.html"
-      </script>';
-
 
 ?>
