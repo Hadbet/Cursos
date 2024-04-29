@@ -457,7 +457,7 @@
             table.empty();
             for (var i = 0; i < data.data.length; i++) {
                 var newRow = $("<tr></tr>");
-                var idCell = $("<td></td>").html("<a target='_blank' href='evaluaciones/"+nomina+"/"+data.data[i].NombreArchivo+"'>"+data.data[i].NombreArchivo+"</a>");
+                var idCell = $("<td></td>").html("<a target='_blank' href='evaluaciones/"+nomina+"/"+data.data[i].NombreArchivo+"'><img src='assets/images/pdf.png'></a>");
                 newRow.append(idCell);
                 table.append(newRow);
             }
