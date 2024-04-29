@@ -276,6 +276,42 @@
     </div>
 </div>
 
+
+<div class="modal fade" id="varyModal" tabindex="-1" role="dialog" aria-labelledby="varyModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="varyModalLabel">New message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Calificacion:</label>
+                        <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="form-group">
+                        <table id="tablaDocumentos" class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>Nombre</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="js/jquery.min.js"></script>
 <script src="js/popper.min.js"></script>
 <script src="js/moment.min.js"></script>
@@ -360,7 +396,7 @@
                     var nominaCellE = $("<td></td>").text(data.data[i].Nomina);
                     var horarioCellE = $("<td></td>").text(data.data[i].Horario); // asume que tienes un campo id en tus datos
                     var fechaCellE = $("<td></td>").text(data.data[i].Fecha);
-                    var valorarCellE = $("<td></td>").html(`<button type="button" class="btn mb-2 btn-success text-white" onclick="evaluarCurso('${data.data[i].IdBitacoraCurso}','${data.data[i].Nombre}','${data.data[i].Nomina}','${data.data[i].Curso}')" data-toggle="modal" data-target=".modal-right">Ver</button>`);
+                    var valorarCellE = $("<td></td>").html(`<button type="button" class="btn mb-2 btn-success text-white" onclick="cargarDetalles('${data.data[i].Nomina}','${data.data[i].Nombre}','${data.data[i].Evaluacion}')" data-toggle="modal" data-target="#varyModal" data-whatever="@mdo">Ver</button>`);
 
 
                     // agrega las celdas a la fila y la fila a la tabla
@@ -396,6 +432,22 @@
         document.getElementById("txtCursoUsuarioAux").value = Curso;
         document.getElementById("txtIdUsuarioAux").value = IdBitacoraCurso;
         document.getElementById("txtHorarioUsuarioAux").value = document.getElementById("cbCurso").value;
+    }
+
+    function cargarDetalles(nomina,nombre,evaluacion) {
+        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaUsuarioDocumentos.php?nomina='+nomina+'&horario='+ document.getElementById("cbCurso").value, function (data) {
+            document.getElementById("recipient-name").value = evaluacion;
+            document.getElementById("varyModalLabel").innerHTML = nombre;
+
+            var table = $("#tablaDocumentos"); // selecciona la tabla
+            for (var i = 0; i < data.data.length; i++) {
+
+                var newRow = $("<tr></tr>");
+                var idCell = $("<td></td>").html("<a target='_blank' href='"+data.data[i].Ruta.replace('../', '')+"'>"+data.data[i].NombreArchivo+"</a>");
+                newRow.append(idCell);
+                table.append(newRow);
+            }
+        });
     }
 
 
