@@ -46,8 +46,14 @@ $rsCheck = mysqli_query($conex, $checkRegistro);
 
 mysqli_close($conex);
 
+$parts = explode(", ", $horarioUsuario);
+
+echo $parts[0]; // SAPITO
+echo $parts[1]; // 2024-04-29
+echo $parts[2]; // 17:32 - 19:32
+
 echo '<script type="text/javascript">
-           window.location = "../form_cursos_admin_calificacion.html?curso='.$horarioUsuario.'"
+           window.location = "../form_cursos_admin_calificacion.html?curso='.$parts[0].'&fecha='.$parts[1].'&horario='.$parts[2].'"
       </script>';
 
 ?>
