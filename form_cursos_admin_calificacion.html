@@ -169,7 +169,7 @@
                 <div class="col-12">
                     <div class="card shadow mb-4">
                         <div class="card-body">
-                            <h5 class="card-title">Curso</h5>
+                            <h5 class="card-title" id="tituloTabla">Curso</h5>
                             <table id="tablaEvaluacion" class="table table-hover">
                                 <thead>
                                 <tr>
@@ -199,35 +199,48 @@
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="defaultModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="defaultModalLabel">Subir evaluacion</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <p>Tipo :<span id="txtTipoL"></span></p>
-                <p>Area :<span id="txtAreaL"></span></p>
+                <p>Nomina :<span id="txtNominaL"></span></p>
+                <p>Nombre :<span id="txtNombreL"></span></p>
                 <br>
-                <p>DOCUMENTACION</p>
-                <table id="tablaArchivos" class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th>Nombre</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-                <form action="dao/subirMasArchivos.php" method="post" enctype="multipart/form-data">
-                    <input style="display: none" type="text" name="nombreInstructor" class="form-control drgpicker"
-                           id="txtNombreInstrictorAux"
+                <form action="dao/subirEvaluaciones.php" method="post" enctype="multipart/form-data">
+
+                    <input style="display: none" type="text" name="nombreUsuario" class="form-control drgpicker"
+                           id="txtNombreUsuarioAux"
                            value="" aria-describedby="button-addon2">
+
+                    <input style="display: none" type="text" name="nominaUsuario" class="form-control drgpicker"
+                           id="txtNominaUsuarioAux"
+                           value="" aria-describedby="button-addon2">
+
+                    <input style="display: none" type="text" name="cursoUsuario" class="form-control drgpicker"
+                           id="txtCursoUsuarioAux"
+                           value="" aria-describedby="button-addon2">
+
+                    <input style="display: none" type="text" name="idUsuario" class="form-control drgpicker"
+                           id="txtIdUsuarioAux"
+                           value="" aria-describedby="button-addon2">
+
+                    <input style="display: none" type="text" name="horarioUsuario" class="form-control drgpicker"
+                           id="txtHorarioUsuarioAux"
+                           value="" aria-describedby="button-addon2">
+
+                    <label for="txtCalificacionUsuarioAux"> Ingrese la calificacion del usuario</label>
+                    <input style="margin-top: 5px; margin-bottom: 10px" type="number" name="calificacionUsuario" class="form-control drgpicker"
+                           id="txtCalificacionUsuarioAux"
+                           value="" aria-describedby="button-addon2">
+
                     <div class="form-group">
-                        <label for="archivos">Subir archivos:</label>
+                        <label for="archivosNuevos">Subir documento:</label>
                         <input type="file" class="form-control-file" id="archivosNuevos" name="archivos[]" multiple>
                     </div>
                     <!-- Botón para enviar el formulario -->
-                    <button type="submit" id="btnEnviarNuevos" class="btn btn-primary">Enviar</button>
+                    <button type="submit" id="btnEnviarNuevos" class="btn btn-primary">Subir</button>
                 </form>
             </div>
             <div class="modal-footer">
@@ -283,9 +296,11 @@
         var HorarioCurso = horarioParts[2].trim();
 
         $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaCursoEvaluaciones.php?curso=' + Curso + '&fecha=' + Fecha + '&horario=' + HorarioCurso, function (data) {
-            var table = $("#tablaEvaluacion"); // selecciona la tabla
+            var table = $("#tablaEvaluacion");
 
             table.empty();
+
+            document.getElementById("tituloTabla").innerHTML = data.data[0].Curso;
 
             for (var i = 0; i < data.data.length; i++) {
                 var newRow = $("<tr></tr>");
@@ -294,7 +309,7 @@
                 var nominaCell = $("<td></td>").text(data.data[i].Nomina);
                 var horarioCell = $("<td></td>").text(data.data[i].Horario); // asume que tienes un campo id en tus datos
                 var fechaCell = $("<td></td>").text(data.data[i].Fecha);
-                var valorarCell = $("<td></td>").html(`<button type="button" class="btn mb-2 btn-danger" onclick="eliminarAsistenciaCurso('${data.data[i].IdBitacoraCurso}')" >Eliminar</button>`);
+                var valorarCell = $("<td></td>").html(`<button type="button" class="btn mb-2 btn-success text-white" onclick="evaluarCurso('${data.data[i].IdBitacoraCurso}','${data.data[i].Nombre}','${data.data[i].Nomina}','${data.data[i].Curso}')" data-toggle="modal" data-target=".modal-right">Evaluar</button>`);
 
 
                 // agrega las celdas a la fila y la fila a la tabla
@@ -308,6 +323,26 @@
             }
         });
     }
+
+    var globalID, globalNombre, globalNomina, globalCurso;
+
+    function evaluarCurso(IdBitacoraCurso, Nombre, Nomina, Curso) {
+
+        globalID = IdBitacoraCurso;
+        globalNombre = Nombre;
+        globalNomina = Nomina;
+        globalCurso = Curso;
+        document.getElementById("txtNombreL").innerHTML = Nombre;
+        document.getElementById("txtNominaL").innerHTML = Nomina;
+
+
+        document.getElementById("txtNombreUsuarioAux").value = Nombre;
+        document.getElementById("txtNominaUsuarioAux").value = Nomina;
+        document.getElementById("txtCursoUsuarioAux").value = Curso;
+        document.getElementById("txtIdUsuarioAux").value = IdBitacoraCurso;
+        document.getElementById("txtHorarioUsuarioAux").value = document.getElementById("cbCurso").value;
+    }
+
 
 </script>
 </body>
