@@ -52,5 +52,5 @@ if (mysqli_num_rows($rsCheck) > 0) {
 }
 
 mysqli_close($conex);
-
+echo "<META HTTP-EQUIV='REFRESH' CONTENT='1; URL=form_cursos_admin_calificacion.html'>";
 ?>
