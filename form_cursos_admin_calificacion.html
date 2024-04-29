@@ -190,6 +190,32 @@
             </div> <!-- .row -->
         </div> <!-- .container-fluid -->
 
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title" id="">Evaluados</h5>
+                            <table id="tablaEvaluacionListo" class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nomina</th>
+                                    <th>Nombre</th>
+                                    <th>Fecha</th>
+                                    <th>Horario</th>
+                                    <th>Evaluar</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div> <!-- / .card -->
+                </div> <!-- .col-12 -->
+            </div> <!-- .row -->
+        </div> <!-- .container-fluid -->
+
 
     </main> <!-- main -->
 </div> <!-- .wrapper -->
@@ -297,29 +323,59 @@
 
         $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaCursoEvaluaciones.php?curso=' + Curso + '&fecha=' + Fecha + '&horario=' + HorarioCurso, function (data) {
             var table = $("#tablaEvaluacion");
+            var tableEvaluados = $("#tablaEvaluacionListo");
 
             table.empty();
+            tableEvaluados.empty();
 
             document.getElementById("tituloTabla").innerHTML = data.data[0].Curso;
 
             for (var i = 0; i < data.data.length; i++) {
-                var newRow = $("<tr></tr>");
-                var idACell = $("<td></td>").text(data.data[i].IdBitacoraCurso);
-                var nameCell = $("<td></td>").text(data.data[i].Nombre);
-                var nominaCell = $("<td></td>").text(data.data[i].Nomina);
-                var horarioCell = $("<td></td>").text(data.data[i].Horario); // asume que tienes un campo id en tus datos
-                var fechaCell = $("<td></td>").text(data.data[i].Fecha);
-                var valorarCell = $("<td></td>").html(`<button type="button" class="btn mb-2 btn-success text-white" onclick="evaluarCurso('${data.data[i].IdBitacoraCurso}','${data.data[i].Nombre}','${data.data[i].Nomina}','${data.data[i].Curso}')" data-toggle="modal" data-target=".modal-right">Evaluar</button>`);
+
+                if (data.data[i].Evaluacion == '0'){
+
+                    var newRow = $("<tr></tr>");
+                    var idACell = $("<td></td>").text(data.data[i].IdBitacoraCurso);
+                    var nameCell = $("<td></td>").text(data.data[i].Nombre);
+                    var nominaCell = $("<td></td>").text(data.data[i].Nomina);
+                    var horarioCell = $("<td></td>").text(data.data[i].Horario); // asume que tienes un campo id en tus datos
+                    var fechaCell = $("<td></td>").text(data.data[i].Fecha);
+                    var valorarCell = $("<td></td>").html(`<button type="button" class="btn mb-2 btn-success text-white" onclick="evaluarCurso('${data.data[i].IdBitacoraCurso}','${data.data[i].Nombre}','${data.data[i].Nomina}','${data.data[i].Curso}')" data-toggle="modal" data-target=".modal-right">Evaluar</button>`);
 
 
-                // agrega las celdas a la fila y la fila a la tabla
-                newRow.append(idACell);
-                newRow.append(nominaCell);
-                newRow.append(nameCell);
-                newRow.append(fechaCell);
-                newRow.append(horarioCell);
-                newRow.append(valorarCell);
-                table.append(newRow);
+                    // agrega las celdas a la fila y la fila a la tabla
+                    newRow.append(idACell);
+                    newRow.append(nominaCell);
+                    newRow.append(nameCell);
+                    newRow.append(fechaCell);
+                    newRow.append(horarioCell);
+                    newRow.append(valorarCell);
+                    table.append(newRow);
+
+                }else{
+
+                    var newRowE = $("<tr></tr>");
+                    var idACellE = $("<td></td>").text(data.data[i].IdBitacoraCurso);
+                    var nameCellE = $("<td></td>").text(data.data[i].Nombre);
+                    var nominaCellE = $("<td></td>").text(data.data[i].Nomina);
+                    var horarioCellE = $("<td></td>").text(data.data[i].Horario); // asume que tienes un campo id en tus datos
+                    var fechaCellE = $("<td></td>").text(data.data[i].Fecha);
+                    var valorarCellE = $("<td></td>").html(`<button type="button" class="btn mb-2 btn-success text-white" onclick="evaluarCurso('${data.data[i].IdBitacoraCurso}','${data.data[i].Nombre}','${data.data[i].Nomina}','${data.data[i].Curso}')" data-toggle="modal" data-target=".modal-right">Ver</button>`);
+
+
+                    // agrega las celdas a la fila y la fila a la tabla
+                    newRowE.append(idACellE);
+                    newRowE.append(nameCellE);
+                    newRowE.append(nominaCellE);
+                    newRowE.append(horarioCellE);
+                    newRowE.append(fechaCellE);
+                    newRowE.append(valorarCellE);
+                    tableEvaluados.append(newRow);
+
+
+                }
+
+
             }
         });
     }
