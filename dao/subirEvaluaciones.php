@@ -47,7 +47,7 @@ $rsCheck = mysqli_query($conex, $checkRegistro);
 mysqli_close($conex);
 
 echo '<script type="text/javascript">
-           window.location = "../form_cursos_admin_calificacion.html"
+           window.location = "../form_cursos_admin_calificacion.html?curso='.$horarioUsuario.'"
       </script>';
 
 ?>

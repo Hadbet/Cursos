@@ -337,6 +337,10 @@
 
     cargarCursosSelect();
 
+    var identificador = getParameterByName("curso");
+
+    document.getElementById("cbCurso").value = identificador;
+
     function cargarCursosSelect() {
         $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaCursoActuales.php', function (data) {
             var select = document.getElementById("cbCurso");
@@ -442,13 +446,27 @@
             var table = $("#tablaDocumentos"); // selecciona la tabla
             table.empty();
             for (var i = 0; i < data.data.length; i++) {
-
                 var newRow = $("<tr></tr>");
                 var idCell = $("<td></td>").html("<a target='_blank' href='evaluaciones/"+nomina+"/"+data.data[i].NombreArchivo+"'>"+data.data[i].NombreArchivo+"</a>");
                 newRow.append(idCell);
                 table.append(newRow);
             }
         });
+    }
+
+
+
+    function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+
+
+        var cadena = results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+
+        var arrTerminos = cadena.split(',');
+
+        return arrTerminos[0];
     }
 
 
