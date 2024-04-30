@@ -16,6 +16,7 @@ function verificacionUsuario($user, $contra){
 
     if(mysqli_num_rows($rsconsPro) == 1){
         mysqli_close($conexion);
+        mysqli_close($conexionAux);
         return 1;
     }
     else{
@@ -31,10 +32,12 @@ function verificacionUsuario($user, $contra){
 
         if($insert){
             mysqli_close($conexion);
+            mysqli_close($conexionAux);
             return 1;
         }
         else{
             mysqli_close($conexion);
+            mysqli_close($conexionAux);
             return 0;
         }
     }
