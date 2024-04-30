@@ -1,6 +1,6 @@
 <?php
 
-//require 'consultaEmpleado.php';
+require 'consultaEmpleado.php';
 
 session_start();
 $Nomina = $_POST['nomina'];

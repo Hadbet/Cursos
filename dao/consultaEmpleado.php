@@ -8,7 +8,7 @@ function verificacionUsuario($user, $contra){
     $con = new LocalConector();
     $conexion=$con->conectar();
 
-    $conAux = new LocalConector();
+    $conAux = new LocalConectorAux();
     $conexionAux=$conAux->conectarAux();
 
     $consP="SELECT * FROM `Usuarios_Cursos` WHERE `IdUsuario` = '$user' and `Password` = '$contra'";
