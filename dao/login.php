@@ -10,7 +10,7 @@ echo $Nomina;
 
 $_SESSION['nomina'] = $Nomina;
 $_SESSION['password'] = $Password;
-/*
+$Nomina = str_pad($Nomina, 8, "0", STR_PAD_LEFT);
 $statusLogin = verificacionUsuario($Nomina, $Password);
 
 if ($statusLogin == 1) {
@@ -21,6 +21,4 @@ if ($statusLogin == 1) {
     echo "<script>alert('Acceso Denegado')</script>";
     echo "<META HTTP-EQUIV='REFRESH' CONTENT='1; URL=../index.html'>";
 }
-
-*/
 ?>
