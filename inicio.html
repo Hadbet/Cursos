@@ -158,35 +158,27 @@
                   <div class="card-body">
                     <div class="row mt-1 align-items-center">
                       <div class="col-12 col-lg-4 text-left pl-4">
-                        <p class="mb-1 small text-muted">Balance</p>
+                        <p class="mb-1 small text-muted">Usuarios actuales</p>
                         <span class="h3">$12,600</span>
                         <span class="small text-muted">+20%</span>
                         <span class="fe fe-arrow-up text-success fe-12"></span>
                         <p class="text-muted"> Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui </p>
                       </div>
                       <div class="col-6 col-lg-2 text-center py-4">
-                        <p class="mb-1 small text-muted">Today</p>
-                        <span class="h3">$2600</span><br />
-                        <span class="small text-muted">+20%</span>
-                        <span class="fe fe-arrow-up text-success fe-12"></span>
+                        <p class="mb-1 small text-muted">Aprobados</p>
+                        <span class="h3" id="txtAprobados"></span><br />
                       </div>
                       <div class="col-6 col-lg-2 text-center py-4 mb-2">
-                        <p class="mb-1 small text-muted">Goal Value</p>
-                        <span class="h3">$260</span><br />
-                        <span class="small text-muted">+6%</span>
-                        <span class="fe fe-arrow-up text-success fe-12"></span>
+                        <p class="mb-1 small text-muted">Reprobados</p>
+                        <span class="h3" id="txtReprobados">$</span><br />
                       </div>
                       <div class="col-6 col-lg-2 text-center py-4">
-                        <p class="mb-1 small text-muted">Completions</p>
-                        <span class="h3">26</span><br />
-                        <span class="small text-muted">+20%</span>
-                        <span class="fe fe-arrow-up text-success fe-12"></span>
+                        <p class="mb-1 small text-muted">Asistencia</p>
+                        <span class="h3" id="txtAsistencia"></span><br />
                       </div>
                       <div class="col-6 col-lg-2 text-center py-4">
-                        <p class="mb-1 small text-muted">Conversion</p>
-                        <span class="h3">6%</span><br />
-                        <span class="small text-muted">-2%</span>
-                        <span class="fe fe-arrow-down text-danger fe-12"></span>
+                        <p class="mb-1 small text-muted">Inasistencia</p>
+                        <span class="h3" id="txtInasistencia"></span><br />
                       </div>
                     </div>
                     <div class="map-box">
@@ -652,7 +644,7 @@
     <script src="js/apps.js"></script>
 
   <script>
-
+    asistencias();
     function asistencias() {
       $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaAsistencia.php', function (data) {
 
@@ -673,7 +665,7 @@
           if (data.data[i].Mes==='11'){aNov = data.data[i].Asistencias;}
           if (data.data[i].Mes==='12'){aDic = data.data[i].Asistencias;}
         }
-        inasistencias()
+        inasistencias(aEne,aFeb,aMar,aAbril,aMay,aJun,aJul,aAgo,aSep,aOct,aNov,aDic)
       });
     }
 
@@ -697,7 +689,7 @@
           if (data.data[i].Mes==='11'){iNov = data.data[i].Inasistencias;}
           if (data.data[i].Mes==='12'){iDic = data.data[i].Inasistencias;}
         }
-        grafica();
+        grafica(aEne,aFeb,aMar,aAbril,aMay,aJun,aJul,aAgo,aSep,aOct,aNov,aDic,iEne,iFeb,iMar,iAbril,iMay,iJun,iJul,iAgo,iSep,iOct,iNov,iDic);
       });
     }
 
@@ -734,7 +726,7 @@
         },
         yaxis: {
           title: {
-            text: '$ (thousands)'
+            text: 'Personas'
           }
         },
         fill: {
@@ -743,7 +735,7 @@
         tooltip: {
           y: {
             formatter: function (val) {
-              return "$ " + val + " thousands"
+              return " " + val + " personas"
             }
           }
         }
@@ -751,6 +743,19 @@
 
       var chart = new ApexCharts(document.querySelector("#areaChartDos"), options);
       chart.render();
+    }
+    asistencias();
+    function asistencias() {
+      $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaContadores.php', function (data) {
+
+        for (var i = 0; i < data.data.length; i++) {
+          document.getElementById("txtAsistencia").innerHTML = data.data[i].Asistencias;
+          document.getElementById("txtInasistencia").innerHTML = data.data[i].Inasistencias;
+          document.getElementById("txtReprobados").innerHTML = data.data[i].Reprovados;
+          document.getElementById("txtAprobados").innerHTML = data.data[i].Aprovados;
+
+        }
+      });
     }
 
 
