@@ -19,15 +19,15 @@ function verificacionUsuario($Nomina, $contra){
         return 1;
     }
     else{
-        $consP="SELECT * FROM `Empleados` WHERE `IdUser` = '$Nomina' and `IdTag` = '$contra'";
-        $consultaEmpleados=mysqli_query($conexionAux,$consP);
+        $consPe="SELECT * FROM `Empleados` WHERE `IdUser` = '$Nomina' and `IdTag` = '$contra'";
+        $consultaEmpleados=mysqli_query($conexionAux,$consPe);
 
         $row = mysqli_fetch_assoc($consultaEmpleados);
         $Nombre = $row['NomUser'];
         $Area = $row['NombreCC'];
 
-        $consP="INSERT INTO `Usuarios_Cursos`(`IdUsuario`, `Password`, `Nombre`,`Area`) VALUES ('$Nomina','$contra','$Nombre','$Area')";
-        $insert=mysqli_query($conexion,$consP);
+        $consI="INSERT INTO `Usuarios_Cursos`(`IdUsuario`, `Password`, `Nombre`,`Area`) VALUES ('$Nomina','$contra','$Nombre','$Area')";
+        $insert=mysqli_query($conexion,$consI);
 
         if($insert){
             mysqli_close($conexion);
