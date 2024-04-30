@@ -27,7 +27,7 @@ if (strlen($Nomina) == 6) {
 if (strlen($Nomina) == 7) {
     $Nomina = "0" . $Nomina;
 }
-
+/*
 $statusLogin = verificacionUsuario($Nomina, $Password);
 
 if ($statusLogin == 1) {
@@ -39,5 +39,5 @@ if ($statusLogin == 1) {
     echo "<META HTTP-EQUIV='REFRESH' CONTENT='1; URL=../index.html'>";
 }
 
-
+*/
 ?>
