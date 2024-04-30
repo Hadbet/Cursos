@@ -37,16 +37,20 @@
 <div class="container">
     <div class="forms-container">
         <div class="signin-signup">
-            <form id="FormSolicitante" action="dao/login.php"  method="post" class="sign-in-form">
+            <form id="FormSolicitante" action="dao/consultaEmpleado.php"  method="post" class="sign-in-form">
                 <h2 class="title">Iniciar sesión</h2>
+
+                <p class="social-text" style="color: lightslategrey">Si aún no tienes cuenta solamente ingresa con tu número de nómina y tu contraseña es tu Tag
+                    una vez que entres podrás cambiar tu contraseña o dejarla como esta</p>
+
                 <div id=aviso></div>
                 <div id='correoAux' class="input-field">
-                    <i class="fas fa-envelope"></i>
-                    <input type="email" placeholder="Correo" name="email" id="Correo"  required />
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="Nómina" name="nomina" id="Correo"  required />
                 </div>
                 <div class="input-field">
-                    <i class="fas fa-user"></i>
-                    <input type="text" placeholder="Nómina" name="nomina" id="Nomina" required />
+                    <i class="fas fa-facebook"></i>
+                    <input type="password" placeholder="Contraseña" name="password" id="Nomina" required />
                 </div>
                 <input type="submit" name="btnSolicitante" value="Iniciar Sesión" class="btn solid" />
                 <p class="social-text">Sigue a Grammer en sus diferentes plataformas</p>
@@ -110,9 +114,9 @@
         </div>
         <div class="panel right-panel">
             <div class="content">
-                <h3>¿Quieres solicitar bono?</h3>
+                <h3>¿Quieres inscribirte a un curso?</h3>
                 <p>
-                    Entra aquí e ingresa solo tu correo y nómina para comenzar
+                    Entra aquí e ingresa solo tu nómina y correo para comenzar
                 </p>
                 <button class="btn transparent" id="sign-in-btn">
                     Entrar
