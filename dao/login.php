@@ -6,10 +6,6 @@ session_start();
 $Nomina = $_POST['nomina'];
 $Password = $_POST['password'];
 
-echo $Nomina;
-
-$_SESSION['nomina'] = $Nomina;
-$_SESSION['password'] = $Password;
 $Nomina = str_pad($Nomina, 8, "0", STR_PAD_LEFT);
 $statusLogin = verificacionUsuario($Nomina, $Password);
 
