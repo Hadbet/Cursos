@@ -3,7 +3,7 @@
 require 'consultaEmpleado.php';
 
 if(isset($_POST['btnSolicitante'])){
-    /*
+
         session_start();
         $Nomina = $_POST['nomina'];
         $Password=$_POST['password'];
@@ -25,7 +25,7 @@ if(isset($_POST['btnSolicitante'])){
         }else if($statusLogin == 0){
             echo "<script>alert('Acceso Denegado')</script>";
             echo "<META HTTP-EQUIV='REFRESH' CONTENT='1; URL=../index.html'>";
-        }*/
+        }
 
 }
 
