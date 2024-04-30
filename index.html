@@ -140,25 +140,6 @@
         container.classList.remove("sign-up-mode");
     });
 
-
-    const formSolicitante = document.getElementById('FormSolicitante');
-    const correoInput = document.getElementById('Correo');
-
-    formSolicitante.addEventListener('submit', function(event) {
-        const correo = correoInput.value.trim();
-        const dominioPermitido = '@grammer.com';
-
-        if (!correo.endsWith(dominioPermitido)) {
-            event.preventDefault(); // Evita el envío del formulario
-            document.getElementById('aviso').innerHTML="<label style='color:red;'>Esta mal el correo debe pertenecer a dominio de '@grammer.com'</label>";
-
-            document.getElementById('correoAux').classList.add('shake-animation');
-
-            setTimeout(function() {
-                document.getElementById('correoAux').classList.remove('shake-animation');
-            }, 1000);
-        }
-    });
 </script>
 
 </body>
