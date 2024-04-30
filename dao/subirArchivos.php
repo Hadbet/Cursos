@@ -57,5 +57,9 @@ if (mysqli_num_rows($rsCheck) > 0) {
 
 mysqli_close($conex);
 
+echo '<script type="text/javascript">
+           window.location = "../form_cursos_admin.html"
+      </script>';
+
 
 ?>

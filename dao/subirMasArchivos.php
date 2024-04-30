@@ -34,6 +34,8 @@ if (!empty($_FILES['archivos']['name'][0])) {
 }
 
 mysqli_close($conex);
-
+echo '<script type="text/javascript">
+           window.location = "../form_cursos_admin.html"
+      </script>';
 
 ?>
