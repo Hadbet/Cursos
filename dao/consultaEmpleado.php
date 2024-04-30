@@ -15,13 +15,14 @@ function verificacionUsuario($user, $contra){
     $rsconsPro=mysqli_query($conexion,$consP);
     mysqli_close($conexion);
     mysqli_close($conexionAux);
-    return $consP;
-/*
+
     if(mysqli_num_rows($rsconsPro) == 1){
         mysqli_close($conexion);
         mysqli_close($conexionAux);
         return 1;
     }
+    return 0;
+    /*
     else{
         $consPe="SELECT * FROM `Empleados` WHERE `IdUser` = '$user' and `IdTag` = '$contra'";
         $consultaEmpleados=mysqli_query($conexionAux,$consPe);
