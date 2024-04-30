@@ -3,7 +3,7 @@
 include_once('db/db_RH.php');
 include_once('db/db_Empleado_Aux.php');
 
-function verificacionUsuario($Nomina, $contra){
+function verificacionUsuario($user, $contra){
 
     $con = new LocalConector();
     $conexion=$con->conectar();
@@ -11,7 +11,7 @@ function verificacionUsuario($Nomina, $contra){
     $conAux = new LocalConector();
     $conexionAux=$conAux->conectarAux();
 
-    $consP="SELECT * FROM `Usuarios_Cursos` WHERE `IdUsuario` = '$Nomina' and `Password` = '$contra'";
+    $consP="SELECT * FROM `Usuarios_Cursos` WHERE `IdUsuario` = '$user' and `Password` = '$contra'";
     $rsconsPro=mysqli_query($conexion,$consP);
 
     if(mysqli_num_rows($rsconsPro) == 1){
@@ -19,14 +19,14 @@ function verificacionUsuario($Nomina, $contra){
         return 1;
     }
     else{
-        $consPe="SELECT * FROM `Empleados` WHERE `IdUser` = '$Nomina' and `IdTag` = '$contra'";
+        $consPe="SELECT * FROM `Empleados` WHERE `IdUser` = '$user' and `IdTag` = '$contra'";
         $consultaEmpleados=mysqli_query($conexionAux,$consPe);
 
         $row = mysqli_fetch_assoc($consultaEmpleados);
         $Nombre = $row['NomUser'];
         $Area = $row['NombreCC'];
 
-        $consI="INSERT INTO `Usuarios_Cursos`(`IdUsuario`, `Password`, `Nombre`,`Area`) VALUES ('$Nomina','$contra','$Nombre','$Area')";
+        $consI="INSERT INTO `Usuarios_Cursos`(`IdUsuario`, `Password`, `Nombre`,`Area`) VALUES ('$user','$contra','$Nombre','$Area')";
         $insert=mysqli_query($conexion,$consI);
 
         if($insert){
