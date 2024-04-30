@@ -1,15 +1,15 @@
 <?php
 
-require 'consultaEmpleado.php';
+//require 'consultaEmpleado.php';
 
-//session_start();
+session_start();
 $Nomina = $_POST['nomina'];
 $Password = $_POST['password'];
 
 echo $Nomina;
 
-//$_SESSION['nomina'] = $Nomina;
-//$_SESSION['password'] = $Password;
+$_SESSION['nomina'] = $Nomina;
+$_SESSION['password'] = $Password;
 /*
 $statusLogin = verificacionUsuario($Nomina, $Password);
 
