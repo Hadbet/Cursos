@@ -744,8 +744,8 @@
       var chart = new ApexCharts(document.querySelector("#areaChartDos"), options);
       chart.render();
     }
-    asistencias();
-    function asistencias() {
+    contadores();
+    function contadores() {
       $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaContadores.php', function (data) {
 
         for (var i = 0; i < data.data.length; i++) {
