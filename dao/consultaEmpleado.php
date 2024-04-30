@@ -13,8 +13,6 @@ function verificacionUsuario($user, $contra){
 
     $consP="SELECT * FROM `Usuarios_Cursos` WHERE `IdUsuario` = '$user' and `Password` = '$contra'";
     $rsconsPro=mysqli_query($conexion,$consP);
-    mysqli_close($conexion);
-    mysqli_close($conexionAux);
 
     if(mysqli_num_rows($rsconsPro) == 1){
         mysqli_close($conexion);
