@@ -6,8 +6,8 @@ class LocalConector{
     private $db = "u543707098_Parte";
     public $conexion;
     public function conectarAux(){
-        $con = mysqli_connect($this->host,$this->usuario,$this->clave,$this->db);
-        return $con;
+        $conAux = mysqli_connect($this->host,$this->usuario,$this->clave,$this->db);
+        return $conAux;
     }
 }
 ?>
