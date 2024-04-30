@@ -106,7 +106,7 @@ ob_start();
                         <td><a href=""><?php echo $Instructor;?></a></td>
                     </tr>
                     <tr>
-                        <th class="">Area: </th>
+                        <th class="">Área: </th>
                         <td><?php echo $Area;?></td>
                         <th class="">Firma del instructor: </th>
                         <td></td>
@@ -123,7 +123,7 @@ ob_start();
                 <table class="table table-striped" id="materialesResumenPDF">
                     <thead>
                     <tr>
-                        <th>Nomina</th>
+                        <th>Nómina</th>
                         <th>Nombre</th>
                         <th>Firma</th>
                         <th>Turno</th>
