@@ -15,7 +15,7 @@ if(isset($_POST['btnSolicitante'])){
     if (strlen($Nomina) == 5) { $Nomina = "000".$Nomina; }
     if (strlen($Nomina) == 6) { $Nomina = "00".$Nomina; }
     if (strlen($Nomina) == 7) { $Nomina = "0".$Nomina; }
-
+/*
     $statusLogin = verificacionUsuario($Nomina, $Password);
 
     if($statusLogin == 1){
@@ -26,7 +26,7 @@ if(isset($_POST['btnSolicitante'])){
         echo "<script>alert('Acceso Denegado')</script>";
         echo "<META HTTP-EQUIV='REFRESH' CONTENT='1; URL=../index.html'>";
     }
-
+*/
 }
 
 if(isset($_POST['btnSalir'])){
