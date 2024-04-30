@@ -20,10 +20,7 @@ function verificacionUsuario($user, $contra){
         mysqli_close($conexion);
         mysqli_close($conexionAux);
         return 1;
-    }
-    return 0;
-    /*
-    else{
+    }else{
         $consPe="SELECT * FROM `Empleados` WHERE `IdUser` = '$user' and `IdTag` = '$contra'";
         $consultaEmpleados=mysqli_query($conexionAux,$consPe);
 
@@ -44,7 +41,7 @@ function verificacionUsuario($user, $contra){
             mysqli_close($conexionAux);
             return 0;
         }
-    }*/
+    }
 }
 
 
