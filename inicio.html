@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -10,9 +10,10 @@
     <!-- Simple bar CSS -->
     <link rel="stylesheet" href="css/simplebar.css">
     <!-- Fonts CSS -->
-    <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet">
     <!-- Icons CSS -->
-    <link rel="shortcut icon" href="assets/images/iconoarriba.png" />
+    <link rel="shortcut icon" href="assets/images/iconoarriba.png"/>
     <link rel="stylesheet" href="css/feather.css">
     <link rel="stylesheet" href="css/select2.css">
     <link rel="stylesheet" href="css/dropzone.css">
@@ -25,741 +26,985 @@
     <!-- App CSS -->
     <link rel="stylesheet" href="css/app-light.css" id="lightTheme">
     <link rel="stylesheet" href="css/app-dark.css" id="darkTheme" disabled>
-  </head>
-  <body class="vertical  light  ">
-    <div class="wrapper">
-      <nav class="topnav navbar navbar-light">
+</head>
+<body class="vertical  light  ">
+<div class="wrapper">
+    <nav class="topnav navbar navbar-light">
         <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
-          <i class="fe fe-menu navbar-toggler-icon"></i>
+            <i class="fe fe-menu navbar-toggler-icon"></i>
         </button>
-      </nav>
-      <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
+    </nav>
+    <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
         <a href="#" class="btn collapseSidebar toggle-btn d-lg-none text-muted ml-2 mt-3" data-toggle="toggle">
-          <i class="fe fe-x"><span class="sr-only"></span></i>
+            <i class="fe fe-x"><span class="sr-only"></span></i>
         </a>
         <nav class="vertnav navbar navbar-light">
-          <!-- nav bar -->
-          <div class="w-100 mb-4 d-flex">
-            <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="./index.html">
-              <img src="assets/images/Grammer_Logo.ico" style="width: 30%">
-            </a>
-          </div>
-          <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-              <a href="#dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-home fe-16"></i>
-                <span class="ml-3 item-text">Dashboards</span><span class="sr-only">(current)</span>
-              </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="dashboard">
-                <li class="nav-item active">
-                  <a class="nav-link pl-3" href="./index.html"><span class="ml-1 item-text">Ausentismos</span></a>
+            <!-- nav bar -->
+            <div class="w-100 mb-4 d-flex">
+                <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="./index.html">
+                    <img src="assets/images/Grammer_Logo.ico" style="width: 30%">
+                </a>
+            </div>
+            <ul class="navbar-nav flex-fill w-100 mb-2">
+                <li class="nav-item dropdown">
+                    <a href="#dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                        <i class="fe fe-home fe-16"></i>
+                        <span class="ml-3 item-text">Dashboards</span><span class="sr-only">(current)</span>
+                    </a>
+                    <ul class="collapse list-unstyled pl-4 w-100" id="dashboard">
+                        <li class="nav-item active">
+                            <a class="nav-link pl-3" href="./index.html"><span class="ml-1 item-text">Ausentismos</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link pl-3" href="./dashboard-analytics.html"><span class="ml-1 item-text">Cursos</span></a>
+                        </li>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="./dashboard-analytics.html"><span class="ml-1 item-text">Cursos</span></a>
+            </ul>
+            <p class="text-muted nav-heading mt-4 mb-1">
+                <span>Formularios</span>
+            </p>
+            <ul class="navbar-nav flex-fill w-100 mb-2">
+                <li class="nav-item dropdown">
+                    <a href="#forms" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                        <i class="fe fe-credit-card fe-16"></i>
+                        <span class="ml-3 item-text">Cursos</span>
+                    </a>
+                    <ul class="collapse list-unstyled pl-4 w-100" id="forms">
+                        <li class="nav-item">
+                            <a class="nav-link pl-3" href="form_cursos.html"><span class="ml-1 item-text">Registro de curso</span></a>
+                        </li>
+                    </ul>
                 </li>
-              </ul>
-            </li>
-          </ul>
-          <p class="text-muted nav-heading mt-4 mb-1">
-            <span>Formularios</span>
-          </p>
-          <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-              <a href="#forms" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-credit-card fe-16"></i>
-                <span class="ml-3 item-text">Cursos</span>
-              </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="forms">
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="form_cursos.html"><span class="ml-1 item-text">Registro de curso</span></a>
+                <li class="nav-item dropdown">
+                    <a href="#tables" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                        <i class="fe fe-user-minus fe-16"></i>
+                        <span class="ml-3 item-text">Ausentismo</span>
+                    </a>
+                    <ul class="collapse list-unstyled pl-4 w-100" id="tables">
+                        <li class="nav-item">
+                            <a class="nav-link pl-3" href="./table_basic.html"><span class="ml-1 item-text">Registro de ausentismo</span></a>
+                        </li>
+                    </ul>
                 </li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a href="#tables" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-user-minus fe-16"></i>
-                <span class="ml-3 item-text">Ausentismo</span>
-              </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="tables">
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="./table_basic.html"><span class="ml-1 item-text">Registro de ausentismo</span></a>
+            </ul>
+            <p class="text-muted nav-heading mt-4 mb-1">
+                <span>Administración</span>
+            </p>
+            <ul class="navbar-nav flex-fill w-100 mb-2">
+                <li class="nav-item dropdown">
+                    <a href="#contact" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                        <i class="fe fe-smile fe-16"></i>
+                        <span class="ml-3 item-text">Cursos</span>
+                    </a>
+                    <ul class="collapse list-unstyled pl-4 w-100" id="contact">
+                        <a class="nav-link pl-3" href="form_asistencia.html"><span
+                                class="ml-1">Lista de asistencia</span></a>
+                        <a class="nav-link pl-3" href="form_cursos_admin_calificacion.html"><span class="ml-1">Evaluaciones</span></a>
+                        <a class="nav-link pl-3" href="./contacts-new.html"><span class="ml-1">Certificados</span></a>
+                        <a class="nav-link pl-3" href="form_cursos_admin.html"><span class="ml-1">Alta de cursos</span></a>
+                    </ul>
                 </li>
-              </ul>
-            </li>
-          </ul>
-          <p class="text-muted nav-heading mt-4 mb-1">
-            <span>Administración</span>
-          </p>
-          <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-              <a href="#contact" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-smile fe-16"></i>
-                <span class="ml-3 item-text">Cursos</span>
-              </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="contact">
-                <a class="nav-link pl-3" href="form_asistencia.html"><span
-                        class="ml-1">Lista de asistencia</span></a>
-                <a class="nav-link pl-3" href="form_cursos_admin_calificacion.html"><span class="ml-1">Evaluaciones</span></a>
-                <a class="nav-link pl-3" href="./contacts-new.html"><span class="ml-1">Certificados</span></a>
-                <a class="nav-link pl-3" href="form_cursos_admin.html"><span class="ml-1">Alta de cursos</span></a>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a href="#profile" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-user fe-16"></i>
-                <span class="ml-3 item-text">Ausentismos</span>
-              </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="profile">
-                <a class="nav-link pl-3" href="./profile.html"><span
-                        class="ml-1">Lista de ausentismos</span></a>
-                <a class="nav-link pl-3" href="./profile-settings.html"><span class="ml-1">Base de datos</span></a>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a href="#support" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-compass fe-16"></i>
-                <span class="ml-3 item-text">Capacitaciones</span>
-              </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="support">
-                <a class="nav-link pl-3" href="./support-center.html"><span class="ml-1">Home</span></a>
-                <a class="nav-link pl-3" href="./support-tickets.html"><span class="ml-1">Tickets</span></a>
-                <a class="nav-link pl-3" href="./support-ticket-detail.html"><span
-                        class="ml-1">Ticket Detail</span></a>
-                <a class="nav-link pl-3" href="./support-faqs.html"><span class="ml-1">FAQs</span></a>
-              </ul>
-            </li>
-          </ul>
-          <div class="btn-box w-100 mt-4 mb-1">
-            <a href="https://themeforest.net/item/tinydash-bootstrap-html-admin-dashboard-template/27511269"
-               target="_blank" class="btn mb-2 btn-danger btn-lg btn-block">
-              <i class="fe fe-log-out fe-12 mx-2 text-white"></i><span class="small text-white">Salir</span>
-            </a>
-          </div>
+                <li class="nav-item dropdown">
+                    <a href="#profile" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                        <i class="fe fe-user fe-16"></i>
+                        <span class="ml-3 item-text">Ausentismos</span>
+                    </a>
+                    <ul class="collapse list-unstyled pl-4 w-100" id="profile">
+                        <a class="nav-link pl-3" href="./profile.html"><span
+                                class="ml-1">Lista de ausentismos</span></a>
+                        <a class="nav-link pl-3" href="./profile-settings.html"><span class="ml-1">Base de datos</span></a>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#support" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                        <i class="fe fe-compass fe-16"></i>
+                        <span class="ml-3 item-text">Capacitaciones</span>
+                    </a>
+                    <ul class="collapse list-unstyled pl-4 w-100" id="support">
+                        <a class="nav-link pl-3" href="./support-center.html"><span class="ml-1">Home</span></a>
+                        <a class="nav-link pl-3" href="./support-tickets.html"><span class="ml-1">Tickets</span></a>
+                        <a class="nav-link pl-3" href="./support-ticket-detail.html"><span
+                                class="ml-1">Ticket Detail</span></a>
+                        <a class="nav-link pl-3" href="./support-faqs.html"><span class="ml-1">FAQs</span></a>
+                    </ul>
+                </li>
+            </ul>
+            <div class="btn-box w-100 mt-4 mb-1">
+                <a href="https://themeforest.net/item/tinydash-bootstrap-html-admin-dashboard-template/27511269"
+                   target="_blank" class="btn mb-2 btn-danger btn-lg btn-block">
+                    <i class="fe fe-log-out fe-12 mx-2 text-white"></i><span class="small text-white">Salir</span>
+                </a>
+            </div>
         </nav>
-      </aside>
-      <main role="main" class="main-content">
+    </aside>
+    <main role="main" class="main-content">
         <div class="container-fluid">
-          <div class="row justify-content-center">
-            <div class="col-12">
-              <div class="row align-items-center mb-2">
-                <div class="col">
-                  <h2 class="h5 page-title">Bienvenido al sistema integral de RH</h2>
-                </div>
-                <div class="col-auto">
-                  <form class="form-inline">
-                    <div class="form-group">
-                      <button type="button" class="btn btn-sm"><span class="fe fe-refresh-ccw fe-16 text-muted"></span></button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-              <div class="mb-2 align-items-center">
-                <div class="card shadow mb-4">
-                  <div class="card-body">
-                    <div class="row mt-1 align-items-center">
-                      <div class="col-12 col-lg-4 text-left pl-4">
-                        <p class="mb-1 small text-muted">Usuarios actuales</p>
-                        <span class="h3">$12,600</span>
-                        <span class="small text-muted">+20%</span>
-                        <span class="fe fe-arrow-up text-success fe-12"></span>
-                        <p class="text-muted"> Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui </p>
-                      </div>
-                      <div class="col-6 col-lg-2 text-center py-4">
-                        <p class="mb-1 small text-muted">Aprobados</p>
-                        <span class="h3" id="txtAprobados"></span><br />
-                      </div>
-                      <div class="col-6 col-lg-2 text-center py-4 mb-2">
-                        <p class="mb-1 small text-muted">Reprobados</p>
-                        <span class="h3" id="txtReprobados">$</span><br />
-                      </div>
-                      <div class="col-6 col-lg-2 text-center py-4">
-                        <p class="mb-1 small text-muted">Asistencia</p>
-                        <span class="h3" id="txtAsistencia"></span><br />
-                      </div>
-                      <div class="col-6 col-lg-2 text-center py-4">
-                        <p class="mb-1 small text-muted">Inasistencia</p>
-                        <span class="h3" id="txtInasistencia"></span><br />
-                      </div>
-                    </div>
-                    <div class="map-box">
-                      <div id="areaChartDos"></div>
-                    </div>
-                  </div> <!-- .card-body -->
-                </div> <!-- .card -->
-              </div>
-              <div class="row items-align-baseline">
-                <div class="col-md-12 col-lg-4">
-                  <div class="card shadow eq-card mb-4">
-                    <div class="card-body mb-n3">
-                      <div class="row items-align-baseline h-100">
-                        <div class="col-md-6 my-3">
-                          <p class="mb-0"><strong class="mb-0 text-uppercase text-muted">Earning</strong></p>
-                          <h3>$2,562</h3>
-                          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="row align-items-center mb-2">
+                        <div class="col">
+                            <h2 class="h5 page-title">Bienvenido al sistema integral de RH</h2>
                         </div>
-                        <div class="col-md-6 my-4 text-center">
-                          <div lass="chart-box mx-4">
-                            <div id="radialbarWidget"></div>
-                          </div>
+                        <div class="col-auto">
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-sm"><span
+                                            class="fe fe-refresh-ccw fe-16 text-muted"></span></button>
+                                </div>
+                            </form>
                         </div>
-                        <div class="col-md-6 border-top py-3">
-                          <p class="mb-1"><strong class="text-muted">Cost</strong></p>
-                          <h4 class="mb-0">108</h4>
-                          <p class="small text-muted mb-0"><span>37.7% Last week</span></p>
+                    </div>
+                    <div class="mb-2 align-items-center">
+                        <div class="card shadow mb-4">
+                            <div class="card-body">
+                                <div class="row mt-1 align-items-center">
+                                    <div class="col-12 col-lg-4 text-left pl-4">
+                                        <p class="mb-1 small text-muted">Usuarios actuales</p>
+                                        <span class="h3">$12,600</span>
+                                        <span class="small text-muted">+20%</span>
+                                        <span class="fe fe-arrow-up text-success fe-12"></span>
+                                        <p class="text-muted"> Etiam ultricies nisi vel augue. Curabitur ullamcorper
+                                            ultricies nisi. Nam eget dui </p>
+                                    </div>
+                                    <div class="col-6 col-lg-2 text-center py-4">
+                                        <p class="mb-1 small text-muted">Aprobados</p>
+                                        <span class="h3" id="txtAprobados"></span><br/>
+                                    </div>
+                                    <div class="col-6 col-lg-2 text-center py-4 mb-2">
+                                        <p class="mb-1 small text-muted">Reprobados</p>
+                                        <span class="h3" id="txtReprobados">$</span><br/>
+                                    </div>
+                                    <div class="col-6 col-lg-2 text-center py-4">
+                                        <p class="mb-1 small text-muted">Asistencia</p>
+                                        <span class="h3" id="txtAsistencia"></span><br/>
+                                    </div>
+                                    <div class="col-6 col-lg-2 text-center py-4">
+                                        <p class="mb-1 small text-muted">Inasistencia</p>
+                                        <span class="h3" id="txtInasistencia"></span><br/>
+                                    </div>
+                                </div>
+                                <div class="map-box">
+                                    <div id="areaChartDos"></div>
+                                </div>
+                            </div> <!-- .card-body -->
+                        </div> <!-- .card -->
+                    </div>
+                    <div class="row items-align-baseline">
+
+
+                        <div class="col-md-12 col-lg-4">
+                            <div class="card shadow eq-card mb-4">
+                                <div class="card-body">
+                                    <h2 class="h5 text-center">APU 1</h2>
+                                    <div class="chart-widget mb-2">
+                                        <div id="radialbarApu1"></div>
+                                    </div>
+                                    <div class="row items-align-center">
+                                        <div class="col-4 text-center">
+                                            <p class="text-muted mb-1">Asistencias</p>
+                                            <h6 class="mb-1" id="txtAsistenciasApu1">0</h6>
+                                            <p class="text-muted mb-0">personas</p>
+                                        </div>
+                                        <div class="col-4 text-center">
+                                            <p class="text-muted mb-1">Inasistencias</p>
+                                            <h6 class="mb-1" id="txtInasistenciaApu1">0</h6>
+                                            <p class="text-muted mb-0">personas</p>
+                                        </div>
+                                        <div class="col-4 text-center">
+                                            <p class="text-muted mb-1">Aprobados</p>
+                                            <h6 class="mb-1" id="txtAprobadosApu1">0</h6>
+                                            <p class="text-muted mb-0">personas</p>
+                                        </div>
+                                    </div>
+                                </div> <!-- .card-body -->
+                            </div> <!-- .card -->
                         </div> <!-- .col -->
-                        <div class="col-md-6 border-top py-3">
-                          <p class="mb-1"><strong class="text-muted">Revenue</strong></p>
-                          <h4 class="mb-0">1168</h4>
-                          <p class="small text-muted mb-0"><span>-18.9% Last week</span></p>
+
+                        <div class="col-md-12 col-lg-4">
+                            <div class="card shadow eq-card mb-4">
+                                <div class="card-body">
+                                    <h2 class="h5 text-center">APU 2</h2>
+                                    <div class="chart-widget mb-2">
+                                        <div id="radialbarApu2"></div>
+                                    </div>
+                                    <div class="row items-align-center">
+                                        <div class="col-4 text-center">
+                                            <p class="text-muted mb-1">Asistencias</p>
+                                            <h6 class="mb-1" id="txtAsistenciasApu2">0</h6>
+                                            <p class="text-muted mb-0">personas</p>
+                                        </div>
+                                        <div class="col-4 text-center">
+                                            <p class="text-muted mb-1">Inasistencias</p>
+                                            <h6 class="mb-1" id="txtInasistenciaApu2">0</h6>
+                                            <p class="text-muted mb-0">personas</p>
+                                        </div>
+                                        <div class="col-4 text-center">
+                                            <p class="text-muted mb-1">Aprobados</p>
+                                            <h6 class="mb-1" id="txtAprobadosApu2">0</h6>
+                                            <p class="text-muted mb-0">personas</p>
+                                        </div>
+                                    </div>
+                                </div> <!-- .card-body -->
+                            </div> <!-- .card -->
                         </div> <!-- .col -->
-                      </div>
-                    </div> <!-- .card-body -->
-                  </div> <!-- .card -->
-                </div> <!-- .col -->
-                <div class="col-md-12 col-lg-4">
-                  <div class="card shadow eq-card mb-4">
-                    <div class="card-body">
-                      <div class="chart-widget mb-2">
-                        <div id="radialbar"></div>
-                      </div>
-                      <div class="row items-align-center">
-                        <div class="col-4 text-center">
-                          <p class="text-muted mb-1">Cost</p>
-                          <h6 class="mb-1">$1,823</h6>
-                          <p class="text-muted mb-0">+12%</p>
-                        </div>
-                        <div class="col-4 text-center">
-                          <p class="text-muted mb-1">Revenue</p>
-                          <h6 class="mb-1">$6,830</h6>
-                          <p class="text-muted mb-0">+8%</p>
-                        </div>
-                        <div class="col-4 text-center">
-                          <p class="text-muted mb-1">Earning</p>
-                          <h6 class="mb-1">$4,830</h6>
-                          <p class="text-muted mb-0">+8%</p>
-                        </div>
-                      </div>
-                    </div> <!-- .card-body -->
-                  </div> <!-- .card -->
-                </div> <!-- .col -->
-                <div class="col-md-12 col-lg-4">
-                  <div class="card shadow eq-card mb-4">
-                    <div class="card-body">
-                      <div class="d-flex mt-3 mb-4">
-                        <div class="flex-fill pt-2">
-                          <p class="mb-0 text-muted">Total</p>
-                          <h4 class="mb-0">108</h4>
-                          <span class="small text-muted">+37.7%</span>
-                        </div>
-                        <div class="flex-fill chart-box mt-n2">
-                          <div id="barChartWidget"></div>
-                        </div>
-                      </div> <!-- .d-flex -->
-                      <div class="row border-top">
-                        <div class="col-md-6 pt-4">
-                          <h6 class="mb-0">108 <span class="small text-muted">+37.7%</span></h6>
-                          <p class="mb-0 text-muted">Cost</p>
-                        </div>
-                        <div class="col-md-6 pt-4">
-                          <h6 class="mb-0">1168 <span class="small text-muted">-18.9%</span></h6>
-                          <p class="mb-0 text-muted">Revenue</p>
-                        </div>
-                      </div> <!-- .row -->
-                    </div> <!-- .card-body -->
-                  </div> <!-- .card -->
-                </div> <!-- .col-md -->
-              </div> <!-- .row -->
-              <div class="row">
-                <!-- Recent Activity -->
-                <div class="col-md-12 col-lg-4 mb-4">
-                  <div class="card timeline">
-                    <div class="card-header">
-                      <strong class="card-title">Recent Activity</strong>
-                      <a class="float-right small text-muted" href="#!">View all</a>
-                    </div>
-                    <div class="card-body" data-simplebar style="height:360px; overflow-y: auto; overflow-x: hidden;">
-                      <h6 class="text-uppercase text-muted mb-4">Today</h6>
-                      <div class="pb-3 timeline-item item-primary">
-                        <div class="pl-5">
-                          <div class="mb-1"><strong>@Brown Asher</strong><span class="text-muted small mx-2">Just create new layout Index, form, table</span><strong>Tiny Admin</strong></div>
-                          <p class="small text-muted">Creative Design <span class="badge badge-light">1h ago</span>
-                          </p>
-                        </div>
-                      </div>
-                      <div class="pb-3 timeline-item item-warning">
-                        <div class="pl-5">
-                          <div class="mb-3"><strong>@Hester Nissim</strong><span class="text-muted small mx-2">has upload new files to</span><strong>Tiny Admin</strong></div>
-                          <div class="row mb-3">
-                            <div class="col-1"><img src="./assets/products/p1.jpg" alt="..." class="img-fluid rounded"></div>
-                            <div class="col-1"><img src="./assets/products/p2.jpg" alt="..." class="img-fluid rounded"></div>
-                            <div class="col-1"><img src="./assets/products/p3.jpg" alt="..." class="img-fluid rounded"></div>
-                            <div class="col-1"><img src="./assets/products/p4.jpg" alt="..." class="img-fluid rounded"></div>
-                          </div>
-                          <p class="small text-muted">Front-End Development <span class="badge badge-light">1h ago</span>
-                          </p>
-                        </div>
-                      </div>
-                      <div class="pb-3 timeline-item item-success">
-                        <div class="pl-5">
-                          <div class="mb-3"><strong>@Kelley Sonya</strong><span class="text-muted small mx-2">has commented on</span><strong>Advanced table</strong></div>
-                          <div class="card d-inline-flex mb-2">
-                            <div class="card-body bg-light py-2 px-3"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim nulla eu quam cursus placerat. Vivamus non odio ullamcorper, lacinia ante nec, blandit leo. </div>
-                          </div>
-                          <p class="small text-muted">Back-End Development <span class="badge badge-light">1h ago</span>
-                          </p>
-                        </div>
-                      </div>
-                      <h6 class="text-uppercase text-muted mb-4">Yesterday</h6>
-                      <div class="pb-3 timeline-item item-warning">
-                        <div class="pl-5">
-                          <div class="mb-3"><strong>@Fletcher Everett</strong><span class="text-muted small mx-2">created new group for</span><strong>Tiny Admin</strong></div>
-                          <ul class="avatars-list mb-3">
-                            <li>
-                              <a href="#!" class="avatar avatar-sm">
-                                <img alt="..." class="avatar-img rounded-circle" src="./assets/avatars/face-1.jpg">
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#!" class="avatar avatar-sm">
-                                <img alt="..." class="avatar-img rounded-circle" src="./assets/avatars/face-4.jpg">
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#!" class="avatar avatar-sm">
-                                <img alt="..." class="avatar-img rounded-circle" src="./assets/avatars/face-3.jpg">
-                              </a>
-                            </li>
-                          </ul>
-                          <p class="small text-muted">Front-End Development <span class="badge badge-light">1h ago</span>
-                          </p>
-                        </div>
-                      </div>
-                      <div class="pb-3 timeline-item item-success">
-                        <div class="pl-5">
-                          <div class="mb-3"><strong>@Bertha Ball</strong><span class="text-muted small mx-2">has commented on</span><strong>Advanced table</strong></div>
-                          <div class="card d-inline-flex mb-2">
-                            <div class="card-body bg-light py-2 px-3"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim nulla eu quam cursus placerat. Vivamus non odio ullamcorper, lacinia ante nec, blandit leo. </div>
-                          </div>
-                          </p>
-                          <p class="small text-muted">Back-End Development <span class="badge badge-light">1h ago</span>
-                          </p>
-                        </div>
-                      </div>
-                      <div class="pb-3 timeline-item item-danger">
-                        <div class="pl-5">
-                          <div class="mb-3"><strong>@Lillith Joseph</strong><span class="text-muted small mx-2">has upload new files to</span><strong>Tiny Admin</strong></div>
-                          <div class="row mb-3">
-                            <div class="col-1"><img src="./assets/products/p4.jpg" alt="..." class="img-fluid rounded"></div>
-                            <div class="col-1"><img src="./assets/products/p1.jpg" alt="..." class="img-fluid rounded"></div>
-                            <div class="col-1"><img src="./assets/products/p2.jpg" alt="..." class="img-fluid rounded"></div>
-                          </div>
-                          <p class="small text-muted">Front-End Development <span class="badge badge-light">1h ago</span>
-                          </p>
-                        </div>
-                      </div>
-                    </div> <!-- / .card-body -->
-                  </div> <!-- / .card -->
-                </div> <!-- / .col-md-6 -->
-                <!-- Striped rows -->
-                <div class="col-md-12 col-lg-8">
-                  <div class="card shadow">
-                    <div class="card-header">
-                      <strong class="card-title">Recent Data</strong>
-                      <a class="float-right small text-muted" href="#!">View all</a>
-                    </div>
-                    <div class="card-body my-n2">
-                      <table class="table table-striped table-hover table-borderless">
-                        <thead>
-                          <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Address</th>
-                            <th>Phone</th>
-                            <th>Date</th>
-                            <th>Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>2474</td>
-                            <th scope="col">Brown, Asher D.</th>
-                            <td>Ap #331-7123 Lobortis Avenue</td>
-                            <td>(958) 421-0798</td>
-                            <td>13/09/2020</td>
-                            <td>
-                              <div class="dropdown">
-                                <button class="btn btn-sm dropdown-toggle more-vertical" type="button" id="dr1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  <span class="text-muted sr-only">Action</span>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dr1">
-                                  <a class="dropdown-item" href="#">Edit</a>
-                                  <a class="dropdown-item" href="#">Remove</a>
-                                  <a class="dropdown-item" href="#">Assign</a>
+
+                        <div class="col-md-12 col-lg-4">
+                            <div class="card shadow eq-card mb-4">
+                                <div class="card-body">
+                                    <h2 class="h5 text-center">APU 3</h2>
+                                    <div class="chart-widget mb-2">
+                                        <div id="radialbar"></div>
+                                    </div>
+                                    <div class="row items-align-center">
+                                        <div class="col-4 text-center">
+                                            <p class="text-muted mb-1">Asistencias</p>
+                                            <h6 class="mb-1" id="txtAsistenciasApu3">0</h6>
+                                            <p class="text-muted mb-0">personas</p>
+                                        </div>
+                                        <div class="col-4 text-center">
+                                            <p class="text-muted mb-1">Inasistencias</p>
+                                            <h6 class="mb-1" id="txtInasistenciaApu3">0</h6>
+                                            <p class="text-muted mb-0">personas</p>
+                                        </div>
+                                        <div class="col-4 text-center">
+                                            <p class="text-muted mb-1">Aprobados</p>
+                                            <h6 class="mb-1" id="txtAprobadosApu3">0</h6>
+                                            <p class="text-muted mb-0">personas</p>
+                                        </div>
+                                    </div>
+                                </div> <!-- .card-body -->
+                            </div> <!-- .card -->
+                        </div> <!-- .col -->
+
+
+                        <div class="col-md-12 col-lg-4">
+                            <div class="card shadow eq-card mb-4">
+                                <div class="card-body">
+                                    <div class="d-flex mt-3 mb-4">
+                                        <div class="flex-fill pt-2">
+                                            <p class="mb-0 text-muted">Total</p>
+                                            <h4 class="mb-0">108</h4>
+                                            <span class="small text-muted">+37.7%</span>
+                                        </div>
+                                        <div class="flex-fill chart-box mt-n2">
+                                            <div id="barChartWidget"></div>
+                                        </div>
+                                    </div> <!-- .d-flex -->
+                                    <div class="row border-top">
+                                        <div class="col-md-6 pt-4">
+                                            <h6 class="mb-0">108 <span class="small text-muted">+37.7%</span></h6>
+                                            <p class="mb-0 text-muted">Cost</p>
+                                        </div>
+                                        <div class="col-md-6 pt-4">
+                                            <h6 class="mb-0">1168 <span class="small text-muted">-18.9%</span></h6>
+                                            <p class="mb-0 text-muted">Revenue</p>
+                                        </div>
+                                    </div> <!-- .row -->
+                                </div> <!-- .card-body -->
+                            </div> <!-- .card -->
+                        </div> <!-- .col-md -->
+                    </div> <!-- .row -->
+                    <div class="row">
+                        <!-- Recent Activity -->
+                        <div class="col-md-12 col-lg-4 mb-4">
+                            <div class="card timeline">
+                                <div class="card-header">
+                                    <strong class="card-title">Recent Activity</strong>
+                                    <a class="float-right small text-muted" href="#!">View all</a>
                                 </div>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>2786</td>
-                            <th scope="col">Leblanc, Yoshio V.</th>
-                            <td>287-8300 Nisl. St.</td>
-                            <td>(899) 881-3833</td>
-                            <td>04/05/2019</td>
-                            <td>
-                              <div class="dropdown">
-                                <button class="btn btn-sm dropdown-toggle more-vertical" type="button" id="dr2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  <span class="text-muted sr-only">Action</span>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dr2">
-                                  <a class="dropdown-item" href="#">Edit</a>
-                                  <a class="dropdown-item" href="#">Remove</a>
-                                  <a class="dropdown-item" href="#">Assign</a>
+                                <div class="card-body" data-simplebar
+                                     style="height:360px; overflow-y: auto; overflow-x: hidden;">
+                                    <h6 class="text-uppercase text-muted mb-4">Today</h6>
+                                    <div class="pb-3 timeline-item item-primary">
+                                        <div class="pl-5">
+                                            <div class="mb-1"><strong>@Brown Asher</strong><span
+                                                    class="text-muted small mx-2">Just create new layout Index, form, table</span><strong>Tiny
+                                                Admin</strong></div>
+                                            <p class="small text-muted">Creative Design <span class="badge badge-light">1h ago</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="pb-3 timeline-item item-warning">
+                                        <div class="pl-5">
+                                            <div class="mb-3"><strong>@Hester Nissim</strong><span
+                                                    class="text-muted small mx-2">has upload new files to</span><strong>Tiny
+                                                Admin</strong></div>
+                                            <div class="row mb-3">
+                                                <div class="col-1"><img src="./assets/products/p1.jpg" alt="..."
+                                                                        class="img-fluid rounded"></div>
+                                                <div class="col-1"><img src="./assets/products/p2.jpg" alt="..."
+                                                                        class="img-fluid rounded"></div>
+                                                <div class="col-1"><img src="./assets/products/p3.jpg" alt="..."
+                                                                        class="img-fluid rounded"></div>
+                                                <div class="col-1"><img src="./assets/products/p4.jpg" alt="..."
+                                                                        class="img-fluid rounded"></div>
+                                            </div>
+                                            <p class="small text-muted">Front-End Development <span
+                                                    class="badge badge-light">1h ago</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="pb-3 timeline-item item-success">
+                                        <div class="pl-5">
+                                            <div class="mb-3"><strong>@Kelley Sonya</strong><span
+                                                    class="text-muted small mx-2">has commented on</span><strong>Advanced
+                                                table</strong></div>
+                                            <div class="card d-inline-flex mb-2">
+                                                <div class="card-body bg-light py-2 px-3"> Lorem ipsum dolor sit amet,
+                                                    consectetur adipiscing elit. Integer dignissim nulla eu quam cursus
+                                                    placerat. Vivamus non odio ullamcorper, lacinia ante nec, blandit
+                                                    leo.
+                                                </div>
+                                            </div>
+                                            <p class="small text-muted">Back-End Development <span
+                                                    class="badge badge-light">1h ago</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <h6 class="text-uppercase text-muted mb-4">Yesterday</h6>
+                                    <div class="pb-3 timeline-item item-warning">
+                                        <div class="pl-5">
+                                            <div class="mb-3"><strong>@Fletcher Everett</strong><span
+                                                    class="text-muted small mx-2">created new group for</span><strong>Tiny
+                                                Admin</strong></div>
+                                            <ul class="avatars-list mb-3">
+                                                <li>
+                                                    <a href="#!" class="avatar avatar-sm">
+                                                        <img alt="..." class="avatar-img rounded-circle"
+                                                             src="./assets/avatars/face-1.jpg">
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#!" class="avatar avatar-sm">
+                                                        <img alt="..." class="avatar-img rounded-circle"
+                                                             src="./assets/avatars/face-4.jpg">
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#!" class="avatar avatar-sm">
+                                                        <img alt="..." class="avatar-img rounded-circle"
+                                                             src="./assets/avatars/face-3.jpg">
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <p class="small text-muted">Front-End Development <span
+                                                    class="badge badge-light">1h ago</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="pb-3 timeline-item item-success">
+                                        <div class="pl-5">
+                                            <div class="mb-3"><strong>@Bertha Ball</strong><span
+                                                    class="text-muted small mx-2">has commented on</span><strong>Advanced
+                                                table</strong></div>
+                                            <div class="card d-inline-flex mb-2">
+                                                <div class="card-body bg-light py-2 px-3"> Lorem ipsum dolor sit amet,
+                                                    consectetur adipiscing elit. Integer dignissim nulla eu quam cursus
+                                                    placerat. Vivamus non odio ullamcorper, lacinia ante nec, blandit
+                                                    leo.
+                                                </div>
+                                            </div>
+                                            </p>
+                                            <p class="small text-muted">Back-End Development <span
+                                                    class="badge badge-light">1h ago</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="pb-3 timeline-item item-danger">
+                                        <div class="pl-5">
+                                            <div class="mb-3"><strong>@Lillith Joseph</strong><span
+                                                    class="text-muted small mx-2">has upload new files to</span><strong>Tiny
+                                                Admin</strong></div>
+                                            <div class="row mb-3">
+                                                <div class="col-1"><img src="./assets/products/p4.jpg" alt="..."
+                                                                        class="img-fluid rounded"></div>
+                                                <div class="col-1"><img src="./assets/products/p1.jpg" alt="..."
+                                                                        class="img-fluid rounded"></div>
+                                                <div class="col-1"><img src="./assets/products/p2.jpg" alt="..."
+                                                                        class="img-fluid rounded"></div>
+                                            </div>
+                                            <p class="small text-muted">Front-End Development <span
+                                                    class="badge badge-light">1h ago</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div> <!-- / .card-body -->
+                            </div> <!-- / .card -->
+                        </div> <!-- / .col-md-6 -->
+                        <!-- Striped rows -->
+                        <div class="col-md-12 col-lg-8">
+                            <div class="card shadow">
+                                <div class="card-header">
+                                    <strong class="card-title">Recent Data</strong>
+                                    <a class="float-right small text-muted" href="#!">View all</a>
                                 </div>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>2747</td>
-                            <th scope="col">Hester, Nissim L.</th>
-                            <td>4577 Cras St.</td>
-                            <td>(977) 220-6518</td>
-                            <td>04/06/2019</td>
-                            <td>
-                              <div class="dropdown">
-                                <button class="btn btn-sm dropdown-toggle more-vertical" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  <span class="text-muted sr-only">Action</span>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                  <a class="dropdown-item" href="#">Edit</a>
-                                  <a class="dropdown-item" href="#">Remove</a>
-                                  <a class="dropdown-item" href="#">Assign</a>
+                                <div class="card-body my-n2">
+                                    <table class="table table-striped table-hover table-borderless">
+                                        <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Address</th>
+                                            <th>Phone</th>
+                                            <th>Date</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>2474</td>
+                                            <th scope="col">Brown, Asher D.</th>
+                                            <td>Ap #331-7123 Lobortis Avenue</td>
+                                            <td>(958) 421-0798</td>
+                                            <td>13/09/2020</td>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <button class="btn btn-sm dropdown-toggle more-vertical"
+                                                            type="button" id="dr1" data-toggle="dropdown"
+                                                            aria-haspopup="true" aria-expanded="false">
+                                                        <span class="text-muted sr-only">Action</span>
+                                                    </button>
+                                                    <div class="dropdown-menu dropdown-menu-right"
+                                                         aria-labelledby="dr1">
+                                                        <a class="dropdown-item" href="#">Edit</a>
+                                                        <a class="dropdown-item" href="#">Remove</a>
+                                                        <a class="dropdown-item" href="#">Assign</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2786</td>
+                                            <th scope="col">Leblanc, Yoshio V.</th>
+                                            <td>287-8300 Nisl. St.</td>
+                                            <td>(899) 881-3833</td>
+                                            <td>04/05/2019</td>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <button class="btn btn-sm dropdown-toggle more-vertical"
+                                                            type="button" id="dr2" data-toggle="dropdown"
+                                                            aria-haspopup="true" aria-expanded="false">
+                                                        <span class="text-muted sr-only">Action</span>
+                                                    </button>
+                                                    <div class="dropdown-menu dropdown-menu-right"
+                                                         aria-labelledby="dr2">
+                                                        <a class="dropdown-item" href="#">Edit</a>
+                                                        <a class="dropdown-item" href="#">Remove</a>
+                                                        <a class="dropdown-item" href="#">Assign</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2747</td>
+                                            <th scope="col">Hester, Nissim L.</th>
+                                            <td>4577 Cras St.</td>
+                                            <td>(977) 220-6518</td>
+                                            <td>04/06/2019</td>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <button class="btn btn-sm dropdown-toggle more-vertical"
+                                                            type="button" data-toggle="dropdown" aria-haspopup="true"
+                                                            aria-expanded="false">
+                                                        <span class="text-muted sr-only">Action</span>
+                                                    </button>
+                                                    <div class="dropdown-menu dropdown-menu-right">
+                                                        <a class="dropdown-item" href="#">Edit</a>
+                                                        <a class="dropdown-item" href="#">Remove</a>
+                                                        <a class="dropdown-item" href="#">Assign</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2639</td>
+                                            <th scope="col">Gardner, Leigh S.</th>
+                                            <td>P.O. Box 228, 7512 Lectus Ave</td>
+                                            <td>(537) 315-1481</td>
+                                            <td>04/08/2019</td>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <button class="btn btn-sm dropdown-toggle more-vertical"
+                                                            type="button" id="dr4" data-toggle="dropdown"
+                                                            aria-haspopup="true" aria-expanded="false">
+                                                        <span class="text-muted sr-only">Action</span>
+                                                    </button>
+                                                    <div class="dropdown-menu dropdown-menu-right"
+                                                         aria-labelledby="dr4">
+                                                        <a class="dropdown-item" href="#">Edit</a>
+                                                        <a class="dropdown-item" href="#">Remove</a>
+                                                        <a class="dropdown-item" href="#">Assign</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2238</td>
+                                            <th scope="col">Higgins, Uriah L.</th>
+                                            <td>Ap #377-5357 Sed Road</td>
+                                            <td>(238) 386-0247</td>
+                                            <td>04/01/2019</td>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <button class="btn btn-sm dropdown-toggle more-vertical"
+                                                            type="button" id="dr5" data-toggle="dropdown"
+                                                            aria-haspopup="true" aria-expanded="false">
+                                                        <span class="text-muted sr-only">Action</span>
+                                                    </button>
+                                                    <div class="dropdown-menu dropdown-menu-right"
+                                                         aria-labelledby="dr5">
+                                                        <a class="dropdown-item" href="#">Edit</a>
+                                                        <a class="dropdown-item" href="#">Remove</a>
+                                                        <a class="dropdown-item" href="#">Assign</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>2639</td>
-                            <th scope="col">Gardner, Leigh S.</th>
-                            <td>P.O. Box 228, 7512 Lectus Ave</td>
-                            <td>(537) 315-1481</td>
-                            <td>04/08/2019</td>
-                            <td>
-                              <div class="dropdown">
-                                <button class="btn btn-sm dropdown-toggle more-vertical" type="button" id="dr4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  <span class="text-muted sr-only">Action</span>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dr4">
-                                  <a class="dropdown-item" href="#">Edit</a>
-                                  <a class="dropdown-item" href="#">Remove</a>
-                                  <a class="dropdown-item" href="#">Assign</a>
-                                </div>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>2238</td>
-                            <th scope="col">Higgins, Uriah L.</th>
-                            <td>Ap #377-5357 Sed Road</td>
-                            <td>(238) 386-0247</td>
-                            <td>04/01/2019</td>
-                            <td>
-                              <div class="dropdown">
-                                <button class="btn btn-sm dropdown-toggle more-vertical" type="button" id="dr5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  <span class="text-muted sr-only">Action</span>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dr5">
-                                  <a class="dropdown-item" href="#">Edit</a>
-                                  <a class="dropdown-item" href="#">Remove</a>
-                                  <a class="dropdown-item" href="#">Assign</a>
-                                </div>
-                              </div>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div> <!-- Striped rows -->
-              </div> <!-- .row-->
-            </div> <!-- .col-12 -->
-          </div> <!-- .row -->
+                            </div>
+                        </div> <!-- Striped rows -->
+                    </div> <!-- .row-->
+                </div> <!-- .col-12 -->
+            </div> <!-- .row -->
         </div> <!-- .container-fluid -->
-        <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="defaultModalLabel">Notifications</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div class="list-group list-group-flush my-n3">
-                  <div class="list-group-item bg-transparent">
-                    <div class="row align-items-center">
-                      <div class="col-auto">
-                        <span class="fe fe-box fe-24"></span>
-                      </div>
-                      <div class="col">
-                        <small><strong>Package has uploaded successfull</strong></small>
-                        <div class="my-0 text-muted small">Package is zipped and uploaded</div>
-                        <small class="badge badge-pill badge-light text-muted">1m ago</small>
-                      </div>
+        <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="defaultModalLabel">Notifications</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                  </div>
-                  <div class="list-group-item bg-transparent">
-                    <div class="row align-items-center">
-                      <div class="col-auto">
-                        <span class="fe fe-download fe-24"></span>
-                      </div>
-                      <div class="col">
-                        <small><strong>Widgets are updated successfull</strong></small>
-                        <div class="my-0 text-muted small">Just create new layout Index, form, table</div>
-                        <small class="badge badge-pill badge-light text-muted">2m ago</small>
-                      </div>
+                    <div class="modal-body">
+                        <div class="list-group list-group-flush my-n3">
+                            <div class="list-group-item bg-transparent">
+                                <div class="row align-items-center">
+                                    <div class="col-auto">
+                                        <span class="fe fe-box fe-24"></span>
+                                    </div>
+                                    <div class="col">
+                                        <small><strong>Package has uploaded successfull</strong></small>
+                                        <div class="my-0 text-muted small">Package is zipped and uploaded</div>
+                                        <small class="badge badge-pill badge-light text-muted">1m ago</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-group-item bg-transparent">
+                                <div class="row align-items-center">
+                                    <div class="col-auto">
+                                        <span class="fe fe-download fe-24"></span>
+                                    </div>
+                                    <div class="col">
+                                        <small><strong>Widgets are updated successfull</strong></small>
+                                        <div class="my-0 text-muted small">Just create new layout Index, form, table
+                                        </div>
+                                        <small class="badge badge-pill badge-light text-muted">2m ago</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-group-item bg-transparent">
+                                <div class="row align-items-center">
+                                    <div class="col-auto">
+                                        <span class="fe fe-inbox fe-24"></span>
+                                    </div>
+                                    <div class="col">
+                                        <small><strong>Notifications have been sent</strong></small>
+                                        <div class="my-0 text-muted small">Fusce dapibus, tellus ac cursus commodo</div>
+                                        <small class="badge badge-pill badge-light text-muted">30m ago</small>
+                                    </div>
+                                </div> <!-- / .row -->
+                            </div>
+                            <div class="list-group-item bg-transparent">
+                                <div class="row align-items-center">
+                                    <div class="col-auto">
+                                        <span class="fe fe-link fe-24"></span>
+                                    </div>
+                                    <div class="col">
+                                        <small><strong>Link was attached to menu</strong></small>
+                                        <div class="my-0 text-muted small">New layout has been attached to the menu
+                                        </div>
+                                        <small class="badge badge-pill badge-light text-muted">1h ago</small>
+                                    </div>
+                                </div>
+                            </div> <!-- / .row -->
+                        </div> <!-- / .list-group -->
                     </div>
-                  </div>
-                  <div class="list-group-item bg-transparent">
-                    <div class="row align-items-center">
-                      <div class="col-auto">
-                        <span class="fe fe-inbox fe-24"></span>
-                      </div>
-                      <div class="col">
-                        <small><strong>Notifications have been sent</strong></small>
-                        <div class="my-0 text-muted small">Fusce dapibus, tellus ac cursus commodo</div>
-                        <small class="badge badge-pill badge-light text-muted">30m ago</small>
-                      </div>
-                    </div> <!-- / .row -->
-                  </div>
-                  <div class="list-group-item bg-transparent">
-                    <div class="row align-items-center">
-                      <div class="col-auto">
-                        <span class="fe fe-link fe-24"></span>
-                      </div>
-                      <div class="col">
-                        <small><strong>Link was attached to menu</strong></small>
-                        <div class="my-0 text-muted small">New layout has been attached to the menu</div>
-                        <small class="badge badge-pill badge-light text-muted">1h ago</small>
-                      </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Clear All
+                        </button>
                     </div>
-                  </div> <!-- / .row -->
-                </div> <!-- / .list-group -->
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Clear All</button>
-              </div>
+                </div>
             </div>
-          </div>
         </div>
-        <div class="modal fade modal-shortcut modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="defaultModalLabel">Shortcuts</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body px-5">
-                <div class="row align-items-center">
-                  <div class="col-6 text-center">
-                    <div class="squircle bg-success justify-content-center">
-                      <i class="fe fe-cpu fe-32 align-self-center text-white"></i>
+        <div class="modal fade modal-shortcut modal-slide" tabindex="-1" role="dialog"
+             aria-labelledby="defaultModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="defaultModalLabel">Shortcuts</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                    <p>Control area</p>
-                  </div>
-                  <div class="col-6 text-center">
-                    <div class="squircle bg-primary justify-content-center">
-                      <i class="fe fe-activity fe-32 align-self-center text-white"></i>
+                    <div class="modal-body px-5">
+                        <div class="row align-items-center">
+                            <div class="col-6 text-center">
+                                <div class="squircle bg-success justify-content-center">
+                                    <i class="fe fe-cpu fe-32 align-self-center text-white"></i>
+                                </div>
+                                <p>Control area</p>
+                            </div>
+                            <div class="col-6 text-center">
+                                <div class="squircle bg-primary justify-content-center">
+                                    <i class="fe fe-activity fe-32 align-self-center text-white"></i>
+                                </div>
+                                <p>Activity</p>
+                            </div>
+                        </div>
+                        <div class="row align-items-center">
+                            <div class="col-6 text-center">
+                                <div class="squircle bg-primary justify-content-center">
+                                    <i class="fe fe-droplet fe-32 align-self-center text-white"></i>
+                                </div>
+                                <p>Droplet</p>
+                            </div>
+                            <div class="col-6 text-center">
+                                <div class="squircle bg-primary justify-content-center">
+                                    <i class="fe fe-upload-cloud fe-32 align-self-center text-white"></i>
+                                </div>
+                                <p>Upload</p>
+                            </div>
+                        </div>
+                        <div class="row align-items-center">
+                            <div class="col-6 text-center">
+                                <div class="squircle bg-primary justify-content-center">
+                                    <i class="fe fe-users fe-32 align-self-center text-white"></i>
+                                </div>
+                                <p>Users</p>
+                            </div>
+                            <div class="col-6 text-center">
+                                <div class="squircle bg-primary justify-content-center">
+                                    <i class="fe fe-settings fe-32 align-self-center text-white"></i>
+                                </div>
+                                <p>Settings</p>
+                            </div>
+                        </div>
                     </div>
-                    <p>Activity</p>
-                  </div>
                 </div>
-                <div class="row align-items-center">
-                  <div class="col-6 text-center">
-                    <div class="squircle bg-primary justify-content-center">
-                      <i class="fe fe-droplet fe-32 align-self-center text-white"></i>
-                    </div>
-                    <p>Droplet</p>
-                  </div>
-                  <div class="col-6 text-center">
-                    <div class="squircle bg-primary justify-content-center">
-                      <i class="fe fe-upload-cloud fe-32 align-self-center text-white"></i>
-                    </div>
-                    <p>Upload</p>
-                  </div>
-                </div>
-                <div class="row align-items-center">
-                  <div class="col-6 text-center">
-                    <div class="squircle bg-primary justify-content-center">
-                      <i class="fe fe-users fe-32 align-self-center text-white"></i>
-                    </div>
-                    <p>Users</p>
-                  </div>
-                  <div class="col-6 text-center">
-                    <div class="squircle bg-primary justify-content-center">
-                      <i class="fe fe-settings fe-32 align-self-center text-white"></i>
-                    </div>
-                    <p>Settings</p>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
         </div>
-      </main> <!-- main -->
-    </div> <!-- .wrapper -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/moment.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/simplebar.min.js"></script>
-    <script src='js/daterangepicker.js'></script>
-    <script src='js/jquery.stickOnScroll.js'></script>
-    <script src="js/tinycolor-min.js"></script>
-    <script src="js/config.js"></script>
-    <script src="js/d3.min.js"></script>
-    <script src="js/topojson.min.js"></script>
-    <script src="js/datamaps.all.min.js"></script>
-    <script src="js/datamaps-zoomto.js"></script>
-    <script src="js/datamaps.custom.js"></script>
-    <script src="js/Chart.min.js"></script>
-    <script>
-      /* defind global options */
-      Chart.defaults.global.defaultFontFamily = base.defaultFontFamily;
-      Chart.defaults.global.defaultFontColor = colors.mutedColor;
-    </script>
-    <script src="js/gauge.min.js"></script>
-    <script src="js/jquery.sparkline.min.js"></script>
-    <script src="js/apexcharts.min.js"></script>
-    <script src="js/apexcharts.custom.js"></script>
-    <script src='js/jquery.mask.min.js'></script>
-    <script src='js/select2.min.js'></script>
-    <script src='js/jquery.steps.min.js'></script>
-    <script src='js/jquery.validate.min.js'></script>
-    <script src='js/jquery.timepicker.js'></script>
-    <script src='js/dropzone.min.js'></script>
-    <script src='js/uppy.min.js'></script>
-    <script src='js/quill.min.js'></script>
-    <script src="js/apps.js"></script>
+    </main> <!-- main -->
+</div> <!-- .wrapper -->
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/moment.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/simplebar.min.js"></script>
+<script src='js/daterangepicker.js'></script>
+<script src='js/jquery.stickOnScroll.js'></script>
+<script src="js/tinycolor-min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/d3.min.js"></script>
+<script src="js/topojson.min.js"></script>
+<script src="js/datamaps.all.min.js"></script>
+<script src="js/datamaps-zoomto.js"></script>
+<script src="js/datamaps.custom.js"></script>
+<script src="js/Chart.min.js"></script>
+<script>
+    /* defind global options */
+    Chart.defaults.global.defaultFontFamily = base.defaultFontFamily;
+    Chart.defaults.global.defaultFontColor = colors.mutedColor;
+</script>
+<script src="js/gauge.min.js"></script>
+<script src="js/jquery.sparkline.min.js"></script>
+<script src="js/apexcharts.min.js"></script>
+<script src="js/apexcharts.custom.js"></script>
+<script src='js/jquery.mask.min.js'></script>
+<script src='js/select2.min.js'></script>
+<script src='js/jquery.steps.min.js'></script>
+<script src='js/jquery.validate.min.js'></script>
+<script src='js/jquery.timepicker.js'></script>
+<script src='js/dropzone.min.js'></script>
+<script src='js/uppy.min.js'></script>
+<script src='js/quill.min.js'></script>
+<script src="js/apps.js"></script>
 
-  <script>
+<script>
     asistencias();
+
     function asistencias() {
-      $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaAsistencia.php', function (data) {
+        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaAsistencia.php', function (data) {
 
-        var aEne = 0,aFeb = 0,aMar = 0,aAbril = 0,aMay = 0,aJun = 0,aJul = 0,aAgo = 0,
-                aSep = 0,aOct = 0,aNov = 0,aDic = 0;
+            var aEne = 0, aFeb = 0, aMar = 0, aAbril = 0, aMay = 0, aJun = 0, aJul = 0, aAgo = 0,
+                aSep = 0, aOct = 0, aNov = 0, aDic = 0;
 
-        for (var i = 0; i < data.data.length; i++) {
-          if (data.data[i].Mes==='1'){aEne = data.data[i].Asistencias;}
-          if (data.data[i].Mes==='2'){aFeb = data.data[i].Asistencias;}
-          if (data.data[i].Mes==='3'){aMar = data.data[i].Asistencias;}
-          if (data.data[i].Mes==='4'){aAbril = data.data[i].Asistencias;}
-          if (data.data[i].Mes==='5'){aMay = data.data[i].Asistencias;}
-          if (data.data[i].Mes==='6'){aJun = data.data[i].Asistencias;}
-          if (data.data[i].Mes==='7'){aJul = data.data[i].Asistencias;}
-          if (data.data[i].Mes==='8'){aAgo = data.data[i].Asistencias;}
-          if (data.data[i].Mes==='9'){aSep = data.data[i].Asistencias;}
-          if (data.data[i].Mes==='10'){aOct = data.data[i].Asistencias;}
-          if (data.data[i].Mes==='11'){aNov = data.data[i].Asistencias;}
-          if (data.data[i].Mes==='12'){aDic = data.data[i].Asistencias;}
-        }
-        inasistencias(aEne,aFeb,aMar,aAbril,aMay,aJun,aJul,aAgo,aSep,aOct,aNov,aDic)
-      });
-    }
-
-    function inasistencias(aEne,aFeb,aMar,aAbril,aMay,aJun,aJul,aAgo,aSep,aOct,aNov,aDic) {
-      $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaInasistencia.php', function (data) {
-
-        var iEne = 0,iFeb = 0,iMar = 0,iAbril = 0,iMay = 0,iJun = 0,iJul = 0,iAgo = 0,
-                iSep = 0,iOct = 0,iNov = 0,iDic = 0;
-
-        for (var i = 0; i < data.data.length; i++) {
-          if (data.data[i].Mes==='1'){iEne = data.data[i].Inasistencias;}
-          if (data.data[i].Mes==='2'){iFeb = data.data[i].Inasistencias;}
-          if (data.data[i].Mes==='3'){iMar = data.data[i].Inasistencias;}
-          if (data.data[i].Mes==='4'){iAbril = data.data[i].Inasistencias;}
-          if (data.data[i].Mes==='5'){iMay = data.data[i].Inasistencias;}
-          if (data.data[i].Mes==='6'){iJun = data.data[i].Inasistencias;}
-          if (data.data[i].Mes==='7'){iJul = data.data[i].Inasistencias;}
-          if (data.data[i].Mes==='8'){iAgo = data.data[i].Inasistencias;}
-          if (data.data[i].Mes==='9'){iSep = data.data[i].Inasistencias;}
-          if (data.data[i].Mes==='10'){iOct = data.data[i].Inasistencias;}
-          if (data.data[i].Mes==='11'){iNov = data.data[i].Inasistencias;}
-          if (data.data[i].Mes==='12'){iDic = data.data[i].Inasistencias;}
-        }
-        grafica(aEne,aFeb,aMar,aAbril,aMay,aJun,aJul,aAgo,aSep,aOct,aNov,aDic,iEne,iFeb,iMar,iAbril,iMay,iJun,iJul,iAgo,iSep,iOct,iNov,iDic);
-      });
-    }
-
-    function grafica(aEne,aFeb,aMar,aAbril,aMay,aJun,aJul,aAgo,aSep,aOct,aNov,aDic,iEne,iFeb,iMar,iAbril,iMay,iJun,iJul,iAgo,iSep,iOct,iNov,iDic) {
-      var options = {
-        series: [{
-          name: 'Asistencias',
-          data: [aEne, aFeb, aMar, aAbril, aMay, aJun, aJul, aAgo,aSep , aOct,aNov,aDic]
-        }, {
-          name: 'Inasistencias',
-          data: [iEne, iFeb, iMar, iAbril, iMay, iJun, iJul, iAgo,iSep , iOct,iNov,iDic]
-        }],
-        chart: {
-          type: 'bar',
-          height: 350
-        },
-        plotOptions: {
-          bar: {
-            horizontal: false,
-            columnWidth: '55%',
-            endingShape: 'rounded'
-          },
-        },
-        dataLabels: {
-          enabled: false
-        },
-        stroke: {
-          show: true,
-          width: 2,
-          colors: ['transparent']
-        },
-        xaxis: {
-          categories: ['Ene','Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dic'],
-        },
-        yaxis: {
-          title: {
-            text: 'Personas'
-          }
-        },
-        fill: {
-          opacity: 1
-        },
-        tooltip: {
-          y: {
-            formatter: function (val) {
-              return " " + val + " personas"
+            for (var i = 0; i < data.data.length; i++) {
+                if (data.data[i].Mes === '1') {
+                    aEne = data.data[i].Asistencias;
+                }
+                if (data.data[i].Mes === '2') {
+                    aFeb = data.data[i].Asistencias;
+                }
+                if (data.data[i].Mes === '3') {
+                    aMar = data.data[i].Asistencias;
+                }
+                if (data.data[i].Mes === '4') {
+                    aAbril = data.data[i].Asistencias;
+                }
+                if (data.data[i].Mes === '5') {
+                    aMay = data.data[i].Asistencias;
+                }
+                if (data.data[i].Mes === '6') {
+                    aJun = data.data[i].Asistencias;
+                }
+                if (data.data[i].Mes === '7') {
+                    aJul = data.data[i].Asistencias;
+                }
+                if (data.data[i].Mes === '8') {
+                    aAgo = data.data[i].Asistencias;
+                }
+                if (data.data[i].Mes === '9') {
+                    aSep = data.data[i].Asistencias;
+                }
+                if (data.data[i].Mes === '10') {
+                    aOct = data.data[i].Asistencias;
+                }
+                if (data.data[i].Mes === '11') {
+                    aNov = data.data[i].Asistencias;
+                }
+                if (data.data[i].Mes === '12') {
+                    aDic = data.data[i].Asistencias;
+                }
             }
-          }
-        }
-      };
-
-      var chart = new ApexCharts(document.querySelector("#areaChartDos"), options);
-      chart.render();
+            inasistencias(aEne, aFeb, aMar, aAbril, aMay, aJun, aJul, aAgo, aSep, aOct, aNov, aDic)
+        });
     }
+
+    function inasistencias(aEne, aFeb, aMar, aAbril, aMay, aJun, aJul, aAgo, aSep, aOct, aNov, aDic) {
+        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaInasistencia.php', function (data) {
+
+            var iEne = 0, iFeb = 0, iMar = 0, iAbril = 0, iMay = 0, iJun = 0, iJul = 0, iAgo = 0,
+                iSep = 0, iOct = 0, iNov = 0, iDic = 0;
+
+            for (var i = 0; i < data.data.length; i++) {
+                if (data.data[i].Mes === '1') {
+                    iEne = data.data[i].Inasistencias;
+                }
+                if (data.data[i].Mes === '2') {
+                    iFeb = data.data[i].Inasistencias;
+                }
+                if (data.data[i].Mes === '3') {
+                    iMar = data.data[i].Inasistencias;
+                }
+                if (data.data[i].Mes === '4') {
+                    iAbril = data.data[i].Inasistencias;
+                }
+                if (data.data[i].Mes === '5') {
+                    iMay = data.data[i].Inasistencias;
+                }
+                if (data.data[i].Mes === '6') {
+                    iJun = data.data[i].Inasistencias;
+                }
+                if (data.data[i].Mes === '7') {
+                    iJul = data.data[i].Inasistencias;
+                }
+                if (data.data[i].Mes === '8') {
+                    iAgo = data.data[i].Inasistencias;
+                }
+                if (data.data[i].Mes === '9') {
+                    iSep = data.data[i].Inasistencias;
+                }
+                if (data.data[i].Mes === '10') {
+                    iOct = data.data[i].Inasistencias;
+                }
+                if (data.data[i].Mes === '11') {
+                    iNov = data.data[i].Inasistencias;
+                }
+                if (data.data[i].Mes === '12') {
+                    iDic = data.data[i].Inasistencias;
+                }
+            }
+            grafica(aEne, aFeb, aMar, aAbril, aMay, aJun, aJul, aAgo, aSep, aOct, aNov, aDic, iEne, iFeb, iMar, iAbril, iMay, iJun, iJul, iAgo, iSep, iOct, iNov, iDic);
+        });
+    }
+
+    function grafica(aEne, aFeb, aMar, aAbril, aMay, aJun, aJul, aAgo, aSep, aOct, aNov, aDic, iEne, iFeb, iMar, iAbril, iMay, iJun, iJul, iAgo, iSep, iOct, iNov, iDic) {
+        var options = {
+            series: [{
+                name: 'Asistencias',
+                data: [aEne, aFeb, aMar, aAbril, aMay, aJun, aJul, aAgo, aSep, aOct, aNov, aDic]
+            }, {
+                name: 'Inasistencias',
+                data: [iEne, iFeb, iMar, iAbril, iMay, iJun, iJul, iAgo, iSep, iOct, iNov, iDic]
+            }],
+            chart: {
+                type: 'bar',
+                height: 350
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: false,
+                    columnWidth: '55%',
+                    endingShape: 'rounded'
+                },
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                show: true,
+                width: 2,
+                colors: ['transparent']
+            },
+            xaxis: {
+                categories: ['Ene', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dic'],
+            },
+            yaxis: {
+                title: {
+                    text: 'Personas'
+                }
+            },
+            fill: {
+                opacity: 1
+            },
+            tooltip: {
+                y: {
+                    formatter: function (val) {
+                        return " " + val + " personas"
+                    }
+                }
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#areaChartDos"), options);
+        chart.render();
+    }
+
     contadores();
+
     function contadores() {
-      $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaContadores.php', function (data) {
+        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaContadores.php', function (data) {
 
-        for (var i = 0; i < data.data.length; i++) {
-          document.getElementById("txtAsistencia").innerHTML = data.data[i].Asistencias;
-          document.getElementById("txtInasistencia").innerHTML = data.data[i].Inasistencias;
-          document.getElementById("txtReprobados").innerHTML = data.data[i].Reprovados;
-          document.getElementById("txtAprobados").innerHTML = data.data[i].Aprovados;
+            for (var i = 0; i < data.data.length; i++) {
+                document.getElementById("txtAsistencia").innerHTML = data.data[i].Asistencias;
+                document.getElementById("txtInasistencia").innerHTML = data.data[i].Inasistencias;
+                document.getElementById("txtReprobados").innerHTML = data.data[i].Reprovados;
+                document.getElementById("txtAprobados").innerHTML = data.data[i].Aprovados;
 
-        }
-      });
+            }
+        });
+    }
+
+    function contadoresApu() {
+        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaContadoresApu.php', function (data) {
+            var asistenciaApu1,inasistenciaApu1,totalApu1,porcentaje;
+            for (var i = 0; i < data.data.length; i++) {
+                document.getElementById("txtAsistenciasApu1").innerHTML = data.data[i].AsistenciasApu1;
+                document.getElementById("txtInasistenciaApu1").innerHTML = data.data[i].InasistenciasApu1;
+                document.getElementById("txtAprobadosApu1").innerHTML = data.data[i].AprovadosApu1;
+
+                asistenciaApu1 = data.data[i].AsistenciasApu1;
+                inasistenciaApu1 = data.data[i].InasistenciasApu1;
+                totalApu1 = asistenciaApu1 + inasistenciaApu1;
+
+                porcentaje = (asistenciaApu1 * 100) / totalApu1;
+
+                radioApu1(porcentaje);
+
+                document.getElementById("txtAsistenciasApu2").innerHTML = data.data[i].AsistenciasApu2;
+                document.getElementById("txtInasistenciaApu2").innerHTML = data.data[i].InasistenciasApu2;
+                document.getElementById("txtAprobadosApu2").innerHTML = data.data[i].AprovadosApu2;
+
+                document.getElementById("txtAsistenciasApu3").innerHTML = data.data[i].AsistenciasApu3;
+                document.getElementById("txtInasistenciaApu3").innerHTML = data.data[i].InasistenciasApu3;
+                document.getElementById("txtAprobadosApu3").innerHTML = data.data[i].AprovadosApu3;
+
+            }
+        });
+    }
+
+    function radioApu1(serie) {
+        var options = {
+            series: [serie],
+            chart: {
+                height: 120,
+                type: 'radialBar',
+            },
+            theme: {
+                mode: colors.chartTheme
+            },
+            plotOptions: {
+                radialBar: {
+                    hollow: {
+                        size: "70%"
+                    },
+                    track: {
+                        background: colors.borderColor
+                    },
+                    dataLabels: {
+                        show: !0,
+                        name: {
+                            fontSize: "0.875rem",
+                            fontWeight: 400,
+                            offsetY: -10,
+                            show: !1,
+                            color: colors.mutedColor,
+                            fontFamily: base.defaultFontFamily
+                        },
+                        value: {
+                            formatter: function (e) {
+                                return parseInt(e)
+                            },
+                            fontSize: "1.53125rem",
+                            fontWeight: 700,
+                            fontFamily: base.defaultFontFamily,
+                            offsetY: 10,
+                            show: !0,
+                            color: colors.headingColor
+                        },
+                        total: {
+                            show: !1,
+                            fontSize: "0.875rem",
+                            fontWeight: 400,
+                            offsetY: -10,
+                            label: "Porciento",
+                            color: colors.mutedColor,
+                            fontFamily: base.defaultFontFamily
+                        }
+                    }
+                }
+            },
+            fill: {
+                type: "gradient",
+                gradient: {
+                    shade: "light",
+                    type: "diagonal2",
+                    shadeIntensity: .2,
+                    gradientFromColors: [extend.primaryColorLighter],
+                    gradientToColors: [base.primaryColor],
+                    inverseColors: !0,
+                    opacityFrom: 1,
+                    opacityTo: 1,
+                    stops: [20, 100]
+                }
+            },
+            stroke: {
+                lineCap: "round"
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#radialbarApu1"), options);
+        chart.render();
     }
 
 
-  </script>
 
-  </body>
+</script>
+
+</body>
 </html>
