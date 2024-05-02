@@ -513,7 +513,7 @@
                 inasistenciaApu1 = Number(data.data[i].InasistenciasApu1);
                 totalApu1 = asistenciaApu1 + inasistenciaApu1;
 
-                porcentaje = (asistenciaApu1 * 100) / totalApu1;
+                porcentaje = Math.round((asistenciaApu1 * 100) / totalApu1);
 
                 radioApu1(porcentaje);
 
@@ -525,7 +525,7 @@
                 inasistenciaApu2 = Number(data.data[i].InasistenciasApu2);
                 totalApu2 = asistenciaApu2 + inasistenciaApu2;
 
-                porcentaje2 = (asistenciaApu2 * 100) / totalApu2;
+                porcentaje2 = Math.round((asistenciaApu2 * 100) / totalApu2);
 
                 radioApu2(porcentaje2);
 
@@ -537,7 +537,7 @@
                 inasistenciaApu3 = Number(data.data[i].InasistenciasApu3);
                 totalApu3 = asistenciaApu3 + inasistenciaApu3;
 
-                porcentaje3 = (asistenciaApu3 * 100) / totalApu3;
+                porcentaje3 = Math.round((asistenciaApu3 * 100) / totalApu3);
 
                 radioApu3(porcentaje3);
             }
