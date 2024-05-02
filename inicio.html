@@ -161,16 +161,11 @@
                             <div class="card-body">
                                 <div class="row mt-1 align-items-center">
                                     <div class="col-12 col-lg-4 text-left pl-4">
-                                        <p class="mb-1 small text-muted">Usuarios actuales</p>
-                                        <span class="h3">$12,600</span>
-                                        <span class="small text-muted">+20%</span>
-                                        <span class="fe fe-arrow-up text-success fe-12"></span>
-                                        <p class="text-muted"> Etiam ultricies nisi vel augue. Curabitur ullamcorper
-                                            ultricies nisi. Nam eget dui </p>
+                                        <span class="h3">Entramientos y cursos.</span>
                                     </div>
                                     <div class="col-6 col-lg-2 text-center py-4">
                                         <p class="mb-1 small text-muted">Aprobados</p>
-                                        <span class="h3" id="txtAprobados"></span><br/>
+                                        <span class="h3" id="1"></span><br/>
                                     </div>
                                     <div class="col-6 col-lg-2 text-center py-4 mb-2">
                                         <p class="mb-1 small text-muted">Reprobados</p>
@@ -190,9 +185,30 @@
                                 </div>
                             </div> <!-- .card-body -->
                         </div> <!-- .card -->
+
+                        <div class="card shadow mb-4">
+                            <div class="card-body">
+                                <div class="row mt-1 align-items-center">
+                                    <div class="col-12 col-lg-4 text-left pl-4">
+                                        <span class="h3">Ausentismos Generales</span>
+                                    </div>
+                                </div>
+                                <div class="map-box">
+                                    <div id="areaChartTres"></div>
+                                </div>
+
+                                <div class="map-box">
+                                    <div id="areaChartApu"></div>
+                                </div>
+
+                            </div> <!-- .card-body -->
+                        </div> <!-- .card -->
                     </div>
 
-
+                    <div class="col-12 col-lg-12 text-center pl-4">
+                        <span class="h3">Entramientos y cursos.</span>
+                    </div>
+                    <br>
                     <div class="row items-align-baseline">
                         <div class="col-md-12 col-lg-4">
                             <div class="card shadow eq-card mb-4">
@@ -278,69 +294,6 @@
                             </div> <!-- .card -->
                         </div> <!-- .col -->
 
-                        <div class="mb-2 align-items-center">
-                            <div class="card shadow mb-4">
-                                <div class="card-body">
-                                    <div class="row mt-1 align-items-center">
-                                        <div class="col-12 col-lg-4 text-left pl-4">
-                                            <p class="mb-1 small text-muted">Usuarios actuales</p>
-                                            <span class="h3">$12,600</span>
-                                            <span class="small text-muted">+20%</span>
-                                            <span class="fe fe-arrow-up text-success fe-12"></span>
-                                            <p class="text-muted"> Etiam ultricies nisi vel augue. Curabitur ullamcorper
-                                                ultricies nisi. Nam eget dui </p>
-                                        </div>
-                                        <div class="col-6 col-lg-2 text-center py-4">
-                                            <p class="mb-1 small text-muted">Aprobados</p>
-                                            <span class="h3" id="1"></span><br/>
-                                        </div>
-                                        <div class="col-6 col-lg-2 text-center py-4 mb-2">
-                                            <p class="mb-1 small text-muted">Reprobados</p>
-                                            <span class="h3" id="2">$</span><br/>
-                                        </div>
-                                        <div class="col-6 col-lg-2 text-center py-4">
-                                            <p class="mb-1 small text-muted">Asistencia</p>
-                                            <span class="h3" id="3"></span><br/>
-                                        </div>
-                                        <div class="col-6 col-lg-2 text-center py-4">
-                                            <p class="mb-1 small text-muted">Inasistencia</p>
-                                            <span class="h3" id="4"></span><br/>
-                                        </div>
-                                    </div>
-                                    <div class="map-box">
-                                        <div id="areaChartTres"></div>
-                                    </div>
-                                </div> <!-- .card-body -->
-                            </div> <!-- .card -->
-                        </div>
-
-
-                        <div class="col-md-12 col-lg-4">
-                            <div class="card shadow eq-card mb-4">
-                                <div class="card-body">
-                                    <div class="d-flex mt-3 mb-4">
-                                        <div class="flex-fill pt-2">
-                                            <p class="mb-0 text-muted">Total</p>
-                                            <h4 class="mb-0">108</h4>
-                                            <span class="small text-muted">+37.7%</span>
-                                        </div>
-                                        <div class="flex-fill chart-box mt-n2">
-                                            <div id="barChartWidget"></div>
-                                        </div>
-                                    </div> <!-- .d-flex -->
-                                    <div class="row border-top">
-                                        <div class="col-md-6 pt-4">
-                                            <h6 class="mb-0">108 <span class="small text-muted">+37.7%</span></h6>
-                                            <p class="mb-0 text-muted">Cost</p>
-                                        </div>
-                                        <div class="col-md-6 pt-4">
-                                            <h6 class="mb-0">1168 <span class="small text-muted">-18.9%</span></h6>
-                                            <p class="mb-0 text-muted">Revenue</p>
-                                        </div>
-                                    </div> <!-- .row -->
-                                </div> <!-- .card-body -->
-                            </div> <!-- .card -->
-                        </div> <!-- .col-md -->
                     </div> <!-- .row -->
                     <div class="row">
                         <!-- Recent Activity -->
@@ -1210,50 +1163,52 @@
 
     ausentismos();
     function ausentismos() {
-        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/ausentismo/consultaAusentismo.php', function (data) {
+        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/ausentismo/consultaAusentismos.php', function (data) {
 
-            var Ene = 0, Feb = 0, Mar = 0, Abril = 0, May = 0, Jun = 0, Jul = 0, Ago = 0,
-                Sep = 0, Oct = 0, Nov = 0, Dic = 0;
+            var Ene1 = 0, Feb1 = 0, Mar1 = 0, Abril1 = 0, May1 = 0, Jun1 = 0, Jul1 = 0, Ago1 = 0,
+                Sep1 = 0, Oct1 = 0, Nov1 = 0, Dic1 = 0;
 
             for (var i = 0; i < data.data.length; i++) {
-                if (data.data[i].Mes === '1') {
-                    Ene = data.data[i].Asistencias;
-                }
-                if (data.data[i].Mes === '2') {
-                    Feb = data.data[i].Asistencias;
-                }
-                if (data.data[i].Mes === '3') {
-                    Mar = data.data[i].Asistencias;
-                }
-                if (data.data[i].Mes === '4') {
-                    Abril = data.data[i].Asistencias;
-                }
-                if (data.data[i].Mes === '5') {
-                    May = data.data[i].Asistencias;
-                }
-                if (data.data[i].Mes === '6') {
-                    Jun = data.data[i].Asistencias;
-                }
-                if (data.data[i].Mes === '7') {
-                    Jul = data.data[i].Asistencias;
-                }
-                if (data.data[i].Mes === '8') {
-                    Ago = data.data[i].Asistencias;
-                }
-                if (data.data[i].Mes === '9') {
-                    Sep = data.data[i].Asistencias;
-                }
-                if (data.data[i].Mes === '10') {
-                    Oct = data.data[i].Asistencias;
-                }
-                if (data.data[i].Mes === '11') {
-                    Nov = data.data[i].Asistencias;
-                }
-                if (data.data[i].Mes === '12') {
-                    Dic = data.data[i].Asistencias;
-                }
+
+                    if (data.data[i].Mes === '1') {
+                        Ene1 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '2') {
+                        Feb1 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '3') {
+                        Mar1 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '4') {
+                        Abril1 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '5') {
+                        May1 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '6') {
+                        Jun1 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '7') {
+                        Jul1 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '8') {
+                        Ago1 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '9') {
+                        Sep1 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '10') {
+                        Oct1 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '11') {
+                        Nov1 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '12') {
+                        Dic1 = data.data[i].Asistencias;
+                    }
+
             }
-            graficaAusentismos(Ene, Feb, Mar, Abril, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic);
+            graficaAusentismos(Ene1, Feb1, Mar1, Abril1, May1, Jun1, Jul1, Ago1, Sep1, Oct1, Nov1, Dic1);
         });
     }
 
@@ -1270,7 +1225,7 @@
             plotOptions: {
                 bar: {
                     horizontal: false,
-                    columnWidth: '55%',
+                    columnWidth: '65%',
                     endingShape: 'rounded'
                 },
             },
@@ -1279,7 +1234,7 @@
             },
             stroke: {
                 show: true,
-                width: 2,
+                width: 5,
                 colors: ['transparent']
             },
             xaxis: {
@@ -1302,6 +1257,201 @@
             }
         };
         var chart = new ApexCharts(document.querySelector("#areaChartTres"), options);
+        chart.render();
+    }
+
+
+    Apu();
+    function Apu() {
+        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/ausentismo/consultaApu.php', function (data) {
+
+            var Ene1 = 0, Feb1 = 0, Mar1 = 0, Abril1 = 0, May1 = 0, Jun1 = 0, Jul1 = 0, Ago1 = 0,
+                Sep1 = 0, Oct1 = 0, Nov1 = 0, Dic1 = 0;
+
+            var Ene2 = 0, Feb2 = 0, Mar2 = 0, Abril2 = 0, May2 = 0, Jun2 = 0, Jul2 = 0, Ago2 = 0,
+                Sep2 = 0, Oct2 = 0, Nov2 = 0, Dic2 = 0;
+
+            var Ene3 = 0, Feb3 = 0, Mar3 = 0, Abril3 = 0, May3 = 0, Jun3 = 0, Jul3 = 0, Ago3 = 0,
+                Sep3 = 0, Oct3 = 0, Nov3 = 0, Dic3 = 0;
+
+            for (var i = 0; i < data.data.length; i++) {
+                if (data.data[i].Encargado === "APU 1"){
+                    if (data.data[i].Mes === '1') {
+                        Ene1 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '2') {
+                        Feb1 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '3') {
+                        Mar1 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '4') {
+                        Abril1 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '5') {
+                        May1 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '6') {
+                        Jun1 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '7') {
+                        Jul1 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '8') {
+                        Ago1 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '9') {
+                        Sep1 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '10') {
+                        Oct1 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '11') {
+                        Nov1 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '12') {
+                        Dic1 = data.data[i].Asistencias;
+                    }
+                }
+
+                if (data.data[i].Encargado === "APU 2"){
+                    if (data.data[i].Mes === '1') {
+                        Ene2 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '2') {
+                        Feb2 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '3') {
+                        Mar2 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '4') {
+                        Abril2 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '5') {
+                        May2 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '6') {
+                        Jun2 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '7') {
+                        Jul2 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '8') {
+                        Ago2 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '9') {
+                        Sep2 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '10') {
+                        Oct2 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '11') {
+                        Nov2 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '12') {
+                        Dic2 = data.data[i].Asistencias;
+                    }
+                }
+
+                if (data.data[i].Encargado === "APU 3"){
+                    if (data.data[i].Mes === '1') {
+                        Ene3 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '2') {
+                        Feb3 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '3') {
+                        Mar3 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '4') {
+                        Abril3 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '5') {
+                        May3 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '6') {
+                        Jun3 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '7') {
+                        Jul3 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '8') {
+                        Ago3 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '9') {
+                        Sep3 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '10') {
+                        Oct3 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '11') {
+                        Nov3 = data.data[i].Asistencias;
+                    }
+                    if (data.data[i].Mes === '12') {
+                        Dic3 = data.data[i].Asistencias;
+                    }
+                }
+
+            }
+            graficaAusentismosApu(Ene1, Feb1, Mar1, Abril1, May1, Jun1, Jul1, Ago1, Sep1, Oct1, Nov1, Dic1,Ene2, Feb2, Mar2, Abril2, May2, Jun2, Jul2, Ago2, Sep2, Oct2, Nov2, Dic2,Ene3, Feb3, Mar3, Abril3, May3, Jun3, Jul3, Ago3, Sep3, Oct3, Nov3, Dic3);
+        });
+    }
+
+    function graficaAusentismosApu(Ene1, Feb1, Mar1, Abril1, May1, Jun1, Jul1, Ago1, Sep1, Oct1, Nov1, Dic1,Ene2, Feb2, Mar2, Abril2, May2, Jun2, Jul2, Ago2, Sep2, Oct2, Nov2, Dic2,Ene3, Feb3, Mar3, Abril3, May3, Jun3, Jul3, Ago3, Sep3, Oct3, Nov3, Dic3) {
+        var options = {
+            series: [{
+                name: 'Apu 1',
+                data: [Ene1, Feb1, Mar1, Abril1, May1, Jun1, Jul1, Ago1, Sep1, Oct1, Nov1, Dic1]
+            },
+                {
+                    name: 'Apu 2',
+                    data: [Ene2, Feb2, Mar2, Abril2, May2, Jun2, Jul2, Ago2, Sep2, Oct2, Nov2, Dic2]
+                },
+                {
+                    name: 'Apu 3',
+                    data: [Ene3, Feb3, Mar3, Abril3, May3, Jun3, Jul3, Ago3, Sep3, Oct3, Nov3, Dic3]
+                }
+
+            ],
+            chart: {
+                type: 'bar',
+                height: 350
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: false,
+                    columnWidth: '65%',
+                    endingShape: 'rounded'
+                },
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                show: true,
+                width: 5,
+                colors: ['transparent']
+            },
+            xaxis: {
+                categories: ['Ene', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dic'],
+            },
+            yaxis: {
+                title: {
+                    text: 'Personas'
+                }
+            },
+            fill: {
+                opacity: 1
+            },
+            tooltip: {
+                y: {
+                    formatter: function (val) {
+                        return " " + val + " personas"
+                    }
+                }
+            }
+        };
+        var chart = new ApexCharts(document.querySelector("#areaChartApu"), options);
         chart.render();
     }
 
