@@ -155,6 +155,7 @@
                             </form>
                         </div>
                     </div>
+
                     <div class="mb-2 align-items-center">
                         <div class="card shadow mb-4">
                             <div class="card-body">
@@ -190,9 +191,9 @@
                             </div> <!-- .card-body -->
                         </div> <!-- .card -->
                     </div>
+
+
                     <div class="row items-align-baseline">
-
-
                         <div class="col-md-12 col-lg-4">
                             <div class="card shadow eq-card mb-4">
                                 <div class="card-body">
@@ -254,7 +255,7 @@
                                 <div class="card-body">
                                     <h2 class="h5 text-center">APU 3</h2>
                                     <div class="chart-widget mb-2">
-                                        <div id="radialbar"></div>
+                                        <div id="radialbarApu3"></div>
                                     </div>
                                     <div class="row items-align-center">
                                         <div class="col-4 text-center">
@@ -276,6 +277,42 @@
                                 </div> <!-- .card-body -->
                             </div> <!-- .card -->
                         </div> <!-- .col -->
+
+                        <div class="mb-2 align-items-center">
+                            <div class="card shadow mb-4">
+                                <div class="card-body">
+                                    <div class="row mt-1 align-items-center">
+                                        <div class="col-12 col-lg-4 text-left pl-4">
+                                            <p class="mb-1 small text-muted">Usuarios actuales</p>
+                                            <span class="h3">$12,600</span>
+                                            <span class="small text-muted">+20%</span>
+                                            <span class="fe fe-arrow-up text-success fe-12"></span>
+                                            <p class="text-muted"> Etiam ultricies nisi vel augue. Curabitur ullamcorper
+                                                ultricies nisi. Nam eget dui </p>
+                                        </div>
+                                        <div class="col-6 col-lg-2 text-center py-4">
+                                            <p class="mb-1 small text-muted">Aprobados</p>
+                                            <span class="h3" id="1"></span><br/>
+                                        </div>
+                                        <div class="col-6 col-lg-2 text-center py-4 mb-2">
+                                            <p class="mb-1 small text-muted">Reprobados</p>
+                                            <span class="h3" id="2">$</span><br/>
+                                        </div>
+                                        <div class="col-6 col-lg-2 text-center py-4">
+                                            <p class="mb-1 small text-muted">Asistencia</p>
+                                            <span class="h3" id="3"></span><br/>
+                                        </div>
+                                        <div class="col-6 col-lg-2 text-center py-4">
+                                            <p class="mb-1 small text-muted">Inasistencia</p>
+                                            <span class="h3" id="4"></span><br/>
+                                        </div>
+                                    </div>
+                                    <div class="map-box">
+                                        <div id="areaChartTres"></div>
+                                    </div>
+                                </div> <!-- .card-body -->
+                            </div> <!-- .card -->
+                        </div>
 
 
                         <div class="col-md-12 col-lg-4">
@@ -899,17 +936,19 @@
             }
         });
     }
-
+    contadoresApu();
     function contadoresApu() {
         $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaContadoresApu.php', function (data) {
             var asistenciaApu1,inasistenciaApu1,totalApu1,porcentaje;
+            var asistenciaApu2,inasistenciaApu2,totalApu2,porcentaje2;
+            var asistenciaApu3,inasistenciaApu3,totalApu3,porcentaje3;
             for (var i = 0; i < data.data.length; i++) {
                 document.getElementById("txtAsistenciasApu1").innerHTML = data.data[i].AsistenciasApu1;
                 document.getElementById("txtInasistenciaApu1").innerHTML = data.data[i].InasistenciasApu1;
                 document.getElementById("txtAprobadosApu1").innerHTML = data.data[i].AprovadosApu1;
 
-                asistenciaApu1 = data.data[i].AsistenciasApu1;
-                inasistenciaApu1 = data.data[i].InasistenciasApu1;
+                asistenciaApu1 = Number(data.data[i].AsistenciasApu1);
+                inasistenciaApu1 = Number(data.data[i].InasistenciasApu1);
                 totalApu1 = asistenciaApu1 + inasistenciaApu1;
 
                 porcentaje = (asistenciaApu1 * 100) / totalApu1;
@@ -920,19 +959,34 @@
                 document.getElementById("txtInasistenciaApu2").innerHTML = data.data[i].InasistenciasApu2;
                 document.getElementById("txtAprobadosApu2").innerHTML = data.data[i].AprovadosApu2;
 
+                asistenciaApu2 = Number(data.data[i].AsistenciasApu2);
+                inasistenciaApu2 = Number(data.data[i].InasistenciasApu2);
+                totalApu2 = asistenciaApu2 + inasistenciaApu2;
+
+                porcentaje2 = (asistenciaApu2 * 100) / totalApu2;
+
+                radioApu2(porcentaje2);
+
                 document.getElementById("txtAsistenciasApu3").innerHTML = data.data[i].AsistenciasApu3;
                 document.getElementById("txtInasistenciaApu3").innerHTML = data.data[i].InasistenciasApu3;
                 document.getElementById("txtAprobadosApu3").innerHTML = data.data[i].AprovadosApu3;
 
+                asistenciaApu3 = Number(data.data[i].AsistenciasApu3);
+                inasistenciaApu3 = Number(data.data[i].InasistenciasApu3);
+                totalApu3 = asistenciaApu3 + inasistenciaApu3;
+
+                porcentaje3 = (asistenciaApu3 * 100) / totalApu3;
+
+                radioApu3(porcentaje3);
             }
         });
     }
 
     function radioApu1(serie) {
-        var options = {
+        var options1 = {
             series: [serie],
             chart: {
-                height: 120,
+                height: 200,
                 type: 'radialBar',
             },
             theme: {
@@ -947,12 +1001,12 @@
                         background: colors.borderColor
                     },
                     dataLabels: {
-                        show: !0,
+                        show: true,
                         name: {
                             fontSize: "0.875rem",
                             fontWeight: 400,
                             offsetY: -10,
-                            show: !1,
+                            show: !0,
                             color: colors.mutedColor,
                             fontFamily: base.defaultFontFamily
                         },
@@ -963,16 +1017,16 @@
                             fontSize: "1.53125rem",
                             fontWeight: 700,
                             fontFamily: base.defaultFontFamily,
-                            offsetY: 10,
+                            offsetY: 5,
                             show: !0,
                             color: colors.headingColor
                         },
                         total: {
-                            show: !1,
+                            show: true,
                             fontSize: "0.875rem",
                             fontWeight: 400,
                             offsetY: -10,
-                            label: "Porciento",
+                            label: "Asistio el",
                             color: colors.mutedColor,
                             fontFamily: base.defaultFontFamily
                         }
@@ -995,14 +1049,261 @@
             },
             stroke: {
                 lineCap: "round"
-            }
+            },
+            labels: ['Porciento'],
         };
 
-        var chart = new ApexCharts(document.querySelector("#radialbarApu1"), options);
-        chart.render();
+        var chart1 = new ApexCharts(document.querySelector("#radialbarApu1"), options1);
+        chart1.render();
     }
 
 
+    function radioApu2(serie) {
+        var options2 = {
+            series: [serie],
+            chart: {
+                height: 200,
+                type: 'radialBar',
+            },
+            theme: {
+                mode: colors.chartTheme
+            },
+            plotOptions: {
+                radialBar: {
+                    hollow: {
+                        size: "70%"
+                    },
+                    track: {
+                        background: colors.borderColor
+                    },
+                    dataLabels: {
+                        show: true,
+                        name: {
+                            fontSize: "0.875rem",
+                            fontWeight: 400,
+                            offsetY: -10,
+                            show: !0,
+                            color: colors.mutedColor,
+                            fontFamily: base.defaultFontFamily
+                        },
+                        value: {
+                            formatter: function (e) {
+                                return parseInt(e)
+                            },
+                            fontSize: "1.53125rem",
+                            fontWeight: 700,
+                            fontFamily: base.defaultFontFamily,
+                            offsetY: 5,
+                            show: !0,
+                            color: colors.headingColor
+                        },
+                        total: {
+                            show: true,
+                            fontSize: "0.875rem",
+                            fontWeight: 400,
+                            offsetY: -10,
+                            label: "Asistio el",
+                            color: colors.mutedColor,
+                            fontFamily: base.defaultFontFamily
+                        }
+                    }
+                }
+            },
+            fill: {
+                type: "gradient",
+                gradient: {
+                    shade: "light",
+                    type: "diagonal2",
+                    shadeIntensity: .2,
+                    gradientFromColors: [extend.primaryColorLighter],
+                    gradientToColors: [base.primaryColor],
+                    inverseColors: !0,
+                    opacityFrom: 1,
+                    opacityTo: 1,
+                    stops: [20, 100]
+                }
+            },
+            stroke: {
+                lineCap: "round"
+            },
+            labels: ['Porciento'],
+        };
+
+        var chart2 = new ApexCharts(document.querySelector("#radialbarApu2"), options2);
+        chart2.render();
+    }
+
+    function radioApu3(serie) {
+        var options3 = {
+            series: [serie],
+            chart: {
+                height: 200,
+                type: 'radialBar',
+            },
+            theme: {
+                mode: colors.chartTheme
+            },
+            plotOptions: {
+                radialBar: {
+                    hollow: {
+                        size: "70%"
+                    },
+                    track: {
+                        background: colors.borderColor
+                    },
+                    dataLabels: {
+                        show: true,
+                        name: {
+                            fontSize: "0.875rem",
+                            fontWeight: 400,
+                            offsetY: -10,
+                            show: !0,
+                            color: colors.mutedColor,
+                            fontFamily: base.defaultFontFamily
+                        },
+                        value: {
+                            formatter: function (e) {
+                                return parseInt(e)
+                            },
+                            fontSize: "1.53125rem",
+                            fontWeight: 700,
+                            fontFamily: base.defaultFontFamily,
+                            offsetY: 5,
+                            show: !0,
+                            color: colors.headingColor
+                        },
+                        total: {
+                            show: true,
+                            fontSize: "0.875rem",
+                            fontWeight: 400,
+                            offsetY: -10,
+                            label: "Asistio el",
+                            color: colors.mutedColor,
+                            fontFamily: base.defaultFontFamily
+                        }
+                    }
+                }
+            },
+            fill: {
+                type: "gradient",
+                gradient: {
+                    shade: "light",
+                    type: "diagonal2",
+                    shadeIntensity: .2,
+                    gradientFromColors: [extend.primaryColorLighter],
+                    gradientToColors: [base.primaryColor],
+                    inverseColors: !0,
+                    opacityFrom: 1,
+                    opacityTo: 1,
+                    stops: [20, 100]
+                }
+            },
+            stroke: {
+                lineCap: "round"
+            },
+            labels: ['Porciento'],
+        };
+
+        var chart3 = new ApexCharts(document.querySelector("#radialbarApu3"), options3);
+        chart3.render();
+    }
+
+    ausentismos();
+    function ausentismos() {
+        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/ausentismo/consultaAusentismo.php', function (data) {
+
+            var Ene = 0, Feb = 0, Mar = 0, Abril = 0, May = 0, Jun = 0, Jul = 0, Ago = 0,
+                Sep = 0, Oct = 0, Nov = 0, Dic = 0;
+
+            for (var i = 0; i < data.data.length; i++) {
+                if (data.data[i].Mes === '1') {
+                    Ene = data.data[i].Asistencias;
+                }
+                if (data.data[i].Mes === '2') {
+                    Feb = data.data[i].Asistencias;
+                }
+                if (data.data[i].Mes === '3') {
+                    Mar = data.data[i].Asistencias;
+                }
+                if (data.data[i].Mes === '4') {
+                    Abril = data.data[i].Asistencias;
+                }
+                if (data.data[i].Mes === '5') {
+                    May = data.data[i].Asistencias;
+                }
+                if (data.data[i].Mes === '6') {
+                    Jun = data.data[i].Asistencias;
+                }
+                if (data.data[i].Mes === '7') {
+                    Jul = data.data[i].Asistencias;
+                }
+                if (data.data[i].Mes === '8') {
+                    Ago = data.data[i].Asistencias;
+                }
+                if (data.data[i].Mes === '9') {
+                    Sep = data.data[i].Asistencias;
+                }
+                if (data.data[i].Mes === '10') {
+                    Oct = data.data[i].Asistencias;
+                }
+                if (data.data[i].Mes === '11') {
+                    Nov = data.data[i].Asistencias;
+                }
+                if (data.data[i].Mes === '12') {
+                    Dic = data.data[i].Asistencias;
+                }
+            }
+            graficaAusentismos(Ene, Feb, Mar, Abril, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic);
+        });
+    }
+
+    function graficaAusentismos(Ene,Feb, Mar, Abril, May,Jun, Jul, Ago, Sep,Oct, Nov, Dic) {
+        var options = {
+            series: [{
+                name: 'Ausentismos',
+                data: [Ene, Feb, Mar, Abril, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic]
+            }],
+            chart: {
+                type: 'bar',
+                height: 350
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: false,
+                    columnWidth: '55%',
+                    endingShape: 'rounded'
+                },
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                show: true,
+                width: 2,
+                colors: ['transparent']
+            },
+            xaxis: {
+                categories: ['Ene', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dic'],
+            },
+            yaxis: {
+                title: {
+                    text: 'Personas'
+                }
+            },
+            fill: {
+                opacity: 1
+            },
+            tooltip: {
+                y: {
+                    formatter: function (val) {
+                        return " " + val + " personas"
+                    }
+                }
+            }
+        };
+        var chart = new ApexCharts(document.querySelector("#areaChartTres"), options);
+        chart.render();
+    }
 
 </script>
 
