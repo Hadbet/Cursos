@@ -433,7 +433,7 @@
         }
       }
 
-      function agregarAsistenciaCurso() {
+      async function agregarAsistenciaCurso() {
         var nomina = document.getElementById("txtNominaCurso");
         var nombre = document.getElementById("txtNombrePersonaCurso");
         var apu = document.getElementById("cbApu");
@@ -463,7 +463,7 @@
           var Fecha = horarioParts[1].trim();
           var HorarioCurso = horarioParts[2].trim();
 
-          $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaCapacidad.php?curso='+Curso+'&fecha='+Fecha+'&horario='+HorarioCurso, function (data) {
+          await $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaCapacidad.php?curso='+Curso+'&fecha='+Fecha+'&horario='+HorarioCurso, function (data) {
             if (data.data[0].Capacidad>=data.data[0].Contador){
               var fetchPromise = fetch('dao/guardarBitacoraCurso.php', {
                 method: 'POST',
