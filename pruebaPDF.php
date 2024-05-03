@@ -46,8 +46,8 @@ ob_start();
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="../../imgs/Grammer_Logo.ico" type="image/x-icon">
-    <title>Prueba</title>
+    <link rel="shortcut icon" href="assets/images/iconoarriba.png"/>
+    <title>GRAMMER RH</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -166,7 +166,6 @@ ob_start();
     </footer>
 </body>
 </html>
-';
 <?php
 
 $html=ob_get_clean();
