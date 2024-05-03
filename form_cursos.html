@@ -441,7 +441,7 @@
         var shiftLeader = document.getElementById("cbSupervisor");
         var cursos = document.getElementById("cbHorario");
 
-
+        var errorOcurrido = false;
 
         const data = new FormData();
 
@@ -480,6 +480,7 @@
 
               fetchPromises.push(fetchPromise);
             }else{
+              errorOcurrido = true;
               Swal.fire({
                 icon: 'Error',
                 title: 'Cupo lleno.', showConfirmButton: false, input: 'none',
@@ -492,12 +493,14 @@
 
         Promise.all(fetchPromises)
                 .then(function() {
-                  Swal.fire({
-                    icon: 'success',
-                    title: 'Enviado.', showConfirmButton: false, input: 'none',
-                    text: 'Registro enviardo.'
-                  })
-                  location.reload();
+                  if (!errorOcurrido) {
+                    Swal.fire({
+                      icon: 'success',
+                      title: 'Enviado.', showConfirmButton: false, input: 'none',
+                      text: 'Registro enviardo.'
+                    })
+                    location.reload();
+                  }
                 })
                 .catch(function(err) {
                   console.log(err);
