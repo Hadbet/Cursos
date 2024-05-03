@@ -441,6 +441,8 @@
         var shiftLeader = document.getElementById("cbSupervisor");
         var cursos = document.getElementById("cbHorario");
 
+
+
         const data = new FormData();
 
         data.append('nomina', nomina.value.trim());
@@ -454,20 +456,38 @@
         for (var i = 0; i < cursos.options.length; i++) {
           data.append('horario', cursos.options[i].value.trim());
 
-          var fetchPromise = fetch('dao/guardarBitacoraCurso.php', {
-            method: 'POST',
-            body: data
-          })
-                  .then(function (response) {
-                    if (!response.ok) {
-                      throw "Error en la llamada Ajax";
-                    }
-                  })
-                  .catch(function (err) {
-                    console.log(err);
-                  });
+          var horarioNormal = cursos.options[i].value;
+          var horarioParts = horarioNormal.split(", ");
 
-          fetchPromises.push(fetchPromise);
+          var Curso = horarioParts[0].trim();
+          var Fecha = horarioParts[1].trim();
+          var HorarioCurso = horarioParts[2].trim();
+
+          $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaCapacidad.php?curso='+Curso+'&fecha='+Fecha+'&horario='+HorarioCurso, function (data) {
+            if (data.data[0].Capacidad>=data.data[0].Contador){
+              var fetchPromise = fetch('dao/guardarBitacoraCurso.php', {
+                method: 'POST',
+                body: data
+              })
+                      .then(function (response) {
+                        if (!response.ok) {
+                          throw "Error en la llamada Ajax";
+                        }
+                      })
+                      .catch(function (err) {
+                        console.log(err);
+                      });
+
+              fetchPromises.push(fetchPromise);
+            }else{
+              Swal.fire({
+                icon: 'Error',
+                title: 'Cupo lleno.', showConfirmButton: false, input: 'none',
+                text: 'No se acompleto el registro debido a la capacidad del curso.'
+              })
+            }
+          });
+
         }
 
         Promise.all(fetchPromises)
