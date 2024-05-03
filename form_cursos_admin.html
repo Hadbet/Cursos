@@ -615,6 +615,7 @@
             document.getElementById("txtAreaL").innerHTML = " "+area;
             document.getElementById("txtNombreInstrictorAux").value = nombre;
             var table = $("#tablaArchivos"); // selecciona la tabla
+            table.empty();
             for (var i = 0; i < data.data.length; i++) {
 
                 var newRow = $("<tr></tr>");

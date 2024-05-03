@@ -26,7 +26,7 @@ if (!empty($_FILES['archivos']['name'][0])) {
         if (move_uploaded_file($_FILES["archivos"]["tmp_name"][$i], $target_file)) {
             $insertDocumento= "INSERT INTO `Documentacion_Instructores`(`NombreInstructor`, `NombreArchivo`, `Ruta`) VALUES ('$nombreInstructor','" . basename($_FILES["archivos"]["name"][$i]) . "','" . $target_dir . basename($_FILES["archivos"]["name"][$i]) . "')";
             $rsinsertDocu=mysqli_query($conex,$insertDocumento);
-            echo "El archivo ". basename( $_FILES["archivos"]["name"][$i]). " ha sido subido.";
+            // "El archivo ". basename( $_FILES["archivos"]["name"][$i]). " ha sido subido.";
         } else {
             echo "Lo siento, hubo un error subiendo el archivo ". basename( $_FILES["archivos"]["name"][$i]). ".";
         }
@@ -49,9 +49,9 @@ if (mysqli_num_rows($rsCheck) > 0) {
     $rsinsertUsu=mysqli_query($conex,$insertRegistro);
 
     if(!$rsinsertUsu){
-        echo "0";
+        echo 0;
     }else{
-        return 1;
+        echo 1;
     }
 }
 
