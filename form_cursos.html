@@ -443,18 +443,18 @@
 
         var errorOcurrido = false;
 
-        const data = new FormData();
+        const dataRegistro = new FormData();
 
-        data.append('nomina', nomina.value.trim());
-        data.append('nombre', nombre.value.trim());
-        data.append('apu', apu.value.trim());
-        data.append('supervisor', supervisor.value.trim());
-        data.append('shiftLeader', shiftLeader.value.trim());
+        dataRegistro.append('nomina', nomina.value.trim());
+        dataRegistro.append('nombre', nombre.value.trim());
+        dataRegistro.append('apu', apu.value.trim());
+        dataRegistro.append('supervisor', supervisor.value.trim());
+        dataRegistro.append('shiftLeader', shiftLeader.value.trim());
 
         var fetchPromises = [];
 
         for (var i = 0; i < cursos.options.length; i++) {
-          data.append('horario', cursos.options[i].value.trim());
+          dataRegistro.append('horario', cursos.options[i].value.trim());
 
           var horarioNormal = cursos.options[i].value;
           var horarioParts = horarioNormal.split(", ");
@@ -467,7 +467,7 @@
             if (data.data[0].Contador<data.data[0].Capacidad){
               var fetchPromise = fetch('dao/guardarBitacoraCurso.php', {
                 method: 'POST',
-                body: data
+                body: dataRegistro
               })
                       .then(function (response) {
                         if (!response.ok) {
