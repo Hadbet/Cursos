@@ -22,7 +22,7 @@ function registroUsu($Nombre,$Nomina,$Horario,$Fecha,$Curso,$Comentarios,$Califi
     $DateAndTime = $Object->format("Y/m/d h:i:s");
 
     // Primero, realiza la actualización
-    $updateQuery = "UPDATE `BitacoraCursos` SET `EstatusAsistencia` = 2 where `IdBitacoraCurso` = '$Id'";
+    $updateQuery = "UPDATE `BitacoraCursos` SET `EstatusAsistencia` = 3 where `IdBitacoraCurso` = '$Id'";
     $rsUpdate = mysqli_query($conex, $updateQuery);
 
     // Comprueba si la actualización fue exitosa

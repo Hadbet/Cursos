@@ -438,7 +438,7 @@
         var nombre = document.getElementById("txtNombrePersonaCurso");
         var apu = document.getElementById("cbApu");
         var supervisor = document.getElementById("cbSupervisor");
-        var shiftLeader = document.getElementById("cbSupervisor");
+        var shiftLeader = document.getElementById("cbShiftleader");
         var cursos = document.getElementById("cbHorario");
 
         var errorOcurrido = false;
@@ -528,7 +528,7 @@
               newRow.append(fechaCell);
               newRow.append(horarioCell);
               table.append(newRow);
-            }else if(data.data[i].EstatusAsistencia == '1'){
+            }else if(data.data[i].EstatusAsistencia == '2'){
 
               var newRowConcluido = $("<tr></tr>");
               var idCell = $("<td></td>").text(data.data[i].IdBitacoraCurso);
@@ -551,7 +551,7 @@
               newRowConcluido.append(evaluacionCell);
               newRowConcluido.append(valorarCell);-
               tableConcluidos.append(newRowConcluido);
-            }else if(data.data[i].EstatusAsistencia == '2'){
+            }else if(data.data[i].EstatusAsistencia == '3'){
               var newRowCertificado = $("<tr></tr>");
               var idCertificadoCell = $("<td></td>").text(data.data[i].IdBitacoraCurso);
               var nameCertificadoCell = $("<td></td>").text(data.data[i].Curso); // asume que tienes un campo id en tus datos
