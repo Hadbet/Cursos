@@ -463,6 +463,8 @@
           var Fecha = horarioParts[1].trim();
           var HorarioCurso = horarioParts[2].trim();
 
+          console.log('https://arketipo.mx/RH/CursosRH/dao/consultaCapacidad.php?curso='+Curso+'&fecha='+Fecha+'&horario='+HorarioCurso);
+
           await $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaCapacidad.php?curso='+Curso+'&fecha='+Fecha+'&horario='+HorarioCurso, function (data) {
             if (data.data[0].Capacidad<data.data[0].Contador){
               var fetchPromise = fetch('dao/guardarBitacoraCurso.php', {
