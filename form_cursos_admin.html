@@ -200,10 +200,18 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <div class="form-group mb-3">
                                         <label for="txtCapacidad">Capacidad</label>
                                         <input type="number" class="form-control drgpicker" id="txtCapacidad"
+                                               value="" aria-describedby="button-addon2">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group mb-3">
+                                        <label for="txtVigencia">Vigencia</label>
+                                        <input type="date" class="form-control drgpicker" id="txtVigencia"
                                                value="" aria-describedby="button-addon2">
                                     </div>
                                 </div>
@@ -708,6 +716,7 @@
         var objetivo = document.getElementById("txtObjetivo").value;
         var instructor = document.getElementById("cbInstructor").value;
         var area = document.getElementById("txtArea").value;
+        var fechaFinal = document.getElementById("txtFechaNacimiento").value;
 
         var select = document.getElementById("cbTemario");
         var options = Array.from(select.options); // Convierte HTMLCollection a Array
@@ -736,6 +745,8 @@
         data.append('temario', temario);
         data.append('tipo', tipo);
         data.append('area', area);
+        data.append('fechaFinal', fechaFinal);
+
 
         fetch('dao/guardarCurso.php', {
             method: 'POST',

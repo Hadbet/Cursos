@@ -11,14 +11,15 @@ $Instructor=$_POST['instructor'];
 $Temario=$_POST['temario'];
 $Tipo=$_POST['tipo'];
 $Area=$_POST['area'];
+$FechaFinal=$_POST['fechaFinal'];
 
-registroUsu($Nombre,$Horario,$Fecha,$Capacidad,$Objetivo,$Instructor,$Temario,$Tipo,$Area);
-function registroUsu($Nombre,$Horario,$Fecha,$Capacidad,$Objetivo,$Instructor,$Temario,$Tipo,$Area){
+registroUsu($Nombre,$Horario,$Fecha,$Capacidad,$Objetivo,$Instructor,$Temario,$Tipo,$Area,$FechaFinal);
+function registroUsu($Nombre,$Horario,$Fecha,$Capacidad,$Objetivo,$Instructor,$Temario,$Tipo,$Area,$FechaFinal){
 
     $con = new LocalConector();
     $conex=$con->conectar();
 
-    $insertRegistro= "INSERT INTO `Cursos`(`NombreCurso`, `Horario`, `Fecha`, `Estatus`, `Capacidad`, `Objetivo`, `Instructor`, `Tipo`, `Temario`, `Area`) VALUES ('$Nombre','$Horario','$Fecha',1,$Capacidad,'$Objetivo','$Instructor','$Tipo','$Temario','$Area')";
+    $insertRegistro= "INSERT INTO `Cursos`(`NombreCurso`, `Horario`, `Fecha`, `Estatus`, `Capacidad`, `Objetivo`, `Instructor`, `Tipo`, `Temario`, `Area`,`Vigencia`) VALUES ('$Nombre','$Horario','$Fecha',1,$Capacidad,'$Objetivo','$Instructor','$Tipo','$Temario','$Area','$FechaFinal')";
 
     $rsinsertUsu=mysqli_query($conex,$insertRegistro);
     mysqli_close($conex);
