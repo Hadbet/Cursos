@@ -1,16 +1,17 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="assets/images/iconoarriba.png" />
+    <link rel="shortcut icon" href="assets/images/iconoarriba.png"/>
     <title>GRAMMER RH</title>
     <!-- Simple bar CSS -->
     <link rel="stylesheet" href="css/simplebar.css">
     <!-- Fonts CSS -->
-    <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet">
     <!-- Icons CSS -->
     <link rel="stylesheet" href="css/feather.css">
     <!-- Date Range Picker CSS -->
@@ -24,397 +25,476 @@
     <script src="lib/sweetalert2.all.min.js"></script>
 
     <style>
-      .image-container {
-        display: flex;
-        justify-content: space-around;
-      }
-      .image-container img {
-        transition: all 0.3s ease;
-        width: 100px;
-        height: 100px;
-      }
-      .image-container img:hover {
-        transform: translateY(-10px);
-      }
-      .image-container img.active {
-        transform: scale(1.2);
-      }
-      .image-container img.inactive {
-        transform: scale(0.8);
-      }
+        .image-container {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .image-container img {
+            transition: all 0.3s ease;
+            width: 100px;
+            height: 100px;
+        }
+
+        .image-container img:hover {
+            transform: translateY(-10px);
+        }
+
+        .image-container img.active {
+            transform: scale(1.2);
+        }
+
+        .image-container img.inactive {
+            transform: scale(0.8);
+        }
+
+        #divCurso {
+            opacity: 0;
+            transition: opacity 2s;
+        }
     </style>
 
-  </head>
-  <body class="vertical  light  ">
-    <div class="wrapper">
-      <nav class="topnav navbar navbar-light">
+</head>
+<body class="vertical  light  ">
+<div class="wrapper">
+    <nav class="topnav navbar navbar-light">
         <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
-          <i class="fe fe-menu navbar-toggler-icon"></i>
+            <i class="fe fe-menu navbar-toggler-icon"></i>
         </button>
-      </nav>
-      <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
+    </nav>
+    <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
         <a href="#" class="btn collapseSidebar toggle-btn d-lg-none text-muted ml-2 mt-3" data-toggle="toggle">
-          <i class="fe fe-x"><span class="sr-only"></span></i>
+            <i class="fe fe-x"><span class="sr-only"></span></i>
         </a>
         <nav class="vertnav navbar navbar-light">
-          <!-- nav bar -->
-          <div class="w-100 mb-4 d-flex">
-            <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="inicio.html">
-              <img src="assets/images/Grammer_Logo.ico" style="width: 30%">
-            </a>
-          </div>
-          <ul class="navbar-nav flex-fill w-100 mb-2">
-            <a href="profile.html" class=" nav-link">
-              <i class="fe fe-home fe-16"></i>
-              <span class="ml-3 item-text">Perfil</span>
-            </a>
-          </ul>
-          <p class="text-muted nav-heading mt-4 mb-1">
-            <span>Formularios</span>
-          </p>
-          <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-              <a href="#forms" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-credit-card fe-16"></i>
-                <span class="ml-3 item-text">Cursos</span>
-              </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="forms">
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="form_cursos.html"><span class="ml-1 item-text">Registro de curso</span></a>
+            <!-- nav bar -->
+            <div class="w-100 mb-4 d-flex">
+                <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="inicio.html">
+                    <img src="assets/images/Grammer_Logo.ico" style="width: 30%">
+                </a>
+            </div>
+            <ul class="navbar-nav flex-fill w-100 mb-2">
+                <li class="nav-item dropdown">
+                    <a href="profile.html" class=" nav-link">
+                        <i class="fe fe-home fe-16"></i>
+                        <span class="ml-3 item-text">Perfil</span>
+                    </a>
                 </li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a href="#tables" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-user-minus fe-16"></i>
-                <span class="ml-3 item-text">Ausentismo</span>
-              </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="tables">
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="./table_basic.html"><span class="ml-1 item-text">Registro de ausentismo</span></a>
+            </ul>
+            <p class="text-muted nav-heading mt-4 mb-1">
+                <span>Formularios</span>
+            </p>
+            <ul class="navbar-nav flex-fill w-100 mb-2">
+                <li class="nav-item dropdown">
+                    <a href="#forms" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                        <i class="fe fe-credit-card fe-16"></i>
+                        <span class="ml-3 item-text">Cursos</span>
+                    </a>
+                    <ul class="collapse list-unstyled pl-4 w-100" id="forms">
+                        <li class="nav-item">
+                            <a class="nav-link pl-3" href="form_cursos.html"><span class="ml-1 item-text">Registro de curso</span></a>
+                        </li>
+                    </ul>
                 </li>
-              </ul>
-            </li>
-          </ul>
-          <p class="text-muted nav-heading mt-4 mb-1">
-            <span>Administración</span>
-          </p>
-          <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-              <a href="#contact" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-smile fe-16"></i>
-                <span class="ml-3 item-text">Cursos</span>
-              </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="contact">
-                <a class="nav-link pl-3" href="form_asistencia.html"><span
-                        class="ml-1">Toma de asistencia</span></a>
-                <a class="nav-link pl-3" href="form_cursos_admin_calificacion.html"><span class="ml-1">Evaluaciones</span></a>
-                <a class="nav-link pl-3" href="listas_asistencia.html"><span class="ml-1">Listas de asistencias</span></a>
-                <a class="nav-link pl-3" href="form_cursos_admin.html"><span class="ml-1">Alta de cursos</span></a>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a href="#profile" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-user fe-16"></i>
-                <span class="ml-3 item-text">Ausentismos</span>
-              </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="profile">
-                <a class="nav-link pl-3" href="./profile.html"><span
-                        class="ml-1">Lista de ausentismos</span></a>
-                <a class="nav-link pl-3" href="./profile-settings.html"><span class="ml-1">Base de datos</span></a>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a href="#support" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-compass fe-16"></i>
-                <span class="ml-3 item-text">Capacitaciones</span>
-              </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="support">
-                <a class="nav-link pl-3" href="./support-center.html"><span class="ml-1">Home</span></a>
-                <a class="nav-link pl-3" href="./support-tickets.html"><span class="ml-1">Tickets</span></a>
-                <a class="nav-link pl-3" href="./support-ticket-detail.html"><span
-                        class="ml-1">Ticket Detail</span></a>
-                <a class="nav-link pl-3" href="./support-faqs.html"><span class="ml-1">FAQs</span></a>
-              </ul>
-            </li>
-          </ul>
-          <div class="btn-box w-100 mt-4 mb-1">
-            <a href="index.html"
-               target="_blank" class="btn mb-2 btn-danger btn-lg btn-block">
-              <i class="fe fe-log-out fe-12 mx-2 text-white"></i><span class="small text-white">Salir</span>
-            </a>
-          </div>
+                <li class="nav-item dropdown">
+                    <a href="#tables" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                        <i class="fe fe-user-minus fe-16"></i>
+                        <span class="ml-3 item-text">Ausentismo</span>
+                    </a>
+                    <ul class="collapse list-unstyled pl-4 w-100" id="tables">
+                        <li class="nav-item">
+                            <a class="nav-link pl-3" href="./table_basic.html"><span class="ml-1 item-text">Registro de ausentismo</span></a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <p class="text-muted nav-heading mt-4 mb-1">
+                <span>Administración</span>
+            </p>
+            <ul class="navbar-nav flex-fill w-100 mb-2">
+                <li class="nav-item dropdown">
+                    <a href="#contact" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                        <i class="fe fe-smile fe-16"></i>
+                        <span class="ml-3 item-text">Cursos</span>
+                    </a>
+                    <ul class="collapse list-unstyled pl-4 w-100" id="contact">
+                        <a class="nav-link pl-3" href="form_asistencia.html"><span
+                                class="ml-1">Toma de asistencia</span></a>
+                        <a class="nav-link pl-3" href="form_cursos_admin_calificacion.html"><span class="ml-1">Evaluaciones</span></a>
+                        <a class="nav-link pl-3" href="listas_asistencia.html"><span
+                                class="ml-1">Listas de asistencias</span></a>
+                        <a class="nav-link pl-3" href="form_cursos_admin.html"><span class="ml-1">Alta de cursos</span></a>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#profile" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                        <i class="fe fe-user fe-16"></i>
+                        <span class="ml-3 item-text">Ausentismos</span>
+                    </a>
+                    <ul class="collapse list-unstyled pl-4 w-100" id="profile">
+                        <a class="nav-link pl-3" href="./profile.html"><span
+                                class="ml-1">Lista de ausentismos</span></a>
+                        <a class="nav-link pl-3" href="./profile-settings.html"><span class="ml-1">Base de datos</span></a>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#support" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                        <i class="fe fe-compass fe-16"></i>
+                        <span class="ml-3 item-text">Capacitaciones</span>
+                    </a>
+                    <ul class="collapse list-unstyled pl-4 w-100" id="support">
+                        <a class="nav-link pl-3" href="./support-center.html"><span class="ml-1">Home</span></a>
+                        <a class="nav-link pl-3" href="./support-tickets.html"><span class="ml-1">Tickets</span></a>
+                        <a class="nav-link pl-3" href="./support-ticket-detail.html"><span
+                                class="ml-1">Ticket Detail</span></a>
+                        <a class="nav-link pl-3" href="./support-faqs.html"><span class="ml-1">FAQs</span></a>
+                    </ul>
+                </li>
+            </ul>
+            <div class="btn-box w-100 mt-4 mb-1">
+                <a href="index.html"
+                   target="_blank" class="btn mb-2 btn-danger btn-lg btn-block">
+                    <i class="fe fe-log-out fe-12 mx-2 text-white"></i><span class="small text-white">Salir</span>
+                </a>
+            </div>
         </nav>
-      </aside>
-      <main role="main" class="main-content">
+    </aside>
+    <main role="main" class="main-content">
+        <center><img src="assets/images/escuela.png" style="width: 30%"></center>
+        <br><br>
         <div class="container-fluid">
-          <div class="row justify-content-center">
-            <div class="col-12">
-              <h2 class="page-title">Registrarse a un curso</h2>
-              <p class="text-muted">Bienvenido aqui podras programar y registrarte para tus cursos.</p>
-              <div class="card shadow mb-4">
-                <div class="card-header">
-                  <strong class="card-title">Registro</strong>
-                </div>
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group mb-3">
-                        <label for="txtNominaCurso">Nomina</label>
-                        <input type="text" readonly="" class="form-control-plaintext" id="txtNominaCurso" value="00001606">
-                      </div>
-                      <div class="form-group mb-3">
-                        <label for="txtNombrePersonaCurso">Nombre</label>
-                        <input type="text" readonly="" class="form-control-plaintext" id="txtNombrePersonaCurso" value="HADBET AYARI ALTAMIRANO MARTINEZ">
-                      </div>
-                      <div class="form-group mb-3">
-                        <label for="cbApu">Apu</label>
-                        <select class="custom-select" id="cbApu" onchange="llenarSuper()">
-                          <option selected>Abrir menu</option>
-                        </select>
-                      </div>
-                      <div class="form-group mb-3">
-                        <label for="cbSupervisor" >Supervisor</label>
-                        <select class="custom-select"  id="cbSupervisor" onchange="llenarShift()">
-                          <option selected>Abrir menu</option>
-                        </select>
-                      </div>
-                      <div class="form-group mb-3">
-                        <label for="cbShiftleader">Shifleader</label>
-                        <select class="custom-select" id="cbShiftleader" onchange="cargarCursosSelect()">
-                          <option selected>Abrir menu</option>
-                        </select>
-                      </div>
-                    </div> <!-- /.col -->
-                    <div class="col-md-6">
-                      <div class="form-group mb-3">
-                        <label for="cbCurso">Seleccione el curso</label>
-                        <select class="custom-select" id="cbCurso" onchange="cargarSeleccionCursos()">
-                          <option selected>Abrir menu</option>
-                        </select>
-                      </div>
-                      <div class="form-group mb-3">
-                        <label for="cbHorario">Cursos seleccionados</label>
-                        <select id="cbHorario" multiple="" class="form-control">
-                        </select>
-                        <br>
-                        <button type="button" onclick="eliminarCurso()" id="btnEliminarCurso" class="btn mb-2 btn-danger float-right text-white">Borrar<span class="fe fe-chevron-right fe-16 ml-2"></span></button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <button type="button" onclick="agregarAsistenciaCurso()" class="btn mb-2 btn-success float-right text-white">Registrar<span class="fe fe-chevron-right fe-16 ml-2"></span></button>
-                </div>
-              </div> <!-- / .card -->
-            </div> <!-- .col-12 -->
-          </div> <!-- .row -->
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <h2 class="page-title">Registrarse a un curso</h2>
+                    <p class="text-muted">Bienvenido aqui podras programar y registrarte para tus cursos.</p>
+                    <div class="card shadow mb-4">
+                        <div class="card-header">
+                            <strong class="card-title">Registro</strong>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <label for="txtNominaCurso">Nomina</label>
+                                        <input type="text" readonly="" class="form-control-plaintext"
+                                               id="txtNominaCurso" value="00001606">
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="txtNombrePersonaCurso">Nombre</label>
+                                        <input type="text" readonly="" class="form-control-plaintext"
+                                               id="txtNombrePersonaCurso" value="HADBET AYARI ALTAMIRANO MARTINEZ">
+                                    </div>
+                                    <div class="form-group mb-3" id="divApu">
+                                        <label for="cbApu">Apu</label>
+                                        <select class="custom-select" id="cbApu" onchange="llenarSuper()">
+                                            <option selected>Abrir menu</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group mb-3" id="divSupervisor" style="display: none">
+                                        <label for="cbSupervisor">Supervisor</label>
+                                        <select class="custom-select" id="cbSupervisor" onchange="llenarShift()">
+                                            <option selected>Abrir menu</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group mb-3" id="divShiftleader" style="display: none">
+                                        <label for="cbShiftleader">Shifleader</label>
+                                        <select class="custom-select" id="cbShiftleader"
+                                                onchange="cargarCursosSelect()">
+                                            <option selected>Abrir menu</option>
+                                        </select>
+                                    </div>
+                                </div> <!-- /.col -->
+                                <div class="col-md-6" id="divCurso" style="display: none">
+                                    <div class="form-group mb-3">
+                                        <label for="cbCurso">Seleccione el curso</label>
+                                        <select class="custom-select" id="cbCurso" onchange="cargarFechasHorarios()">
+                                            <option selected>Abrir menu</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <label for="cbFechaHora">Fecha y horario disponible</label>
+                                        <select class="custom-select" id="cbFechaHora">
+                                            <option selected>Abrir menu</option>
+                                        </select>
+                                        <br>
+                                        <br>
+                                        <button type="button" onclick="cargarSeleccionCursos()" id="btnEliminarCurso"
+                                                class="btn mb-2 btn-success float-right text-white">Agregar<span
+                                                class="fe fe-chevron-right fe-16 ml-2"></span></button>
+                                    </div>
+
+                                    <div class="form-group mb-3">
+
+                                        <br>
+                                        <label for="cbHorario">Cursos seleccionados</label>
+                                        <select id="cbHorario" multiple="" class="form-control">
+                                        </select>
+                                        <br>
+                                        <button type="button" onclick="eliminarCurso()"
+                                                class="btn mb-2 btn-danger float-right text-white">Borrar<span
+                                                class="fe fe-chevron-right fe-16 ml-2"></span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="button" onclick="agregarAsistenciaCurso()"
+                                    class="btn mb-2 btn-success float-right text-white">Registrar<span
+                                    class="fe fe-chevron-right fe-16 ml-2"></span></button>
+                        </div>
+                    </div> <!-- / .card -->
+                </div> <!-- .col-12 -->
+            </div> <!-- .row -->
         </div> <!-- .container-fluid -->
 
         <div class="container-fluid">
-          <div class="row justify-content-center">
-            <div class="col-12">
-              <div class="card shadow mb-4">
-                <div class="card-body">
-                  <h5 class="card-title">Mis Cursos por asistir</h5>
-                  <table id="tablaCursosPendientes" class="table table-hover">
-                    <thead>
-                    <tr>
-                      <th>Nombre Curso</th>
-                      <th>Fecha</th>
-                      <th>Horario</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                  </table>
-                </div>
-              </div> <!-- / .card -->
-            </div> <!-- .col-12 -->
-          </div> <!-- .row -->
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Mis Cursos por asistir</h5>
+                            <table id="tablaCursosPendientes" class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>Nombre Curso</th>
+                                    <th>Fecha</th>
+                                    <th>Horario</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div> <!-- / .card -->
+                </div> <!-- .col-12 -->
+            </div> <!-- .row -->
         </div> <!-- .container-fluid -->
 
         <div class="container-fluid">
-          <div class="row justify-content-center">
-            <div class="col-12">
-              <div class="card shadow mb-4">
-                <div class="card-body">
-                  <h5 class="card-title">Mis Cursos por calificar</h5>
-                  <table id="tablaConcluidos" class="table table-hover">
-                    <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Nombre Curso</th>
-                      <th>Fecha</th>
-                      <th>Horario</th>
-                      <th>Calificacion</th>
-                      <th>Valorar</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                  </table>
-                </div>
-              </div> <!-- / .card -->
-            </div> <!-- .col-12 -->
-          </div> <!-- .row -->
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Mis Cursos por calificar</h5>
+                            <table id="tablaConcluidos" class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre Curso</th>
+                                    <th>Fecha</th>
+                                    <th>Horario</th>
+                                    <th>Calificacion</th>
+                                    <th>Valorar</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div> <!-- / .card -->
+                </div> <!-- .col-12 -->
+            </div> <!-- .row -->
         </div> <!-- .container-fluid -->
 
         <div class="container-fluid">
-          <div class="row justify-content-center">
-            <div class="col-12">
-              <div class="card shadow mb-4">
-                <div class="card-body">
-                  <h5 class="card-title">Mis Certificados</h5>
-                  <table id="tablaCertificados" class="table table-hover">
-                    <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Nombre Curso</th>
-                      <th>Fecha</th>
-                      <th>Horario</th>
-                      <th>Calificacion</th>
-                      <th>Certificado</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                  </table>
-                </div>
-              </div> <!-- / .card -->
-            </div> <!-- .col-12 -->
-          </div> <!-- .row -->
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Mis Certificados</h5>
+                            <table id="tablaCertificados" class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre Curso</th>
+                                    <th>Fecha</th>
+                                    <th>Horario</th>
+                                    <th>Calificacion</th>
+                                    <th>Certificado</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div> <!-- / .card -->
+                </div> <!-- .col-12 -->
+            </div> <!-- .row -->
         </div> <!-- .container-fluid -->
 
 
-      </main> <!-- main -->
-    </div> <!-- .wrapper -->
+    </main> <!-- main -->
+</div> <!-- .wrapper -->
 
-    <div class="modal fade modal-full" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-      <button aria-label="" type="button" class="close px-2" data-dismiss="modal" aria-hidden="true">
+<div class="modal fade modal-full" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <button aria-label="" type="button" class="close px-2" data-dismiss="modal" aria-hidden="true">
         <span aria-hidden="true">×</span>
-      </button>
-      <div class="modal-dialog modal-dialog-centered" role="document">
+    </button>
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-          <div class="modal-body text-center">
-            <h1>¿Cómo calificas el contenido del curso?</h1>
-            <p>Responde y evalúa</p>
-              <div class="image-container">
-                  <img src="assets/images/verde.png" onclick="handleClick(this)">
-                  <img src="assets/images/amarillo.png" onclick="handleClick(this)" style="margin-left: 5px;margin-right: 5px">
-                  <img src="assets/images/rojo.png" onclick="handleClick(this)">
-              </div>
-            <br>
-            <form class="form-inline justify-content-center">
-              <input id="txtComentariosCurso" class="form-control form-control-lg mr-sm-2 bg-transparent" type="text" placeholder="Comentarios adicionales" aria-label="Search">
+            <div class="modal-body text-center">
+                <h1>¿Cómo calificas el contenido del curso?</h1>
+                <p>Responde y evalúa</p>
+                <div class="image-container">
+                    <img src="assets/images/verde.png" onclick="handleClick(this)">
+                    <img src="assets/images/amarillo.png" onclick="handleClick(this)"
+                         style="margin-left: 5px;margin-right: 5px">
+                    <img src="assets/images/rojo.png" onclick="handleClick(this)">
+                </div>
+                <br>
+                <form class="form-inline justify-content-center">
+                    <input id="txtComentariosCurso" class="form-control form-control-lg mr-sm-2 bg-transparent"
+                           type="text" placeholder="Comentarios adicionales" aria-label="Search">
 
-            </form>
-            <br>
-            <button onclick="guardarEvaluacion()" class="btn btn-primary btn-lg mb-2 my-2 my-sm-0" type="submit">Enviar</button>
-          </div>
+                </form>
+                <br>
+                <button onclick="guardarEvaluacion()" class="btn btn-primary btn-lg mb-2 my-2 my-sm-0" type="submit">
+                    Enviar
+                </button>
+            </div>
         </div>
-      </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/moment.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/simplebar.min.js"></script>
-    <script src='js/daterangepicker.js'></script>
-    <script src='js/jquery.stickOnScroll.js'></script>
-    <script src="js/tinycolor-min.js"></script>
-    <script src="js/config.js"></script>
-    <script src="js/apps.js"></script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/moment.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/simplebar.min.js"></script>
+<script src='js/daterangepicker.js'></script>
+<script src='js/jquery.stickOnScroll.js'></script>
+<script src="js/tinycolor-min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/apps.js"></script>
 
-      function gtag()
-      {
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
         dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-      gtag('config', 'UA-56159088-1');
+    }
 
-      llenarAPU();
-      function llenarAPU() {
+    gtag('js', new Date());
+    gtag('config', 'UA-56159088-1');
+
+    llenarAPU();
+
+    function llenarAPU() {
         $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/daoApu.php', function (data) {
-          var select = document.getElementById("cbApu");
-          for (var i = 0; i < data.data.length; i++) {
-            var createOption = document.createElement("option");
-            createOption.text = data.data[i].Nombre;
-            createOption.value = data.data[i].Puesto;
-            select.appendChild(createOption);
-          }
+            var select = document.getElementById("cbApu");
+            for (var i = 0; i < data.data.length; i++) {
+                var createOption = document.createElement("option");
+                createOption.text = data.data[i].Nombre;
+                createOption.value = data.data[i].Puesto;
+                select.appendChild(createOption);
+            }
         });
-      }
+    }
 
-      function llenarSuper() {
+    function llenarSuper() {
         $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/daoSupervisor.php?APU=' + document.getElementById("cbApu").value, function (data) {
-          var selectS = document.getElementById("cbSupervisor");
-          selectS.innerHTML = "";
+            var selectS = document.getElementById("cbSupervisor");
+            selectS.innerHTML = "";
 
-          var selectA = document.getElementById("cbShiftleader");
-          selectA.innerHTML = "";
+            var selectA = document.getElementById("cbShiftleader");
+            selectA.innerHTML = "";
 
 
-          var createOptionDef = document.createElement("option");
-          createOptionDef.text = "Seleccione";
-          createOptionDef.value = "";
-          selectS.appendChild(createOptionDef);
+            var createOptionDef = document.createElement("option");
+            createOptionDef.text = "Seleccione";
+            createOptionDef.value = "";
+            selectS.appendChild(createOptionDef);
 
-          for (var i = 0; i < data.data.length; i++) {
-            var createOptionS = document.createElement("option");
-            createOptionS.text = data.data[i].Supervisor;
-            createOptionS.value = data.data[i].Supervisor;
-            selectS.appendChild(createOptionS);
-          }
+            for (var i = 0; i < data.data.length; i++) {
+                var createOptionS = document.createElement("option");
+                createOptionS.text = data.data[i].Supervisor;
+                createOptionS.value = data.data[i].Supervisor;
+                selectS.appendChild(createOptionS);
+            }
+
+            var divSuper = document.getElementById("divSupervisor");
+            divSuper.style.display = 'block';
+            divSuper.classList.add('animate__animated', 'animate__bounceIn');
+
         });
-      }
+    }
 
-      function llenarShift() {
+    function llenarShift() {
         $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/daoShiftLeader.php?APU=' + document.getElementById("cbSupervisor").value, function (data) {
-          var selectS = document.getElementById("cbShiftleader");
-          selectS.innerHTML = "";
+            var selectS = document.getElementById("cbShiftleader");
+            selectS.innerHTML = "";
 
-          var createOptionDefS = document.createElement("option");
-          createOptionDefS.text = "Seleccione";
-          createOptionDefS.value = "";
-          selectS.appendChild(createOptionDefS);
+            var createOptionDefS = document.createElement("option");
+            createOptionDefS.text = "Seleccione";
+            createOptionDefS.value = "";
+            selectS.appendChild(createOptionDefS);
 
-          for (var i = 0; i < data.data.length; i++) {
-            var createOptionS = document.createElement("option");
-            createOptionS.text = data.data[i].ShiftLeader;
-            createOptionS.value = data.data[i].ShiftLeader;
-            selectS.appendChild(createOptionS);
-          }
+            for (var i = 0; i < data.data.length; i++) {
+                var createOptionS = document.createElement("option");
+                createOptionS.text = data.data[i].ShiftLeader;
+                createOptionS.value = data.data[i].ShiftLeader;
+                selectS.appendChild(createOptionS);
+            }
+
+            var divShift = document.getElementById("divShiftleader");
+            divShift.style.display = 'block';
+            divShift.classList.add('animate__animated', 'animate__bounceIn');
+
         });
-      }
+    }
 
-      function cargarCursosSelect() {
+    var cursos = [];
+
+    function cargarCursosSelect() {
         $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaCurso.php', function (data) {
-          var select = document.getElementById("cbCurso");
-          for (var i = 0; i < data.data.length; i++) {
-            var createOption = document.createElement("option");
-            createOption.text = data.data[i].NombreCurso +", "+ data.data[i].Fecha +", "+ data.data[i].Horario;
-            createOption.value = data.data[i].NombreCurso +", "+ data.data[i].Fecha +", "+ data.data[i].Horario;
-            select.appendChild(createOption);
-          }
+            cursos = data.data;
+            var select = document.getElementById("cbCurso");
+            select.innerHTML = "";
+            var nombresCursos = [];
+            for (var i = 0; i < cursos.length; i++) {
+                if (!nombresCursos.includes(cursos[i].NombreCurso)) {
+                    nombresCursos.push(cursos[i].NombreCurso);
+                    var createOption = document.createElement("option");
+                    createOption.text = cursos[i].NombreCurso;
+                    createOption.value = cursos[i].NombreCurso;
+                    select.appendChild(createOption);
+                }
+            }
+            var divCurso = document.getElementById("divCurso");
+            divCurso.style.display = 'block';
+            divCurso.classList.add('animate__animated', 'animate__bounceIn');
         });
-      }
+    }
 
-      function cargarSeleccionCursos (){
+    function cargarFechasHorarios() {
+        var select = document.getElementById("cbFechaHora");
+        select.innerHTML = ""; // Limpiar el select
+        var cursoSeleccionado = document.getElementById("cbCurso").value;
+        for (var i = 0; i < cursos.length; i++) {
+            if (cursos[i].NombreCurso == cursoSeleccionado) {
+                var createOption = document.createElement("option");
+                createOption.text = cursos[i].Fecha + ", " + cursos[i].Horario;
+                createOption.value = cursos[i].Fecha + ", " + cursos[i].Horario;
+                select.appendChild(createOption);
+            }
+        }
+    }
+
+    function cargarSeleccionCursos() {
         var select = document.getElementById("cbHorario");
-        var nuevoValor = document.getElementById("cbCurso").value;
+        var nuevoValor = document.getElementById("cbCurso").value + ", " + document.getElementById("cbFechaHora").value;
 
         // Verificar si el valor ya existe en las opciones
         for (var i = 0; i < select.options.length; i++) {
-          if (select.options[i].value == nuevoValor) {
-            // El valor ya existe, así que salimos de la función
-            return;
-          }
+            if (select.options[i].value == nuevoValor) {
+                // El valor ya existe, así que salimos de la función
+                return;
+            }
         }
 
         // Si llegamos aquí, el valor no existe en las opciones, así que lo agregamos
@@ -422,18 +502,18 @@
         createOption.text = nuevoValor;
         createOption.value = nuevoValor;
         select.appendChild(createOption);
-      }
+    }
 
-      function eliminarCurso() {
+    function eliminarCurso() {
         var select = document.getElementById("cbHorario");
         var selectedIndex = select.selectedIndex;
 
         if (selectedIndex != -1) {
-          select.remove(selectedIndex);
+            select.remove(selectedIndex);
         }
-      }
+    }
 
-      async function agregarAsistenciaCurso() {
+    async function agregarAsistenciaCurso() {
         var nomina = document.getElementById("txtNominaCurso");
         var nombre = document.getElementById("txtNombrePersonaCurso");
         var apu = document.getElementById("cbApu");
@@ -454,130 +534,133 @@
         var fetchPromises = [];
 
         for (var i = 0; i < cursos.options.length; i++) {
-          dataRegistro.append('horario', cursos.options[i].value.trim());
+            dataRegistro.append('horario', cursos.options[i].value.trim());
 
-          var horarioNormal = cursos.options[i].value;
-          var horarioParts = horarioNormal.split(", ");
+            var horarioNormal = cursos.options[i].value;
+            var horarioParts = horarioNormal.split(", ");
 
-          var Curso = horarioParts[0].trim();
-          var Fecha = horarioParts[1].trim();
-          var HorarioCurso = horarioParts[2].trim();
+            var Curso = horarioParts[0].trim();
+            var Fecha = horarioParts[1].trim();
+            var HorarioCurso = horarioParts[2].trim();
 
-          await $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaCapacidad.php?curso='+Curso+'&fecha='+Fecha+'&horario='+HorarioCurso, function (data) {
-            if (data.data[0].Contador<data.data[0].Capacidad){
-              var fetchPromise = fetch('dao/guardarBitacoraCurso.php', {
-                method: 'POST',
-                body: dataRegistro
-              })
-                      .then(function (response) {
-                        if (!response.ok) {
-                          throw "Error en la llamada Ajax";
-                        }
-                      })
-                      .catch(function (err) {
-                        console.log(err);
-                      });
+            await $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaCapacidad.php?curso=' + Curso + '&fecha=' + Fecha + '&horario=' + HorarioCurso, function (data) {
+                if (data.data[0].Contador < data.data[0].Capacidad) {
+                    var fetchPromise = fetch('dao/guardarBitacoraCurso.php', {
+                        method: 'POST',
+                        body: dataRegistro
+                    })
+                        .then(function (response) {
+                            if (!response.ok) {
+                                throw "Error en la llamada Ajax";
+                            }
+                        })
+                        .catch(function (err) {
+                            console.log(err);
+                        });
 
-              fetchPromises.push(fetchPromise);
-            }else{
-              errorOcurrido = true;
-              Swal.fire({
-                icon: 'error',
-                title: 'Cupo lleno.', showConfirmButton: false, input: 'none',
-                text: 'No se acompleto el registro debido a la capacidad del curso.'
-              })
-            }
-          });
+                    fetchPromises.push(fetchPromise);
+                } else {
+                    errorOcurrido = true;
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Cupo lleno.', showConfirmButton: false, input: 'none',
+                        text: 'No se acompleto el registro debido a la capacidad del curso.'
+                    })
+                }
+            });
 
         }
 
         Promise.all(fetchPromises)
-                .then(function() {
-                  if (!errorOcurrido) {
+            .then(function () {
+                if (!errorOcurrido) {
                     Swal.fire({
-                      icon: 'success',
-                      title: 'Enviado.', showConfirmButton: false, input: 'none',
-                      text: 'Registro enviardo.'
+                        icon: 'success',
+                        title: 'Enviado.', showConfirmButton: false, input: 'none',
+                        text: 'Registro enviardo.'
                     })
                     location.reload();
-                  }
-                })
-                .catch(function(err) {
-                  console.log(err);
-                });
+                }
+            })
+            .catch(function (err) {
+                console.log(err);
+            });
 
 
-      }
-      cargarHorarios();
-      function cargarHorarios() {
-        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaCursoUsuario.php?nomina='+document.getElementById("txtNominaCurso").value, function (data) {
-          var table = $("#tablaCursosPendientes"); // selecciona la tabla
-          var tableConcluidos = $("#tablaConcluidos"); // selecciona la tabla
-          var tableCertificados = $("#tablaCertificados"); // selecciona la tabla
+    }
 
-          for (var i = 0; i < data.data.length; i++) {
+    cargarHorarios();
 
-            if (data.data[i].EstatusAsistencia == '0'){
-              var newRow = $("<tr></tr>");
-              var nameCell = $("<td></td>").text(data.data[i].Curso); // asume que tienes un campo id en tus datos
-              var horarioCell = $("<td></td>").text(data.data[i].Horario); // asume que tienes un campo id en tus datos
-              var fechaCell = $("<td></td>").text(data.data[i].Fecha);
+    function cargarHorarios() {
+        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaCursoUsuario.php?nomina=' + document.getElementById("txtNominaCurso").value, function (data) {
+            var table = $("#tablaCursosPendientes"); // selecciona la tabla
+            var tableConcluidos = $("#tablaConcluidos"); // selecciona la tabla
+            var tableCertificados = $("#tablaCertificados"); // selecciona la tabla
 
-              // agrega las celdas a la fila y la fila a la tabla
-              newRow.append(nameCell);
-              newRow.append(fechaCell);
-              newRow.append(horarioCell);
-              table.append(newRow);
-            }else if(data.data[i].EstatusAsistencia == '2'){
+            for (var i = 0; i < data.data.length; i++) {
 
-              var newRowConcluido = $("<tr></tr>");
-              var idCell = $("<td></td>").text(data.data[i].IdBitacoraCurso);
-              var nameCursoCell = $("<td></td>").text(data.data[i].Curso); // asume que tienes un campo id en tus datos
-              var horarioCursoCell = $("<td></td>").text(data.data[i].Horario); // asume que tienes un campo id en tus datos
-              var fechaCursoCell = $("<td></td>").text(data.data[i].Fecha); // asume que tienes un campo id en tus datos
-              if(data.data[i].Evaluacion === '0'){
-                var evaluacionCell = $("<td></td>").html("<span class=\"badge badge-pill badge-warning text-white\">"+"Pendiente"+"</span>");
-              }else{
-                var evaluacionCell = $("<td></td>").text(data.data[i].Evaluacion);
+                if (data.data[i].EstatusAsistencia == '0') {
+                    var newRow = $("<tr></tr>");
+                    var nameCell = $("<td></td>").text(data.data[i].Curso); // asume que tienes un campo id en tus datos
+                    var horarioCell = $("<td></td>").text(data.data[i].Horario); // asume que tienes un campo id en tus datos
+                    var fechaCell = $("<td></td>").text(data.data[i].Fecha);
 
-              }
-              var valorarCell = $("<td></td>").html(`<button type="button" class="btn mb-2 btn-secondary" onclick="llenarEvaluacion('${data.data[i].Curso}','${data.data[i].Horario}','${data.data[i].Fecha}','${data.data[i].IdBitacoraCurso}')" data-toggle="modal" data-target=".modal-full">Valorar</button>`);
+                    // agrega las celdas a la fila y la fila a la tabla
+                    newRow.append(nameCell);
+                    newRow.append(fechaCell);
+                    newRow.append(horarioCell);
+                    table.append(newRow);
+                } else if (data.data[i].EstatusAsistencia == '2') {
 
-              // agrega las celdas a la fila y la fila a la tabla
-              newRowConcluido.append(idCell);
-              newRowConcluido.append(nameCursoCell);
-              newRowConcluido.append(horarioCursoCell);
-              newRowConcluido.append(fechaCursoCell);
-              newRowConcluido.append(evaluacionCell);
-              newRowConcluido.append(valorarCell);-
-              tableConcluidos.append(newRowConcluido);
-            }else if(data.data[i].EstatusAsistencia == '3'){
-              var newRowCertificado = $("<tr></tr>");
-              var idCertificadoCell = $("<td></td>").text(data.data[i].IdBitacoraCurso);
-              var nameCertificadoCell = $("<td></td>").text(data.data[i].Curso); // asume que tienes un campo id en tus datos
-              var horarioCertificadoCell = $("<td></td>").text(data.data[i].Horario); // asume que tienes un campo id en tus datos
-              var fechaCertificadoCell = $("<td></td>").text(data.data[i].Fecha); // asume que tienes un campo id en tus datos
-              if(data.data[i].Evaluacion === '0'){
-                var evaluacionCertificadoCell = $("<td></td>").html("<span class=\"badge badge-pill badge-warning text-white\">"+"Pendiente"+"</span>");
-              }else{
-                var evaluacionCertificadoCell = $("<td></td>").text(data.data[i].Evaluacion);
+                    var newRowConcluido = $("<tr></tr>");
+                    var idCell = $("<td></td>").text(data.data[i].IdBitacoraCurso);
+                    var nameCursoCell = $("<td></td>").text(data.data[i].Curso); // asume que tienes un campo id en tus datos
+                    var horarioCursoCell = $("<td></td>").text(data.data[i].Horario); // asume que tienes un campo id en tus datos
+                    var fechaCursoCell = $("<td></td>").text(data.data[i].Fecha); // asume que tienes un campo id en tus datos
+                    if (data.data[i].Evaluacion === '0') {
+                        var evaluacionCell = $("<td></td>").html("<span class=\"badge badge-pill badge-warning text-white\">" + "Pendiente" + "</span>");
+                    } else {
+                        var evaluacionCell = $("<td></td>").text(data.data[i].Evaluacion);
 
-              }
-              var certificadoCell = $("<td></td>").html(`<button type="button" class="btn mb-2 btn-secondary" onclick="generarCertificado('${data.data[i].Curso}','${data.data[i].Horario}','${data.data[i].Fecha}','${data.data[i].IdBitacoraCurso}')" >Descargar Certificado</button>`);
+                    }
+                    var valorarCell = $("<td></td>").html(`<button type="button" class="btn mb-2 btn-secondary" onclick="llenarEvaluacion('${data.data[i].Curso}','${data.data[i].Horario}','${data.data[i].Fecha}','${data.data[i].IdBitacoraCurso}')" data-toggle="modal" data-target=".modal-full">Valorar</button>`);
 
-              newRowCertificado.append(idCertificadoCell);
-              newRowCertificado.append(nameCertificadoCell);
-              newRowCertificado.append(horarioCertificadoCell);
-              newRowCertificado.append(fechaCertificadoCell);
-              newRowCertificado.append(evaluacionCertificadoCell);
-              newRowCertificado.append(certificadoCell);
-              tableCertificados.append(newRowCertificado);
+                    // agrega las celdas a la fila y la fila a la tabla
+                    newRowConcluido.append(idCell);
+                    newRowConcluido.append(nameCursoCell);
+                    newRowConcluido.append(horarioCursoCell);
+                    newRowConcluido.append(fechaCursoCell);
+                    newRowConcluido.append(evaluacionCell);
+                    newRowConcluido.append(valorarCell);
+                    -
+                        tableConcluidos.append(newRowConcluido);
+                } else if (data.data[i].EstatusAsistencia == '3') {
+                    var newRowCertificado = $("<tr></tr>");
+                    var idCertificadoCell = $("<td></td>").text(data.data[i].IdBitacoraCurso);
+                    var nameCertificadoCell = $("<td></td>").text(data.data[i].Curso); // asume que tienes un campo id en tus datos
+                    var horarioCertificadoCell = $("<td></td>").text(data.data[i].Horario); // asume que tienes un campo id en tus datos
+                    var fechaCertificadoCell = $("<td></td>").text(data.data[i].Fecha); // asume que tienes un campo id en tus datos
+                    if (data.data[i].Evaluacion === '0') {
+                        var evaluacionCertificadoCell = $("<td></td>").html("<span class=\"badge badge-pill badge-warning text-white\">" + "Pendiente" + "</span>");
+                    } else {
+                        var evaluacionCertificadoCell = $("<td></td>").text(data.data[i].Evaluacion);
+
+                    }
+                    var certificadoCell = $("<td></td>").html(`<button type="button" class="btn mb-2 btn-secondary" onclick="generarCertificado('${data.data[i].Curso}','${data.data[i].Horario}','${data.data[i].Fecha}','${data.data[i].IdBitacoraCurso}')" >Descargar Certificado</button>`);
+
+                    newRowCertificado.append(idCertificadoCell);
+                    newRowCertificado.append(nameCertificadoCell);
+                    newRowCertificado.append(horarioCertificadoCell);
+                    newRowCertificado.append(fechaCertificadoCell);
+                    newRowCertificado.append(evaluacionCertificadoCell);
+                    newRowCertificado.append(certificadoCell);
+                    tableCertificados.append(newRowCertificado);
+                }
             }
-          }
         });
-      }
+    }
 
-      function generarCertificado(curso, horario, fecha, id) {
+    function generarCertificado(curso, horario, fecha, id) {
         var doc = new jsPDF('landscape');
 
         var nombre = document.getElementById("txtNombrePersonaCurso");
@@ -592,50 +675,51 @@
 
         // Guarda el PDF
         doc.save('certificado.pdf');
-      }
+    }
 
-      var cursoGlobal,horarioGlobal,fechaGlobal,calificacionGlobal,idGlobal;
-      function handleClick(clickedImage) {
+    var cursoGlobal, horarioGlobal, fechaGlobal, calificacionGlobal, idGlobal;
+
+    function handleClick(clickedImage) {
         var images = document.querySelectorAll('.image-container img');
-        images.forEach(function(image) {
-          if (image === clickedImage) {
-            image.classList.add('active');
-            image.classList.remove('inactive');
-          } else {
-            image.classList.add('inactive');
-            image.classList.remove('active');
-          }
+        images.forEach(function (image) {
+            if (image === clickedImage) {
+                image.classList.add('active');
+                image.classList.remove('inactive');
+            } else {
+                image.classList.add('inactive');
+                image.classList.remove('active');
+            }
         });
 
         if (clickedImage.src.includes('verde.png')) {
-          calificacionGlobal="Bueno";
+            calificacionGlobal = "Bueno";
         } else if (clickedImage.src.includes('amarillo.png')) {
-          calificacionGlobal="Regular";
+            calificacionGlobal = "Regular";
         } else if (clickedImage.src.includes('rojo.png')) {
-          calificacionGlobal="Malo";
+            calificacionGlobal = "Malo";
         }
 
-      }
+    }
 
-      $(document).ready(function() {
+    $(document).ready(function () {
         $('.modal').on('hidden.bs.modal', function () {
-          var images = document.querySelectorAll('.image-container img');
-          images.forEach(function(image) {
-            image.classList.remove('active');
-            image.classList.remove('inactive');
-          });
+            var images = document.querySelectorAll('.image-container img');
+            images.forEach(function (image) {
+                image.classList.remove('active');
+                image.classList.remove('inactive');
+            });
         });
-      });
+    });
 
 
-      function llenarEvaluacion(curso,horario,fecha,id) {
+    function llenarEvaluacion(curso, horario, fecha, id) {
         cursoGlobal = curso;
         horarioGlobal = horario;
         fechaGlobal = fecha;
         idGlobal = id;
-      }
+    }
 
-      function guardarEvaluacion() {
+    function guardarEvaluacion() {
 
         var nomina = document.getElementById("txtNominaCurso");
         var nombre = document.getElementById("txtNombrePersonaCurso");
@@ -653,30 +737,30 @@
         data.append('id', idGlobal);
 
         fetch('dao/guardarEvaluacionCurso.php', {
-          method: 'POST',
-          body: data
+            method: 'POST',
+            body: data
         })
-                .then(function (response) {
-                  if (response.ok) {
+            .then(function (response) {
+                if (response.ok) {
                     Swal.fire({
-                      icon: 'success',
-                      title: 'Enviado.', showConfirmButton: false, input: 'none',
-                      text: 'Registro enviardo.'
+                        icon: 'success',
+                        title: 'Enviado.', showConfirmButton: false, input: 'none',
+                        text: 'Registro enviardo.'
                     })
                     location.reload();
-                  } else {
+                } else {
                     throw "Error en la llamada Ajax";
-                  }
+                }
 
-                })
-                .then(function (texto) {
-                  console.log(texto);
-                })
-                .catch(function (err) {
-                  console.log(err);
-                });
-      }
+            })
+            .then(function (texto) {
+                console.log(texto);
+            })
+            .catch(function (err) {
+                console.log(err);
+            });
+    }
 
-    </script>
-  </body>
+</script>
+</body>
 </html>
