@@ -421,7 +421,7 @@
     input.addEventListener('keypress', function(e){
         // Verifica si la tecla presionada fue Enter
         if(e.key === 'Enter' || e.keyCode === 13){
-            $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/consultaEmpleadoGeneral.php', function (data) {
+            $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaEmpleadoGeneral.php', function (data) {
                 for (var i = 0; i < data.data.length; i++) {
                     document.getElementById("txtNominaCurso").value = data.data[i].NomUser;
                 }
