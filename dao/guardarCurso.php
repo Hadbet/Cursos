@@ -5,7 +5,6 @@ $Nombre=$_POST['nombre'];
 $Horario=$_POST['horario'];
 $Fecha=$_POST['fecha'];
 $Capacidad=$_POST['capacidad'];
-
 $Objetivo=$_POST['objetivo'];
 $Instructor=$_POST['instructor'];
 $Temario=$_POST['temario'];

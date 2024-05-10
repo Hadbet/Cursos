@@ -171,7 +171,7 @@
                     <h2 class="page-title">Ingresa el curso</h2>
                     <div class="card shadow mb-4">
                         <div class="card-header">
-                            <strong class="card-title">Registro</strong>
+                            <strong class="card-title">Curso</strong>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -213,7 +213,7 @@
                     <h2 class="page-title">Registrarse a los asistentes al curso</h2>
                     <div class="card shadow mb-4">
                         <div class="card-header">
-                            <strong class="card-title">Registro</strong>
+                            <strong class="card-title">Usuario</strong>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -257,8 +257,7 @@
                                     </div>
                                     <div class="form-group mb-3" id="divShiftleader" style="display: none">
                                         <label for="cbShiftleader">Shifleader</label>
-                                        <select class="custom-select" id="cbShiftleader"
-                                                onchange="cargarCursosSelect()">
+                                        <select class="custom-select" id="cbShiftleader">
                                             <option selected>Abrir menu</option>
                                         </select>
                                     </div>
@@ -274,9 +273,9 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button type="button" onclick="agregarAsistenciaCurso()"
-                                    class="btn mb-2 btn-success float-right text-white">Registrar<span
-                                    class="fe fe-chevron-right fe-16 ml-2"></span></button>
+                            <button type="button" onclick="cargarUsuario()"
+                                    class="btn mb-2 btn-info float-right text-white">Agregar<span
+                                    class="fe fe-plus fe-16 ml-2"></span></button>
                         </div>
                     </div> <!-- / .card -->
                 </div> <!-- .col-12 -->
@@ -288,13 +287,15 @@
                 <div class="col-12">
                     <div class="card shadow mb-4">
                         <div class="card-body">
-                            <h5 class="card-title">Mis Cursos por asistir</h5>
+                            <h5 class="card-title">Pre-Lista</h5>
                             <table id="tablaCursosPendientes" class="table table-hover">
                                 <thead>
                                 <tr>
-                                    <th>Nombre Curso</th>
-                                    <th>Fecha</th>
-                                    <th>Horario</th>
+                                    <th>Nomina</th>
+                                    <th>Nombre</th>
+                                    <th>Apu</th>
+                                    <th>Supervisor</th>
+                                    <th>ShiftLeader</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -306,39 +307,23 @@
             </div> <!-- .row -->
         </div> <!-- .container-fluid -->
 
+        <div class="container-fluid">
+            <div class="row justify-content-center text-center">
+                <div class="col-12">
+                    <button type="button" onclick="guardarLista()"
+                            class="btn mb-2 btn-success text-white">Subir<span
+                            class="fe fe-airplay fe-16 ml-2"></span></button>
+
+                </div> <!-- .col-12 -->
+            </div> <!-- .row -->
+        </div> <!-- .container-fluid -->
+
+
+
 
     </main> <!-- main -->
 </div> <!-- .wrapper -->
 
-<div class="modal fade modal-full" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-    <button aria-label="" type="button" class="close px-2" data-dismiss="modal" aria-hidden="true">
-        <span aria-hidden="true">×</span>
-    </button>
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-body text-center">
-                <h1>¿Cómo calificas el contenido del curso?</h1>
-                <p>Responde y evalúa</p>
-                <div class="image-container">
-                    <img src="assets/images/verde.png" onclick="handleClick(this)">
-                    <img src="assets/images/amarillo.png" onclick="handleClick(this)"
-                         style="margin-left: 5px;margin-right: 5px">
-                    <img src="assets/images/rojo.png" onclick="handleClick(this)">
-                </div>
-                <br>
-                <form class="form-inline justify-content-center">
-                    <input id="txtComentariosCurso" class="form-control form-control-lg mr-sm-2 bg-transparent"
-                           type="text" placeholder="Comentarios adicionales" aria-label="Search">
-
-                </form>
-                <br>
-                <button onclick="guardarEvaluacion()" class="btn btn-primary btn-lg mb-2 my-2 my-sm-0" type="submit">
-                    Enviar
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/popper.min.js"></script>
@@ -423,7 +408,7 @@
         if(e.key === 'Enter' || e.keyCode === 13){
             $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaEmpleadoGeneral.php?nomina=' + document.getElementById("txtNominaCurso").value, function (data) {
                 for (var i = 0; i < data.data.length; i++) {
-                    document.getElementById("txtNominaCurso").value = data.data[i].NomUser;
+                    document.getElementById("txtNombrePersonaCurso").value = data.data[i].NomUser;
                 }
             });
         }
@@ -480,7 +465,7 @@
 
         });
     }
-
+    cargarCursosSelect();
     var cursos = [];
 
     function cargarCursosSelect() {
@@ -488,6 +473,14 @@
             cursos = data.data;
             var select = document.getElementById("cbCurso");
             select.innerHTML = "";
+
+            var createOptionAux = document.createElement("option");
+            createOptionAux.text = "Seleccione curso";
+            createOptionAux.value = "Seleccione curso";
+
+
+            select.appendChild(createOptionAux);
+
             var nombresCursos = [];
             for (var i = 0; i < cursos.length; i++) {
                 if (!nombresCursos.includes(cursos[i].NombreCurso)) {
@@ -518,33 +511,7 @@
         }
     }
 
-    function cargarSeleccionCursos() {
-        var select = document.getElementById("cbHorario");
-        var nuevoValor = document.getElementById("cbCurso").value + ", " + document.getElementById("cbFechaHora").value;
 
-        // Verificar si el valor ya existe en las opciones
-        for (var i = 0; i < select.options.length; i++) {
-            if (select.options[i].value == nuevoValor) {
-                // El valor ya existe, así que salimos de la función
-                return;
-            }
-        }
-
-        // Si llegamos aquí, el valor no existe en las opciones, así que lo agregamos
-        var createOption = document.createElement("option");
-        createOption.text = nuevoValor;
-        createOption.value = nuevoValor;
-        select.appendChild(createOption);
-    }
-
-    function eliminarCurso() {
-        var select = document.getElementById("cbHorario");
-        var selectedIndex = select.selectedIndex;
-
-        if (selectedIndex != -1) {
-            select.remove(selectedIndex);
-        }
-    }
 
     async function agregarAsistenciaCurso() {
         var nomina = document.getElementById("txtNominaCurso");
@@ -622,135 +589,55 @@
 
     }
 
-    cargarHorarios();
+    var lista = [];
 
-    function cargarHorarios() {
-        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaCursoUsuario.php?nomina=' + document.getElementById("txtNominaCurso").value, function (data) {
-            var table = $("#tablaCursosPendientes"); // selecciona la tabla
-            var tableConcluidos = $("#tablaConcluidos"); // selecciona la tabla
-            var tableCertificados = $("#tablaCertificados"); // selecciona la tabla
+    function cargarUsuario() {
 
-            for (var i = 0; i < data.data.length; i++) {
+        var table = $("#tablaCursosPendientes");
+        var radioValue = document.querySelector('input[name="inlineRadioOptions"]:checked').value;
+        var nominaValue = document.getElementById("txtNominaCurso").value;
+        var nombreValue = document.getElementById("txtNombrePersonaCurso").value;
 
-                if (data.data[i].EstatusAsistencia == '0') {
-                    var newRow = $("<tr></tr>");
-                    var nameCell = $("<td></td>").text(data.data[i].Curso); // asume que tienes un campo id en tus datos
-                    var horarioCell = $("<td></td>").text(data.data[i].Horario); // asume que tienes un campo id en tus datos
-                    var fechaCell = $("<td></td>").text(data.data[i].Fecha);
-
-                    // agrega las celdas a la fila y la fila a la tabla
-                    newRow.append(nameCell);
-                    newRow.append(fechaCell);
-                    newRow.append(horarioCell);
-                    table.append(newRow);
-                } else if (data.data[i].EstatusAsistencia == '2') {
-
-                    var newRowConcluido = $("<tr></tr>");
-                    var idCell = $("<td></td>").text(data.data[i].IdBitacoraCurso);
-                    var nameCursoCell = $("<td></td>").text(data.data[i].Curso); // asume que tienes un campo id en tus datos
-                    var horarioCursoCell = $("<td></td>").text(data.data[i].Horario); // asume que tienes un campo id en tus datos
-                    var fechaCursoCell = $("<td></td>").text(data.data[i].Fecha); // asume que tienes un campo id en tus datos
-                    if (data.data[i].Evaluacion === '0') {
-                        var evaluacionCell = $("<td></td>").html("<span class=\"badge badge-pill badge-warning text-white\">" + "Pendiente" + "</span>");
-                    } else {
-                        var evaluacionCell = $("<td></td>").text(data.data[i].Evaluacion);
-
-                    }
-                    var valorarCell = $("<td></td>").html(`<button type="button" class="btn mb-2 btn-secondary" onclick="llenarEvaluacion('${data.data[i].Curso}','${data.data[i].Horario}','${data.data[i].Fecha}','${data.data[i].IdBitacoraCurso}')" data-toggle="modal" data-target=".modal-full">Valorar</button>`);
-
-                    // agrega las celdas a la fila y la fila a la tabla
-                    newRowConcluido.append(idCell);
-                    newRowConcluido.append(nameCursoCell);
-                    newRowConcluido.append(horarioCursoCell);
-                    newRowConcluido.append(fechaCursoCell);
-                    newRowConcluido.append(evaluacionCell);
-                    newRowConcluido.append(valorarCell);
-                    -
-                        tableConcluidos.append(newRowConcluido);
-                } else if (data.data[i].EstatusAsistencia == '3') {
-                    var newRowCertificado = $("<tr></tr>");
-                    var idCertificadoCell = $("<td></td>").text(data.data[i].IdBitacoraCurso);
-                    var nameCertificadoCell = $("<td></td>").text(data.data[i].Curso); // asume que tienes un campo id en tus datos
-                    var horarioCertificadoCell = $("<td></td>").text(data.data[i].Horario); // asume que tienes un campo id en tus datos
-                    var fechaCertificadoCell = $("<td></td>").text(data.data[i].Fecha); // asume que tienes un campo id en tus datos
-                    if (data.data[i].Evaluacion === '0') {
-                        var evaluacionCertificadoCell = $("<td></td>").html("<span class=\"badge badge-pill badge-warning text-white\">" + "Pendiente" + "</span>");
-                    } else {
-                        var evaluacionCertificadoCell = $("<td></td>").text(data.data[i].Evaluacion);
-
-                    }
-                    var certificadoCell = $("<td></td>").html(`<button type="button" class="btn mb-2 btn-secondary" onclick="generarCertificado('${data.data[i].Curso}','${data.data[i].Horario}','${data.data[i].Fecha}','${data.data[i].IdBitacoraCurso}')" >Descargar Certificado</button>`);
-
-                    newRowCertificado.append(idCertificadoCell);
-                    newRowCertificado.append(nameCertificadoCell);
-                    newRowCertificado.append(horarioCertificadoCell);
-                    newRowCertificado.append(fechaCertificadoCell);
-                    newRowCertificado.append(evaluacionCertificadoCell);
-                    newRowCertificado.append(certificadoCell);
-                    tableCertificados.append(newRowCertificado);
-                }
+        // Verifica si el número de nómina y el nombre ya existen en la lista
+        for (var i = 0; i < lista.length; i++) {
+            if (lista[i][0] === nominaValue || lista[i][1] === nombreValue) {
+                // Si el número de nómina y el nombre ya existen, retorna de la función sin hacer nada
+                return;
             }
-        });
-    }
+        }
 
-    function generarCertificado(curso, horario, fecha, id) {
-        var doc = new jsPDF('landscape');
-
-        var nombre = document.getElementById("txtNombrePersonaCurso");
-        var logo = new Image();
-        logo.src = 'assets/images/plantilla.png';
-        doc.addImage(logo, 'PNG', 0, 0, 298, 210);
-        doc.setFillColor(173, 216, 230); // Azul claro
-        doc.text(curso, 185, 123);
-        doc.text(nombre.value, 141, 107);
-        doc.text(fecha, 189, 130);
-        doc.text('ID: ' + id, 13, 11);
-
-        // Guarda el PDF
-        doc.save('certificado.pdf');
-    }
-
-    var cursoGlobal, horarioGlobal, fechaGlobal, calificacionGlobal, idGlobal;
-
-    function handleClick(clickedImage) {
-        var images = document.querySelectorAll('.image-container img');
-        images.forEach(function (image) {
-            if (image === clickedImage) {
-                image.classList.add('active');
-                image.classList.remove('inactive');
-            } else {
-                image.classList.add('inactive');
-                image.classList.remove('active');
-            }
-        });
-
-        if (clickedImage.src.includes('verde.png')) {
-            calificacionGlobal = "Bueno";
-        } else if (clickedImage.src.includes('amarillo.png')) {
-            calificacionGlobal = "Regular";
-        } else if (clickedImage.src.includes('rojo.png')) {
-            calificacionGlobal = "Malo";
+        if (radioValue === "Administrativo"){
+            var newRow = $("<tr></tr>");
+            var nominaCell = $("<td></td>").text(nominaValue);
+            var nombreCell = $("<td></td>").text(nombreValue);
+            var apuCell = $("<td></td>").text(document.getElementById("cbEncargado").value);
+            var supervisorCell = $("<td></td>").text("NA");
+            var shiftleaderCell = $("<td></td>").text("NA");
+            lista.push([nominaCell.text(), nombreCell.text(), apuCell.text(), supervisorCell.text(), shiftleaderCell.text()]);
+            newRow.append(nominaCell);
+            newRow.append(nombreCell);
+            newRow.append(apuCell);
+            newRow.append(supervisorCell);
+            newRow.append(shiftleaderCell);
+            table.append(newRow);
+        }else{
+            var newRow = $("<tr></tr>");
+            var nominaCell = $("<td></td>").text(nominaValue);
+            var nombreCell = $("<td></td>").text(nombreValue);
+            var apuCell = $("<td></td>").text(document.getElementById("cbApu").value);
+            var supervisorCell = $("<td></td>").text(document.getElementById("cbSupervisor").value);
+            var shiftleaderCell = $("<td></td>").text(document.getElementById("cbShiftleader").value);
+            lista.push([nominaCell.text(), nombreCell.text(), apuCell.text(), supervisorCell.text(), shiftleaderCell.text()]);
+            newRow.append(nominaCell);
+            newRow.append(nombreCell);
+            newRow.append(apuCell);
+            newRow.append(supervisorCell);
+            newRow.append(shiftleaderCell);
+            table.append(newRow);
         }
 
     }
 
-    $(document).ready(function () {
-        $('.modal').on('hidden.bs.modal', function () {
-            var images = document.querySelectorAll('.image-container img');
-            images.forEach(function (image) {
-                image.classList.remove('active');
-                image.classList.remove('inactive');
-            });
-        });
-    });
-
-
-    function llenarEvaluacion(curso, horario, fecha, id) {
-        cursoGlobal = curso;
-        horarioGlobal = horario;
-        fechaGlobal = fecha;
-        idGlobal = id;
-    }
 
     function guardarEvaluacion() {
 
@@ -760,16 +647,14 @@
 
         const data = new FormData();
 
-        data.append('curso', cursoGlobal);
-        data.append('horario', horarioGlobal);
-        data.append('fecha', fechaGlobal);
-        data.append('comentarios', comentarios.value);
-        data.append('calificacion', calificacionGlobal);
-        data.append('nomina', nomina.value);
-        data.append('nombre', nombre.value);
-        data.append('id', idGlobal);
+        data.append('nomina', cursoGlobal);
+        data.append('nombre', horarioGlobal);
+        data.append('apu', fechaGlobal);
+        data.append('supervisor', comentarios.value);
+        data.append('shiftLeader', calificacionGlobal);
+        data.append('horario', nomina.value);
 
-        fetch('dao/guardarEvaluacionCurso.php', {
+        fetch('dao/guardarBitacoraCurso.php', {
             method: 'POST',
             body: data
         })
@@ -793,6 +678,50 @@
                 console.log(err);
             });
     }
+
+    function guardarLista() {
+        var horario = document.getElementById("cbCurso").value+", "+document.getElementById("cbHorario").value;
+
+        for (var i = 0; i < lista.length; i++) {
+
+            const data = new FormData();
+
+            data.append('nomina', lista[i][0]);
+            data.append('nombre', lista[i][1]);
+            data.append('apu', lista[i][2]);
+            data.append('supervisor', lista[i][3]);
+            data.append('shiftLeader', lista[i][4]);
+            data.append('horario', horario);
+
+            fetch('dao/guardarBitacoraCurso.php', {
+                method: 'POST',
+                body: data
+            })
+                .then(function (response) {
+                    if (response.ok) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Enviado.', showConfirmButton: false, input: 'none',
+                            text: 'Registro enviado.'
+                        })
+                    } else {
+                        throw "Error en la llamada Ajax";
+                    }
+
+                })
+                .then(function (texto) {
+                    console.log(texto);
+                })
+                .catch(function (err) {
+                    console.log(err);
+                });
+
+        }
+
+
+        location.reload();
+    }
+
 
 </script>
 </body>
