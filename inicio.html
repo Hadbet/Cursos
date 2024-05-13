@@ -304,6 +304,98 @@
 
                     </div> <!-- .row -->
 
+                    <div class="col-12 col-lg-12 text-center pl-4">
+                        <span class="h3">Eficiencia por Apus.</span>
+                    </div>
+                    <br>
+                    <div class="row items-align-baseline">
+                        <div class="col-md-12 col-lg-4">
+                            <div class="card shadow eq-card mb-4">
+                                <div class="card-body">
+                                    <h2 class="h5 text-center">APU 1</h2>
+                                    <div class="chart-widget mb-2">
+                                        <div id="radialEfiApu1"></div>
+                                    </div>
+                                    <div class="row items-align-center">
+                                        <div class="col-4 text-center">
+                                            <p class="text-muted mb-1">Asistencias</p>
+                                            <h6 class="mb-1" id="txtEfiAsApu1">0</h6>
+                                            <p class="text-muted mb-0">personas</p>
+                                        </div>
+                                        <div class="col-4 text-center">
+                                            <p class="text-muted mb-1">Inasistencias</p>
+                                            <h6 class="mb-1" id="txtEfiApApu1">0</h6>
+                                            <p class="text-muted mb-0">personas</p>
+                                        </div>
+                                        <div class="col-4 text-center">
+                                            <p class="text-muted mb-1">Aprobados</p>
+                                            <h6 class="mb-1" id="txtEfiReApu1">0</h6>
+                                            <p class="text-muted mb-0">personas</p>
+                                        </div>
+                                    </div>
+                                </div> <!-- .card-body -->
+                            </div> <!-- .card -->
+                        </div> <!-- .col -->
+
+                        <div class="col-md-12 col-lg-4">
+                            <div class="card shadow eq-card mb-4">
+                                <div class="card-body">
+                                    <h2 class="h5 text-center">APU 2</h2>
+                                    <div class="chart-widget mb-2">
+                                        <div id="radialEfiApu2"></div>
+                                    </div>
+                                    <div class="row items-align-center">
+                                        <div class="col-4 text-center">
+                                            <p class="text-muted mb-1">Asistencias</p>
+                                            <h6 class="mb-1" id="txtEfiAsApu2">0</h6>
+                                            <p class="text-muted mb-0">personas</p>
+                                        </div>
+                                        <div class="col-4 text-center">
+                                            <p class="text-muted mb-1">Inasistencias</p>
+                                            <h6 class="mb-1" id="txtEfiApApu2">0</h6>
+                                            <p class="text-muted mb-0">personas</p>
+                                        </div>
+                                        <div class="col-4 text-center">
+                                            <p class="text-muted mb-1">Aprobados</p>
+                                            <h6 class="mb-1" id="txtEfiReApu2">0</h6>
+                                            <p class="text-muted mb-0">personas</p>
+                                        </div>
+                                    </div>
+                                </div> <!-- .card-body -->
+                            </div> <!-- .card -->
+                        </div> <!-- .col -->
+
+                        <div class="col-md-12 col-lg-4">
+                            <div class="card shadow eq-card mb-4">
+                                <div class="card-body">
+                                    <h2 class="h5 text-center">APU 3</h2>
+                                    <div class="chart-widget mb-2">
+                                        <div id="radialEfiApu3"></div>
+                                    </div>
+                                    <div class="row items-align-center">
+                                        <div class="col-4 text-center">
+                                            <p class="text-muted mb-1">Asistencias</p>
+                                            <h6 class="mb-1" id="txtEfiAsApu3">0</h6>
+                                            <p class="text-muted mb-0">personas</p>
+                                        </div>
+                                        <div class="col-4 text-center">
+                                            <p class="text-muted mb-1">Inasistencias</p>
+                                            <h6 class="mb-1" id="txtEfiApApu3">0</h6>
+                                            <p class="text-muted mb-0">personas</p>
+                                        </div>
+                                        <div class="col-4 text-center">
+                                            <p class="text-muted mb-1">Aprobados</p>
+                                            <h6 class="mb-1" id="txtEfiReApu3">0</h6>
+                                            <p class="text-muted mb-0">personas</p>
+                                        </div>
+                                    </div>
+                                </div> <!-- .card-body -->
+                            </div> <!-- .card -->
+                        </div> <!-- .col -->
+
+                    </div> <!-- .row -->
+
+
                 </div> <!-- .col-12 -->
             </div> <!-- .row -->
         </div> <!-- .container-fluid -->
@@ -555,6 +647,8 @@
             }
         });
     }
+
+
 
     function radioApu1(serie) {
         var options1 = {
@@ -1134,7 +1228,7 @@
         var options = {
             series: [{
                 name: 'Capacitacion por horas',
-                data: [aEne, aFeb, aMar, aAbril, aMay, aJun, aJul, aAgo, aSep, aOct, aNov, aDic]
+                data: [cEne, cFeb, cMar, cAbril, cMay, cJun, cJul, cAgo, cSep, cOct, cNov, cDic]
             }],
             chart: {
                 type: 'bar',
@@ -1175,8 +1269,292 @@
             }
         };
 
-        var chart = new ApexCharts(document.querySelector("#areaChartDos"), options);
+        var chart = new ApexCharts(document.querySelector("#capacitacionChartDos"), options);
         chart.render();
+    }
+
+
+    contadoresEfi();
+    function contadoresEfi() {
+        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaApuEficiencia.php', function (data) {
+            var aprobadosApu1,reprobadosApu1,totalApu1,porcentaje;
+            var aprobadosApu2,reprobadosApu2,totalApu2,porcentaje2;
+            var aprobadosApu3,reprobadosApu3,totalApu3,porcentaje3;
+            for (var i = 0; i < data.data.length; i++) {
+
+                if (data.data[i].APU === "APU 1"){
+                    document.getElementById("txtEfiApApu1").innerHTML = data.data[i].Aprobados;
+                    document.getElementById("txtEfiReApu1").innerHTML = data.data[i].Reprobados;
+
+                    aprobadosApu1 = Number(data.data[i].Aprobados);
+                    reprobadosApu1 = Number(data.data[i].Reprobados);
+                    totalApu1 = aprobadosApu1 + reprobadosApu1;
+
+                    document.getElementById("txtEfiAsApu1").innerHTML = totalApu1;
+
+                    porcentaje = Math.round((aprobadosApu1 * 100) / totalApu1);
+
+                    EfiApu1(porcentaje);
+                }
+
+                if (data.data[i].APU === "APU 2"){
+                    document.getElementById("txtEfiApApu2").innerHTML = data.data[i].Aprobados;
+                    document.getElementById("txtEfiReApu2").innerHTML = data.data[i].Reprobados;
+
+                    aprobadosApu2 = Number(data.data[i].Aprobados);
+                    reprobadosApu2 = Number(data.data[i].Reprobados);
+                    totalApu2 = aprobadosApu2 + reprobadosApu2;
+
+                    document.getElementById("txtEfiAsApu2").innerHTML = totalApu2;
+
+                    porcentaje2 = Math.round((aprobadosApu2 * 100) / totalApu2);
+
+                    EfiApu2(porcentaje2);
+                }
+
+                if (data.data[i].APU === "APU 3"){
+                    document.getElementById("txtEfiApApu3").innerHTML = data.data[i].Aprobados;
+                    document.getElementById("txtEfiReApu3").innerHTML = data.data[i].Reprobados;
+
+                    aprobadosApu3 = Number(data.data[i].Aprobados);
+                    reprobadosApu3 = Number(data.data[i].Reprobados);
+                    totalApu3 = aprobadosApu3 + reprobadosApu3;
+
+                    document.getElementById("txtEfiAsApu3").innerHTML = totalApu3;
+
+                    porcentaje3 = Math.round((aprobadosApu3 * 100) / totalApu3);
+
+                    EfiApu3(porcentaje3);
+                }
+
+            }
+        });
+    }
+
+    function EfiApu1(serie) {
+        var options1 = {
+            series: [serie],
+            chart: {
+                height: 200,
+                type: 'radialBar',
+            },
+            theme: {
+                mode: colors.chartTheme
+            },
+            plotOptions: {
+                radialBar: {
+                    hollow: {
+                        size: "70%"
+                    },
+                    track: {
+                        background: colors.borderColor
+                    },
+                    dataLabels: {
+                        show: true,
+                        name: {
+                            fontSize: "0.875rem",
+                            fontWeight: 400,
+                            offsetY: -10,
+                            show: !0,
+                            color: colors.mutedColor,
+                            fontFamily: base.defaultFontFamily
+                        },
+                        value: {
+                            formatter: function (e) {
+                                return parseInt(e)
+                            },
+                            fontSize: "1.53125rem",
+                            fontWeight: 700,
+                            fontFamily: base.defaultFontFamily,
+                            offsetY: 5,
+                            show: !0,
+                            color: colors.headingColor
+                        },
+                        total: {
+                            show: true,
+                            fontSize: "0.875rem",
+                            fontWeight: 400,
+                            offsetY: -10,
+                            label: "Asistio el",
+                            color: colors.mutedColor,
+                            fontFamily: base.defaultFontFamily
+                        }
+                    }
+                }
+            },
+            fill: {
+                type: "gradient",
+                gradient: {
+                    shade: "light",
+                    type: "diagonal2",
+                    shadeIntensity: .2,
+                    gradientFromColors: [extend.primaryColorLighter],
+                    gradientToColors: [base.primaryColor],
+                    inverseColors: !0,
+                    opacityFrom: 1,
+                    opacityTo: 1,
+                    stops: [20, 100]
+                }
+            },
+            stroke: {
+                lineCap: "round"
+            },
+            labels: ['Porciento'],
+        };
+
+        var chart1 = new ApexCharts(document.querySelector("#radialEfiApu1"), options1);
+        chart1.render();
+    }
+
+
+    function EfiApu2(serie) {
+        var options1 = {
+            series: [serie],
+            chart: {
+                height: 200,
+                type: 'radialBar',
+            },
+            theme: {
+                mode: colors.chartTheme
+            },
+            plotOptions: {
+                radialBar: {
+                    hollow: {
+                        size: "70%"
+                    },
+                    track: {
+                        background: colors.borderColor
+                    },
+                    dataLabels: {
+                        show: true,
+                        name: {
+                            fontSize: "0.875rem",
+                            fontWeight: 400,
+                            offsetY: -10,
+                            show: !0,
+                            color: colors.mutedColor,
+                            fontFamily: base.defaultFontFamily
+                        },
+                        value: {
+                            formatter: function (e) {
+                                return parseInt(e)
+                            },
+                            fontSize: "1.53125rem",
+                            fontWeight: 700,
+                            fontFamily: base.defaultFontFamily,
+                            offsetY: 5,
+                            show: !0,
+                            color: colors.headingColor
+                        },
+                        total: {
+                            show: true,
+                            fontSize: "0.875rem",
+                            fontWeight: 400,
+                            offsetY: -10,
+                            label: "Asistio el",
+                            color: colors.mutedColor,
+                            fontFamily: base.defaultFontFamily
+                        }
+                    }
+                }
+            },
+            fill: {
+                type: "gradient",
+                gradient: {
+                    shade: "light",
+                    type: "diagonal2",
+                    shadeIntensity: .2,
+                    gradientFromColors: [extend.primaryColorLighter],
+                    gradientToColors: [base.primaryColor],
+                    inverseColors: !0,
+                    opacityFrom: 1,
+                    opacityTo: 1,
+                    stops: [20, 100]
+                }
+            },
+            stroke: {
+                lineCap: "round"
+            },
+            labels: ['Porciento'],
+        };
+
+        var chart1 = new ApexCharts(document.querySelector("#radialEfiApu2"), options1);
+        chart1.render();
+    }
+
+    function EfiApu3(serie) {
+        var options1 = {
+            series: [serie],
+            chart: {
+                height: 200,
+                type: 'radialBar',
+            },
+            theme: {
+                mode: colors.chartTheme
+            },
+            plotOptions: {
+                radialBar: {
+                    hollow: {
+                        size: "70%"
+                    },
+                    track: {
+                        background: colors.borderColor
+                    },
+                    dataLabels: {
+                        show: true,
+                        name: {
+                            fontSize: "0.875rem",
+                            fontWeight: 400,
+                            offsetY: -10,
+                            show: !0,
+                            color: colors.mutedColor,
+                            fontFamily: base.defaultFontFamily
+                        },
+                        value: {
+                            formatter: function (e) {
+                                return parseInt(e)
+                            },
+                            fontSize: "1.53125rem",
+                            fontWeight: 700,
+                            fontFamily: base.defaultFontFamily,
+                            offsetY: 5,
+                            show: !0,
+                            color: colors.headingColor
+                        },
+                        total: {
+                            show: true,
+                            fontSize: "0.875rem",
+                            fontWeight: 400,
+                            offsetY: -10,
+                            label: "Asistio el",
+                            color: colors.mutedColor,
+                            fontFamily: base.defaultFontFamily
+                        }
+                    }
+                }
+            },
+            fill: {
+                type: "gradient",
+                gradient: {
+                    shade: "light",
+                    type: "diagonal2",
+                    shadeIntensity: .2,
+                    gradientFromColors: [extend.primaryColorLighter],
+                    gradientToColors: [base.primaryColor],
+                    inverseColors: !0,
+                    opacityFrom: 1,
+                    opacityTo: 1,
+                    stops: [20, 100]
+                }
+            },
+            stroke: {
+                lineCap: "round"
+            },
+            labels: ['Porciento'],
+        };
+
+        var chart1 = new ApexCharts(document.querySelector("#radialEfiApu3"), options1);
+        chart1.render();
     }
 
 </script>
