@@ -738,8 +738,8 @@
                     newRowConcluido.append(fechaCursoCell);
                     newRowConcluido.append(evaluacionCell);
                     newRowConcluido.append(valorarCell);
-                    -
-                        tableConcluidos.append(newRowConcluido);
+
+                    tableConcluidos.append(newRowConcluido);
                 } else if (data.data[i].EstatusAsistencia == '3') {
                     var newRowCertificado = $("<tr></tr>");
                     var idCertificadoCell = $("<td></td>").text(data.data[i].IdBitacoraCurso);
@@ -776,7 +776,7 @@
         doc.setFillColor(173, 216, 230); // Azul claro
         doc.text(curso, 185, 123);
         doc.text(nombre.value, 141, 107);
-        doc.text(fecha, 189, 130);
+        doc.text(fecha, 188, 130);
         doc.text('ID: ' + id, 13, 11);
 
         // Guarda el PDF
