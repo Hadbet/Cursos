@@ -52,6 +52,11 @@
             opacity: 0;
             transition: opacity 2s;
         }
+
+        .image-zoom {
+            transform: scale(1.1);
+            transition: transform .2s; /* Animación */
+        }
     </style>
 
 </head>
@@ -327,24 +332,111 @@
     </main> <!-- main -->
 </div> <!-- .wrapper -->
 
-<div class="modal fade modal-full" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div class="modal fade modal-full" id="modal1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+     aria-hidden="true">
     <button aria-label="" type="button" class="close px-2" data-dismiss="modal" aria-hidden="true">
         <span aria-hidden="true">×</span>
     </button>
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-body text-center">
-                <h1>¿Cómo calificas el contenido del curso?</h1>
+
+                <h1>Desarrollo del curso</h1>
+                <hr>
+                <h2>¿El contenido del curso se apegó al temario?</h2>
                 <p>Responde y evalúa</p>
                 <div class="image-container">
-                    <img src="assets/images/verde.png" onclick="handleClick(this)">
-                    <img src="assets/images/amarillo.png" onclick="handleClick(this)"
+                    <img src="assets/images/verde.png" onclick="handleClick(this,'1-Excelente')">
+                    <img src="assets/images/amarillo.png" onclick="handleClick(this,'1-Bien')"
                          style="margin-left: 5px;margin-right: 5px">
-                    <img src="assets/images/rojo.png" onclick="handleClick(this)">
+                    <img src="assets/images/rojo.png" onclick="handleClick(this,'1-Mal')">
                 </div>
-                <br>
+
+                <br><br>
+                <h2>¿Los conceptos aprendidos son de utilidad en mi trabajo?</h2>
+                <div class="image-container">
+                    <img src="assets/images/verde.png" onclick="handleClick(this,'2-Excelente')">
+                    <img src="assets/images/amarillo.png" onclick="handleClick(this,'2-Bien')"
+                         style="margin-left: 5px;margin-right: 5px">
+                    <img src="assets/images/rojo.png" onclick="handleClick(this,'2-Mal')">
+                </div>
+
+                <br><br>
+                <h2>¿El material de apoyo fue el adecuado para el tema?</h2>
+                <div class="image-container">
+                    <img src="assets/images/verde.png" onclick="handleClick(this,'3-Excelente')">
+                    <img src="assets/images/amarillo.png" onclick="handleClick(this,'3-Bien')"
+                         style="margin-left: 5px;margin-right: 5px">
+                    <img src="assets/images/rojo.png" onclick="handleClick(this,'3-Mal')">
+                </div>
+
+                <br><br>
+                <h2>¿El curso cumplió con mis expectativas?</h2>
+                <div class="image-container">
+                    <img src="assets/images/verde.png" onclick="handleClick(this,'4-Excelente')">
+                    <img src="assets/images/amarillo.png" onclick="handleClick(this,'4-Bien')"
+                         style="margin-left: 5px;margin-right: 5px">
+                    <img src="assets/images/rojo.png" onclick="handleClick(this,'4-Mal')">
+                </div>
+
+                <br><br>
                 <form class="form-inline justify-content-center">
                     <input id="txtComentariosCurso" class="form-control form-control-lg mr-sm-2 bg-transparent"
+                           type="text" placeholder="Comentarios adicionales" aria-label="Search">
+
+                </form>
+                <br>
+                <hr>
+                <br><br>
+                <h1>Evalua instructor</h1>
+                <hr>
+                <h2>¿Dominio del tema?</h2>
+                <div class="image-container one">
+                    <img src="assets/images/verde.png" onclick="handleClick(this,'5-Excelente')">
+                    <img src="assets/images/amarillo.png" onclick="handleClick(this,'5-Bien')"
+                         style="margin-left: 5px;margin-right: 5px">
+                    <img src="assets/images/rojo.png" onclick="handleClick(this,'5-Mal')">
+                </div>
+
+                <br><br>
+                <h2>¿Fue claro en la exposición?</h2>
+                <div class="image-container">
+                    <img src="assets/images/verde.png" onclick="handleClick(this,'6-Excelente')">
+                    <img src="assets/images/amarillo.png" onclick="handleClick(this,'6-Bien')"
+                         style="margin-left: 5px;margin-right: 5px">
+                    <img src="assets/images/rojo.png" onclick="handleClick(this,'6-Mal')">
+                </div>
+
+                <br><br>
+                <h2>¿Resolvió mis dudas y preguntas al respecto?</h2>
+                <div class="image-container">
+                    <img src="assets/images/verde.png" onclick="handleClick(this,'7-Excelente')">
+                    <img src="assets/images/amarillo.png" onclick="handleClick(this,'7-Bien')"
+                         style="margin-left: 5px;margin-right: 5px">
+                    <img src="assets/images/rojo.png" onclick="handleClick(this,'7-Mal')">
+                </div>
+
+                <br><br>
+                <h2>¿El trato fue amable y respetuoso en todo momento?</h2>
+                <div class="image-container">
+                    <img src="assets/images/verde.png" onclick="handleClick(this,'8-Excelente')">
+                    <img src="assets/images/amarillo.png" onclick="handleClick(this,'8-Bien')"
+                         style="margin-left: 5px;margin-right: 5px">
+                    <img src="assets/images/rojo.png" onclick="handleClick(this,'8-Mal')">
+                </div>
+
+                <br><br>
+                <h2>¿Invito a la participación abierta?</h2>
+                <div class="image-container">
+                    <img src="assets/images/verde.png" onclick="handleClick(this,'9-Excelente')">
+                    <img src="assets/images/amarillo.png" onclick="handleClick(this,'9-Bien')"
+                         style="margin-left: 5px;margin-right: 5px">
+                    <img src="assets/images/rojo.png" onclick="handleClick(this,'9-Mal')">
+                </div>
+
+                <br><br>
+                <form class="form-inline justify-content-center">
+                    <input id="txtComentariosInstructor" class="form-control form-control-lg mr-sm-2 bg-transparent"
                            type="text" placeholder="Comentarios adicionales" aria-label="Search">
 
                 </form>
@@ -352,10 +444,12 @@
                 <button onclick="guardarEvaluacion()" class="btn btn-primary btn-lg mb-2 my-2 my-sm-0" type="submit">
                     Enviar
                 </button>
+
             </div>
         </div>
     </div>
 </div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/popper.min.js"></script>
@@ -373,6 +467,18 @@
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
 <script>
+
+    $(document).ready(function () {
+        $('#nextButton').click(function () {
+            $('#modal1').modal('hide');
+        });
+
+        $('#modal1').on('hidden.bs.modal', function () {
+            $('#modal2').modal('show');
+        });
+    });
+
+
     window.dataLayer = window.dataLayer || [];
 
     function gtag() {
@@ -665,7 +771,7 @@
 
         var nombre = document.getElementById("txtNombrePersonaCurso");
         var logo = new Image();
-        logo.src = 'assets/images/plantilla.png';
+        logo.src = 'assets/images/plantillaCer.png';
         doc.addImage(logo, 'PNG', 0, 0, 298, 210);
         doc.setFillColor(173, 216, 230); // Azul claro
         doc.text(curso, 185, 123);
@@ -678,27 +784,31 @@
     }
 
     var cursoGlobal, horarioGlobal, fechaGlobal, calificacionGlobal, idGlobal;
-
-    function handleClick(clickedImage) {
-        var images = document.querySelectorAll('.image-container img');
+    var resOne,resTwo,resThree,resFour,resFive,resSix,resSeven,resEight,resNine;
+    function handleClick(clickedImage,Respuesta) {
+        // Solo selecciona las imágenes en el mismo contenedor que la imagen seleccionada
+        var images = clickedImage.parentNode.querySelectorAll('img');
         images.forEach(function (image) {
             if (image === clickedImage) {
                 image.classList.add('active');
                 image.classList.remove('inactive');
+                image.classList.add('image-zoom'); // Agrega la clase para el zoom
             } else {
                 image.classList.add('inactive');
                 image.classList.remove('active');
+                image.classList.remove('image-zoom'); // Quita la clase para el zoom
             }
         });
 
-        if (clickedImage.src.includes('verde.png')) {
-            calificacionGlobal = "Bueno";
-        } else if (clickedImage.src.includes('amarillo.png')) {
-            calificacionGlobal = "Regular";
-        } else if (clickedImage.src.includes('rojo.png')) {
-            calificacionGlobal = "Malo";
-        }
-
+        if (Respuesta.includes("1")){resOne=Respuesta}
+        if (Respuesta.includes("2")){resTwo=Respuesta}
+        if (Respuesta.includes("3")){resThree=Respuesta}
+        if (Respuesta.includes("4")){resFour=Respuesta}
+        if (Respuesta.includes("5")){resFive=Respuesta}
+        if (Respuesta.includes("6")){resSix=Respuesta}
+        if (Respuesta.includes("7")){resSeven=Respuesta}
+        if (Respuesta.includes("8")){resEight=Respuesta}
+        if (Respuesta.includes("9")){resNine=Respuesta}
     }
 
     $(document).ready(function () {
@@ -721,9 +831,13 @@
 
     function guardarEvaluacion() {
 
+        console.log(resOne+""+resTwo+""+resThree+""+resFour+""+resFive+""+resSix
+            +resSeven+""+resEight+""+resNine)
+
         var nomina = document.getElementById("txtNominaCurso");
         var nombre = document.getElementById("txtNombrePersonaCurso");
         var comentarios = document.getElementById("txtComentariosCurso");
+        var comentariosInstru = document.getElementById("txtComentariosInstructor");
 
         const data = new FormData();
 
@@ -734,7 +848,19 @@
         data.append('calificacion', calificacionGlobal);
         data.append('nomina', nomina.value);
         data.append('nombre', nombre.value);
-        data.append('id', idGlobal);
+        data.append('id', idGlobal);}
+
+        data.append('resOne', resOne);
+        data.append('resTwo', resTwo);
+        data.append('resThree', resThree);
+        data.append('resFour', resFour);
+        data.append('resFive', resFive);
+        data.append('resSix', resSeven);
+        data.append('resSeven', resSeven);
+        data.append('resEight', resEight);
+        data.append('resNine', resNine);
+
+        data.append('comentariosInstructor',comentariosInstru);
 
         fetch('dao/guardarEvaluacionCurso.php', {
             method: 'POST',
@@ -759,7 +885,6 @@
             .catch(function (err) {
                 console.log(err);
             });
-    }
 
 </script>
 </body>
