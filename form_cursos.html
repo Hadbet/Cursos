@@ -831,8 +831,8 @@
 
     function guardarEvaluacion() {
 
-        console.log(resOne+""+resTwo+""+resThree+""+resFour+""+resFive+""+resSix
-            +resSeven+""+resEight+""+resNine)
+        console.log(resOne + "" + resTwo + "" + resThree + "" + resFour + "" + resFive + "" + resSix
+            + resSeven + "" + resEight + "" + resNine)
 
         var nomina = document.getElementById("txtNominaCurso");
         var nombre = document.getElementById("txtNombrePersonaCurso");
@@ -848,8 +848,7 @@
         data.append('calificacion', calificacionGlobal);
         data.append('nomina', nomina.value);
         data.append('nombre', nombre.value);
-        data.append('id', idGlobal);}
-
+        data.append('id', idGlobal);
         data.append('resOne', resOne);
         data.append('resTwo', resTwo);
         data.append('resThree', resThree);
@@ -859,8 +858,7 @@
         data.append('resSeven', resSeven);
         data.append('resEight', resEight);
         data.append('resNine', resNine);
-
-        data.append('comentariosInstructor',comentariosInstru);
+        data.append('comentariosInstructor', comentariosInstru.value);
 
         fetch('dao/guardarEvaluacionCurso.php', {
             method: 'POST',
@@ -885,7 +883,7 @@
             .catch(function (err) {
                 console.log(err);
             });
-
+    }
 </script>
 </body>
 </html>
