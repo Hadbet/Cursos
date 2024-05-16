@@ -784,7 +784,7 @@
     }
 
     var cursoGlobal, horarioGlobal, fechaGlobal, calificacionGlobal, idGlobal;
-    var resOne,resTwo,resThree,resFour,resFive,resSix,resSeven,resEight,resNine;
+    var resOne="",resTwo="",resThree="",resFour="",resFive="",resSix="",resSeven="",resEight="",resNine="";
     function handleClick(clickedImage,Respuesta) {
         // Solo selecciona las imágenes en el mismo contenedor que la imagen seleccionada
         var images = clickedImage.parentNode.querySelectorAll('img');
@@ -839,6 +839,18 @@
         var comentarios = document.getElementById("txtComentariosCurso");
         var comentariosInstru = document.getElementById("txtComentariosInstructor");
 
+        if (resOne===""){mensaje("No haz contestado la pregunta 1");return;}
+        if (resTwo===""){mensaje("No haz contestado la pregunta 2");return;}
+        if (resThree===""){mensaje("No haz contestado la pregunta 3");return;}
+        if (resFour===""){mensaje("No haz contestado la pregunta 4");return;}
+        if (resFive===""){mensaje("No haz contestado la pregunta 5");return;}
+        if (resSix===""){mensaje("No haz contestado la pregunta 6");return;}
+        if (resSeven===""){mensaje("No haz contestado la pregunta 7");return;}
+        if (resEight===""){mensaje("No haz contestado la pregunta 8");return;}
+        if (resNine===""){mensaje("No haz contestado la pregunta 9");return;}
+        if (comentarios.value===""){mensaje("Te falto ingresar tus comentarios sobre el curso");return;}
+        if (comentariosInstru.value===""){mensaje("Te falto ingresar tus comentarios sobre el instructor");return;}
+
         const data = new FormData();
 
         data.append('curso', cursoGlobal);
@@ -883,6 +895,14 @@
             .catch(function (err) {
                 console.log(err);
             });
+    }
+
+    function mensaje(contenido) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Campos vacios.', showConfirmButton: false, input: 'none',
+            text: contenido
+        })
     }
 </script>
 </body>
