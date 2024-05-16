@@ -203,7 +203,8 @@
             <div class="col-12">
               <div class="card shadow mb-4">
                 <div class="card-body">
-                  <h5 class="card-title">Asistencia</h5>
+                  <h5 class="card-title float-left">Asistencia</h5>
+                  <button type="button" onclick="cerrarLista()" class="btn mb-2 btn-danger float-right text-white">Cerrar curso<span class="fe fe-x-octagon fe-16 ml-2"></span></button>
                   <table id="tablaAsistencia" class="table table-hover">
                     <thead>
                     <tr>
@@ -463,6 +464,39 @@
         data.append('id', id);
 
         fetch('dao/eliminarAsistenciaCurso.php', {
+          method: 'POST',
+          body: data
+        })
+                .then(function (response) {
+                  if (response.ok) {
+                    Swal.fire({
+                      icon: 'success',
+                      title: 'Removido.', showConfirmButton: false, input: 'none',
+                      text: 'Se removio de manera correcta.'
+                    })
+                    cargarHorarios();
+                  } else {
+                    throw "Error en la llamada Ajax";
+                  }
+
+                })
+                .then(function (texto) {
+                  console.log(texto);
+                })
+                .catch(function (err) {
+                  console.log(err);
+                });
+      }
+
+      function cerrarLista() {
+
+        var horario = document.getElementById("cbCurso");
+
+        const data = new FormData();
+
+        data.append('horario', horario);
+
+        fetch('dao/cerrarCurso.php', {
           method: 'POST',
           body: data
         })
