@@ -504,10 +504,12 @@
                   if (response.ok) {
                     Swal.fire({
                       icon: 'success',
-                      title: 'Removido.', showConfirmButton: false, input: 'none',
-                      text: 'Se removio de manera correcta.'
+                      title: 'Se cerro el curso.', showConfirmButton: false, input: 'none',
+                      text: 'Puedes consultar la lista en el menu de navegación.'
                     })
-                    cargarHorarios();
+                    setTimeout(function() {
+                      location.reload();
+                    }, 3000);
                   } else {
                     throw "Error en la llamada Ajax";
                   }
