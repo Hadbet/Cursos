@@ -58,7 +58,7 @@ function registroUsu($Nombre,$Nomina,$Horario,$Fecha,$Curso,$Comentarios,$Califi
     $promedio = ($suma * 100) / 9;
 
     // Si la actualización fue exitosa, realiza la inserción
-    $insertRegistro= "INSERT INTO `Evaluacion_Curso`(`Curso`, `Fecha`, `Horario`, `Nomina`, `Nombre`, `Calificacion`, `Comentarios`,`FechaEvaluacion`,`Respuestas`) VALUES ('$Curso','$Fecha','$Horario','$Nomina','$Nombre','$promedio','$Comentarios','$DateAndTime','$Respuestas')";
+    $insertRegistro= "INSERT INTO `Evaluacion_Curso`(`Curso`, `Fecha`, `Horario`, `Nomina`, `Nombre`, `Calificacion`, `Comentarios`,`FechaEvaluacion`,`Respuestas`,`ComentarioInstructor`) VALUES ('$Curso','$Fecha','$Horario','$Nomina','$Nombre','$promedio','$Comentarios','$DateAndTime','$Respuestas','$ComentariosInstructor')";
 
     $rsinsertUsu=mysqli_query($conex,$insertRegistro);
     mysqli_close($conex);
