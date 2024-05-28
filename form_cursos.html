@@ -562,10 +562,16 @@
             var select = document.getElementById("cbCurso");
             select.innerHTML = "";
             var nombresCursos = [];
+
+            var createOption = document.createElement("option");
+            createOption.text = "Seleccione curso";
+            createOption.value = "Seleccione curso";
+            select.appendChild(createOption);
+
             for (var i = 0; i < cursos.length; i++) {
                 if (!nombresCursos.includes(cursos[i].NombreCurso)) {
                     nombresCursos.push(cursos[i].NombreCurso);
-                    var createOption = document.createElement("option");
+                    createOption = document.createElement("option");
                     createOption.text = cursos[i].NombreCurso;
                     createOption.value = cursos[i].NombreCurso;
                     select.appendChild(createOption);
