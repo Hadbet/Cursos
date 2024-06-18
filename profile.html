@@ -135,7 +135,7 @@
                                 <img src="./assets/images/verde.png" alt="..." class="avatar-img rounded-circle">
                             </div>
                             <br>
-                            <button type="button" onclick="" id="btnEliminarCurso" class="btn mb-2 btn-dark text-white">Cambiar fotografia<span class="fe fe-chevron-right fe-16 ml-2"></span></button>
+                            <button type="button" class="btn mb-2 btn-dark text-white" data-toggle="modal" data-target="#varyModal" data-whatever="@mdo">Cambiar fotografia<span class="fe fe-chevron-right fe-16 ml-2"></span></button>
                         </div>
 
                         <div class="col">
@@ -277,6 +277,46 @@
 
     </main> <!-- main -->
 </div> <!-- .wrapper -->
+
+<div class="modal fade" id="varyModal" tabindex="-1" role="dialog" aria-labelledby="varyModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="varyModalLabel">Configuración de perfil</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="dao/subirPerfil.php" method="post" enctype="multipart/form-data">
+                    <div class="form-group mb-3">
+
+                        <label for="nominaUser">Nomina</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="nomina" id="nominaUser" value="00001606" disabled>
+                        </div>
+
+                        <label for="customFile">Cambio de foto de perfil</label>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="imagenes" id="customFile">
+                            <label class="custom-file-label" for="customFile">Seleccione la imagen</label>
+                        </div>
+                        <p></p>
+                        <label for="customFile" style="color: red;">Se les notifica que solo se les permitira fotos en donde este visible su cara, en dado caso de
+                        subir una fotografia no adecuada se cambiara o reportara.</label>
+                        <br><br>
+                        <button type="submit" class="btn mb-2 btn-primary float-right">Subir</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Cerrar</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="js/jquery.min.js"></script>
 <script src="js/popper.min.js"></script>
 <script src="js/moment.min.js"></script>
