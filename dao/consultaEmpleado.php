@@ -22,23 +22,38 @@ function verificacionUsuario($user, $contra){
         $consPe="SELECT * FROM `Empleados` WHERE `IdUser` = '$user' and `IdTag` = '$contra'";
         $consultaEmpleados=mysqli_query($conexionAux,$consPe);
 
-        $row = mysqli_fetch_assoc($consultaEmpleados);
-        $Nombre = $row['NomUser'];
-        $Area = $row['NombreCC'];
-
-        $consI="INSERT INTO `Usuarios_Cursos`(`IdUsuario`, `Password`, `Nombre`,`Area`) VALUES ('$user','$contra','$Nombre','$Area')";
-        $insert=mysqli_query($conexion,$consI);
-
-        if($insert){
-            mysqli_close($conexion);
-            mysqli_close($conexionAux);
-            return 1;
-        }
-        else{
+        if (!$consultaEmpleados) {
+            die('Error en la consulta: ' . mysqli_error($conexionAux));
             mysqli_close($conexion);
             mysqli_close($conexionAux);
             return 0;
+        } else {
+            if (mysqli_num_rows($consultaEmpleados) > 0) {
+                $row = mysqli_fetch_assoc($consultaEmpleados);
+                $Nombre = $row['NomUser'];
+                $Area = $row['NombreCC'];
+
+                $consI="INSERT INTO `Usuarios_Cursos`(`IdUsuario`, `Password`, `Nombre`,`Area`) VALUES ('$user','$contra','$Nombre','$Area')";
+                $insert=mysqli_query($conexion,$consI);
+
+                if($insert){
+                    mysqli_close($conexion);
+                    mysqli_close($conexionAux);
+                    return 1;
+                }
+                else{
+                    mysqli_close($conexion);
+                    mysqli_close($conexionAux);
+                    return 0;
+                }
+            } else {
+                mysqli_close($conexion);
+                mysqli_close($conexionAux);
+                return 0;
+            }
         }
+
+
     }
 }
 

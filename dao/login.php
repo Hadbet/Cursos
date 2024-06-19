@@ -36,7 +36,7 @@ if ($statusLogin == 1) {
     $_SESSION['password'] = $Password;
     echo "<META HTTP-EQUIV='REFRESH' CONTENT='1; URL=../inicio.html'>";
 } else if ($statusLogin == 0) {
-    echo "<script>alert('Acceso Denegado')</script>";
+    echo "<script>alert('Ocurrio un error')</script>";
     echo "<META HTTP-EQUIV='REFRESH' CONTENT='1; URL=../index.html'>";
 }
 ?>
