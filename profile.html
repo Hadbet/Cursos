@@ -343,7 +343,7 @@
     function cargarCursos() {
         $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaPerfil.php', function (data){
             document.getElementById("txtNombre").innerHTML = data.data[0].Nombre;
-            document.getElementById("txtPuesto").innerHTML = data.data[0].txtPuesto;
+            document.getElementById("txtPuesto").innerHTML = data.data[0].Area;
             //document.getElementById("txtArea").value = data.data[0].Area;
             contrasena = data.data[0].Password;
         });
