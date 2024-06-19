@@ -141,8 +141,8 @@
                         <div class="col">
                             <div class="row align-items-center">
                                 <div class="col-md-7">
-                                    <h4 class="mb-1">Hadbet Ayari Altamirano Martinez</h4>
-                                    <p class="small mb-3"><span class="badge badge-dark">IT ANALIST</span></p>
+                                    <h4 class="mb-1" id="txtNombre"></h4>
+                                    <p class="small mb-3"><span class="badge badge-dark" id="txtPuesto"></span></p>
                                 </div>
                             </div>
                             <div class="row mb-4">
@@ -338,6 +338,16 @@
 
     gtag('js', new Date());
     gtag('config', 'UA-56159088-1');
+
+    cargarCursos();
+    function cargarCursos() {
+        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaPerfil.php', function (data){
+            document.getElementById("txtNombre").value = data.data[0].Nombre;
+            document.getElementById("txtPuesto").value = data.data[0].txtPuesto;
+            document.getElementById("txtArea").value = data.data[0].Area;
+            contrasena = data.data[0].Password;
+        });
+    }
 </script>
 </body>
 </html>
