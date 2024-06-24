@@ -2,11 +2,15 @@
 
 include_once('db/db_RH.php');
 
-$nomina = $_POST['nomina'];
+if (isset($_POST['nomina'])) {
+    $nomina = $_POST['nomina'];
+} else {
+    echo "No se proporcionó el número de nómina.";
+    exit;
+}
 
 $target_dir = "../perfiles/$nomina/"; // especifica el directorio donde se subirá el archivo
-echo $target_dir;
-/*
+
 // verifica si el directorio existe, si no, lo crea
 if (!file_exists($target_dir)) {
     mkdir($target_dir, 0777, true);
@@ -22,18 +26,14 @@ if (!empty($_FILES['imagenes']['name'][0])) {
         if (move_uploaded_file($_FILES["imagenes"]["tmp_name"][$i], $target_file)) {
 
         } else {
-            echo "Lo siento, hubo un error subiendo el archivo ". basename( $_FILES["archivos"]["name"][$i]). ".";
+            echo "Lo siento, hubo un error subiendo el archivo ". basename( $_FILES["imagenes"]["name"][$i]). ".";
         }
     }
 } else {
     echo "No se subieron archivos.";
 }
 
-
-
 echo '<script type="text/javascript">
            window.location = "../form_cursos_admin.html"
       </script>';
-*/
-
 ?>
