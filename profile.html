@@ -341,7 +341,7 @@
 
     cargarCursos();
     function cargarCursos() {
-        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaPerfil.php', function (data){
+        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaPerfil.php?nomina=00001606', function (data){
 
             var nombre = data.data.length > 0 ? data.data[0].Nombre : '';
             var email = data.data.length > 0 ? data.data[0].Email : '';
