@@ -5,7 +5,8 @@ include_once('db/db_RH.php');
 $nomina = $_POST['nomina'];
 
 $target_dir = "../perfiles/$nomina/"; // especifica el directorio donde se subirá el archivo
-
+echo $target_dir;
+/*
 // verifica si el directorio existe, si no, lo crea
 if (!file_exists($target_dir)) {
     mkdir($target_dir, 0777, true);
@@ -33,6 +34,6 @@ if (!empty($_FILES['imagenes']['name'][0])) {
 echo '<script type="text/javascript">
            window.location = "../form_cursos_admin.html"
       </script>';
-
+*/
 
 ?>

@@ -339,8 +339,8 @@
     gtag('js', new Date());
     gtag('config', 'UA-56159088-1');
 
-    cargarCursos();
-    function cargarCursos() {
+    cargarEmpleado();
+    function cargarEmpleado() {
         $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaPerfil.php?nomina=00001606', function (data){
 
             var nombre = data.data.length > 0 ? data.data[0].Nombre : '';
