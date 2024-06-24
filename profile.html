@@ -175,7 +175,7 @@
 
                     <h3>Destacados</h3>
 
-                    <div class="row my-4">
+                    <div class="row my-4" id="cartasDestacados">
 
                         <div class="col-md-2">
                             <div class="card mb-12 shadow">
@@ -183,7 +183,7 @@
                                     <div class="row align-items-center">
                                         <div class="col-12 text-center">
                                             <h3 class="h5 mt-4 mb-1">SAP</h3>
-                          <img src="assets/images/medallas/primero.png">
+                                                <img src="assets/images/medallas/primero.png">
                                         </div>
                                     </div> <!-- .row -->
                                 </div> <!-- .card-body -->
@@ -358,6 +358,29 @@
             if (idImagen === ""){
             }else {
                 document.getElementById("ImagenPerfil").src = "perfiles/00001606/"+idImagen;
+            }
+        });
+    }
+    cargarCursos();
+    function cargarCursos() {
+        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaCursoUsuario.php?nomina=00001606', function (data){
+
+            for (var i = 0; i < data.data.length; i++) {
+
+                if (data.data[i].Evaluacion>9){
+                    estatusImagen = "primero";
+                }
+
+                if (data.data[i].Evaluacion<9 && data.data[i].Evaluacion>=8){
+                    estatusImagen = "segundo";
+                }
+
+                if (data.data[i].Evaluacion<8){
+                    estatusImagen = "tercero";
+                }
+
+                document.getElementById("cartasDestacados").innerHTML = "<div className=\"col-md-2\"><div className=\"card mb-12 shadow\"><div className=\"card-body my-n3\"><div className=\"row align-items-center\"><div className=\"col-12 text-center\"><h3 className=\"h5 mt-4 mb-1\">+data.data[i].Curso+</h3><img src=\"assets/images/medallas/"+estatusImagen+".png\"></div></div></div><div className=\"card-footer\"><a className=\"d-flex justify-content-between text-muted\"><span>Calificacion</span><i className=\"fe fe-chevron-right\">"+data.data[i].Evaluacion+"</i></a></div></div></div>";
+
             }
         });
     }
