@@ -166,7 +166,7 @@
                                 </div>
 
                                 <div class="col-md-7">
-                                    <button type="button" onclick="" id="btnGuardarPerfil" class="btn mb-2 btn-success text-white">Guardar<span class="fe fe-chevron-right fe-16 ml-2"></span></button>
+                                    <button type="button" onclick="ingresoDatos();" id="btnGuardarPerfil" class="btn mb-2 btn-success text-white">Guardar<span class="fe fe-chevron-right fe-16 ml-2"></span></button>
                                 </div>
                             </div>
                         </div>
@@ -332,7 +332,37 @@
 
     function ingresoDatos() {
         var fechaNacimiento = document.getElementById("txtFechaNacimiento").value;
-        var Correo = document.getElementById("txtSegundo").value;
+        var correo = document.getElementById("txtCorreo").value;
+
+        const data = new FormData();
+
+        data.append('fechaNacimiento', fechaNacimiento);
+        data.append('correo', correo);
+        data.append('nomina', "00001606");
+
+        fetch('dao/actualizarPerfil.php', {
+            method: 'POST',
+            body: data
+        })
+            .then(function (response) {
+                if (response.ok) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Enviado.', showConfirmButton: false, input: 'none',
+                        text: 'Registro enviado.'
+                    })
+                    location.reload();
+                } else {
+                    throw "Error en la llamada Ajax";
+                }
+
+            })
+            .then(function (texto) {
+                console.log(texto);
+            })
+            .catch(function (err) {
+                console.log(err);
+            });
 
     }
 </script>
