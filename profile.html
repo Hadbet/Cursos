@@ -379,8 +379,7 @@
                     estatusImagen = "tercero";
                 }
 
-                document.getElementById("cartasDestacados").innerHTML = "<div className=\"col-md-2\"><div className=\"card mb-12 shadow\"><div className=\"card-body my-n3\"><div className=\"row align-items-center\"><div className=\"col-12 text-center\"><h3 className=\"h5 mt-4 mb-1\">+data.data[i].Curso+</h3><img src=\"assets/images/medallas/"+estatusImagen+".png\"></div></div></div><div className=\"card-footer\"><a className=\"d-flex justify-content-between text-muted\"><span>Calificacion</span><i className=\"fe fe-chevron-right\">"+data.data[i].Evaluacion+"</i></a></div></div></div>";
-
+                document.getElementById("cartasDestacados").innerHTML += "<div className=\"col-md-2\"><div className=\"card mb-12 shadow\"><div className=\"card-body my-n3\"><div className=\"row align-items-center\"><div className=\"col-12 text-center\"><h3 className=\"h5 mt-4 mb-1\">"+data.data[i].Curso+"</h3><img src=\"assets/images/medallas/"+estatusImagen+".png\"></div></div></div><div className=\"card-footer\"><a className=\"d-flex justify-content-between text-muted\"><span>Calificacion</span><i className=\"fe fe-chevron-right\">"+data.data[i].Evaluacion+"</i></a></div></div></div>";
             }
         });
     }
