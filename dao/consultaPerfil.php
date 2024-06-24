@@ -2,14 +2,16 @@
 
 include_once('db/db_RH.php');
 
-ContadorApu();
+$Nomina=$_GET['nomina'];
 
-function ContadorApu()
+ContadorApu($Nomina);
+
+function ContadorApu($Nomina)
 {
     $con = new LocalConector();
     $conex = $con->conectar();
 
-    $datos = mysqli_query($conex, "SELECT * FROM `Usuarios_Cursos`;");
+    $datos = mysqli_query($conex, "SELECT * FROM `Usuarios_Cursos` where IdUsuario = '$Nomina';");
 
     $resultado = mysqli_fetch_all($datos, MYSQLI_ASSOC);
     echo json_encode(array("data" => $resultado));

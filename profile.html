@@ -132,7 +132,7 @@
                     <div class="row mt-5 align-items-center">
                         <div class="col-md-3 text-center mb-5">
                             <div class="avatar avatar-xl">
-                                <img src="./assets/images/verde.png" alt="..." class="avatar-img rounded-circle">
+                                <img id="ImagenPerfil" src="./assets/images/verde.png" alt="..." class="avatar-img rounded-circle">
                             </div>
                             <br>
                             <button type="button" class="btn mb-2 btn-dark text-white" data-toggle="modal" data-target="#varyModal" data-whatever="@mdo">Cambiar fotografia<span class="fe fe-chevron-right fe-16 ml-2"></span></button>
@@ -342,11 +342,30 @@
     cargarCursos();
     function cargarCursos() {
         $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaPerfil.php', function (data){
-            document.getElementById("txtNombre").innerHTML = data.data[0].Nombre;
-            document.getElementById("txtPuesto").innerHTML = data.data[0].Area;
-            //document.getElementById("txtArea").value = data.data[0].Area;
-            contrasena = data.data[0].Password;
+
+            var nombre = data.data.length > 0 ? data.data[0].Nombre : '';
+            var email = data.data.length > 0 ? data.data[0].Email : '';
+            var fechaNacimiento = data.data.length > 0 ? data.data[0].FechaNacimiento : '';
+            var area = data.data.length > 0 ? data.data[0].Area : '';
+            var rol = data.data.length > 0 ? data.data[0].Rol : '';
+            var telefonoEmergencia = data.data.length > 0 ? data.data[0].TelefonoEmergencia : '';
+            var idImagen = data.data.length > 0 ? data.data[0].IdImagenPerfil : '';
+
+            document.getElementById("txtNombre").innerHTML = nombre;
+            document.getElementById("txtPuesto").innerHTML = area;
+            document.getElementById("txtFechaNacimiento").value = fechaNacimiento;
+            document.getElementById("txtCorreo").value = email;
+            if (idImagen === ""){
+            }else {
+                document.getElementById("ImagenPerfil").src = idImagen;
+            }
         });
+    }
+
+    function ingresoDatos() {
+        var fechaNacimiento = document.getElementById("txtFechaNacimiento").value;
+        var Correo = document.getElementById("txtSegundo").value;
+
     }
 </script>
 </body>
