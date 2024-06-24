@@ -16,6 +16,9 @@ if (!file_exists($target_dir)) {
     mkdir($target_dir, 0777, true);
 }
 
+$con = new LocalConector();
+$conex=$con->conectar();
+
 // verifica si se subieron archivos
 if (!empty($_FILES['imagenes']['name'][0])) {
     // recorre cada archivo
@@ -24,7 +27,8 @@ if (!empty($_FILES['imagenes']['name'][0])) {
 
         // intenta subir el archivo
         if (move_uploaded_file($_FILES["imagenes"]["tmp_name"][$i], $target_file)) {
-
+            $insertRegistro= "UPDATE `Usuarios_Cursos` SET `IdImagenPerfil`='".basename($_FILES["imagenes"]["name"][$i])."' WHERE `IdUsuario` = '$nomina'";
+            $rsinsertUsu=mysqli_query($conex,$insertRegistro);
         } else {
             echo "Lo siento, hubo un error subiendo el archivo ". basename( $_FILES["imagenes"]["name"][$i]). ".";
         }
@@ -33,7 +37,9 @@ if (!empty($_FILES['imagenes']['name'][0])) {
     echo "No se subieron archivos.";
 }
 
+mysqli_close($conex);
+
 echo '<script type="text/javascript">
-           window.location = "../form_cursos_admin.html"
+           window.location = "../profile.html"
       </script>';
 ?>
