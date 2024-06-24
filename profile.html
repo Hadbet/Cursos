@@ -176,62 +176,8 @@
                     <h3>Destacados</h3>
 
                     <div class="row my-4" id="cartasDestacados">
+                    </div>
 
-                        <div class="col-md-2">
-                            <div class="card mb-12 shadow">
-                                <div class="card-body my-n3">
-                                    <div class="row align-items-center">
-                                        <div class="col-12 text-center">
-                                            <h3 class="h5 mt-4 mb-1">SAP</h3>
-                                                <img src="assets/images/medallas/primero.png">
-                                        </div>
-                                    </div> <!-- .row -->
-                                </div> <!-- .card-body -->
-                                <div class="card-footer">
-                                    <a href=""
-                                       class="d-flex justify-content-between text-muted"><span>Descargar</span><i
-                                            class="fe fe-chevron-right"></i></a>
-                                </div> <!-- .card-footer -->
-                            </div> <!-- .card -->
-                        </div> <!-- .col-md-->
-
-                        <div class="col-md-2">
-                            <div class="card mb-12 shadow">
-                                <div class="card-body my-n3">
-                                    <div class="row align-items-center">
-                                        <div class="col-12 text-center">
-                                            <h3 class="h5 mt-4 mb-1">Documentacion</h3>
-                                            <img src="assets/images/medallas/segundo.png">
-                                        </div>
-                                    </div> <!-- .row -->
-                                </div> <!-- .card-body -->
-                                <div class="card-footer">
-                                    <a href=""
-                                       class="d-flex justify-content-between text-muted"><span>Descargar</span><i
-                                            class="fe fe-chevron-right"></i></a>
-                                </div> <!-- .card-footer -->
-                            </div> <!-- .card -->
-                        </div> <!-- .col-md-->
-
-                        <div class="col-md-2">
-                            <div class="card mb-12 shadow">
-                                <div class="card-body my-n3">
-                                    <div class="row align-items-center">
-                                        <div class="col-12 text-center">
-                                            <h3 class="h5 mt-4 mb-1">5S</h3>
-                                            <img src="assets/images/medallas/tercero.png">
-                                        </div>
-                                    </div> <!-- .row -->
-                                </div> <!-- .card-body -->
-                                <div class="card-footer">
-                                    <a href=""
-                                       class="d-flex justify-content-between text-muted"><span>Descargar</span><i
-                                            class="fe fe-chevron-right"></i></a>
-                                </div> <!-- .card-footer -->
-                            </div> <!-- .card -->
-                        </div> <!-- .col-md-->
-
-                    </div> <!-- .row-->
                     <h3>Resumen</h3>
                     <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit nisl
                         ullamcorper, rutrum metus in, congue lectus.</p>
@@ -379,7 +325,7 @@
                     estatusImagen = "tercero";
                 }
 
-                document.getElementById("cartasDestacados").innerHTML += "<div className=\"col-md-2\"><div className=\"card mb-12 shadow\"><div className=\"card-body my-n3\"><div className=\"row align-items-center\"><div className=\"col-12 text-center\"><h3 className=\"h5 mt-4 mb-1\">"+data.data[i].Curso+"</h3><img src=\"assets/images/medallas/"+estatusImagen+".png\"></div></div></div><div className=\"card-footer\"><a className=\"d-flex justify-content-between text-muted\"><span>Calificacion</span><i className=\"fe fe-chevron-right\">"+data.data[i].Evaluacion+"</i></a></div></div></div>";
+                document.getElementById("cartasDestacados").innerHTML += "<div class=\"col-md-2\"><div class=\"card mb-12 shadow\"><div class=\"card-body my-n3\"><div class=\"row align-items-center\"><div class=\"col-12 text-center\"><h3 class=\"h5 mt-4 mb-1\">"+data.data[i].Curso+"</h3><img src=\"assets/images/medallas/"+estatusImagen+".png\"></div></div></div><div class=\"card-footer\"><a class=\"d-flex justify-content-between text-muted\"><span>Calificacion</span><i class=\"fe fe-chevron-right\">"+data.data[i].Evaluacion+"</i></a></div></div></div>";
             }
         });
     }
