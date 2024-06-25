@@ -709,10 +709,15 @@
             var table = $("#tablaCursosPendientes"); // selecciona la tabla
             var tableConcluidos = $("#tablaConcluidos"); // selecciona la tabla
             var tableCertificados = $("#tablaCertificados"); // selecciona la tabla
+            let fechaActual = new Date();
+            fechaActual.setHours(0, 0, 0, 0);
 
             for (var i = 0; i < data.data.length; i++) {
 
-                if (data.data[i].EstatusAsistencia == '0') {
+                let fechaData = new Date(data.data[i].Fecha);
+                fechaData.setHours(0, 0, 0, 0);
+
+                if (data.data[i].EstatusAsistencia == '0' && fechaData >= fechaActual) {
                     var newRow = $("<tr></tr>");
                     var nameCell = $("<td></td>").text(data.data[i].Curso); // asume que tienes un campo id en tus datos
                     var horarioCell = $("<td></td>").text(data.data[i].Horario); // asume que tienes un campo id en tus datos
