@@ -319,7 +319,7 @@
     function cargarCursos() {
         $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaCursoUsuario.php?nomina=00001606', function (data){
             for (var i = 0; i < data.data.length; i++) {
-                if (data.data[i].EstatusAsistencia===3){
+                if (data.data[i].EstatusAsistencia==="3"){
                     if (data.data[i].Evaluacion>9){estatusImagen = "primero";}
                     if (data.data[i].Evaluacion<9 && data.data[i].Evaluacion>=8){estatusImagen = "segundo";}
                     if (data.data[i].Evaluacion<8){estatusImagen = "tercero";}
