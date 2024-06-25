@@ -318,22 +318,13 @@
     cargarCursos();
     function cargarCursos() {
         $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaCursoUsuario.php?nomina=00001606', function (data){
-
             for (var i = 0; i < data.data.length; i++) {
-
-                if (data.data[i].Evaluacion>9){
-                    estatusImagen = "primero";
+                if (data.data[i].EstatusAsistencia===3){
+                    if (data.data[i].Evaluacion>9){estatusImagen = "primero";}
+                    if (data.data[i].Evaluacion<9 && data.data[i].Evaluacion>=8){estatusImagen = "segundo";}
+                    if (data.data[i].Evaluacion<8){estatusImagen = "tercero";}
+                    document.getElementById("cartasDestacados").innerHTML += "<div class=\"col-md-2\"><div class=\"card mb-12 shadow\"><div class=\"card-body my-n3\"><div class=\"row align-items-center\"><div class=\"col-12 text-center\"><h3 class=\"h5 mt-4 mb-1\">"+data.data[i].Curso+"</h3><img src=\"assets/images/medallas/"+estatusImagen+".png\"></div></div></div><div class=\"card-footer\"><a class=\"d-flex justify-content-between text-muted\"><span>Calificacion</span><i class=\"fe fe-chevron-right\">"+data.data[i].Evaluacion+"</i></a></div></div></div>";
                 }
-
-                if (data.data[i].Evaluacion<9 && data.data[i].Evaluacion>=8){
-                    estatusImagen = "segundo";
-                }
-
-                if (data.data[i].Evaluacion<8){
-                    estatusImagen = "tercero";
-                }
-
-                document.getElementById("cartasDestacados").innerHTML += "<div class=\"col-md-2\"><div class=\"card mb-12 shadow\"><div class=\"card-body my-n3\"><div class=\"row align-items-center\"><div class=\"col-12 text-center\"><h3 class=\"h5 mt-4 mb-1\">"+data.data[i].Curso+"</h3><img src=\"assets/images/medallas/"+estatusImagen+".png\"></div></div></div><div class=\"card-footer\"><a class=\"d-flex justify-content-between text-muted\"><span>Calificacion</span><i class=\"fe fe-chevron-right\">"+data.data[i].Evaluacion+"</i></a></div></div></div>";
             }
         });
     }
