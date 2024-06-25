@@ -1,9 +1,6 @@
 <?php
-
 include_once('db/db_RH.php');
-
 ContadorApu();
-
 function ContadorApu()
 {
     $con = new LocalConector();
