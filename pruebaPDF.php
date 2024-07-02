@@ -15,7 +15,7 @@ $Fecha = $query_params['fecha'];// Extraer el ID de la prueba
 $con = new LocalConector();
 $conex = $con->conectar();
 
-$datos = mysqli_query($conex, "SELECT * FROM `BitacoraCursos` WHERE `Curso`= '$Curso' and `Horario` = '$Horario' and `Fecha` = '$Fecha' and EstatusAsistencia=1;");
+$datos = mysqli_query($conex, "SELECT * FROM `BitacoraCursos` WHERE `Curso`= '$Curso' and `Horario` = '$Horario' and `Fecha` = '$Fecha' and EstatusAsistencia>=1;");
 $resultados = mysqli_fetch_all($datos, MYSQLI_ASSOC);
 
 $selectQuery = "SELECT * FROM `Cursos` WHERE `NombreCurso` = '$Curso' and `Horario` = '$Horario' and `Fecha` = '$Fecha'";
