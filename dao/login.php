@@ -32,8 +32,8 @@ $Nomina = str_pad($Nomina, 8, "0", STR_PAD_LEFT);
 $statusLogin = verificacionUsuario($Nomina, $Password);
 
 if ($statusLogin == 1) {
-    $_SESSION['nomina'] = $Nomina;
-    $_SESSION['password'] = $Password;
+    $_SESSION['nominaCurso'] = $Nomina;
+    $_SESSION['passwordCurso'] = $Password;
     echo "<META HTTP-EQUIV='REFRESH' CONTENT='1; URL=../inicio.html'>";
 } else if ($statusLogin == 0) {
     echo "<script>alert('Ocurrio un error')</script>";
