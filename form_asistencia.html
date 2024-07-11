@@ -329,7 +329,7 @@
 
         document.getElementById("seccionTomaAsistencia").scrollIntoView({ behavior: 'smooth' });
 
-        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaCursoAsistencia.php?curso='+Curso+'&fecha='+Fecha+'&horario='+HorarioCurso, function (data) {
+        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaCursoActualesAsistencia.php?curso='+Curso+'&fecha='+Fecha+'&horario='+HorarioCurso, function (data) {
           var table = $("#tablaAsistencia"); // selecciona la tabla
           var tableConcluidos = $("#tablaFaltas"); // selecciona la tabla
 
