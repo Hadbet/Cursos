@@ -308,7 +308,7 @@
 
       cargarCursosSelect();
       function cargarCursosSelect() {
-        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaCursoActuales.php', function (data) {
+        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaCursoActualesAsistencia.php', function (data) {
           var select = document.getElementById("cbCurso");
           for (var i = 0; i < data.data.length; i++) {
             var createOption = document.createElement("option");
