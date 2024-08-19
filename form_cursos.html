@@ -627,7 +627,7 @@
 
     function cargarCursosSelect() {
 
-        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaCurso.php', function (data) {
+        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaCursoCapacidad.php', function (data) {
             cursos = data.data;
             var select = document.getElementById("cbCurso");
             select.innerHTML = "";
@@ -642,7 +642,7 @@
                 if (!nombresCursos.includes(cursos[i].NombreCurso)) {
                     nombresCursos.push(cursos[i].NombreCurso);
                     createOption = document.createElement("option");
-                    createOption.text = cursos[i].NombreCurso;
+                    createOption.html = cursos[i].NombreCurso + "<span class='badge-warning'>"+cursos[i].CapacidadRestante+"</span>";
                     createOption.value = cursos[i].NombreCurso;
                     select.appendChild(createOption);
                 }
