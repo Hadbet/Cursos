@@ -753,7 +753,8 @@
         }
 
         for (var i = 0; i < selectedDates.length; i++) {
-            console.log(selectedDates[i]);
+            var fechaFormateada = selectedDates[i].toLocaleDateString('es-ES');
+            console.log(fechaFormateada);
         const data = new FormData();
 
         data.append('nombre', nombre.trim());
