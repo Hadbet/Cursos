@@ -24,6 +24,9 @@
     <!-- JavaScript -->
     <script src="lib/sweetalert2.all.min.js"></script>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
 </head>
 <body class="vertical  light  ">
 <div class="wrapper">
@@ -151,11 +154,12 @@
                                         </select>
                                     </div>
                                 </div>
+
                                 <div class="form-group col-md-6">
                                     <label for="txtFecha">Fecha</label>
-                                    <input type="date" class="form-control drgpicker" id="txtFecha"
-                                           value="04/24/2020" aria-describedby="button-addon2">
+                                    <input type="text" class="form-control" id="txtFecha" value="04/24/2020" aria-describedby="button-addon2">
                                 </div>
+
                                 <!-- /.col -->
                                 <div class="col-md-6">
                                     <div class="form-group mb-3">
@@ -505,6 +509,13 @@
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
 <script>
+
+    var datepicker = flatpickr("#txtFecha", {
+        mode: "multiple",
+        dateFormat: "Y-m-d",
+        defaultDate: new Date()
+    });
+
     cargarCursos();
     window.dataLayer = window.dataLayer || [];
 
@@ -721,6 +732,9 @@
         var instructor = document.getElementById("cbInstructor").value;
         var area = document.getElementById("txtArea").value;
         var fechaFinal = document.getElementById("txtVigencia").value;
+        var selectedDates = datepicker.selectedDates;
+
+
 
         var select = document.getElementById("cbTemario");
         var options = Array.from(select.options); // Convierte HTMLCollection a Array
@@ -738,11 +752,13 @@
             }
         }
 
+        for (var i = 0; i < selectedDates.length; i++) {
+            console.log(selectedDates[i]);
         const data = new FormData();
 
         data.append('nombre', nombre.trim());
         data.append('horario', horario.trim());
-        data.append('fecha', fecha.trim());
+        data.append('fecha', selectedDates[i]);
         data.append('capacidad', capacidad.trim());
         data.append('objetivo', objetivo.trim());
         data.append('instructor', instructor.trim());
@@ -775,6 +791,8 @@
             .catch(function (err) {
                 console.log(err);
             });
+
+        }
     }
     cargarCursosD();
     function cargarCursosD() {
