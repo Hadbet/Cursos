@@ -640,11 +640,15 @@
 
             for (var i = 0; i < cursos.length; i++) {
                 if (!nombresCursos.includes(cursos[i].NombreCurso)) {
-                    nombresCursos.push(cursos[i].NombreCurso);
-                    createOption = document.createElement("option");
-                    createOption.text = cursos[i].NombreCurso;
-                    createOption.value = cursos[i].NombreCurso;
-                    select.appendChild(createOption);
+                    if (cursos[i].Capacidad === cursos[i].CapacidadRestante){
+
+                    }else{
+                        nombresCursos.push(cursos[i].NombreCurso);
+                        createOption = document.createElement("option");
+                        createOption.text = cursos[i].NombreCurso;
+                        createOption.value = cursos[i].NombreCurso;
+                        select.appendChild(createOption);
+                    }
                 }
             }
             var divCurso = document.getElementById("divCurso");
