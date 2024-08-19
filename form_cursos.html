@@ -302,6 +302,29 @@
                 <div class="col-12">
                     <div class="card shadow mb-4">
                         <div class="card-body">
+                            <h5 class="card-title">Mis Cursos asistidos</h5>
+                            <table id="tablaCursosAsistidos" class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>Nombre Curso</th>
+                                    <th>Fecha</th>
+                                    <th>Horario</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div> <!-- / .card -->
+                </div> <!-- .col-12 -->
+            </div> <!-- .row -->
+        </div> <!-- .container-fluid -->
+
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
                             <h5 class="card-title">Mis Cursos por calificar</h5>
                             <table id="tablaConcluidos" class="table table-hover">
                                 <thead>
@@ -640,15 +663,11 @@
 
             for (var i = 0; i < cursos.length; i++) {
                 if (!nombresCursos.includes(cursos[i].NombreCurso)) {
-                    if (cursos[i].Capacidad === cursos[i].CapacidadRestante){
-
-                    }else{
                         nombresCursos.push(cursos[i].NombreCurso);
                         createOption = document.createElement("option");
                         createOption.text = cursos[i].NombreCurso;
                         createOption.value = cursos[i].NombreCurso;
                         select.appendChild(createOption);
-                    }
                 }
             }
             var divCurso = document.getElementById("divCurso");
@@ -663,10 +682,16 @@
         var cursoSeleccionado = document.getElementById("cbCurso").value;
         for (var i = 0; i < cursos.length; i++) {
             if (cursos[i].NombreCurso == cursoSeleccionado) {
-                var createOption = document.createElement("option");
-                createOption.text = cursos[i].Fecha + ", " + cursos[i].Horario + " (" + cursos[i].CapacidadRestante + " disponibles)";
-                createOption.value = cursos[i].Fecha + ", " + cursos[i].Horario;
-                select.appendChild(createOption);
+
+                if (parseInt(cursos[i].CapacidadRestante) <= 0){
+
+                }else{
+                    var createOption = document.createElement("option");
+                    createOption.text = cursos[i].Fecha + ", " + cursos[i].Horario + " (" + cursos[i].CapacidadRestante + " disponibles)";
+                    createOption.value = cursos[i].Fecha + ", " + cursos[i].Horario;
+                    select.appendChild(createOption);
+                }
+
             }
         }
     }
@@ -793,6 +818,7 @@
             var table = $("#tablaCursosPendientes"); // selecciona la tabla
             var tableConcluidos = $("#tablaConcluidos"); // selecciona la tabla
             var tableCertificados = $("#tablaCertificados"); // selecciona la tabla
+            var tablaCursosAsistidos = $("#tablaCursosAsistidos"); // selecciona la tabla
             let fechaActual = new Date();
             fechaActual.setHours(0, 0, 0, 0);
 
@@ -812,6 +838,17 @@
                     newRow.append(fechaCell);
                     newRow.append(horarioCell);
                     table.append(newRow);
+                }else if (data.data[i].EstatusAsistencia == '1' || data.data[i].EstatusAsistencia == '2' || data.data[i].EstatusAsistencia == '3') {
+                    var newRow = $("<tr></tr>");
+                    var nameCell = $("<td></td>").text(data.data[i].Curso); // asume que tienes un campo id en tus datos
+                    var horarioCell = $("<td></td>").text(data.data[i].Horario); // asume que tienes un campo id en tus datos
+                    var fechaCell = $("<td></td>").text(data.data[i].Fecha);
+
+                    // agrega las celdas a la fila y la fila a la tabla
+                    newRow.append(nameCell);
+                    newRow.append(fechaCell);
+                    newRow.append(horarioCell);
+                    tablaCursosAsistidos.append(newRow);
                 } else if (data.data[i].EstatusAsistencia == '2') {
 
                     var newRowConcluido = $("<tr></tr>");
