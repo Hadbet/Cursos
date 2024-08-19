@@ -225,7 +225,7 @@
                                     </div>
                                     <div class="form-group mb-3" id="divEncargado" style="display: none">
                                         <label for="cbEncargado">Encargado</label>
-                                        <select class="custom-select" id="cbEncargado">
+                                        <select class="custom-select" id="cbEncargado" onchange="cargarCursosSelect()">
                                             <option selected>Abrir menu</option>
                                         </select>
                                     </div>
@@ -626,6 +626,7 @@
     var cursos = [];
 
     function cargarCursosSelect() {
+
         $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaCurso.php', function (data) {
             cursos = data.data;
             var select = document.getElementById("cbCurso");
@@ -695,12 +696,15 @@
     }
 
     async function agregarAsistenciaCurso() {
+        var selectedOption = document.querySelector('input[name="inlineRadioOptions"]:checked').value;
+        console.log(selectedOption);
         var nomina = document.getElementById("txtNominaCurso");
         var nombre = document.getElementById("txtNombrePersonaCurso");
         var apu = document.getElementById("cbApu");
         var supervisor = document.getElementById("cbSupervisor");
         var shiftLeader = document.getElementById("cbShiftleader");
         var cursos = document.getElementById("cbHorario");
+        var encargado = document.getElementById("cbEncargado");
 
         var errorOcurrido = false;
 
@@ -708,9 +712,17 @@
 
         dataRegistro.append('nomina', nomina.value.trim());
         dataRegistro.append('nombre', nombre.value.trim());
-        dataRegistro.append('apu', apu.value.trim());
-        dataRegistro.append('supervisor', supervisor.value.trim());
-        dataRegistro.append('shiftLeader', shiftLeader.value.trim());
+
+
+        if (selectedOption === "Administrativo"){
+            dataRegistro.append('apu', "NA");
+            dataRegistro.append('supervisor', encargado.value.trim());
+            dataRegistro.append('shiftLeader', "NA");
+        }else{
+            dataRegistro.append('apu', apu.value.trim());
+            dataRegistro.append('supervisor', supervisor.value.trim());
+            dataRegistro.append('shiftLeader', shiftLeader.value.trim());
+        }
 
         var fetchPromises = [];
 
