@@ -642,7 +642,7 @@
                 if (!nombresCursos.includes(cursos[i].NombreCurso)) {
                     nombresCursos.push(cursos[i].NombreCurso);
                     createOption = document.createElement("option");
-                    createOption.html = cursos[i].NombreCurso + "<span class='badge-warning'>"+cursos[i].CapacidadRestante+"</span>";
+                    createOption.text = cursos[i].NombreCurso;
                     createOption.value = cursos[i].NombreCurso;
                     select.appendChild(createOption);
                 }
@@ -660,7 +660,7 @@
         for (var i = 0; i < cursos.length; i++) {
             if (cursos[i].NombreCurso == cursoSeleccionado) {
                 var createOption = document.createElement("option");
-                createOption.text = cursos[i].Fecha + ", " + cursos[i].Horario;
+                createOption.text = cursos[i].Fecha + ", " + cursos[i].Horario + " (" + cursos[i].CapacidadRestante + " disponibles)";
                 createOption.value = cursos[i].Fecha + ", " + cursos[i].Horario;
                 select.appendChild(createOption);
             }
