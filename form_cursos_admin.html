@@ -753,7 +753,13 @@
         }
 
         for (var i = 0; i < selectedDates.length; i++) {
-            var fechaFormateada = selectedDates[i].toLocaleDateString('es-ES');
+            //var fechaFormateada = selectedDates[i].toLocaleDateString('es-ES');
+            var fecha = selectedDates[i];
+            var dia = String(fecha.getDate()).padStart(2, '0');
+            var mes = String(fecha.getMonth() + 1).padStart(2, '0'); // Los meses en JavaScript empiezan en 0
+            var ano = fecha.getFullYear();
+
+            var fechaFormateada = ano + '-' + mes + '-' + dia;
             console.log(fechaFormateada);
         const data = new FormData();
 
