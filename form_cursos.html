@@ -192,7 +192,19 @@
                                         <input type="text" readonly="" class="form-control-plaintext"
                                                id="txtNombrePersonaCurso" value="HADBET AYARI ALTAMIRANO MARTINEZ">
                                     </div>
-                                    <div class="form-group mb-3" id="divApu">
+                                    <div class="form-group mb-3">
+                                        <label>Tipo de usuario :</label>
+                                        <br>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Administrativo">
+                                            <label class="form-check-label" for="inlineRadio1">Administrativo</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Operativo">
+                                            <label class="form-check-label" for="inlineRadio2">Operativo</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-3" id="divApu" style="display: none">
                                         <label for="cbApu">Apu</label>
                                         <select class="custom-select" id="cbApu" onchange="llenarSuper()">
                                             <option selected>Abrir menu</option>
@@ -208,6 +220,12 @@
                                         <label for="cbShiftleader">Shifleader</label>
                                         <select class="custom-select" id="cbShiftleader"
                                                 onchange="cargarCursosSelect()">
+                                            <option selected>Abrir menu</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group mb-3" id="divEncargado" style="display: none">
+                                        <label for="cbEncargado">Encargado</label>
+                                        <select class="custom-select" id="cbEncargado">
                                             <option selected>Abrir menu</option>
                                         </select>
                                     </div>
@@ -471,6 +489,40 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
 <script>
 
+    var radios = document.getElementsByName('inlineRadioOptions');
+
+    // Recorre todos los elementos
+    for(var i = 0; i < radios.length; i++){
+        radios[i].addEventListener('click', function(){
+            if(this.value == "Administrativo"){
+                var divApu = document.getElementById("divApu");
+                divApu.style.display = 'none';
+                divApu.classList.add('animate__animated', 'animate__bounceIn');
+
+                var divSupervisor = document.getElementById("divSupervisor");
+                divSupervisor.style.display = 'none';
+                divSupervisor.classList.add('animate__animated', 'animate__bounceIn');
+
+                var divShiftleader = document.getElementById("divShiftleader");
+                divShiftleader.style.display = 'none';
+                divShiftleader.classList.add('animate__animated', 'animate__bounceIn');
+
+                var divSuper = document.getElementById("divEncargado");
+                divSuper.style.display = 'block';
+                divSuper.classList.add('animate__animated', 'animate__bounceIn');
+            }else{
+
+                var divApu = document.getElementById("divEncargado");
+                divApu.style.display = 'none';
+                divApu.classList.add('animate__animated', 'animate__bounceIn');
+
+                var divSuper = document.getElementById("divApu");
+                divSuper.style.display = 'block';
+                divSuper.classList.add('animate__animated', 'animate__bounceIn');
+            }
+        });
+    }
+
     $(document).ready(function () {
         $('#nextButton').click(function () {
             $('#modal1').modal('hide');
@@ -500,6 +552,20 @@
                 var createOption = document.createElement("option");
                 createOption.text = data.data[i].Nombre;
                 createOption.value = data.data[i].Puesto;
+                select.appendChild(createOption);
+            }
+        });
+    }
+
+    llenarEncargado();
+
+    function llenarEncargado() {
+        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/daoEncargado.php', function (data) {
+            var select = document.getElementById("cbEncargado");
+            for (var i = 0; i < data.data.length; i++) {
+                var createOption = document.createElement("option");
+                createOption.text = data.data[i].nombre;
+                createOption.value = data.data[i].nombre;
                 select.appendChild(createOption);
             }
         });
