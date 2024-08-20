@@ -180,7 +180,7 @@
         <div class="container-fluid" id="seccionTomaAsistencia">
           <div class="row justify-content-center">
             <div class="col-12">
-              <h2 class="page-title">Toma de asistencias <span id="lblCapacidad" style="display: none" class="badge badge-primary text-white">0 disponibles</span></h2>
+              <h2 class="page-title">Toma de asistencias <span id="lblCapacidad" class="badge badge-primary text-white"></span></h2>
               <div class="card shadow mb-4">
                 <div class="card-header">
                   <strong class="card-title">Ponga su número de nómina o ponga su tarjeta sobre el escáner</strong>
@@ -321,7 +321,8 @@
 
       function cargarCapacidad(Curso,Fecha,HorarioCurso) {
         $.getJSON('https://arketipo.mx/RH/CursosRH/dao/consultaCursoCapacidadporId.php?curso='+Curso+'&fecha='+Fecha+'&horario='+HorarioCurso, function (data) {
-          document.getElementById("lblCapacidad").innerText = data.data[0].CapacidadRestante;
+          var capacidad = document.getElementById("lblCapacidad");
+          capacidad.innerHTML = "Lugares disponibles : "+data.data[0].CapacidadRestante;
         });
       }
 
@@ -334,6 +335,7 @@
         var HorarioCurso = horarioParts[2].trim();
 
         cargarCapacidad(Curso,Fecha,HorarioCurso);
+
 
         document.getElementById("seccionTomaAsistencia").scrollIntoView({ behavior: 'smooth' });
 
