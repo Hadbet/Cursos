@@ -838,7 +838,8 @@
                     newRow.append(fechaCell);
                     newRow.append(horarioCell);
                     table.append(newRow);
-                }else if (data.data[i].EstatusAsistencia == '1' || data.data[i].EstatusAsistencia == '2' || data.data[i].EstatusAsistencia == '3') {
+                }
+                if (data.data[i].EstatusAsistencia == '1' || data.data[i].EstatusAsistencia == '2' || data.data[i].EstatusAsistencia == '3') {
                     var newRow = $("<tr></tr>");
                     var nameCell = $("<td></td>").text(data.data[i].Curso); // asume que tienes un campo id en tus datos
                     var horarioCell = $("<td></td>").text(data.data[i].Horario); // asume que tienes un campo id en tus datos
@@ -849,7 +850,8 @@
                     newRow.append(fechaCell);
                     newRow.append(horarioCell);
                     tablaCursosAsistidos.append(newRow);
-                } else if (data.data[i].EstatusAsistencia == '2') {
+                }
+                if (data.data[i].EstatusAsistencia == '2') {
 
                     var newRowConcluido = $("<tr></tr>");
                     var idCell = $("<td></td>").text(data.data[i].IdBitacoraCurso);
@@ -873,7 +875,8 @@
                     newRowConcluido.append(valorarCell);
 
                     tableConcluidos.append(newRowConcluido);
-                } else if (data.data[i].EstatusAsistencia == '3') {
+                }
+                if (data.data[i].EstatusAsistencia == '3') {
                     var newRowCertificado = $("<tr></tr>");
                     var idCertificadoCell = $("<td></td>").text(data.data[i].IdBitacoraCurso);
                     var nameCertificadoCell = $("<td></td>").text(data.data[i].Curso); // asume que tienes un campo id en tus datos
