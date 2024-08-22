@@ -388,19 +388,6 @@
     gtag('js', new Date());
     gtag('config', 'UA-56159088-1');
 
-    llenarAPU();
-
-    function llenarAPU() {
-        $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/daoApu.php', function (data) {
-            var select = document.getElementById("cbApu");
-            for (var i = 0; i < data.data.length; i++) {
-                var createOption = document.createElement("option");
-                createOption.text = data.data[i].Nombre;
-                createOption.value = data.data[i].Puesto;
-                select.appendChild(createOption);
-            }
-        });
-    }
 
     // Obtén el elemento
     var input = document.getElementById('txtNominaCurso');
@@ -417,9 +404,36 @@
             });
         }
     });
+    llenarAPU();
+
+    function llenarAPU() {
+        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/daoApu.php', function (data) {
+            var select = document.getElementById("cbApu");
+            for (var i = 0; i < data.data.length; i++) {
+                var createOption = document.createElement("option");
+                createOption.text = data.data[i].Nombre;
+                createOption.value = data.data[i].Puesto;
+                select.appendChild(createOption);
+            }
+        });
+    }
+
+    llenarEncargado();
+
+    function llenarEncargado() {
+        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/daoEncargado.php', function (data) {
+            var select = document.getElementById("cbEncargado");
+            for (var i = 0; i < data.data.length; i++) {
+                var createOption = document.createElement("option");
+                createOption.text = data.data[i].nombre;
+                createOption.value = data.data[i].nombre;
+                select.appendChild(createOption);
+            }
+        });
+    }
 
     function llenarSuper() {
-        $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/daoSupervisor.php?APU=' + document.getElementById("cbApu").value, function (data) {
+        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/daoSupervisor.php?APU=' + document.getElementById("cbApu").value, function (data) {
             var selectS = document.getElementById("cbSupervisor");
             selectS.innerHTML = "";
 
@@ -447,7 +461,7 @@
     }
 
     function llenarShift() {
-        $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/daoShiftLeader.php?APU=' + document.getElementById("cbSupervisor").value, function (data) {
+        $.getJSON('https://arketipo.mx/RH/CursosRH/dao/daoShiftLeader.php?APU=' + document.getElementById("cbSupervisor").value, function (data) {
             var selectS = document.getElementById("cbShiftleader");
             selectS.innerHTML = "";
 
